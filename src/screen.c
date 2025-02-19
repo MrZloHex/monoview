@@ -1,8 +1,9 @@
-#include "screenview.h"
+#include "screen.h"
+
 #include <time.h>
 
-WINDOW *
-screenview_create(int x, int y, int height, int width)
+Screen
+screen_init(int x, int y, int height, int width)
 {
     // TODO: chekc 20x4 dims
    
@@ -15,13 +16,21 @@ screenview_create(int x, int y, int height, int width)
     mvwprintw(win, 3, 1, "-6(-11)C       R 86%%");
     mvwprintw(win, 4, 1, "      MrZloHex      ");
 
-    screenview_update_datetime(win);
+    wrefresh(win);
 
-    return win;
+    Screen scr =
+    {
+        .win     = win,
+        .focused = false,
+        .height  = height,
+        .width   = width
+    };
+
+    return scr;
 }
 
 void
-screenview_update_datetime(WINDOW *win)
+screen_update_datetime(Screen *scr)
 {
     time_t now = time(NULL);
     struct tm *tm_info = localtime(&now);
@@ -29,7 +38,7 @@ screenview_update_datetime(WINDOW *win)
     char time[10];
     strftime(date, sizeof(date), "%y.%m.%d", tm_info);
     strftime(time, sizeof(time), "%H:%M:%S", tm_info);
-    mvwprintw(win, 1, 13, "%s", date);
-    mvwprintw(win, 2, 1,  "C     %s     S", time);
-    wrefresh(win);
+    mvwprintw(scr->win, 1, 13, "%s", date);
+    mvwprintw(scr->win, 2, 1,  "C     %s     S", time);
+    wrefresh(scr->win);
 }

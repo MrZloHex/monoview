@@ -2,7 +2,9 @@
 #include <string.h>
 
 
-WINDOW *create_calendar_window(int starty, int startx, int height, int width) {
+Calendar
+calendar_init(int starty, int startx, int height, int width)
+{
     WINDOW *win = newwin(height, width, starty, startx);
     wbkgd(win, COLOR_PAIR(3));
     wattron(win, COLOR_PAIR(3));
@@ -27,5 +29,17 @@ WINDOW *create_calendar_window(int starty, int startx, int height, int width) {
         mvwprintw(win, 6, col, "HW: Calc");
         mvwprintw(win, 7, col, "HW: Phys");
     }
-    return win;
+
+    wrefresh(win);
+
+    Calendar cal =
+    {
+        .win     = win,
+        .height  = height,
+        .width   = width,
+        .focused = false
+    };
+
+
+    return cal;
 }

@@ -24,10 +24,15 @@ typedef struct
 Loger
 loger_init(int y, int x, int height, int width);
 
+void
+loger_update(Loger *loger);
+
+
+
+
 void log_action(const char *action);
 
 WINDOW *create_logs_window(int starty, int startx, int height, int width);
 
-void update_logs_window(WINDOW *win, int height, int width);
 
 #endif /* __LOGER_H__ */

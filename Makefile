@@ -35,12 +35,11 @@ BUILD ?= debug
 
 CC      	 = gcc
 
-CFLAGS_BASE  = -Wall -Wextra -Wpedantic -std=c2x -Wstrict-aliasing
+CFLAGS_BASE  = -Wall -Wextra -std=c2x -Wstrict-aliasing
 CFLAGS_BASE += -Wno-old-style-declaration
 CFLAGS_BASE += -MMD -MP
 CFLAGS_BASE += -Iinc -Ilib -Iinc/ws
 CFLAGS_BASE += -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/usr/include/ncursesw
-
 
 ifeq ($(BUILD),debug)
 	CFLAGS  = $(CFLAGS_BASE)

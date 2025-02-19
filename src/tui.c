@@ -1,8 +1,11 @@
 #include "tui.h"
 #include <ncurses.h>
 
-void init_colors() {
-    if (has_colors()) {
+void
+init_colors()
+{
+    if (has_colors())
+    {
         start_color();
         use_default_colors();
         // Normal windows: white on black.
@@ -15,16 +18,22 @@ void init_colors() {
 }
 
 
-void draw_highlight(WINDOW *win, int focused) {
-    if (focused) {
-        wattron(win, COLOR_PAIR(2));
-        box(win, 0, 0);
-        wattroff(win, COLOR_PAIR(2));
-    } else {
-        wattron(win, COLOR_PAIR(1));
-        box(win, 0, 0);
-        wattroff(win, COLOR_PAIR(1));
+void
+view_draw_focused(View view)
+{
+    if (view.view.focused)
+    {
+        wattron(view.view.win, COLOR_PAIR(2));
+        box(view.view.win, 0, 0);
+        wattroff(view.view.win, COLOR_PAIR(2));
     }
-    wrefresh(win);
+    else
+    {
+        wattron(view.view.win, COLOR_PAIR(1));
+        box(view.view.win, 0, 0);
+        wattroff(view.view.win, COLOR_PAIR(1));
+    }
+
+    wrefresh(view.view.win);
 }
 

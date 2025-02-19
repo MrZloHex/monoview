@@ -1,7 +1,7 @@
-#include "logoview.h"
+#include "logo.h"
 
-WINDOW *
-logoview_create(int y, int x, int height, int width)
+Logo
+logo_init(int y, int x, int height, int width)
 {
     // TODO: check minimal dimensions
 
@@ -17,5 +17,14 @@ logoview_create(int y, int x, int height, int width)
 
     wrefresh(win);
 
-    return win;
+
+    Logo logo =
+    {
+        .win     = win,
+        .height  = height,
+        .width   = width,
+        .focused = false
+    };
+
+    return logo;
 }

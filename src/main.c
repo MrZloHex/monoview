@@ -40,7 +40,7 @@ int main() {
 
     setlocale(LC_ALL, "");
     initscr();
-    cbreak();
+    raw();
     noecho();
     keypad(stdscr, TRUE);
     curs_set(0);
@@ -70,76 +70,65 @@ int main() {
     View calendar = (View)calendar_init(0, LCD_WIDTH +1, CALENDAR_HEIGHT, max_x - LCD_WIDTH -1);
     View kanban   = (View)kanban_init(top_row_height, LOGS_WIDTH +1, bottom_row_height, max_x - LOGS_WIDTH -1);
 
-
-    // Focusable windows: LCD, Calendar, Logs, Diary.
-    WINDOW *win_array[NUM_WINDOWS] = { screen, calendar_win, logs_win, diary_win };
-    int current_focus = 0;
-    for (int i = 0; i < NUM_WINDOWS; i++) {
-        draw_highlight(win_array[i], (i == current_focus));
+    #define VIEW_FOCUS_SIZE 3
+    View views[VIEW_FOCUS_SIZE] = { calendar, kanban, loger};
+    size_t focus = 0;
+    views[focus].view.focused = true;
+    for (size_t i = 0; i < VIEW_FOCUS_SIZE; ++i)
+    {
+        view_draw_focused(views[i]);
     }
 
     char buffer[32];
-    int ch;
-    while ((ch = getch()) != 'q' && !command_quit) {
+
+    log_action("HUY");
+    bool run = true;
+    while (run)
+    {
+        int ch = getch();
         if (ch == ERR) {
-            screenview_update_datetime(screen);
-            update_logs_window(logs_win, bottom_row_height, LOGS_WIDTH);
+            screen_update_datetime(&screen.screen);
+            log_action("HUY");
+            loger_update(&loger.loger);
             continue;
         }
         if (ch == '\t' || ch == KEY_BTAB) {
-            snprintf(buffer, sizeof(buffer), "NEXT WINDOW %d", current_focus);
+            focus = (focus + 1) % VIEW_FOCUS_SIZE;
+            snprintf(buffer, sizeof(buffer), "NEXT WINDOW %zu", focus);
             log_action(buffer);
-            current_focus = (current_focus + 1) % NUM_WINDOWS;
-            for (int i = 0; i < NUM_WINDOWS; i++) {
-                draw_highlight(win_array[i], (i == current_focus));
+            for (size_t i = 0; i < VIEW_FOCUS_SIZE; ++i)
+            {
+                views[i].view.focused = (i == focus);
+                view_draw_focused(views[i]);
             }
-        } else if (ch == 'h') {
-            if (current_focus == 1) current_focus = 0;
-            else if (current_focus == 3) current_focus = 2;
-            for (int i = 0; i < NUM_WINDOWS; i++) {
-                draw_highlight(win_array[i], (i == current_focus));
-            }
-        } else if (ch == 'l') {
-            if (current_focus == 0) current_focus = 1;
-            else if (current_focus == 2) current_focus = 3;
-            for (int i = 0; i < NUM_WINDOWS; i++) {
-                draw_highlight(win_array[i], (i == current_focus));
-            }
-        } else if (ch == 'j') {
-            if (current_focus == 0) current_focus = 2;
-            else if (current_focus == 1) current_focus = 3;
-            for (int i = 0; i < NUM_WINDOWS; i++) {
-                draw_highlight(win_array[i], (i == current_focus));
-            }
-        } else if (ch == 'k') {
-            if (current_focus == 2) current_focus = 0;
-            else if (current_focus == 3) current_focus = 1;
-            for (int i = 0; i < NUM_WINDOWS; i++) {
-                draw_highlight(win_array[i], (i == current_focus));
-            }
+        }
+        else if (ch == 'q') 
+        {
+            run = false;
         } else if (ch == ':') {
             //enter_command_mode(max_y, max_x, vert_sep_top, vert_sep_bottom, horz_sep,
             //                   win_array, NUM_WINDOWS, diary_win, bottom_row_height, max_x - LOGS_WIDTH - 1,
             //                   lcd_win, logo_win);
         } else if (ch == 'i') {
             // When focused on the Diary (Kanban) window, press 'i' to add a new entry.
-            if (current_focus == 3) {
+            if (focus == 3) {
                 //enter_new_entry(diary_win, bottom_row_height, max_x - LOGS_WIDTH - 1);
             }
         }
 
-        if (current_focus == 2) {  // Assuming logs window is index 2 in win_array
+        if (focus == 2)
+        {
             if (ch == KEY_UP) {
                 if (log_scroll_offset > 0) {
                     log_scroll_offset--;
-                    update_logs_window(logs_win, bottom_row_height, LOGS_WIDTH);
+                    loger_update(&loger.loger);
                 }
                 continue;  // Prevent grid navigation in this case.
             } else if (ch == KEY_DOWN) {
                 // Only scroll if there are more lines to show.
                 if (log_scroll_offset < num_log_lines - (bottom_row_height - 2)) {
                     log_scroll_offset++;
-                    update_logs_window(logs_win, bottom_row_height, LOGS_WIDTH);
+                    loger_update(&loger.loger);
                 }
                 continue;
             }
@@ -147,11 +136,11 @@ int main() {
 
     }
 
-    delwin(screen);
-    delwin(logo);
-    delwin(calendar_win);
-    delwin(logs_win);
-    delwin(diary_win);
+    delwin(screen.view.win);
+    delwin(logo.view.win);
+    delwin(calendar.view.win);
+    delwin(loger.view.win);
+    delwin(kanban.view.win);
     endwin();
     return 0;
 }

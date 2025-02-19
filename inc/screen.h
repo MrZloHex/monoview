@@ -1,5 +1,5 @@
-#ifndef __SCREENVIEW_H__
-#define __SCREENVIEW_H__
+#ifndef __SCREEN_H__
+#define __SCREEN_H__
 
 #include <ncurses.h>
 
@@ -14,7 +14,7 @@ Screen
 screen_init(int x, int y, int height, int width);
 
 void
-screenview_update_datetime(WINDOW *win);
+screen_update_datetime(Screen *scr);
 
 
-#endif /* __SCREENVIEW_H__ */
+#endif /* __SCREEN_H__ */
