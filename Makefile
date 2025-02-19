@@ -39,6 +39,8 @@ CFLAGS_BASE  = -Wall -Wextra -Wpedantic -std=c2x -Wstrict-aliasing
 CFLAGS_BASE += -Wno-old-style-declaration
 CFLAGS_BASE += -MMD -MP
 CFLAGS_BASE += -Iinc -Ilib -Iinc/ws
+CFLAGS_BASE += -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/usr/include/ncursesw
+
 
 ifeq ($(BUILD),debug)
 	CFLAGS  = $(CFLAGS_BASE)
@@ -50,7 +52,7 @@ else
 	$(error Unknown build mode: $(BUILD). Use BUILD=debug or BUILD=release)
 endif
 
-LDFLAGS = -lncurses -ltinfo
+LDFLAGS = -L/usr/lib64 -lncursesw -ltinfow
 
 TARGET  = monoview
 
@@ -93,13 +95,13 @@ clean:
 PORT ?= 8080
 VERBOSE ?=
 dry-run: $(BIN)/$(TARGET) 
-	@echo "  EXEC     ./bin/tma --port $(PORT) $(VERBOSE)"
-	$(Q) ./bin/tma --port $(PORT) $(VERBOSE)
+	@echo "  EXEC     ./bin/monoview"
+	$(Q) ./bin/monoview
 
 INSTALL_PATH ?= /usr/local/bin
 install: $(BIN)/$(TARGET)
 	@echo "  Installing in $(INSTALL_PATH)"
-	$(Q) install $(BIN)/$(TARGET) $(INSTALL_PATH)/tma
+	$(Q) install $(BIN)/$(TARGET) $(INSTALL_PATH)/$(TARGET)
 
 debug:
 	$(MAKE) BUILD=debug all

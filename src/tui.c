@@ -14,16 +14,24 @@ void init_colors() {
     }
 }
 
+#include <wchar.h>
+
 WINDOW *create_logo_window(int starty, int startx, int height, int width) {
     WINDOW *win = newwin(height, width, starty, startx);
-    wbkgd(win, COLOR_PAIR(1));
+    wbkgd(win, COLOR_PAIR(1)); // use default color pair (or your chosen one)
     wattron(win, COLOR_PAIR(1));
-    box(win, 0, 0);
-    wattroff(win, COLOR_PAIR(1));
-    // Center a simple logo.
-    mvwprintw(win, height / 2, (width - 9) / 2, "MyProject");
+    // Print the ASCII art logo, starting at row 1, col 1 (inside the border)
+    mvwprintw(win, 0, 4, " ███╗   ███╗");
+    mvwprintw(win, 1, 4, " ████╗ ████║");
+    mvwprintw(win, 2, 4, " ██╔████╔██║");
+    mvwprintw(win, 3, 4, " ██║╚██╔╝██║ ");
+    mvwprintw(win, 4, 4, " ██║ ╚═╝ ██║");
+    mvwprintw(win, 5, 4, " ╚═╝     ╚═╝");
+
+    wrefresh(win);
     return win;
 }
+
 
 
 void draw_highlight(WINDOW *win, int focused) {

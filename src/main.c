@@ -25,12 +25,14 @@
 #include <stdlib.h>
 #include "tui.h"
 #include "command.h"
+#include <locale.h>
 
 char todo_list[MAX_TODO][256];
 int todo_count = 0;
 int command_quit = 0;
 
 int main() {
+    setlocale(LC_ALL, "");
     initscr();
     cbreak();
     noecho();
@@ -75,8 +77,8 @@ int main() {
     wrefresh(vert_sep_bottom);
 
     // Create windows.
-    WINDOW *lcd_win = create_lcd_window(0, 0);
-    WINDOW *logo_win = create_logo_window(LCD_HEIGHT, 0, LOGO_HEIGHT, LCD_WIDTH);
+    WINDOW *lcd_win = create_lcd_window(LCD_HEIGHT, 0);
+    WINDOW *logo_win = create_logo_window(0, 0, 10, LCD_WIDTH);
     WINDOW *calendar_win = create_calendar_window(0, LCD_WIDTH + 1, CALENDAR_HEIGHT, max_x - LCD_WIDTH - 1);
 
     WINDOW *logs_win = create_logs_window(top_row_height, 0, bottom_row_height, LOGS_WIDTH);
