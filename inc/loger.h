@@ -6,10 +6,6 @@
 #define MAX_LOG_LINES 100
 #define MAX_LOG_LENGTH 256
 
-extern char log_lines[MAX_LOG_LINES][MAX_LOG_LENGTH];
-extern int num_log_lines;
-extern int log_scroll_offset;
-
 typedef struct
 {
     WINDOW *win;
@@ -18,6 +14,7 @@ typedef struct
 
     char entry[MAX_LOG_LINES][MAX_LOG_LENGTH];
     size_t q_entries;
+    size_t scroll_offset;
 } Loger;
 
 
@@ -28,11 +25,8 @@ void
 loger_update(Loger *loger);
 
 
-
-
-void log_action(const char *action);
-
-WINDOW *create_logs_window(int starty, int startx, int height, int width);
+void
+log_action(Loger *log, const char *action);
 
 
 #endif /* __LOGER_H__ */

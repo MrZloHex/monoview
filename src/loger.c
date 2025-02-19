@@ -2,16 +2,14 @@
 #include <string.h>
 
 
-char log_lines[MAX_LOG_LINES][MAX_LOG_LENGTH] = {0};
-int num_log_lines = 0;
-int log_scroll_offset = 0;
-
-
-void log_action(const char *action) {
-    if (num_log_lines < MAX_LOG_LINES) {
-        strncpy(log_lines[num_log_lines], action, MAX_LOG_LENGTH - 1);
-        log_lines[num_log_lines][MAX_LOG_LENGTH - 1] = '\0';
-        num_log_lines++;
+void
+log_action(Loger *log, const char *action)
+{
+    if (log->q_entries < MAX_LOG_LINES)
+    {
+        strncpy(log->entry[log->q_entries], action, MAX_LOG_LENGTH - 1);
+        log->entry[log->q_entries][MAX_LOG_LENGTH - 1] = '\0';
+        log->q_entries++;
     }
 }
 
@@ -23,6 +21,7 @@ loger_init(int y, int x, int height, int width)
     
     log.focused   = 0;
     log.q_entries = 0;
+    log.scroll_offset = 0;
 
     log.win = newwin(height, width, y, x);
     wbkgd(log.win, COLOR_PAIR(1));
@@ -43,34 +42,34 @@ void
 loger_update(Loger *loger)
 {
     // The inner height available (excluding top and bottom borders)
-    int available = loger->height - 2;
-    int start_line = log_scroll_offset;
-    int end_line = (num_log_lines < start_line + available) ? num_log_lines : start_line + available;
-    int line = 1;
+    size_t available = loger->height - 2;
+    size_t start_line = loger->scroll_offset;
+    size_t end_line = (loger->q_entries < start_line + available) ? loger->q_entries : start_line + available;
+    size_t line = 1;
     // Print log lines within the inner area (columns 1 .. width-3, leaving column width-2 for scroll bar)
-    for (int i = start_line; i < end_line; i++, line++)
+    for (size_t i = start_line; i < end_line; i++, line++)
     {
-        mvwprintw(loger->win, line, 1, "[%u] %.*s", i, loger->width - 3, log_lines[i]);
+        mvwprintw(loger->win, line, 1, "[%zu] %.*s", i, loger->width - 3, loger->entry[i]);
     }
 
     // Draw a scroll bar if necessary.
-    if (num_log_lines > available) {
+    if (loger->q_entries > available) {
         // Calculate the scrollbar height proportionally.
-        int scrollbar_height = (available * available) / num_log_lines;
+        size_t scrollbar_height = (available * available) / loger->q_entries;
         if (scrollbar_height < 1)
             scrollbar_height = 1;
-        int max_offset = num_log_lines - available;
-        int scrollbar_start = 0;
+        size_t max_offset = loger->q_entries - available;
+        size_t scrollbar_start = 0;
         if (max_offset > 0)
-            scrollbar_start = (log_scroll_offset * (available - scrollbar_height)) / max_offset;
+            scrollbar_start = (loger->scroll_offset * (available - scrollbar_height)) / max_offset;
         // Choose the column for the scroll bar; here we use the second-to-last column (inside the right border).
-        int scroll_col = loger->width - 2;
+        size_t scroll_col = loger->width - 2;
         // Clear that column (within inner area) first.
-        for (int r = 1; r <= available; r++) {
+        for (size_t r = 1; r <= available; r++) {
             mvwaddch(loger->win, r, scroll_col, ' ');
         }
         // Draw the scrollbar using a block character.
-        for (int r = 1; r <= scrollbar_height; r++) {
+        for (size_t r = 1; r <= scrollbar_height; r++) {
             mvwaddch(loger->win, scrollbar_start + r, scroll_col, ACS_CKBOARD);
         }
     }

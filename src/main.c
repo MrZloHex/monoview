@@ -22,22 +22,15 @@
 
 
 #include <ncurses.h>
-#include <stdlib.h>
 #include "tui.h"
-#include "command.h"
 #include <locale.h>
 
-#include <ncurses.h>
-#include <stdlib.h>
 #include "setup.h"
-#include "command.h"
 
 
-int command_quit = 0;
-
-
-int main() {
-
+int
+main()
+{
     setlocale(LC_ALL, "");
     initscr();
     raw();
@@ -81,21 +74,20 @@ int main() {
 
     char buffer[32];
 
-    log_action("HUY");
     bool run = true;
     while (run)
     {
         int ch = getch();
         if (ch == ERR) {
             screen_update_datetime(&screen.screen);
-            log_action("HUY");
+            log_action(&loger.loger, "HUY");
             loger_update(&loger.loger);
             continue;
         }
         if (ch == '\t' || ch == KEY_BTAB) {
             focus = (focus + 1) % VIEW_FOCUS_SIZE;
             snprintf(buffer, sizeof(buffer), "NEXT WINDOW %zu", focus);
-            log_action(buffer);
+            log_action(&loger.loger, buffer);
             for (size_t i = 0; i < VIEW_FOCUS_SIZE; ++i)
             {
                 views[i].view.focused = (i == focus);
@@ -119,15 +111,15 @@ int main() {
         if (focus == 2)
         {
             if (ch == KEY_UP) {
-                if (log_scroll_offset > 0) {
-                    log_scroll_offset--;
+                if (loger.loger.scroll_offset > 0) {
+                    loger.loger.scroll_offset--;
                     loger_update(&loger.loger);
                 }
                 continue;  // Prevent grid navigation in this case.
             } else if (ch == KEY_DOWN) {
                 // Only scroll if there are more lines to show.
-                if (log_scroll_offset < num_log_lines - (bottom_row_height - 2)) {
-                    log_scroll_offset++;
+                if (loger.loger.scroll_offset < loger.loger.q_entries - (bottom_row_height - 2)) {
+                    loger.loger.scroll_offset++;
                     loger_update(&loger.loger);
                 }
                 continue;
