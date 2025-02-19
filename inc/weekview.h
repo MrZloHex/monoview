@@ -1,7 +1,7 @@
 #ifndef __WEEK_VIEW_H__
 #define __WEEK_VIEW_H__
 
-#include "setup.h"
+#include <ncurses.h>
 
 WINDOW *create_calendar_window(int starty, int startx, int height, int width);
 
