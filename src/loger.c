@@ -1,4 +1,4 @@
-#include "logview.h"
+#include "loger.h"
 #include <string.h>
 #include <stdlib.h>
 
@@ -16,20 +16,20 @@ void log_action(const char *action) {
     }
 }
 
-LogView *
-logview_init(int y, int x, int height, int width)
+Loger
+loger_init(int y, int x, int height, int width)
 {
-    LogView *log = (LogView *)malloc(sizeof(LogView));
+    Loger log;
     // TODO: check it
     
-    log->focused   = 0;
-    log->q_entries = 0;
+    log.focused   = 0;
+    log.q_entries = 0;
 
-    log->win = newwin(height, width, y, x);
-    wbkgd(log->win, COLOR_PAIR(1));
-    wattron(log->win, COLOR_PAIR(1));
-    box(log->win, 0, 0);
-    wattroff(log->win, COLOR_PAIR(1));
+    log.win = newwin(height, width, y, x);
+    wbkgd(log.win, COLOR_PAIR(1));
+    wattron(log.win, COLOR_PAIR(1));
+    box(log.win, 0, 0);
+    wattroff(log.win, COLOR_PAIR(1));
     return log;
 }
 

@@ -81,7 +81,6 @@ void enter_command_mode(int max_y, int max_x, WINDOW *vert_sep_top, WINDOW *vert
 }
 
 
-#endif
 
 void enter_new_entry(WINDOW *diary_win, int diary_height, int diary_width) {
     int dlg_height = 12;
@@ -141,3 +140,4 @@ void enter_new_entry(WINDOW *diary_win, int diary_height, int diary_width) {
     update_diary_window(diary_win, diary_height, diary_width);
 }
 
+#endif

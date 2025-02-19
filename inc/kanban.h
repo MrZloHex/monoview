@@ -15,18 +15,20 @@ DECLARE_DYNARRAY(kb_bin, KB_Bin, KB_Card)
 
 typedef struct
 {
+    WINDOW *win;
+    bool focused;
+    int height, width;
+
     KB_Bin todo;
     KB_Bin wip;
     KB_Bin done;
-
-    WINDOW *win;
 } Kanban;
 
-Kanban *
+Kanban
 kanban_init(int x, int y, int height, int width);
 
 void
-kanban_update(WINDOW *win, int height, int width);
+kanban_update(Kanban *kan);
 
 
 #endif /* __CANBAN_H__ */

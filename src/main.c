@@ -36,11 +36,6 @@
 int command_quit = 0;
 
 
-
-#include "weekview.h"
-#include "logoview.h"
-#include "screenview.h"
-
 int main() {
 
     setlocale(LC_ALL, "");
@@ -68,15 +63,13 @@ int main() {
     int top_row_height = (left_top_total > CALENDAR_HEIGHT ? left_top_total : CALENDAR_HEIGHT);
     int bottom_row_height = max_y - top_row_height;
 
-    // Create windows.
-    WINDOW *logo = logoview_create(0, 0, LOGO_HEIGHT, LCD_WIDTH);
-    WINDOW *screen = screenview_create(0, LCD_HEIGHT, LCD_HEIGHT, LCD_WIDTH);
-    WINDOW *calendar_win = create_calendar_window(0, LCD_WIDTH + 1, CALENDAR_HEIGHT, max_x - LCD_WIDTH - 1);
-    LogView *log = logview_init(top_row_height, 0, bottom_row_height, LOGS_WIDTH);
-    WINDOW *logs_win = log->win;
-    Kanban *kan = kanban_init(top_row_height, LOGS_WIDTH + 1, bottom_row_height, max_x - LOGS_WIDTH - 1);
-    WINDOW *diary_win = kan->win;
-    kanban_update(diary_win, bottom_row_height, max_x - LOGS_WIDTH - 1);
+
+    View logo     = (View)logo_init(0, 0, LOGO_HEIGHT, LCD_WIDTH);
+    View screen   = (View)screen_init(0, LCD_HEIGHT, LCD_HEIGHT, LCD_WIDTH);
+    View loger    = (View)loger_init(top_row_height, 0, bottom_row_height, LOGS_WIDTH);
+    View calendar = (View)calendar_init(0, LCD_WIDTH +1, CALENDAR_HEIGHT, max_x - LCD_WIDTH -1);
+    View kanban   = (View)kanban_init(top_row_height, LOGS_WIDTH +1, bottom_row_height, max_x - LOGS_WIDTH -1);
+
 
     // Focusable windows: LCD, Calendar, Logs, Diary.
     WINDOW *win_array[NUM_WINDOWS] = { screen, calendar_win, logs_win, diary_win };
@@ -131,7 +124,7 @@ int main() {
         } else if (ch == 'i') {
             // When focused on the Diary (Kanban) window, press 'i' to add a new entry.
             if (current_focus == 3) {
-                enter_new_entry(diary_win, bottom_row_height, max_x - LOGS_WIDTH - 1);
+                //enter_new_entry(diary_win, bottom_row_height, max_x - LOGS_WIDTH - 1);
             }
         }
 
