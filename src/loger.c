@@ -11,6 +11,7 @@ log_action(Loger *log, const char *action)
         log->entry[log->q_entries][MAX_LOG_LENGTH - 1] = '\0';
         log->q_entries++;
     }
+    loger_update(log);
 }
 
 Loger
@@ -19,7 +20,7 @@ loger_init(int y, int x, int height, int width)
     Loger log;
     // TODO: check it
     
-    log.focused   = 0;
+    log.focused   = false;
     log.q_entries = 0;
     log.scroll_offset = 0;
 
@@ -37,16 +38,18 @@ loger_init(int y, int x, int height, int width)
     return log;
 }
 
+#include "tui.h"
 
 void
 loger_update(Loger *loger)
 {
+    werase(loger->win);
+    view_draw_focused((View)*loger);
     // The inner height available (excluding top and bottom borders)
     size_t available = loger->height - 2;
     size_t start_line = loger->scroll_offset;
     size_t end_line = (loger->q_entries < start_line + available) ? loger->q_entries : start_line + available;
     size_t line = 1;
-    // Print log lines within the inner area (columns 1 .. width-3, leaving column width-2 for scroll bar)
     for (size_t i = start_line; i < end_line; i++, line++)
     {
         mvwprintw(loger->win, line, 1, "[%zu] %.*s", i, loger->width - 3, loger->entry[i]);
@@ -74,5 +77,29 @@ loger_update(Loger *loger)
         }
     }
     wrefresh(loger->win);
+}
+
+void
+loger_pressed(Loger *loger, int ch)
+{
+    if (loger->q_entries <= loger->height -2)
+    { return; }
+
+    if (ch == KEY_UP)
+    {
+        if (loger->scroll_offset > 0)
+        {
+            loger->scroll_offset--;
+            loger_update(loger);
+        }
+    }
+    else if (ch == KEY_DOWN)
+    {
+        if (loger->scroll_offset < loger->q_entries - (loger->height - 2))
+        {
+            loger->scroll_offset++;
+            loger_update(loger);
+        }
+    }
 }
 

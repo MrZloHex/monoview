@@ -20,15 +20,23 @@ calendar_init(int starty, int startx, int height, int width)
         int offset = (day_width - strlen(days[i])) / 2;
         mvwprintw(win, 2, col + offset, "%s", days[i]);
     }
-    // Sample schedule entries.
-    for (int i = 0; i < 7; i++) {
-        int col = 1 + i * day_width;
-        mvwprintw(win, 3, col, "09:00 Lec");
-        mvwprintw(win, 4, col, "11:00 Lab");
-        mvwprintw(win, 5, col, "13:00 Sem");
-        mvwprintw(win, 6, col, "HW: Calc");
-        mvwprintw(win, 7, col, "HW: Phys");
-    }
+    int col = 1 + 1 * day_width;
+    mvwprintw(win, 7, col, "15:30 CH");
+    mvwprintw(win, 9, col, "18:35 DB");
+    col = 1 + 2 * day_width;
+    mvwprintw(win, 6, col, "13:55 DE");
+    mvwprintw(win, 7, col, "15:30 PT");
+    col = 1 + 3 * day_width;
+    mvwprintw(win, 4, col, "10:45 HA");
+    mvwprintw(win, 5, col, "12:20 HA");
+    mvwprintw(win, 8, col, "17:05 DE");
+    col = 1 + 4 * day_width;
+    mvwprintw(win, 5, col, "12:20 CC");
+    mvwprintw(win, 8, col, "17:05 DM");
+    mvwprintw(win, 9, col, "18:30 CH");
+    col = 1 + 5 * day_width;
+    mvwprintw(win, 4, col, "10:45 AD");
+    mvwprintw(win, 5, col, "12:20 AD");
 
     wrefresh(win);
 

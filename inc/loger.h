@@ -26,6 +26,9 @@ loger_update(Loger *loger);
 
 
 void
+loger_pressed(Loger *loger, int ch);
+
+void
 log_action(Loger *log, const char *action);
 
 

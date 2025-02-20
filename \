@@ -17,19 +17,7 @@ typedef struct
 {
     KB_Vec cards;
     size_t card_focus;
-    size_t scroll;
-    size_t width;
 } KB_Bin;
-
-typedef enum
-{
-    BIN_TODO,
-    BIN_WIP,
-    BIN_DONE,
-    BIN_QUANTITY
-} KB_Bin_Types;
-
-extern const char *kb_bin_names[BIN_QUANTITY];
 
 typedef struct
 {
@@ -37,7 +25,9 @@ typedef struct
     bool focused;
     int height, width;
 
-    KB_Bin bins[BIN_QUANTITY];
+    KB_Bin todo;
+    KB_Bin wip;
+    KB_Bin done;
     size_t bin_focus;
 } Kanban;
 
