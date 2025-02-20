@@ -1,5 +1,5 @@
-#ifndef __LOGOVIEW_H__
-#define __LOGOVIEW_H__
+#ifndef __LOGO_H__
+#define __LOGO_H__
 
 #include <ncurses.h>
 
@@ -13,5 +13,5 @@ typedef struct
 Logo
 logo_init(int y, int x, int height, int width);
 
-#endif /* __LOGOVIEW_H__ */
+#endif /* __LOGO_H__ */
 

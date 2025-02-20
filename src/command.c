@@ -1,14 +1,7 @@
-#include "command.h"
-#include "setup.h"
-#include "tui.h"
 #include <ncurses.h>
-#include <string.h>
 #include <unistd.h>
 
 
-// Global arrays declared in global.h are used here.
-extern int num_entries;
-extern int command_quit;
 #if 0
 
 void enter_command_mode(int max_y, int max_x, WINDOW *vert_sep_top, WINDOW *vert_sep_bottom,

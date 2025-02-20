@@ -1,5 +1,5 @@
-#ifndef TUI_H
-#define TUI_H
+#ifndef __TUI_H__
+#define __TUI_H__
 
 #include <stddef.h>
 
@@ -69,5 +69,5 @@ init_colors();
 void
 view_draw_focused(View view);
 
-#endif
+#endif /* __TUI_H__ */
 

@@ -17,8 +17,9 @@ typedef struct
 {
     KB_Vec cards;
     size_t card_focus;
-    size_t scroll;
     size_t width;
+
+    size_t start, end;
 } KB_Bin;
 
 typedef enum

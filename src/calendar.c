@@ -12,7 +12,7 @@ calendar_init(int starty, int startx, int height, int width)
     wattroff(win, COLOR_PAIR(3));
     mvwprintw(win, 1, (width - 17) / 2, "University Schedule");
 
-    int available_width = width - 2; // inside border
+    int available_width = width - 2;
     int day_width = available_width / 7;
     const char *days[7] = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
     for (int i = 0; i < 7; i++) {

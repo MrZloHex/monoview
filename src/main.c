@@ -16,15 +16,9 @@
  * ==============================================================================
  */
 
-
-
-
-
-
-#include <ncurses.h>
-#include "tui.h"
 #include <locale.h>
 
+#include "tui.h"
 #include "setup.h"
 
 
@@ -46,7 +40,8 @@ main()
     int max_y, max_x;
     getmaxyx(stdscr, max_y, max_x);
 
-    if (max_y < (LCD_HEIGHT + LOGO_HEIGHT + 5) || max_x < (LCD_WIDTH + LOGS_WIDTH + 20)) {
+    if (max_y < (LCD_HEIGHT + LOGO_HEIGHT + 5) || max_x < (LCD_WIDTH + LOGS_WIDTH + 20))
+    {
         endwin();
         printf("Terminal too small. Please resize.\n");
         return 1;

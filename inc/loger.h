@@ -24,7 +24,6 @@ loger_init(int y, int x, int height, int width);
 void
 loger_update(Loger *loger);
 
-
 void
 loger_pressed(Loger *loger, int ch);
 

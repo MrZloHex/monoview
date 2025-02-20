@@ -16,5 +16,4 @@ screen_init(int x, int y, int height, int width);
 void
 screen_update_datetime(Screen *scr);
 
-
 #endif /* __SCREEN_H__ */

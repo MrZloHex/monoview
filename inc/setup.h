@@ -1,7 +1,6 @@
 #ifndef __SETUP_H__
 #define __SETUP_H__
 
-
 #define LCD_HEIGHT 6         // LCD: 4 rows content + 2 for border
 #define LCD_WIDTH 22         // LCD window width (emulated 20x4)
 #define LOGO_HEIGHT 6        // Logo window height below LCD

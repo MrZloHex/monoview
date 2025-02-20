@@ -2,20 +2,19 @@
 
 #include <string.h>
 #include <time.h>
-
+#include "tui.h"
 
 
 Kanban
 kanban_init(int x, int y, int height, int width)
 {
     Kanban kan;
-    // TODO: add check
 
     kan.height    = height;
     kan.width     = width;
     kan.focused   = false;
     kan.bin_focus = 0;
-    kan.win = newwin(height, width, x, y);
+    kan.win       = newwin(height, width, x, y);
     wbkgd(kan.win, COLOR_PAIR(1));
 
     size_t bin_width = ((size_t)width - BIN_QUANTITY -1) / BIN_QUANTITY;
@@ -23,12 +22,14 @@ kanban_init(int x, int y, int height, int width)
     bin_width += error / BIN_QUANTITY;
     error = ((size_t)width - BIN_QUANTITY -1)- bin_width*BIN_QUANTITY;
 
-    // mvwprintw(kan.win, 7, 1, "%zu %zu", bin_width, error);
     for (size_t i = 0; i < BIN_QUANTITY; ++i)
     {
         kb_vec_init(&kan.bins[i].cards, 8);
+        // TODO: add check
         kan.bins[i].card_focus = 0;
         kan.bins[i].width      = bin_width;
+        kan.bins[i].start      = 0;
+        kan.bins[i].end        = 0;
     }
 
     if (error % 2)
@@ -41,33 +42,36 @@ kanban_init(int x, int y, int height, int width)
         kan.bins[BIN_QUANTITY -1].width += error / 2;
     }
 
-    // for (size_t i = 0; i < BIN_QUANTITY; ++i)
-    // {
-    //     mvwprintw(kan.win, 8+i, 1, "%zu %zu", i, kan.bins[i].width); 
-    // }
-
+    char *str[] = { "0", "1", "2", "3", "4", "5", "6", "7" };
+    for (size_t i = 0; i < 8; ++i)
+    {
+        KB_Card card = { 0 };
+        strcpy(card.name, str[i]);
+        kb_vec_append(&kan.bins[0].cards, card);
+        kan.bins[0].end += 1;
+    }
 
     wrefresh(kan.win);
     return kan;
 }
 
 
-void draw_card(WINDOW *win, int y, int x, int col_width, KB_Card card) {
-    // First line: name and label.
+void
+draw_card(WINDOW *win, int y, int x, int col_width, KB_Card card)
+{
     wattron(win, COLOR_PAIR(2));
 
     mvwprintw(win, y, x, "%-20.20s", card.name);
     mvwprintw(win, y, x + col_width - 10, "%10.10s", card.label);
+
     wattroff(win, COLOR_PAIR(2));
-    // Second line: short description.
+
     mvwprintw(win, y + 1, x + 3, "%.30s", card.description);
-    // Third line: deadline formatted as "YYYY-MM-DD HH:MM", right aligned.
     char deadline_str[32];
     strftime(deadline_str, sizeof(deadline_str), "%Y-%m-%d %H:%M", localtime(&card.deadline));
     mvwprintw(win, y + 2, x + col_width - 16, "%15s", deadline_str);
 }
 
-#include "tui.h"
 
 void
 kanban_update(Kanban *kan)
@@ -94,13 +98,16 @@ kanban_update(Kanban *kan)
         // HEADER
         wattron(kan->win, COLOR_PAIR(bi == kan->bin_focus ? 2 : 1));
         size_t name_len = strlen(kb_bin_names[bi]);
-        mvwprintw(kan->win, 1, sum_width + (bin.width - name_len)/2, kb_bin_names[bi]);
+        mvwprintw(kan->win, 1, sum_width + (bin.width - name_len)/2, "%s", kb_bin_names[bi]);
         wattroff(kan->win, COLOR_PAIR(bi == kan->bin_focus ? 2 : 1));
 
-        for (size_t i = 0; i < bin.cards.size; ++i)
+        for (size_t i = bin.start; i != bin.end; ++i)
         {
             if (next_y[bi] + 3 > kan->height - 1)
-            { break; }
+            {
+                mvwprintw(kan->win, 0, 1, "BREAK");
+                break;
+            }
             
             if (i == bin.card_focus && bi == kan->bin_focus)
             {
@@ -121,9 +128,7 @@ kanban_update(Kanban *kan)
         sum_width += 1 + bin.width;
     }
 
-
     wrefresh(kan->win);
-
 }
 
 void
@@ -144,19 +149,29 @@ kanban_pressed(Kanban *kan, int ch)
     else if (ch == KEY_UP)
     {
         KB_Bin *bin = &kan->bins[kan->bin_focus];
-        if (bin->cards.size > 1)
+        if (bin->card_focus == 0)
+        { bin->card_focus = 0; }
+        else
+        { bin->card_focus -= 1; }
+
+        if (bin->card_focus < bin->start)
         {
-            bin->card_focus -= 1;
-            bin->card_focus %= bin->cards.size;
+            bin->start -= 1;
+            bin->end   -= 1;
         }
     }
     else if (ch == KEY_DOWN)
     {
         KB_Bin *bin = &kan->bins[kan->bin_focus];
-        if (bin->cards.size > 1)
+        if (bin->card_focus == bin->cards.size -1)
+        { (void)bin->card_focus; }
+        else
+        { bin->card_focus += 1; }
+
+        if (bin->card_focus >= bin->end)
         {
-            bin->card_focus += 1;
-            bin->card_focus %= bin->cards.size;
+            bin->start += 1;
+            bin->end   += 1;
         }
     }
     kanban_update(kan);
@@ -173,39 +188,37 @@ draw_datetime(WINDOW *win, int row, int col, struct tm *tm_val, int active_field
     snprintf(hour_str, sizeof(hour_str), "%02d", tm_val->tm_hour);
     snprintf(min_str, sizeof(min_str), "%02d", tm_val->tm_min);
 
-    // Print the fixed prefix.
     mvwprintw(win, row, col, "Deadline: ");
-    int pos = col + 10; // "Deadline: " is 10 characters
+    int pos = col + 10;
 
-    // Print year
     if (active_field == 0) wattron(win, A_REVERSE);
     mvwprintw(win, row, pos, "%s", year_str);
     if (active_field == 0) wattroff(win, A_REVERSE);
     pos += 4;
     mvwprintw(win, row, pos, "-");
     pos++;
-    // Print month
+
     if (active_field == 1) wattron(win, A_REVERSE);
     mvwprintw(win, row, pos, "%s", mon_str);
     if (active_field == 1) wattroff(win, A_REVERSE);
     pos += 2;
     mvwprintw(win, row, pos, "-");
     pos++;
-    // Print day
+
     if (active_field == 2) wattron(win, A_REVERSE);
     mvwprintw(win, row, pos, "%s", day_str);
     if (active_field == 2) wattroff(win, A_REVERSE);
     pos += 2;
     mvwprintw(win, row, pos, " ");
     pos++;
-    // Print hour
+
     if (active_field == 3) wattron(win, A_REVERSE);
     mvwprintw(win, row, pos, "%s", hour_str);
     if (active_field == 3) wattroff(win, A_REVERSE);
     pos += 2;
     mvwprintw(win, row, pos, ":");
     pos++;
-    // Print minute
+
     if (active_field == 4) wattron(win, A_REVERSE);
     mvwprintw(win, row, pos, "%s", min_str);
     if (active_field == 4) wattroff(win, A_REVERSE);
@@ -213,8 +226,6 @@ draw_datetime(WINDOW *win, int row, int col, struct tm *tm_val, int active_field
     wrefresh(win);
 }
 
-// Interactive datetime input using arrow keys to adjust fields.
-// Returns the final time_t value.
 time_t
 input_datetime(WINDOW *win, int start_row, int start_col)
 {
@@ -231,11 +242,13 @@ input_datetime(WINDOW *win, int start_row, int start_col)
     // Show cursor if desired.
     curs_set(0);  // We'll highlight with reverse video instead.
 
-    while (!done) {
+    while (!done)
+    {
         // Redraw the datetime with the active field highlighted.
         draw_datetime(win, start_row, start_col, &tm_val, field);
         int ch = wgetch(win);
-        switch (ch) {
+        switch (ch)
+        {
             case KEY_LEFT:
                 if (field > 0) field--;
                 break;
@@ -273,6 +286,14 @@ input_datetime(WINDOW *win, int start_row, int start_col)
 }
 
 
+void
+break_adding_entry(WINDOW *dlg)
+{
+    werase(dlg);
+    wrefresh(dlg);
+    delwin(dlg);
+}
+
 
 void
 kanban_add_entry(Kanban *kan)
@@ -284,38 +305,46 @@ kanban_add_entry(Kanban *kan)
     WINDOW *dlg = newwin(dlg_height, dlg_width, starty, startx);
     wbkgd(dlg, COLOR_PAIR(1));
     box(dlg, 0, 0);
-    mvwprintw(dlg, 1, 2, "Add Card");
+    mvwprintw(dlg, 1, 2, "New Kanban Entry");
     wrefresh(dlg);
 
     char name[256] = {0};
     char description[1024] = {0};
     char label[64] = {0};
+    time_t deadline = 0;
 
-    echo();  // Enable character input display
+    echo();
 
-    // Name input
     mvwprintw(dlg, 2, 2, "Name: ");
     wrefresh(dlg);
-    mvwgetnstr(dlg, 2, 8, name, 255);
+    if (mvwgetnstr(dlg, 2, 8, name, 255) == ERR)
+    {
+        break_adding_entry(dlg);
+        return;
+    }
 
-    // Description input
     mvwprintw(dlg, 3, 2, "Description: ");
     wrefresh(dlg);
-    mvwgetnstr(dlg, 3, 15, description, 1023);
+    if (mvwgetnstr(dlg, 3, 15, description, 1023) == ERR)
+    {
+        break_adding_entry(dlg);
+        return;
+    }
 
-    // Interactive datetime input for Deadline
     mvwprintw(dlg, 4, 2, "Deadline: ");
     wrefresh(dlg);
-    time_t deadline = input_datetime(dlg, 4, 12);
+    deadline = input_datetime(dlg, 4, 12);
 
-    // Label input
     mvwprintw(dlg, 5, 2, "Label: ");
     wrefresh(dlg);
-    mvwgetnstr(dlg, 5, 10, label, 63);
+    if (mvwgetnstr(dlg, 5, 10, label, 63) == ERR)
+    {
+        break_adding_entry(dlg);
+        return;
+    }
 
-    noecho();  // Disable character input display
+    noecho();
 
-    // Create and populate the new card
     KB_Card card;
     strncpy(card.name, name, sizeof(card.name) - 1);
     card.name[sizeof(card.name) - 1] = '\0';
@@ -325,16 +354,21 @@ kanban_add_entry(Kanban *kan)
     card.label[sizeof(card.label) - 1] = '\0';
     card.deadline = deadline;
 
-    // Append the new card to the todo bin
     kb_vec_append(&kan->bins[kan->bin_focus].cards, card);
 
-    // Don't use werase to clear, instead use wclear to clear content area
-    wclear(dlg);  // This will clear the content but keep the borders
-    wrefresh(dlg);  // Refresh the content after clearing
+    size_t max_card = (kan->height -4) / 4;
 
-    delwin(dlg);  // Close the dialog window
+    kan->bins[kan->bin_focus].end += 1;
+    if (kan->bins[kan->bin_focus].end > max_card)
+    {
+        kan->bins[kan->bin_focus].start += 1;
+    }
+    kan->bins[kan->bin_focus].card_focus = kan->bins[kan->bin_focus].end - 1;
 
-    // Update the Kanban view with the new entry
+    wclear(dlg);
+    wrefresh(dlg);
+
+    delwin(dlg);
 }
 
 
