@@ -78,6 +78,9 @@
     int                                                                     \
     PREFIX##_get(const MT *arr, size_t index, T *out);                      \
                                                                             \
+    int                                                                     \
+    PREFIX##_set(MT *arr, size_t index, T elem);                            \
+                                                                            \
     T *                                                                     \
     PREFIX##_get_last_ptr(const MT *arr);                                   \
                                                                             \
@@ -88,7 +91,10 @@
     PREFIX##_capacity(const MT *arr);                                       \
                                                                             \
     int                                                                     \
-    PREFIX##_remove(MT *arr, size_t index);
+    PREFIX##_remove(MT *arr, size_t index);                                 \
+                                                                            \
+    int                                                                     \
+    PREFIX##_insert(MT *arr, size_t index, T element);
 
 
 
@@ -152,6 +158,15 @@
         return 0;                                                           \
     }                                                                       \
                                                                             \
+    int                                                                     \
+    PREFIX##_set(MT *arr, size_t index, T elem)                             \
+    {                                                                       \
+        if (!arr || index >= arr->size)                                     \
+        { return -1; }                                                      \
+        arr->data[index] = elem;                                            \
+        return 0;                                                           \
+    }                                                                       \
+                                                                            \
     T *                                                                     \
     PREFIX##_get_last_ptr(const MT *arr)                                    \
     {                                                                       \
@@ -183,6 +198,32 @@
         }                                                                   \
         arr->size -= 1;                                                     \
         return 0;                                                           \
+    }                                                                       \
+                                                                            \
+    int                                                                     \
+    PREFIX##_insert(MT *arr, size_t index, T element)                       \
+    {                                                                       \
+        if (!arr || index > arr->size)                                      \
+        { return -1; }                                                      \
+                                                                            \
+        if (arr->size == arr->capacity)                                     \
+        {                                                                   \
+            size_t new_capacity = arr->capacity * 2;                        \
+            T *temp = (T *)realloc(arr->data, sizeof(T) * new_capacity);    \
+            if (!temp)                                                      \
+            { return -1; }                                                  \
+            arr->data = temp;                                               \
+            arr->capacity = new_capacity;                                   \
+        }                                                                   \
+                                                                            \
+        for (size_t i = index; i < arr->size; ++i)                          \
+        {                                                                   \
+            arr->data[i] = arr->data[i + 1];                                \
+        }                                                                   \
+        arr->data[index] = element;                                         \
+        arr->size += 1;                                                     \
+        return 0;                                                           \
     }
+
 
 #endif /* __DYNARRAY_H__ */

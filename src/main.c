@@ -80,7 +80,6 @@ main()
             continue;
         }
 
-
         if (ch == '\t' || ch == KEY_BTAB)
         {
             focus = (focus + 1) % VIEW_FOCUS_SIZE;

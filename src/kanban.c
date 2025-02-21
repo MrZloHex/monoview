@@ -135,6 +135,7 @@ kanban_update(Kanban *kan)
 void
 kanban_pressed(Kanban *kan, int ch)
 {
+    KB_Bin *bin = &kan->bins[kan->bin_focus];
     if (ch == 'i')
     {
         kanban_add_card(kan);
@@ -149,7 +150,6 @@ kanban_pressed(Kanban *kan, int ch)
     }
     else if (ch == KEY_UP)
     {
-        KB_Bin *bin = &kan->bins[kan->bin_focus];
         if (bin->card_focus == 0)
         { bin->card_focus = 0; }
         else
@@ -163,7 +163,6 @@ kanban_pressed(Kanban *kan, int ch)
     }
     else if (ch == KEY_DOWN)
     {
-        KB_Bin *bin = &kan->bins[kan->bin_focus];
         if (bin->card_focus == bin->cards.size -1)
         { (void)bin->card_focus; }
         else
@@ -179,21 +178,41 @@ kanban_pressed(Kanban *kan, int ch)
     {
         size_t where = (kan->bin_focus +5) % BIN_QUANTITY;
         KB_Card card;
-        kanban_remove_entry(kan, &card);
+        kanban_remove_entry(kan, &card, kan->bins[kan->bin_focus].card_focus);
         kan->bin_focus = where;
-        kanban_insert_entry(kan, card);
+        kanban_insert_entry(kan, card, kan->bins[kan->bin_focus].card_focus);
     }
     else if (ch == KEY_SRIGHT)
     {
         size_t where = (kan->bin_focus +1) % BIN_QUANTITY;
         KB_Card card;
-        kanban_remove_entry(kan, &card);
+        kanban_remove_entry(kan, &card, kan->bins[kan->bin_focus].card_focus);
         kan->bin_focus = where;
-        kanban_insert_entry(kan, card);
+        kanban_insert_entry(kan, card, kan->bins[kan->bin_focus].card_focus);
+    }
+    else if (ch == KEY_SR && bin->card_focus != bin->start)
+    {
+        KB_Card card, prev;
+        size_t was = bin->card_focus;
+        kb_vec_get(&bin->cards, was, &card);
+        kb_vec_get(&bin->cards, was-1, &prev);
+        kb_vec_set(&bin->cards, was-1, card);
+        kb_vec_set(&bin->cards, was, prev);
+        bin->card_focus -= 1;
+    }
+    else if (ch == KEY_SF && bin->card_focus != bin->end -1)
+    {
+        KB_Card card, next;
+        size_t was = bin->card_focus;
+        kb_vec_get(&bin->cards, was, &card);
+        kb_vec_get(&bin->cards, was+1, &next);
+        kb_vec_set(&bin->cards, was+1, card);
+        kb_vec_set(&bin->cards, was, next);
+        bin->card_focus += 1;
     }
     else if (ch == 'r')
     {
-        kanban_remove_entry(kan, NULL);
+        kanban_remove_entry(kan, NULL, kan->bins[kan->bin_focus].card_focus);
     }
     kanban_update(kan);
 }
@@ -399,7 +418,7 @@ kanban_add_card(Kanban *kan)
     card.deadline = deadline;
 
 
-    kanban_insert_entry(kan, card);
+    kanban_insert_entry(kan, card, kan->bins[kan->bin_focus].card_focus);
 
 
     wclear(dlg);
@@ -408,36 +427,40 @@ kanban_add_card(Kanban *kan)
     delwin(dlg);
 }
 
+
+#define WITHIN(a, b, x) (a <= x && x < b)
+
 void
-kanban_insert_entry(Kanban *kan, KB_Card card)
+kanban_insert_entry(Kanban *kan, KB_Card card, size_t idx)
 {
-    kb_vec_append(&kan->bins[kan->bin_focus].cards, card);
+    // TODO: check that idx is in window range
+    KB_Bin *bin = &kan->bins[kan->bin_focus];
+    kb_vec_append(&bin->cards, card);
 
     size_t max_card = (kan->height -4) / 4;
 
-    kan->bins[kan->bin_focus].end += 1;
-    if (kan->bins[kan->bin_focus].end > max_card)
-    {
-        kan->bins[kan->bin_focus].start += 1;
-    }
-    kan->bins[kan->bin_focus].card_focus = kan->bins[kan->bin_focus].end - 1;
+    bin->end += 1;
+    if (bin->end > max_card)
+    { bin->start += 1; }
+    if (idx == bin->card_focus)
+    { bin->card_focus = bin->end - 1; }
 }
 
 bool
-kanban_remove_entry(Kanban *kan, KB_Card *card)
+kanban_remove_entry(Kanban *kan, KB_Card *card, size_t idx)
 {
+    // TODO: check that idx is in window range
     KB_Bin *bin = &kan->bins[kan->bin_focus];
     if (bin->cards.size == 0)
     { return false; }
 
-    size_t was   = bin->card_focus;
     if (card)
-    { kb_vec_get(&bin->cards, was, card); }
+    { kb_vec_get(&bin->cards, idx, card); }
 
-    kb_vec_remove(&bin->cards, was);
+    kb_vec_remove(&bin->cards, idx);
     if (bin->cards.size <= 8) 
     {
-        if (was == bin->end - 1)
+        if (idx == bin->card_focus && idx == bin->end - 1)
         { bin->card_focus -= 1; }
         bin->end -= 1;
     }

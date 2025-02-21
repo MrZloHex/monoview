@@ -55,10 +55,10 @@ void
 kanban_add_card(Kanban *kan);
 
 void
-kanban_insert_entry(Kanban *kan, KB_Card card);
+kanban_insert_entry(Kanban *kan, KB_Card card, size_t idx);
 
 bool
-kanban_remove_entry(Kanban *kan, KB_Card *card);
+kanban_remove_entry(Kanban *kan, KB_Card *card, size_t idx);
 
 
 #endif /* __CANBAN_H__ */
