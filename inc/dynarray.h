@@ -85,7 +85,10 @@
     PREFIX##_size(const MT *arr);                                           \
                                                                             \
     size_t                                                                  \
-    PREFIX##_capacity(const MT *arr);   
+    PREFIX##_capacity(const MT *arr);                                       \
+                                                                            \
+    int                                                                     \
+    PREFIX##_remove(MT *arr, size_t index);
 
 
 
@@ -167,6 +170,19 @@
     PREFIX##_capacity(const MT *arr)                                        \
     {                                                                       \
         return arr ? arr->capacity : 0;                                     \
+    }                                                                       \
+                                                                            \
+    int                                                                     \
+    PREFIX##_remove(MT *arr, size_t index)                                  \
+    {                                                                       \
+        if (!arr || index >= arr->size)                                     \
+        { return -1; }                                                      \
+        for (size_t i = index; i < arr->size - 1; ++i)                      \
+        {                                                                   \
+            arr->data[i] = arr->data[i + 1];                                \
+        }                                                                   \
+        arr->size -= 1;                                                     \
+        return 0;                                                           \
     }
 
 #endif /* __DYNARRAY_H__ */

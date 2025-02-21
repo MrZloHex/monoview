@@ -131,12 +131,13 @@ kanban_update(Kanban *kan)
     wrefresh(kan->win);
 }
 
+
 void
 kanban_pressed(Kanban *kan, int ch)
 {
     if (ch == 'i')
     {
-        kanban_add_entry(kan);
+        kanban_add_card(kan);
     }
     if (ch == KEY_LEFT)
     {
@@ -173,6 +174,26 @@ kanban_pressed(Kanban *kan, int ch)
             bin->start += 1;
             bin->end   += 1;
         }
+    }
+    else if (ch == KEY_SLEFT)
+    {
+        size_t where = (kan->bin_focus +5) % BIN_QUANTITY;
+        KB_Card card;
+        kanban_remove_entry(kan, &card);
+        kan->bin_focus = where;
+        kanban_insert_entry(kan, card);
+    }
+    else if (ch == KEY_SRIGHT)
+    {
+        size_t where = (kan->bin_focus +1) % BIN_QUANTITY;
+        KB_Card card;
+        kanban_remove_entry(kan, &card);
+        kan->bin_focus = where;
+        kanban_insert_entry(kan, card);
+    }
+    else if (ch == 'r')
+    {
+        kanban_remove_entry(kan, NULL);
     }
     kanban_update(kan);
 }
@@ -294,9 +315,32 @@ break_adding_entry(WINDOW *dlg)
     delwin(dlg);
 }
 
+int mvwgetnstr_cancelable(WINDOW *win, int y, int x, char *buf, int max) {
+    int idx = 0;
+    int ch;
+    wmove(win, y, x);
+    wrefresh(win);
+    while (idx < max - 1) {
+        ch = wgetch(win);
+        if (ch == 27) {  // ESC key detected
+            buf[0] = '\0';
+            return ERR;
+        }
+        if (ch == '\n' || ch == KEY_ENTER) {
+            break;
+        }
+        buf[idx++] = ch;
+        // Echo the character
+        waddch(win, ch);
+        wrefresh(win);
+    }
+    buf[idx] = '\0';
+    return 0;
+}
+
 
 void
-kanban_add_entry(Kanban *kan)
+kanban_add_card(Kanban *kan)
 {
     int dlg_height = 12;
     int dlg_width = 60;
@@ -317,7 +361,7 @@ kanban_add_entry(Kanban *kan)
 
     mvwprintw(dlg, 2, 2, "Name: ");
     wrefresh(dlg);
-    if (mvwgetnstr(dlg, 2, 8, name, 255) == ERR)
+    if (mvwgetnstr_cancelable(dlg, 2, 8, name, 255) == ERR)
     {
         break_adding_entry(dlg);
         return;
@@ -325,7 +369,7 @@ kanban_add_entry(Kanban *kan)
 
     mvwprintw(dlg, 3, 2, "Description: ");
     wrefresh(dlg);
-    if (mvwgetnstr(dlg, 3, 15, description, 1023) == ERR)
+    if (mvwgetnstr_cancelable(dlg, 3, 15, description, 1023) == ERR)
     {
         break_adding_entry(dlg);
         return;
@@ -337,7 +381,7 @@ kanban_add_entry(Kanban *kan)
 
     mvwprintw(dlg, 5, 2, "Label: ");
     wrefresh(dlg);
-    if (mvwgetnstr(dlg, 5, 10, label, 63) == ERR)
+    if (mvwgetnstr_cancelable(dlg, 5, 10, label, 63) == ERR)
     {
         break_adding_entry(dlg);
         return;
@@ -354,6 +398,19 @@ kanban_add_entry(Kanban *kan)
     card.label[sizeof(card.label) - 1] = '\0';
     card.deadline = deadline;
 
+
+    kanban_insert_entry(kan, card);
+
+
+    wclear(dlg);
+    wrefresh(dlg);
+
+    delwin(dlg);
+}
+
+void
+kanban_insert_entry(Kanban *kan, KB_Card card)
+{
     kb_vec_append(&kan->bins[kan->bin_focus].cards, card);
 
     size_t max_card = (kan->height -4) / 4;
@@ -364,14 +421,29 @@ kanban_add_entry(Kanban *kan)
         kan->bins[kan->bin_focus].start += 1;
     }
     kan->bins[kan->bin_focus].card_focus = kan->bins[kan->bin_focus].end - 1;
-
-    wclear(dlg);
-    wrefresh(dlg);
-
-    delwin(dlg);
 }
 
+bool
+kanban_remove_entry(Kanban *kan, KB_Card *card)
+{
+    KB_Bin *bin = &kan->bins[kan->bin_focus];
+    if (bin->cards.size == 0)
+    { return false; }
 
+    size_t was   = bin->card_focus;
+    if (card)
+    { kb_vec_get(&bin->cards, was, card); }
+
+    kb_vec_remove(&bin->cards, was);
+    if (bin->cards.size <= 8) 
+    {
+        if (was == bin->end - 1)
+        { bin->card_focus -= 1; }
+        bin->end -= 1;
+    }
+
+    return true;
+}
 
 DEFINE_DYNARRAY(kb_vec, KB_Vec, KB_Card)
 

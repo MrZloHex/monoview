@@ -52,7 +52,13 @@ void
 kanban_pressed(Kanban *kan, int ch);
 
 void
-kanban_add_entry(Kanban *kan);
+kanban_add_card(Kanban *kan);
+
+void
+kanban_insert_entry(Kanban *kan, KB_Card card);
+
+bool
+kanban_remove_entry(Kanban *kan, KB_Card *card);
 
 
 #endif /* __CANBAN_H__ */
