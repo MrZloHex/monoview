@@ -376,8 +376,6 @@ kanban_add_card(Kanban *kan)
     char label[64] = {0};
     time_t deadline = 0;
 
-    echo();
-
     mvwprintw(dlg, 2, 2, "Name: ");
     wrefresh(dlg);
     if (mvwgetnstr_cancelable(dlg, 2, 8, name, 255) == ERR)
@@ -406,7 +404,6 @@ kanban_add_card(Kanban *kan)
         return;
     }
 
-    noecho();
 
     KB_Card card;
     strncpy(card.name, name, sizeof(card.name) - 1);

@@ -20,11 +20,17 @@
 
 #include "tui.h"
 #include "setup.h"
+#include "client.h"
 
 
 int
 main()
 {
+    if (start_ws_thread("127.0.0.1", 8080, "/") != 0) {
+        fprintf(stderr, "WebSocket thread failed to start.\n");
+        return EXIT_FAILURE;
+    }
+
     setlocale(LC_ALL, "");
     initscr();
     cbreak();
@@ -116,6 +122,8 @@ main()
     delwin(loger.view.win);
     delwin(kanban.view.win);
     endwin();
+
+    stop_ws_thread();
     return 0;
 }
 

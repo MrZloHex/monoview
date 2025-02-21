@@ -51,7 +51,7 @@ else
 	$(error Unknown build mode: $(BUILD). Use BUILD=debug or BUILD=release)
 endif
 
-LDFLAGS = -L/usr/lib64 -lncursesw -ltinfow
+LDFLAGS = -L/usr/lib64 -lncursesw -ltinfow -lwebsockets -lpthread
 
 TARGET  = monoview
 
