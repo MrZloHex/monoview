@@ -1,96 +1,144 @@
 #include "client.h"
-#include <pthread.h>
 #include <libwebsockets.h>
-#include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
+#include <string.h>
+#include <stdio.h>
 
-// Global variables for WebSocket context and thread control.
-static struct lws_context *ws_context = NULL;
-static bool ws_running = true;
-pthread_t ws_thread;
+// Callback for handling WebSocket events.
+static void (*message_callback)(const char *msg) = NULL;
 
-static int websocket_callback(struct lws *wsi,
-                              enum lws_callback_reasons reason,
-                              void *user,
-                              void *in,
-                              size_t len) {
-    // Your callback implementation...
+static int ws_callback(struct lws *wsi,
+                       enum lws_callback_reasons reason,
+                       void *user,
+                       void *in,
+                       size_t len)
+{
+    ws_client_t *client = (ws_client_t *)user;
+
+    switch (reason) {
+        case LWS_CALLBACK_CLIENT_ESTABLISHED:
+            printf("WebSocket: Connection established\n");
+            break;
+
+        case LWS_CALLBACK_CLIENT_RECEIVE:
+            printf("WebSocket: Received: %.*s\n", (int)len, (char *)in);
+            if (message_callback) {
+                message_callback((const char *)in);
+            }
+            break;
+
+        case LWS_CALLBACK_CLIENT_WRITEABLE:
+            // Handle sending any pending message here if needed
+            break;
+
+        case LWS_CALLBACK_CLIENT_CONNECTION_ERROR:
+            printf("WebSocket: Connection error\n");
+            break;
+
+        case LWS_CALLBACK_CLIENT_CLOSED:
+            printf("WebSocket: Connection closed\n");
+            break;
+
+        default:
+            break;
+    }
+
     return 0;
 }
 
 static struct lws_protocols protocols[] = {
     {
-        .name = "my-protocol",
-        .callback = websocket_callback,
-        .per_session_data_size = 0,
+        .name = "ws-protocol",
+        .callback = ws_callback,
+        .per_session_data_size = sizeof(ws_client_t),
         .rx_buffer_size = 4096,
     },
     { NULL, NULL, 0, 0 }
 };
 
-// Declare a static pointer for the client connection.
-static struct lws *client_wsi = NULL;
+ws_client_t *ws_client_create(const char *address, int port, const char *path) {
+    ws_client_t *client = (ws_client_t *)malloc(sizeof(ws_client_t));
+    if (!client) return NULL;
 
-void *ws_service_thread(void *arg) {
-    while (ws_running) {
-        // Process WebSocket events with a short timeout.
-        lws_service(ws_context, 50);
-    }
-    return NULL;
+    client->address = address;
+    client->port = port;
+    client->path = path;
+    client->context = NULL;
+    client->wsi = NULL;
+
+    return client;
 }
 
-int start_ws_thread(const char *address, int port, const char *path) {
-    // Setup your libwebsockets context and connection here.
-    // (This example assumes you've already created ws_context and connected.)
-    // For example:
+int ws_client_connect(ws_client_t *client) {
+    if (!client) return -1;
+
     struct lws_context_creation_info info;
     memset(&info, 0, sizeof(info));
-    info.port = CONTEXT_PORT_NO_LISTEN;
-    info.protocols = protocols;  // your protocol array
-    info.options = 0;
-    
-    ws_context = lws_create_context(&info);
-    if (!ws_context) {
-        fprintf(stderr, "lws_create_context failed\n");
+    info.port = CONTEXT_PORT_NO_LISTEN; // We're a client only.
+    info.protocols = protocols;
+
+    client->context = lws_create_context(&info);
+    if (!client->context) {
+        printf("WebSocket: lws_create_context failed\n");
         return -1;
     }
-    
-    struct lws_client_connect_info ccinfo = {0};
-    ccinfo.context  = ws_context;
-    ccinfo.address  = address;
-    ccinfo.port     = port;
-    ccinfo.path     = path;  // Use "/" if no specific path is required.
-    ccinfo.host     = address;
-    ccinfo.origin   = address;
+
+    struct lws_client_connect_info ccinfo;
+    memset(&ccinfo, 0, sizeof(ccinfo));
+    ccinfo.context  = client->context;
+    ccinfo.address  = client->address;
+    ccinfo.port     = client->port;
+    ccinfo.path     = client->path;
+    ccinfo.host     = client->address;
+    ccinfo.origin   = client->address;
     ccinfo.protocol = protocols[0].name;
-    
-    // Connect using libwebsockets (client_wsi etc.)
-    client_wsi = lws_client_connect_via_info(&ccinfo);
-    if (!client_wsi) {
-        fprintf(stderr, "WebSocket connection failed\n");
-        lws_context_destroy(ws_context);
+
+    client->wsi = lws_client_connect_via_info(&ccinfo);
+    if (!client->wsi) {
+        printf("WebSocket: Connection failed\n");
+        lws_context_destroy(client->context);
         return -1;
     }
-    
-    // Create the thread for servicing WebSocket events.
-    if (pthread_create(&ws_thread, NULL, ws_service_thread, NULL) != 0) {
-        fprintf(stderr, "Failed to create ws thread\n");
-        lws_context_destroy(ws_context);
-        return -1;
-    }
+
     return 0;
 }
 
+int ws_client_send(ws_client_t *client, const char *msg) {
+    if (!client || !client->wsi) return -1;
 
-void stop_ws_thread() {
-    ws_running = false;
-    // Cancel the service to break out of lws_service() blocking calls.
-    if (ws_context)
-        lws_cancel_service(ws_context);
-    // Wait for the thread to finish.
-    pthread_join(ws_thread, NULL);
-    if (ws_context)
-        lws_context_destroy(ws_context);
+    size_t msg_len = strlen(msg);
+    unsigned char *buf = malloc(LWS_PRE + msg_len);
+    if (!buf) return -1;
+
+    memcpy(&buf[LWS_PRE], msg, msg_len);
+    int n = lws_write(client->wsi, &buf[LWS_PRE], msg_len, LWS_WRITE_TEXT);
+    free(buf);
+
+    if (n < (int)msg_len) {
+        printf("WebSocket: Partial write\n");
+        return -1;
+    }
+
+    return 0;
+}
+
+int ws_client_service(ws_client_t *client) {
+    if (!client || !client->context) return -1;
+
+    lws_service(client->context, 0); // Non-blocking service
+    return 0;
+}
+
+void ws_client_set_message_callback(void (*callback)(const char *msg)) {
+    message_callback = callback;
+}
+
+void ws_client_destroy(ws_client_t *client) {
+    if (client) {
+        if (client->context) {
+            lws_context_destroy(client->context);
+        }
+        free(client);
+    }
 }
 

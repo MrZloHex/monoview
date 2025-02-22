@@ -1,0 +1,54 @@
+#ifndef __CLIENT_H__
+#define __CLIENT_H__
+
+#include <stddef.h>
+
+
+// Opaque WebSocket client structure.
+typedef struct ws_client ws_client_t;
+
+/* 
+ * Create a new WebSocket client instance.
+ * 'host'      - the WebSocket server hostname or IP.
+ * 'port'      - the server port (as a string, e.g., "80" or "443").
+ * 'resource'  - the resource path (e.g., "/ws").
+ * Returns a pointer to the new instance or NULL on error.
+ */
+ws_client_t *ws_client_create(const char *host, const char *port, const char *resource);
+
+/*
+ * Connect to the server and perform the WebSocket handshake.
+ * Returns 0 on success, or -1 on error.
+ */
+int ws_client_connect(ws_client_t *client);
+
+/*
+ * Send a text message over the WebSocket connection.
+ * 'data'      - the message to send.
+ * 'len'       - length of the message in bytes.
+ * Returns 0 on success, or -1 on error.
+ */
+int ws_client_send(ws_client_t *client, const char *data, size_t len);
+
+/*
+ * Receive a text message from the WebSocket connection.
+ * 'buffer'    - the buffer to store the received message.
+ * 'len'       - the maximum length of the buffer.
+ * Returns the number of bytes received, or -1 on error.
+ * The received message is null-terminated.
+ */
+int ws_client_receive(ws_client_t *client, char *buffer, size_t len);
+
+/*
+ * Close the WebSocket connection.
+ */
+void ws_client_close(ws_client_t *client);
+
+/*
+ * Destroy the WebSocket client instance and free its resources.
+ */
+void ws_client_destroy(ws_client_t *client);
+
+
+#endif /* __CLIENT_H__ */
+

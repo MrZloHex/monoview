@@ -23,13 +23,22 @@
 #include "client.h"
 
 
+void on_message_received(const char *msg) {
+    // Process the incoming message (e.g., display it using ncurses)
+    printw("Received: %s\n", msg);
+    refresh();
+}
+
 int
 main()
 {
-    if (start_ws_thread("127.0.0.1", 8080, "/") != 0) {
-        fprintf(stderr, "WebSocket thread failed to start.\n");
-        return EXIT_FAILURE;
+    ws_client_t *client = ws_client_create("127.0.0.1", 8080, "/");
+    if (ws_client_connect(client) != 0)
+    {
+        return 1;
     }
+
+    ws_client_set_message_callback(on_message_received);
 
     setlocale(LC_ALL, "");
     initscr();
@@ -103,6 +112,11 @@ main()
         {
             run = false;
         }
+        else if (ch == 's')
+        {
+            mvwprintw(stdscr, 0, 0, "SEND %d", ws_client_send(client, "CMD:REG:MONOVIEW\n"));
+            refresh();
+        }
 
         if (kanban.kanban.focused)
         {
@@ -114,6 +128,7 @@ main()
             loger_pressed(&loger.loger, ch);
         }
 
+        ws_client_service(client);
     }
 
     delwin(screen.view.win);
@@ -123,7 +138,8 @@ main()
     delwin(kanban.view.win);
     endwin();
 
-    stop_ws_thread();
+    ws_client_destroy(client);
     return 0;
+
 }
 
