@@ -40,7 +40,7 @@ CFLAGS_BASE += -Wno-old-style-declaration
 CFLAGS_BASE += -MMD -MP
 CFLAGS_BASE += -Iinc -Ilib -Iinc/ws
 CFLAGS_BASE += -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/usr/include/ncursesw
-CFLAGS_BASE += -fsanitize=thread -g
+CFLAGS_BASE += -fsanitize=thread -g -fsanitize=undefined
 
 ifeq ($(BUILD),debug)
 	CFLAGS  = $(CFLAGS_BASE)
@@ -52,7 +52,7 @@ else
 	$(error Unknown build mode: $(BUILD). Use BUILD=debug or BUILD=release)
 endif
 
-LDFLAGS = -L/usr/lib64 -lnotcurses -lnotcurses-core -lwebsockets -lpthread -lsqlite3 -fsanitize=thread
+LDFLAGS = -L/usr/lib64 -lnotcurses -lnotcurses-core -lwebsockets -lpthread -lsqlite3 -fsanitize=thread -fsanitize=undefined
 
 TARGET  = monoview
 

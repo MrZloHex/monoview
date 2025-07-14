@@ -6,7 +6,9 @@
 typedef struct
 {
     struct ncplane *pl;
-    struct ncplane *c;
+    struct ncplane *status;
+
+    bool in_cmd_mode;
 } StatusBar;
 
 void

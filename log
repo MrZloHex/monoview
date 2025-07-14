@@ -1225,3 +1225,1236 @@
 2025-07-14 17:43:41.467 [32m INFO[0m src/ui/status.c:sb_deinit:29: UI deinit status bar
 2025-07-14 17:43:41.468 [32m INFO[0m src/ui/ui.c:ui_thread:46: FINISHING WITH NOTCURSES
 2025-07-14 17:43:41.468 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 17:50:53.512 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 17:50:53.516 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 17:50:53.516 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 17:50:53.532 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 17:50:53.533 [32m INFO[0m src/ui/status.c:sb_deinit:38: UI deinit status bar
+2025-07-14 17:50:53.533 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 17:50:53.534 [32m INFO[0m src/ui/ui.c:ui_thread:46: FINISHING WITH NOTCURSES
+2025-07-14 17:50:53.534 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 17:50:54.200 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 17:50:54.203 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 17:50:54.204 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 17:50:54.263 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got L Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 17:50:55.036 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 17:50:55.037 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 17:50:55.037 [32m INFO[0m src/ui/status.c:sb_deinit:38: UI deinit status bar
+2025-07-14 17:50:55.038 [32m INFO[0m src/ui/ui.c:ui_thread:46: FINISHING WITH NOTCURSES
+2025-07-14 17:50:55.038 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 17:53:05.381 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 17:53:05.385 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 17:53:05.385 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 17:53:05.752 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:05.752 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got P ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:05.872 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:05.872 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got L ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:06.130 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:06.130 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got P ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:06.250 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:06.250 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got L ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:06.802 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got P Special: [0x110426 (1115174)] 'left super'
+2025-07-14 17:53:08.813 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:08.812 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got P ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:08.908 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:08.908 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got L ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:09.329 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:09.328 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got P ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:09.929 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got R ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:09.969 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got R ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:10.009 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got R ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:10.049 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got R ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:10.090 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got R ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:10.130 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got R ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:10.169 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got R ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:10.210 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got R ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:10.250 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got R ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:10.291 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got R ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:10.331 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got R ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:10.371 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got R ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:10.395 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:10.395 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got L ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:10.976 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:10.976 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got P ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:11.576 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got R ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:11.604 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:11.604 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got L ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:12.186 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:12.186 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got P ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:12.467 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got L ASCII: [0x20 (032)] ' '
+2025-07-14 17:53:12.467 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:19.528 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got L Special: [0x110426 (1115174)] 'left super'
+2025-07-14 17:53:19.923 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 17:53:19.992 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 17:53:20.024 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 17:53:20.059 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 17:53:20.059 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 17:53:20.059 [32m INFO[0m src/ui/status.c:sb_deinit:38: UI deinit status bar
+2025-07-14 17:53:20.060 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 17:53:20.061 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 17:53:20.872 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 17:53:20.876 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 17:53:20.876 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 17:53:24.201 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:25.869 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:26.750 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:27.609 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:28.375 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:29.164 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:29.561 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:29.842 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:30.054 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:30.151 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:30.386 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:30.529 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:30.810 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:30.930 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:31.003 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:31.099 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:31.219 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:31.316 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:31.597 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:31.647 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:31.744 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:31.817 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:31.960 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:32.056 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:32.430 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:32.503 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:32.623 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:32.673 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:32.839 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:32.913 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:33.309 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:33.383 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:33.503 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:33.576 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:33.697 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:33.769 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:34.120 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:34.170 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:34.313 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:34.387 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:34.552 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:34.626 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:34.976 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:35.081 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:35.178 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:35.274 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:35.440 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:35.514 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:35.841 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:35.891 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:36.011 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:36.108 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:36.250 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:36.324 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:36.675 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:36.725 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:36.868 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:36.941 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:37.084 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:37.157 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:37.485 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:37.558 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:37.701 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:37.774 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:37.963 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:38.014 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:38.410 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:38.507 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:38.627 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:38.747 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:38.866 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:38.963 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:39.082 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:39.179 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:39.299 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:39.395 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:39.492 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:39.611 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:39.731 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:39.805 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:39.947 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:40.044 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:40.140 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:40.168 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:40.287 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:40.338 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:40.388 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:40.415 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:40.512 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:40.562 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:40.636 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:40.641 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:40.736 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:40.787 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:40.860 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:40.887 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:40.961 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:41.011 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:41.085 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:41.135 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:41.185 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:41.236 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:41.309 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:41.313 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:41.387 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:41.460 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:41.488 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:41.561 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:41.704 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:41.754 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:41.782 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:41.832 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:41.928 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:42.049 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:42.122 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:42.172 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:42.199 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:42.226 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:42.300 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:42.327 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:42.378 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:42.405 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:42.479 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:42.506 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:42.556 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:42.583 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:42.633 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:42.684 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:42.711 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:42.739 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:42.812 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:42.862 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:42.890 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:42.940 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:42.991 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:43.018 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:43.068 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:43.119 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:43.169 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:43.197 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:43.247 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:43.274 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:43.348 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:43.398 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:43.425 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:43.453 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:43.526 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:43.553 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:43.604 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:43.632 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:43.705 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:43.732 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:43.782 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:43.810 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:43.883 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:43.910 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:43.984 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:44.011 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:44.085 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:44.112 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:44.162 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:44.190 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:44.355 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:44.383 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:44.457 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:44.576 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:44.650 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:44.676 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:44.936 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:44.963 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:45.152 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:45.179 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:45.438 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:45.488 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:45.677 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:45.750 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:45.893 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:45.921 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:46.040 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:46.114 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:46.164 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:46.216 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:46.334 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:46.408 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:46.458 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:46.508 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:46.628 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:46.701 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:46.844 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:46.895 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:46.968 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:47.041 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:47.068 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:47.142 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:47.262 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:47.335 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:47.408 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:47.459 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:47.556 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:47.629 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:47.656 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:47.730 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:47.826 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:47.900 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:47.950 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:48.001 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:48.097 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:48.170 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:48.221 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:48.271 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:48.391 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:48.464 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:48.538 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:48.588 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:48.685 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:48.759 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:48.786 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:48.859 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:48.979 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:49.052 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:49.172 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:49.246 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:49.296 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:49.346 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:49.535 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:49.609 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:49.637 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:49.686 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:49.806 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:49.879 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:49.930 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:50.003 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:50.169 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:50.242 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:50.293 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:50.343 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:50.439 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:50.513 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:50.540 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:50.613 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:50.664 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:50.737 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:50.972 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:51.138 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:51.166 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:51.239 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:51.312 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:51.386 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:51.459 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:51.579 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:51.791 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:51.864 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:51.891 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:52.034 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:52.107 [32m INFO[0m src/ui/status.c:sb_enable_cmd:46: UI SB enable cmd
+2025-07-14 17:53:52.204 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 17:53:52.849 [32m INFO[0m src/ui/status.c:sb_deinit:38: UI deinit status bar
+2025-07-14 17:53:52.849 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 17:53:52.850 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 17:53:52.850 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 17:54:43.063 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 17:54:43.067 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 17:54:43.067 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 17:54:43.847 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 17:54:43.847 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 17:54:43.848 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 17:54:43.849 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 17:55:02.686 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 17:55:02.690 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 17:55:02.690 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 17:55:16.724 [32m INFO[0m src/ui/status.c:sb_enable_cmd:49: UI SB enable cmd
+2025-07-14 17:55:16.798 [32m INFO[0m src/ui/status.c:sb_disable_cmd:59: UI SB disable cmd
+2025-07-14 17:55:16.917 [32m INFO[0m src/ui/status.c:sb_enable_cmd:49: UI SB enable cmd
+2025-07-14 17:55:17.014 [32m INFO[0m src/ui/status.c:sb_disable_cmd:59: UI SB disable cmd
+2025-07-14 17:55:17.405 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 17:55:17.405 [32m INFO[0m src/ui/status.c:sb_deinit:41: UI deinit status bar
+2025-07-14 17:55:17.406 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 17:55:17.406 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 17:55:59.967 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 17:55:59.971 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 17:55:59.971 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 17:56:01.094 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 17:56:01.093 [32m INFO[0m src/ui/status.c:sb_deinit:43: UI deinit status bar
+2025-07-14 17:56:01.094 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 17:56:01.095 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 17:57:06.133 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 17:57:06.137 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 17:57:06.137 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 17:57:07.563 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 17:57:07.563 [32m INFO[0m src/ui/status.c:sb_deinit:43: UI deinit status bar
+2025-07-14 17:57:07.564 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 17:57:07.564 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 17:57:11.581 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 17:57:11.585 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 17:57:11.585 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 17:57:12.028 [32m INFO[0m src/ui/status.c:sb_enable_cmd:51: UI SB enable cmd
+2025-07-14 17:57:12.356 [32m INFO[0m src/ui/status.c:sb_disable_cmd:61: UI SB disable cmd
+2025-07-14 17:57:12.660 [32m INFO[0m src/ui/status.c:sb_enable_cmd:51: UI SB enable cmd
+2025-07-14 17:57:12.757 [32m INFO[0m src/ui/status.c:sb_disable_cmd:61: UI SB disable cmd
+2025-07-14 17:57:12.900 [32m INFO[0m src/ui/status.c:sb_enable_cmd:51: UI SB enable cmd
+2025-07-14 17:57:12.996 [32m INFO[0m src/ui/status.c:sb_disable_cmd:61: UI SB disable cmd
+2025-07-14 17:57:17.492 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 17:57:17.492 [32m INFO[0m src/ui/status.c:sb_deinit:43: UI deinit status bar
+2025-07-14 17:57:17.493 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 17:57:17.493 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 17:57:18.136 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 17:57:18.139 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 17:57:18.140 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 17:57:19.001 [32m INFO[0m src/ui/status.c:sb_enable_cmd:50: UI SB enable cmd
+2025-07-14 17:57:19.144 [32m INFO[0m src/ui/status.c:sb_disable_cmd:60: UI SB disable cmd
+2025-07-14 17:57:19.541 [32m INFO[0m src/ui/status.c:sb_enable_cmd:50: UI SB enable cmd
+2025-07-14 17:57:19.730 [32m INFO[0m src/ui/status.c:sb_disable_cmd:60: UI SB disable cmd
+2025-07-14 17:57:19.820 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 17:57:19.820 [32m INFO[0m src/ui/status.c:sb_deinit:42: UI deinit status bar
+2025-07-14 17:57:19.821 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 17:57:19.821 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 17:57:29.169 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 17:57:29.172 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 17:57:29.172 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 17:57:29.813 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 17:57:29.813 [32m INFO[0m src/ui/status.c:sb_deinit:41: UI deinit status bar
+2025-07-14 17:57:29.814 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 17:57:29.814 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 17:57:30.293 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 17:57:30.297 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 17:57:30.297 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 17:57:33.881 [32m INFO[0m src/ui/status.c:sb_deinit:41: UI deinit status bar
+2025-07-14 17:57:33.881 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 17:57:33.882 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 17:57:33.882 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 17:57:39.894 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 17:57:39.898 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 17:57:39.898 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 17:57:40.536 [32m INFO[0m src/ui/status.c:sb_deinit:39: UI deinit status bar
+2025-07-14 17:57:40.536 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 17:57:40.537 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 17:57:40.537 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 17:57:41.505 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 17:57:41.509 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 17:57:41.509 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 17:57:41.767 [32m INFO[0m src/ui/status.c:sb_enable_cmd:47: UI SB enable cmd
+2025-07-14 17:57:41.910 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 17:57:42.261 [32m INFO[0m src/ui/status.c:sb_enable_cmd:47: UI SB enable cmd
+2025-07-14 17:57:42.380 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 17:57:42.493 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 17:57:42.493 [32m INFO[0m src/ui/status.c:sb_deinit:39: UI deinit status bar
+2025-07-14 17:57:42.495 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 17:57:42.495 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:06:30.659 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:06:30.663 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:06:30.663 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:06:32.038 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 18:06:32.038 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 18:06:32.039 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 18:06:32.039 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:06:32.774 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:06:32.778 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:06:32.778 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:06:33.133 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:33.645 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:34.018 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:34.301 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:34.629 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:34.887 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:35.168 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:35.403 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:35.708 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:35.919 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:36.223 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:36.529 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:36.810 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:37.045 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:37.304 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:37.377 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:37.474 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:37.755 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:38.013 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:38.064 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:38.183 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:38.395 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:38.700 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:38.727 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:38.870 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:39.128 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:39.409 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:39.460 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:39.580 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:39.838 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:40.119 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:40.170 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:40.289 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:40.571 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:40.875 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:40.949 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:41.045 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:41.142 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:41.492 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:41.681 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:53.599 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:54.851 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:55.109 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:55.229 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:55.349 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:55.721 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:55.865 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:56.170 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:56.567 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:56.617 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:56.737 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:56.997 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:57.255 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:57.305 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:57.402 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:57.706 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:57.918 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:57.968 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:06:58.065 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:06:58.831 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:07:08.148 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 18:07:08.148 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 18:07:08.149 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 18:07:08.149 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:07:08.862 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:07:08.866 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:07:08.866 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:07:26.652 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 18:07:26.652 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 18:07:26.653 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 18:07:26.654 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:08:01.434 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:08:01.438 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:08:01.438 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:08:01.811 [32m INFO[0m src/ui/status.c:sb_enable_cmd:45: UI SB enable cmd
+2025-07-14 18:08:02.046 [32m INFO[0m src/ui/status.c:sb_disable_cmd:55: UI SB disable cmd
+2025-07-14 18:08:02.328 [32m INFO[0m src/ui/status.c:sb_enable_cmd:45: UI SB enable cmd
+2025-07-14 18:08:02.424 [32m INFO[0m src/ui/status.c:sb_disable_cmd:55: UI SB disable cmd
+2025-07-14 18:08:02.497 [32m INFO[0m src/ui/status.c:sb_enable_cmd:45: UI SB enable cmd
+2025-07-14 18:08:02.779 [32m INFO[0m src/ui/status.c:sb_disable_cmd:55: UI SB disable cmd
+2025-07-14 18:08:29.213 [32m INFO[0m src/ui/status.c:sb_enable_cmd:45: UI SB enable cmd
+2025-07-14 18:08:34.916 [32m INFO[0m src/ui/status.c:sb_disable_cmd:55: UI SB disable cmd
+2025-07-14 18:08:35.683 [32m INFO[0m src/ui/status.c:sb_enable_cmd:45: UI SB enable cmd
+2025-07-14 18:08:35.941 [32m INFO[0m src/ui/status.c:sb_disable_cmd:55: UI SB disable cmd
+2025-07-14 18:10:59.028 [32m INFO[0m src/ui/status.c:sb_deinit:37: UI deinit status bar
+2025-07-14 18:10:59.028 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 18:10:59.030 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 18:10:59.030 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:10:59.584 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:10:59.588 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:10:59.588 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:11:00.214 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:11:00.449 [32m INFO[0m src/ui/status.c:sb_disable_cmd:54: UI SB disable cmd
+2025-07-14 18:11:00.754 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:11:00.874 [32m INFO[0m src/ui/status.c:sb_disable_cmd:54: UI SB disable cmd
+2025-07-14 18:11:00.994 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:11:01.114 [32m INFO[0m src/ui/status.c:sb_disable_cmd:54: UI SB disable cmd
+2025-07-14 18:11:01.493 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 18:11:01.493 [32m INFO[0m src/ui/status.c:sb_deinit:36: UI deinit status bar
+2025-07-14 18:11:01.494 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 18:11:01.494 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:20:28.597 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:20:28.601 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:20:28.601 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:20:29.499 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:20:29.782 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:20:30.109 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:20:30.344 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:20:30.603 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:20:30.745 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:20:30.981 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:20:31.099 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:20:31.289 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:20:31.386 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:20:31.575 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:20:31.695 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:20:31.791 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:20:31.842 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:20:31.938 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:20:32.011 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:20:32.085 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:20:32.159 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:20:32.232 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:20:32.305 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:20:32.401 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:20:32.451 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:20:32.526 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:20:32.598 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:20:33.314 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 18:20:33.314 [32m INFO[0m src/ui/status.c:sb_deinit:36: UI deinit status bar
+2025-07-14 18:20:33.315 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 18:20:33.315 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:24:00.997 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:24:01.001 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:24:01.002 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:24:01.662 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 18:24:01.662 [32m INFO[0m src/ui/status.c:sb_deinit:36: UI deinit status bar
+2025-07-14 18:24:01.664 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 18:24:01.664 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:24:02.915 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:24:02.919 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:24:02.919 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:24:03.242 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:03.501 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:03.805 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:03.901 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:04.021 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:04.094 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:04.237 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:04.310 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:04.452 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:04.527 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:04.646 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:04.720 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:04.839 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:04.936 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:05.079 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:05.152 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:05.272 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:05.345 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:05.442 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:05.515 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:05.612 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:05.685 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:05.989 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:06.063 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:06.389 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:06.464 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:06.791 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:08.689 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:09.808 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 18:24:09.808 [32m INFO[0m src/ui/status.c:sb_deinit:36: UI deinit status bar
+2025-07-14 18:24:09.810 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 18:24:09.810 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:24:14.654 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:24:14.658 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:24:14.658 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:24:15.070 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:15.212 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:15.540 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:15.614 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:15.819 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 18:24:15.819 [32m INFO[0m src/ui/status.c:sb_deinit:36: UI deinit status bar
+2025-07-14 18:24:15.821 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 18:24:15.821 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:24:32.724 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:24:32.728 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:24:32.728 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:24:33.074 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:33.193 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:33.705 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:33.826 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:34.530 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 18:24:34.530 [32m INFO[0m src/ui/status.c:sb_deinit:36: UI deinit status bar
+2025-07-14 18:24:34.531 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 18:24:34.531 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:24:44.491 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:24:44.497 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:24:44.497 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:24:44.664 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:44.853 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:45.411 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:45.577 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:45.997 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:46.117 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:46.560 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:46.610 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:24:46.730 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:24:46.826 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:25:16.143 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:25:16.425 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:25:16.683 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:25:16.779 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:25:16.899 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:25:16.995 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:25:17.369 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:25:17.720 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:26:55.313 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:26:55.594 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:26:55.760 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:26:55.880 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:26:55.976 [32m INFO[0m src/ui/status.c:sb_enable_cmd:44: UI SB enable cmd
+2025-07-14 18:26:56.096 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:26:56.187 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 18:26:56.187 [32m INFO[0m src/ui/status.c:sb_deinit:36: UI deinit status bar
+2025-07-14 18:26:56.189 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 18:26:56.189 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:45:01.229 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:45:01.234 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:45:01.234 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:45:02.258 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:45:02.422 [32m INFO[0m src/ui/status.c:sb_disable_cmd:60: UI SB disable cmd
+2025-07-14 18:45:02.842 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:45:03.032 [32m INFO[0m src/ui/status.c:sb_disable_cmd:60: UI SB disable cmd
+2025-07-14 18:45:03.313 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:45:03.364 [32m INFO[0m src/ui/status.c:sb_disable_cmd:60: UI SB disable cmd
+2025-07-14 18:45:03.506 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:45:03.557 [32m INFO[0m src/ui/status.c:sb_disable_cmd:60: UI SB disable cmd
+2025-07-14 18:45:03.833 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 18:45:03.833 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 18:45:03.834 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 18:45:03.834 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:45:21.383 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:45:21.387 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:45:21.387 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:45:21.674 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:45:21.793 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:45:22.098 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:45:22.217 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:45:22.452 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:45:22.549 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:45:22.645 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:45:22.765 [32m INFO[0m src/ui/status.c:sb_disable_cmd:56: UI SB disable cmd
+2025-07-14 18:45:23.172 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 18:45:23.172 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 18:45:23.174 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 18:45:23.174 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:45:35.860 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:45:35.864 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:45:35.864 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:45:36.102 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:45:36.361 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:45:36.620 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:45:36.716 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:45:36.813 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:45:36.908 [32m INFO[0m src/ui/status.c:sb_disable_cmd:58: UI SB disable cmd
+2025-07-14 18:45:37.231 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 18:45:37.231 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 18:45:37.233 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 18:45:37.233 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:45:41.306 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:45:41.310 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:45:41.310 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:45:41.396 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:45:41.492 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:45:41.773 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:45:42.032 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:45:42.382 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:45:42.456 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:45:42.575 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:45:42.672 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:45:43.062 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 18:45:43.062 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 18:45:43.064 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 18:45:43.064 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:45:43.436 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:45:43.441 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:45:43.441 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:45:43.810 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:45:43.998 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:45:44.343 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 18:45:44.343 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 18:45:44.344 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 18:45:44.344 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:46:03.752 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:46:03.756 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:46:03.756 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:46:04.042 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:04.254 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:04.628 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:04.677 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:04.820 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:04.871 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:05.129 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:05.595 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:06.470 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 18:46:06.470 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 18:46:06.472 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 18:46:06.472 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:46:09.359 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:46:09.364 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:46:09.364 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:46:09.420 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:09.540 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:09.798 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:09.917 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:10.222 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:10.295 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:10.368 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:10.488 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:10.793 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:10.866 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:11.009 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:11.106 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:11.572 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:12.545 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:12.850 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:13.178 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:14.314 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:14.595 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:15.060 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:15.135 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:15.254 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:15.350 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:53.966 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 18:46:53.966 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 18:46:53.967 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 18:46:53.967 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:46:54.419 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:46:54.423 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:46:54.423 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:46:54.486 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:54.768 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:55.465 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:55.652 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:55.958 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:56.216 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:56.289 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:56.431 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:56.805 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:56.994 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:57.045 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:57.165 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:57.516 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:57.935 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:58.217 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:46:58.429 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:46:58.594 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:02.087 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:02.353 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:02.565 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:02.707 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:02.872 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:02.992 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:03.135 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:03.254 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:03.397 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:03.518 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:03.660 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:03.942 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:04.339 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:04.666 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:04.947 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:05.044 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:05.118 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:05.353 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:05.773 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:05.869 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:05.965 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:06.177 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:06.852 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:06.878 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:07.045 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:07.072 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:07.492 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:07.843 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:08.817 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:09.097 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:09.425 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:09.753 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:10.265 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:10.639 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:10.990 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:11.133 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:11.229 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:11.372 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:11.884 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:12.281 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:12.470 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:12.590 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:12.663 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:12.760 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:12.948 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:13.022 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:13.117 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:13.146 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:13.195 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:13.247 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:13.297 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:13.347 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:13.375 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:13.425 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:13.474 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:13.503 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:13.553 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:13.580 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:13.654 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:13.681 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:13.730 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:13.759 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:13.809 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:13.859 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:13.887 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:13.936 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:13.986 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:14.038 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:14.065 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:14.092 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:14.166 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:14.216 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:14.243 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:14.294 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:14.344 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:14.371 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:14.421 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:14.449 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:14.521 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:14.573 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:14.600 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:14.627 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:14.676 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:14.727 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:14.755 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:14.806 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:14.855 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:14.906 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:14.934 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:47:14.984 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 18:47:15.489 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 18:47:15.490 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 18:47:15.491 [32m INFO[0m src/ui/ui.c:ui_thread:53: FINISHING WITH NOTCURSES
+2025-07-14 18:47:15.491 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:53:40.845 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:53:40.849 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:53:40.850 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:53:41.224 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 18:53:41.224 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 18:53:41.225 [32m INFO[0m src/ui/ui.c:ui_thread:57: FINISHING WITH NOTCURSES
+2025-07-14 18:53:41.225 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:53:41.874 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:53:41.878 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:53:41.879 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:53:42.488 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:54:19.490 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:54:19.495 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:54:19.495 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:54:19.844 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 18:54:19.844 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 18:54:19.845 [32m INFO[0m src/ui/ui.c:ui_thread:59: FINISHING WITH NOTCURSES
+2025-07-14 18:54:19.845 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:54:20.377 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:54:20.382 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:54:20.382 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:54:20.692 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:54:21.063 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 18:54:21.063 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 18:54:21.064 [32m INFO[0m src/ui/ui.c:ui_thread:59: FINISHING WITH NOTCURSES
+2025-07-14 18:54:21.064 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:58:20.615 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:58:20.619 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:58:20.619 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:58:21.537 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:58:22.138 [32m INFO[0m src/ui/cmd.c:cmd_deinit:36: UI deinit cmd
+2025-07-14 18:58:22.138 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 18:58:22.139 [32m INFO[0m src/ui/ui.c:ui_thread:63: FINISHING WITH NOTCURSES
+2025-07-14 18:58:22.139 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:58:25.012 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:58:25.017 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:58:25.018 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:58:25.437 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:58:27.768 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `werasdasd`
+2025-07-14 18:58:29.544 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `werasdasd;asdas`
+2025-07-14 18:58:33.626 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 18:58:33.626 [32m INFO[0m src/ui/cmd.c:cmd_deinit:36: UI deinit cmd
+2025-07-14 18:58:33.627 [32m INFO[0m src/ui/ui.c:ui_thread:63: FINISHING WITH NOTCURSES
+2025-07-14 18:58:33.627 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:58:34.351 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:58:34.355 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:58:34.355 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:58:35.399 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:58:39.482 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `asd`
+2025-07-14 18:58:42.362 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `asd;;asdasd`
+2025-07-14 18:58:43.094 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 18:58:43.094 [32m INFO[0m src/ui/cmd.c:cmd_deinit:36: UI deinit cmd
+2025-07-14 18:58:43.095 [32m INFO[0m src/ui/ui.c:ui_thread:63: FINISHING WITH NOTCURSES
+2025-07-14 18:58:43.095 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:58:53.448 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:58:53.452 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:58:53.452 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:58:54.192 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:58:54.899 [32m INFO[0m src/ui/cmd.c:cmd_deinit:36: UI deinit cmd
+2025-07-14 18:58:54.899 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 18:58:54.900 [32m INFO[0m src/ui/ui.c:ui_thread:63: FINISHING WITH NOTCURSES
+2025-07-14 18:58:54.900 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 18:58:56.859 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 18:58:56.864 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 18:58:56.864 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 18:58:57.241 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 18:58:57.897 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `ew`
+2025-07-14 18:59:16.333 [32m INFO[0m src/ui/cmd.c:cmd_deinit:36: UI deinit cmd
+2025-07-14 18:59:16.333 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 18:59:16.334 [32m INFO[0m src/ui/ui.c:ui_thread:63: FINISHING WITH NOTCURSES
+2025-07-14 18:59:16.334 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:00:20.303 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:00:20.308 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:00:20.308 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:00:20.699 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:00:51.238 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:00:51.242 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:00:51.242 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:00:52.154 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:01:06.368 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:01:06.372 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:01:06.372 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:01:06.845 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:01:09.952 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:01:09.956 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:01:09.956 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:01:10.838 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:01:49.135 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:01:49.139 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:01:49.140 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:01:49.698 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:01:50.209 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:01:50.209 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:01:50.210 [32m INFO[0m src/ui/ui.c:ui_thread:63: FINISHING WITH NOTCURSES
+2025-07-14 19:01:50.210 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:01:51.533 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:01:51.538 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:01:51.538 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:01:51.820 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:01:52.421 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD `w`
+2025-07-14 19:01:53.517 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD `;e`
+2025-07-14 19:01:54.367 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD `;we`
+2025-07-14 19:01:55.346 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD `;w`
+2025-07-14 19:01:56.304 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD `e;`
+2025-07-14 19:01:57.416 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD `;asd`
+2025-07-14 19:02:01.695 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD ``
+2025-07-14 19:02:01.980 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD ``
+2025-07-14 19:02:02.196 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD ``
+2025-07-14 19:04:28.037 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:04:28.037 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:04:28.038 [32m INFO[0m src/ui/ui.c:ui_thread:63: FINISHING WITH NOTCURSES
+2025-07-14 19:04:28.039 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:04:29.040 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:04:29.044 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:04:29.044 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:04:29.632 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:04:29.632 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:04:29.634 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 19:04:29.634 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:04:30.149 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:04:30.153 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:04:30.154 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:04:30.481 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:04:32.109 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:04:32.109 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD `weasd`
+2025-07-14 19:04:33.110 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:04:33.720 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:04:33.720 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD `we`
+2025-07-14 19:04:34.191 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:04:34.718 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD `asd`
+2025-07-14 19:04:34.718 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:04:35.234 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:04:37.343 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:04:37.343 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD `werasdfasf`
+2025-07-14 19:04:41.424 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:04:41.424 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:04:41.425 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 19:04:41.425 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:04:57.204 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:04:57.208 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:04:57.208 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:05:12.388 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:05:12.388 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:05:12.390 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 19:05:12.390 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:05:53.379 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:05:53.383 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:05:53.383 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:05:53.966 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:05:59.447 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:05:59.447 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD `wwaadasdas`
+2025-07-14 19:06:00.499 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:06:00.917 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:06:00.917 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:06:00.918 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 19:06:00.919 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:06:08.022 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:06:08.026 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:06:08.026 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:06:08.541 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:06:09.506 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:06:09.506 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD `asd`
+2025-07-14 19:06:10.092 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:06:10.826 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:06:10.826 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD `zxc`
+2025-07-14 19:06:11.318 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:06:11.944 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:06:11.944 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD `a`
+2025-07-14 19:06:12.552 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:06:14.394 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:06:14.394 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD `asdfghasdgasdg`
+2025-07-14 19:08:17.301 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:08:17.301 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:08:17.303 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 19:08:17.303 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:08:17.897 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:08:17.901 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:08:17.901 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:08:18.359 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:08:18.730 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:08:18.730 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:08:18.732 [32m INFO[0m src/ui/ui.c:ui_thread:77: FINISHING WITH NOTCURSES
+2025-07-14 19:08:18.732 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:08:20.227 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:08:20.232 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:08:20.232 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:08:20.584 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:08:21.574 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:08:21.574 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD `werwer`
+2025-07-14 19:08:22.183 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:08:23.104 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:08:23.104 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD `asdasd`
+2025-07-14 19:08:23.484 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:08:33.243 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:08:33.243 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:08:33.245 [32m INFO[0m src/ui/ui.c:ui_thread:77: FINISHING WITH NOTCURSES
+2025-07-14 19:08:33.245 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:08:34.747 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:08:34.752 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:08:34.752 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:08:35.102 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:09:30.255 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:09:30.255 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD `clear`
+2025-07-14 19:09:30.817 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:09:33.792 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:09:33.792 [32m INFO[0m src/ui/cmd.c:cmd_input:66: CMD ` `
+2025-07-14 19:10:08.700 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:10:08.700 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:10:08.702 [32m INFO[0m src/ui/ui.c:ui_thread:77: FINISHING WITH NOTCURSES
+2025-07-14 19:10:08.702 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:10:09.412 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:10:09.417 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:10:09.418 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:10:10.035 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:10:10.358 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:10:10.358 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:10:10.359 [32m INFO[0m src/ui/ui.c:ui_thread:77: FINISHING WITH NOTCURSES
+2025-07-14 19:10:10.359 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:10:11.794 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:10:11.799 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:10:11.799 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:10:12.126 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:10:12.862 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:10:12.862 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:10:13.423 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:10:13.973 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:10:13.973 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:10:14.674 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:10:15.085 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:10:15.085 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:10:16.618 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:10:16.712 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:10:16.712 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:10:16.713 [32m INFO[0m src/ui/ui.c:ui_thread:77: FINISHING WITH NOTCURSES
+2025-07-14 19:10:16.713 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:10:29.565 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:10:29.569 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:10:29.569 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:10:30.634 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:10:33.659 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:10:33.659 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:10:33.660 [32m INFO[0m src/ui/ui.c:ui_thread:77: FINISHING WITH NOTCURSES
+2025-07-14 19:10:33.660 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:10:35.076 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:10:35.080 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:10:35.080 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:10:35.847 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:10:43.202 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:10:43.202 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `accczvxvzxv./.asd`
+2025-07-14 19:10:44.088 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:10:52.071 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:10:52.071 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:10:52.073 [32m INFO[0m src/ui/ui.c:ui_thread:77: FINISHING WITH NOTCURSES
+2025-07-14 19:10:52.073 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:10:52.980 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:10:52.985 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:10:52.985 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:10:53.727 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:11:04.318 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:11:04.318 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `                AAaaaZZzx//xzc//z/xc`
+2025-07-14 19:14:43.165 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:14:43.164 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:14:43.166 [32m INFO[0m src/ui/ui.c:ui_thread:77: FINISHING WITH NOTCURSES
+2025-07-14 19:14:43.166 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:15:33.735 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:15:33.740 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:15:33.740 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:15:34.264 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:15:34.727 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 19:15:34.728 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:15:34.728 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:15:34.730 [32m INFO[0m src/ui/ui.c:ui_thread:72: FINISHING WITH NOTCURSES
+2025-07-14 19:15:34.730 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:15:36.348 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:15:36.353 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:15:36.353 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:15:36.772 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:15:37.322 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:37.814 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:38.169 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:38.339 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:38.486 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:38.633 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:38.964 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:39.273 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:39.443 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:39.637 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:39.692 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:39.816 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:40.240 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:40.364 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:40.488 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:40.566 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:40.920 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:41.113 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:41.260 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:41.638 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:41.831 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:41.908 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:42.032 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:42.480 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:15:42.696 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:16:25.891 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:16:25.896 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:16:25.896 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:16:25.951 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:16:26.006 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:16:26.800 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:16:26.854 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:16:27.463 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:16:27.518 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:16:27.942 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:16:27.996 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:16:28.305 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:16:28.360 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:16:28.761 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:16:28.815 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:17:23.671 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:17:23.675 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:17:23.676 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:17:24.055 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:17:24.480 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:17:24.480 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `we`
+2025-07-14 19:17:24.881 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:17:29.074 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:17:29.074 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `wer`
+2025-07-14 19:17:29.406 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:17:29.793 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:17:29.793 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `qwe`
+2025-07-14 19:17:30.171 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:17:30.643 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:17:30.643 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `qw`
+2025-07-14 19:17:30.975 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:17:31.378 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:17:31.378 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `qq`
+2025-07-14 19:17:31.756 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:17:32.173 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 19:17:32.174 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:17:32.174 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:17:32.176 [32m INFO[0m src/ui/ui.c:ui_thread:74: FINISHING WITH NOTCURSES
+2025-07-14 19:17:32.176 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:17:33.529 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:17:33.534 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:17:33.534 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:17:33.885 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:18:09.212 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:18:09.212 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `;;;;;;;;;;;LLll;;PP['''''';;;[[][][]][][][][][]\\\\\\\`
+2025-07-14 19:18:09.913 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:18:10.164 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 19:18:10.165 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:18:10.165 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:18:10.167 [32m INFO[0m src/ui/ui.c:ui_thread:74: FINISHING WITH NOTCURSES
+2025-07-14 19:18:10.167 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
