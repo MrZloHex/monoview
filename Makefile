@@ -52,7 +52,7 @@ else
 	$(error Unknown build mode: $(BUILD). Use BUILD=debug or BUILD=release)
 endif
 
-LDFLAGS = -L/usr/lib64 -lncursesw -ltinfow -lwebsockets -lpthread -lsqlite3 -fsanitize=thread
+LDFLAGS = -L/usr/lib64 -lnotcurses -lnotcurses-core -lwebsockets -lpthread -lsqlite3 -fsanitize=thread
 
 TARGET  = monoview
 

@@ -72,6 +72,9 @@ tracer_init
     tracer.stream_count = 0;
     tracer.streams      = NULL;
 
+    if (outputs == -1)
+    { return 0; }
+
     if (outputs & TO_STDOUT)
     { tracer_add_stream(stdout); }
     if (outputs & TO_STDERR)

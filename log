@@ -1,0 +1,1227 @@
+2025-07-14 16:00:06.326 [32m INFO[0m src/main.c:main:30: SETUP NOTCURSES
+2025-07-14 16:00:26.214 [32m INFO[0m src/main.c:main:30: SETUP NOTCURSES
+2025-07-14 16:00:30.625 [32m INFO[0m src/main.c:main:30: SETUP NOTCURSES
+2025-07-14 16:00:56.750 [32m INFO[0m src/main.c:main:31: SETUP NOTCURSES
+2025-07-14 16:01:02.799 [32m INFO[0m src/main.c:main:31: SETUP NOTCURSES
+2025-07-14 16:01:14.172 [32m INFO[0m src/main.c:main:31: SETUP NOTCURSES
+2025-07-14 16:02:28.405 [32m INFO[0m src/main.c:main:31: SETUP NOTCURSES
+2025-07-14 16:02:39.835 [32m INFO[0m src/main.c:main:31: SETUP NOTCURSES
+2025-07-14 16:04:40.505 [32m INFO[0m src/main.c:main:31: SETUP NOTCURSES
+2025-07-14 16:04:44.303 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:04:46.274 [32m INFO[0m src/main.c:main:31: SETUP NOTCURSES
+2025-07-14 16:04:46.823 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:04:47.655 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:04:48.241 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:04:48.497 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:04:48.990 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:04:49.307 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:04:50.539 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:06:05.927 [32m INFO[0m src/main.c:main:31: SETUP NOTCURSES
+2025-07-14 16:06:09.883 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:06:10.808 [32m INFO[0m src/main.c:main:35: FULL STOP
+2025-07-14 16:06:10.808 [32m INFO[0m src/ui/ui.c:ui_thread:179: FINISHING WITH NOTCURSES
+2025-07-14 16:06:45.661 [32m INFO[0m src/main.c:main:32: SETUP NOTCURSES
+2025-07-14 16:06:49.087 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:06:49.598 [32m INFO[0m src/main.c:main:36: FULL STOP
+2025-07-14 16:06:49.598 [32m INFO[0m src/ui/ui.c:ui_thread:179: FINISHING WITH NOTCURSES
+2025-07-14 16:06:57.454 [32m INFO[0m src/main.c:main:32: SETUP NOTCURSES
+2025-07-14 16:06:58.122 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:06:58.425 [32m INFO[0m src/main.c:main:36: FULL STOP
+2025-07-14 16:06:58.425 [32m INFO[0m src/ui/ui.c:ui_thread:179: FINISHING WITH NOTCURSES
+2025-07-14 16:10:10.758 [32m INFO[0m src/main.c:main:32: SETUP THREADS
+2025-07-14 16:10:14.126 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:10:15.768 [32m INFO[0m src/ui/ui.c:ui_thread:179: FINISHING WITH NOTCURSES
+2025-07-14 16:10:15.768 [32m INFO[0m src/main.c:main:38: FULL STOP
+2025-07-14 16:10:39.982 [32m INFO[0m src/main.c:main:32:  =========== SETUP THREADS ===========
+2025-07-14 16:10:40.336 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:10:40.546 [32m INFO[0m src/ui/ui.c:ui_thread:179: FINISHING WITH NOTCURSES
+2025-07-14 16:10:40.546 [32m INFO[0m src/main.c:main:38:  ============ FULL STOP =============== 
+2025-07-14 16:16:23.627 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 16:16:27.330 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:16:27.947 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:16:28.533 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:16:28.859 [32m INFO[0m src/ui/ui.c:ui_thread:182: FINISHING WITH NOTCURSES
+2025-07-14 16:16:28.859 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 16:16:30.621 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 16:16:30.937 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:16:31.239 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:16:31.617 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:16:31.921 [32m INFO[0m src/ui/ui.c:ui_thread:182: FINISHING WITH NOTCURSES
+2025-07-14 16:16:31.921 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 16:16:32.688 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 16:16:33.076 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:16:33.655 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:16:34.448 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:16:35.598 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:16:35.976 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:16:36.348 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:16:36.796 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:16:37.536 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:16:37.867 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:16:38.647 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:16:39.071 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:16:39.627 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:16:48.019 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:16:48.228 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:16:48.606 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:16:48.792 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:16:49.124 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:16:49.329 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:16:49.688 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:16:49.936 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:19:42.681 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 16:19:42.726 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:19:46.726 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:19:46.845 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:19:47.288 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:19:47.339 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:19:47.504 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:19:47.601 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:19:50.861 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:19:50.934 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:19:51.793 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:19:51.912 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:19:52.401 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:19:52.752 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:19:53.264 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:19:53.338 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:19:53.642 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:19:53.715 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:19:53.996 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:19:54.070 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:19:54.282 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:19:54.332 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:19:54.567 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:19:54.617 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:19:54.829 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:19:54.903 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:19:55.091 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:19:55.165 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:19:55.400 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:19:55.473 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:19:55.808 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `q` with shift 0 alt 0
+2025-07-14 16:19:55.973 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `q` with shift 0 alt 0
+2025-07-14 16:19:56.370 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `q` with shift 0 alt 0
+2025-07-14 16:19:56.490 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `q` with shift 0 alt 0
+2025-07-14 16:19:56.608 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `q` with shift 0 alt 0
+2025-07-14 16:19:56.775 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `q` with shift 0 alt 0
+2025-07-14 16:19:56.804 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `w` with shift 0 alt 0
+2025-07-14 16:19:57.040 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `e` with shift 0 alt 0
+2025-07-14 16:19:57.066 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `w` with shift 0 alt 0
+2025-07-14 16:19:57.302 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `e` with shift 0 alt 0
+2025-07-14 16:19:57.396 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `a` with shift 0 alt 0
+2025-07-14 16:19:57.540 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `s` with shift 0 alt 0
+2025-07-14 16:19:57.592 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `d` with shift 0 alt 0
+2025-07-14 16:19:57.616 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `a` with shift 0 alt 0
+2025-07-14 16:19:57.691 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `s` with shift 0 alt 0
+2025-07-14 16:19:57.812 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `d` with shift 0 alt 0
+2025-07-14 16:19:58.066 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `	` with shift 0 alt 0
+2025-07-14 16:19:58.232 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `	` with shift 0 alt 0
+2025-07-14 16:19:58.721 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `	` with shift 0 alt 0
+2025-07-14 16:19:58.862 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `	` with shift 0 alt 0
+2025-07-14 16:19:59.260 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `` with shift 0 alt 0
+2025-07-14 16:19:59.449 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `` with shift 0 alt 0
+2025-07-14 16:19:59.823 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `` with shift 0 alt 0
+2025-07-14 16:19:59.966 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `` with shift 0 alt 0
+2025-07-14 16:20:00.292 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `` with shift 0 alt 0
+2025-07-14 16:20:00.482 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `` with shift 0 alt 0
+2025-07-14 16:20:00.809 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `` with shift 0 alt 0
+2025-07-14 16:20:00.998 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `` with shift 0 alt 0
+2025-07-14 16:20:01.926 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `` with shift 0 alt 0
+2025-07-14 16:20:02.046 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `` with shift 0 alt 0
+2025-07-14 16:20:02.281 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `` with shift 0 alt 0
+2025-07-14 16:20:02.377 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `` with shift 0 alt 0
+2025-07-14 16:20:02.658 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `#` with shift 1 alt 0
+2025-07-14 16:20:03.147 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `#` with shift 0 alt 0
+2025-07-14 16:20:03.313 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `#` with shift 1 alt 0
+2025-07-14 16:20:03.502 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `#` with shift 0 alt 0
+2025-07-14 16:20:03.806 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `#` with shift 1 alt 0
+2025-07-14 16:20:03.972 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `#` with shift 0 alt 0
+2025-07-14 16:20:04.091 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `#` with shift 1 alt 0
+2025-07-14 16:20:04.234 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `#` with shift 0 alt 0
+2025-07-14 16:20:04.354 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `#` with shift 1 alt 0
+2025-07-14 16:20:04.474 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `#` with shift 0 alt 0
+2025-07-14 16:20:04.870 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `#` with shift 1 alt 0
+2025-07-14 16:20:05.175 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `#` with shift 0 alt 0
+2025-07-14 16:20:05.456 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `$` with shift 0 alt 0
+2025-07-14 16:20:05.899 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `$` with shift 0 alt 0
+2025-07-14 16:20:06.111 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `$` with shift 0 alt 0
+2025-07-14 16:20:06.299 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `$` with shift 0 alt 0
+2025-07-14 16:20:06.376 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `%` with shift 0 alt 1
+2025-07-14 16:20:06.518 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `%` with shift 0 alt 0
+2025-07-14 16:20:06.661 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `%` with shift 0 alt 1
+2025-07-14 16:20:06.804 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `%` with shift 0 alt 0
+2025-07-14 16:20:07.512 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `+` with shift 0 alt 1
+2025-07-14 16:20:07.631 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `+` with shift 0 alt 0
+2025-07-14 16:20:07.705 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `+` with shift 0 alt 1
+2025-07-14 16:20:07.847 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `+` with shift 0 alt 0
+2025-07-14 16:20:07.921 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `+` with shift 0 alt 1
+2025-07-14 16:20:08.041 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `+` with shift 0 alt 0
+2025-07-14 16:20:08.187 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `*` with shift 0 alt 0
+2025-07-14 16:20:08.330 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `*` with shift 0 alt 0
+2025-07-14 16:20:08.426 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `*` with shift 0 alt 0
+2025-07-14 16:20:08.523 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `*` with shift 0 alt 0
+2025-07-14 16:20:08.642 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `*` with shift 0 alt 0
+2025-07-14 16:20:08.739 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `*` with shift 0 alt 0
+2025-07-14 16:20:08.859 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:20:08.955 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:20:09.075 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:20:09.147 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:20:09.245 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:20:09.341 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:20:09.437 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:20:09.534 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:20:09.629 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:20:09.727 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:20:10.086 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `%` with shift 0 alt 1
+2025-07-14 16:20:10.197 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 1
+2025-07-14 16:20:10.209 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `%` with shift 1 alt 0
+2025-07-14 16:20:10.275 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:20:10.379 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `%` with shift 0 alt 1
+2025-07-14 16:20:10.522 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `%` with shift 0 alt 0
+2025-07-14 16:20:10.653 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `+` with shift 0 alt 1
+2025-07-14 16:20:10.726 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `+` with shift 0 alt 0
+2025-07-14 16:20:10.869 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `+` with shift 0 alt 1
+2025-07-14 16:20:11.011 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `+` with shift 0 alt 0
+2025-07-14 16:20:11.042 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:20:11.139 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:20:11.162 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `+` with shift 0 alt 1
+2025-07-14 16:20:11.258 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `+` with shift 0 alt 0
+2025-07-14 16:20:11.272 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `#` with shift 1 alt 0
+2025-07-14 16:20:11.294 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:20:11.306 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `%` with shift 1 alt 1
+2025-07-14 16:20:11.371 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 1
+2025-07-14 16:20:11.430 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `%` with shift 1 alt 0
+2025-07-14 16:20:11.454 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `#` with shift 0 alt 0
+2025-07-14 16:20:11.661 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:20:11.670 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `#` with shift 1 alt 0
+2025-07-14 16:20:12.316 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:20:12.801 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `+` with shift 1 alt 1
+2025-07-14 16:20:14.639 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `#` with shift 0 alt 1
+2025-07-14 16:20:14.989 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `#` with shift 1 alt 1
+2025-07-14 16:20:15.363 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `#` with shift 0 alt 1
+2025-07-14 16:20:15.760 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `#` with shift 1 alt 1
+2025-07-14 16:20:16.064 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `#` with shift 0 alt 1
+2025-07-14 16:20:16.438 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `#` with shift 1 alt 1
+2025-07-14 16:20:16.580 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `#` with shift 0 alt 1
+2025-07-14 16:20:16.723 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `#` with shift 1 alt 1
+2025-07-14 16:20:16.820 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `#` with shift 0 alt 1
+2025-07-14 16:20:16.916 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `#` with shift 1 alt 1
+2025-07-14 16:20:16.990 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `#` with shift 0 alt 1
+2025-07-14 16:20:17.178 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `#` with shift 1 alt 1
+2025-07-14 16:20:17.252 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `#` with shift 0 alt 1
+2025-07-14 16:20:17.408 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `+` with shift 0 alt 0
+2025-07-14 16:20:18.040 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:20:18.113 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:20:18.256 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:20:18.352 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:20:18.449 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:20:18.545 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:20:18.642 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:20:18.738 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:20:19.366 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `\` with shift 0 alt 0
+2025-07-14 16:20:19.439 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `\` with shift 0 alt 0
+2025-07-14 16:20:19.559 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `\` with shift 0 alt 0
+2025-07-14 16:20:19.631 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `\` with shift 0 alt 0
+2025-07-14 16:20:19.752 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `\` with shift 0 alt 0
+2025-07-14 16:20:19.825 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `\` with shift 0 alt 0
+2025-07-14 16:20:19.968 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `\` with shift 0 alt 0
+2025-07-14 16:20:20.041 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `\` with shift 0 alt 0
+2025-07-14 16:20:20.161 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `\` with shift 0 alt 0
+2025-07-14 16:20:20.256 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `\` with shift 0 alt 0
+2025-07-14 16:20:20.377 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `\` with shift 0 alt 0
+2025-07-14 16:20:20.473 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `\` with shift 0 alt 0
+2025-07-14 16:20:20.593 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `\` with shift 0 alt 0
+2025-07-14 16:20:20.690 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `\` with shift 0 alt 0
+2025-07-14 16:20:21.086 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ä` with shift 0 alt 0
+2025-07-14 16:20:21.159 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ä` with shift 0 alt 0
+2025-07-14 16:20:21.256 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ä` with shift 0 alt 0
+2025-07-14 16:20:21.330 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ä` with shift 0 alt 0
+2025-07-14 16:20:21.426 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ä` with shift 0 alt 0
+2025-07-14 16:20:21.523 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ä` with shift 0 alt 0
+2025-07-14 16:20:21.642 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ä` with shift 0 alt 0
+2025-07-14 16:20:21.716 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ä` with shift 0 alt 0
+2025-07-14 16:20:21.812 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ä` with shift 0 alt 0
+2025-07-14 16:20:21.886 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ä` with shift 0 alt 0
+2025-07-14 16:20:21.982 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ä` with shift 0 alt 0
+2025-07-14 16:20:22.079 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ä` with shift 0 alt 0
+2025-07-14 16:20:22.320 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `1` with shift 0 alt 0
+2025-07-14 16:20:22.463 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `1` with shift 0 alt 0
+2025-07-14 16:20:22.629 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `1` with shift 0 alt 0
+2025-07-14 16:20:22.771 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `1` with shift 0 alt 0
+2025-07-14 16:20:22.892 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `2` with shift 0 alt 0
+2025-07-14 16:20:23.060 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `3` with shift 0 alt 0
+2025-07-14 16:20:23.178 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `2` with shift 0 alt 0
+2025-07-14 16:20:23.437 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `3` with shift 0 alt 0
+2025-07-14 16:20:23.462 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `1` with shift 0 alt 0
+2025-07-14 16:20:23.582 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `1` with shift 0 alt 0
+2025-07-14 16:20:23.701 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `ç` with shift 0 alt 0
+2025-07-14 16:20:23.844 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `ç` with shift 0 alt 0
+2025-07-14 16:20:23.940 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `ç` with shift 0 alt 0
+2025-07-14 16:20:24.036 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `ç` with shift 0 alt 0
+2025-07-14 16:20:24.110 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `ç` with shift 0 alt 0
+2025-07-14 16:20:24.207 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `ç` with shift 0 alt 0
+2025-07-14 16:20:24.326 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `ç` with shift 0 alt 0
+2025-07-14 16:20:24.423 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `ç` with shift 0 alt 0
+2025-07-14 16:20:24.613 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `é` with shift 0 alt 0
+2025-07-14 16:20:24.733 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `é` with shift 0 alt 0
+2025-07-14 16:20:24.806 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `é` with shift 0 alt 0
+2025-07-14 16:20:24.902 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `é` with shift 0 alt 0
+2025-07-14 16:20:24.976 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `é` with shift 0 alt 0
+2025-07-14 16:20:25.117 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `ç` with shift 0 alt 0
+2025-07-14 16:20:25.193 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `` with shift 0 alt 0
+2025-07-14 16:20:25.193 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `[` with shift 0 alt 0
+2025-07-14 16:20:25.193 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `1` with shift 0 alt 0
+2025-07-14 16:20:25.194 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `3` with shift 0 alt 0
+2025-07-14 16:20:25.194 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `~` with shift 0 alt 0
+2025-07-14 16:20:25.198 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `4` with shift 0 alt 0
+2025-07-14 16:20:25.245 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `ç` with shift 0 alt 0
+2025-07-14 16:20:25.249 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `é` with shift 0 alt 0
+2025-07-14 16:20:25.441 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:20:25.446 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `4` with shift 0 alt 0
+2025-07-14 16:20:25.469 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `ç` with shift 0 alt 0
+2025-07-14 16:20:25.567 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `é` with shift 0 alt 0
+2025-07-14 16:20:25.685 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `ç` with shift 0 alt 0
+2025-07-14 16:20:25.738 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `` with shift 0 alt 0
+2025-07-14 16:20:25.739 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `[` with shift 0 alt 0
+2025-07-14 16:20:25.739 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `1` with shift 0 alt 0
+2025-07-14 16:20:25.740 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `3` with shift 0 alt 0
+2025-07-14 16:20:25.740 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `~` with shift 0 alt 0
+2025-07-14 16:20:25.834 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `é` with shift 0 alt 0
+2025-07-14 16:20:25.883 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `ç` with shift 0 alt 0
+2025-07-14 16:20:25.936 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:20:26.008 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `é` with shift 0 alt 0
+2025-07-14 16:20:26.103 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `ç` with shift 0 alt 0
+2025-07-14 16:20:26.156 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `` with shift 0 alt 0
+2025-07-14 16:20:26.156 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `[` with shift 0 alt 0
+2025-07-14 16:20:26.157 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `1` with shift 0 alt 0
+2025-07-14 16:20:26.157 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `3` with shift 0 alt 0
+2025-07-14 16:20:26.157 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `~` with shift 0 alt 0
+2025-07-14 16:20:26.275 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `é` with shift 0 alt 0
+2025-07-14 16:20:26.301 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `ç` with shift 0 alt 0
+2025-07-14 16:20:26.377 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:20:26.518 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `é` with shift 0 alt 0
+2025-07-14 16:20:26.659 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `ç` with shift 0 alt 0
+2025-07-14 16:20:26.782 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `` with shift 0 alt 0
+2025-07-14 16:20:26.783 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `[` with shift 0 alt 0
+2025-07-14 16:20:26.783 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `1` with shift 0 alt 0
+2025-07-14 16:20:26.784 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `3` with shift 0 alt 0
+2025-07-14 16:20:26.784 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `~` with shift 0 alt 0
+2025-07-14 16:20:26.900 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `é` with shift 0 alt 0
+2025-07-14 16:20:27.067 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:20:27.326 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `` with shift 0 alt 0
+2025-07-14 16:20:27.327 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `[` with shift 0 alt 0
+2025-07-14 16:20:27.327 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `1` with shift 0 alt 0
+2025-07-14 16:20:27.327 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `3` with shift 0 alt 0
+2025-07-14 16:20:27.328 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `~` with shift 0 alt 0
+2025-07-14 16:20:27.445 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:20:27.842 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `` with shift 0 alt 0
+2025-07-14 16:20:27.843 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `[` with shift 0 alt 0
+2025-07-14 16:20:27.843 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `1` with shift 0 alt 0
+2025-07-14 16:20:27.844 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `3` with shift 0 alt 0
+2025-07-14 16:20:27.844 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `~` with shift 0 alt 0
+2025-07-14 16:20:27.984 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:20:28.448 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `1` with shift 0 alt 0
+2025-07-14 16:20:28.522 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `2` with shift 0 alt 0
+2025-07-14 16:20:28.640 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `1` with shift 0 alt 0
+2025-07-14 16:20:28.670 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `3` with shift 0 alt 0
+2025-07-14 16:20:28.743 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `2` with shift 0 alt 0
+2025-07-14 16:20:28.930 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `1` with shift 0 alt 0
+2025-07-14 16:20:28.983 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `3` with shift 0 alt 0
+2025-07-14 16:20:29.055 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `2` with shift 0 alt 0
+2025-07-14 16:20:29.150 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `1` with shift 0 alt 0
+2025-07-14 16:20:29.156 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `3` with shift 0 alt 0
+2025-07-14 16:20:29.276 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `2` with shift 0 alt 0
+2025-07-14 16:20:29.349 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `3` with shift 0 alt 0
+2025-07-14 16:20:29.560 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `q` with shift 0 alt 0
+2025-07-14 16:20:29.634 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `w` with shift 0 alt 0
+2025-07-14 16:20:29.686 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `e` with shift 0 alt 0
+2025-07-14 16:20:29.734 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `q` with shift 0 alt 0
+2025-07-14 16:20:29.739 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `w` with shift 0 alt 0
+2025-07-14 16:20:29.883 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `e` with shift 0 alt 0
+2025-07-14 16:20:31.289 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `z` with shift 0 alt 0
+2025-07-14 16:20:31.362 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `z` with shift 0 alt 0
+2025-07-14 16:20:31.482 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `z` with shift 0 alt 0
+2025-07-14 16:20:31.555 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `z` with shift 0 alt 0
+2025-07-14 16:20:31.906 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `z` with shift 0 alt 0
+2025-07-14 16:20:31.979 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `z` with shift 0 alt 0
+2025-07-14 16:20:32.214 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `|` with shift 0 alt 0
+2025-07-14 16:20:32.288 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `|` with shift 0 alt 0
+2025-07-14 16:20:32.431 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `|` with shift 0 alt 0
+2025-07-14 16:20:32.504 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `|` with shift 0 alt 0
+2025-07-14 16:20:32.646 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `|` with shift 0 alt 0
+2025-07-14 16:20:32.697 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `|` with shift 0 alt 0
+2025-07-14 16:20:32.977 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `}` with shift 0 alt 0
+2025-07-14 16:20:33.049 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `}` with shift 0 alt 0
+2025-07-14 16:20:33.170 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `}` with shift 0 alt 0
+2025-07-14 16:20:33.266 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `}` with shift 0 alt 0
+2025-07-14 16:20:33.363 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `}` with shift 0 alt 0
+2025-07-14 16:20:33.459 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `}` with shift 0 alt 0
+2025-07-14 16:20:33.974 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `{` with shift 0 alt 0
+2025-07-14 16:20:34.071 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `{` with shift 0 alt 0
+2025-07-14 16:20:34.190 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `{` with shift 0 alt 0
+2025-07-14 16:20:34.310 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `{` with shift 0 alt 0
+2025-07-14 16:20:34.407 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `{` with shift 0 alt 0
+2025-07-14 16:20:34.503 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `{` with shift 0 alt 0
+2025-07-14 16:20:34.736 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `z` with shift 0 alt 0
+2025-07-14 16:20:34.810 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `z` with shift 0 alt 0
+2025-07-14 16:20:34.930 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `z` with shift 0 alt 0
+2025-07-14 16:20:34.981 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `z` with shift 0 alt 0
+2025-07-14 16:20:35.192 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `|` with shift 0 alt 0
+2025-07-14 16:20:35.220 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `|` with shift 0 alt 0
+2025-07-14 16:20:35.501 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `|` with shift 0 alt 0
+2025-07-14 16:20:35.528 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `|` with shift 0 alt 0
+2025-07-14 16:20:35.831 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `}` with shift 0 alt 0
+2025-07-14 16:20:35.951 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `}` with shift 0 alt 0
+2025-07-14 16:20:35.979 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `z` with shift 0 alt 0
+2025-07-14 16:20:36.030 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `z` with shift 0 alt 0
+2025-07-14 16:20:36.288 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `z` with shift 0 alt 0
+2025-07-14 16:20:36.408 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `z` with shift 0 alt 0
+2025-07-14 16:20:36.482 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `{` with shift 0 alt 0
+2025-07-14 16:20:36.556 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `{` with shift 0 alt 0
+2025-07-14 16:20:36.697 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `|` with shift 0 alt 0
+2025-07-14 16:20:36.771 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `|` with shift 0 alt 0
+2025-07-14 16:20:36.820 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `}` with shift 0 alt 0
+2025-07-14 16:20:36.962 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `}` with shift 0 alt 0
+2025-07-14 16:20:36.991 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `z` with shift 0 alt 0
+2025-07-14 16:20:37.087 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `z` with shift 0 alt 0
+2025-07-14 16:20:37.162 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `{` with shift 0 alt 0
+2025-07-14 16:20:37.305 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `{` with shift 0 alt 0
+2025-07-14 16:20:37.377 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `|` with shift 0 alt 0
+2025-07-14 16:20:37.497 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `|` with shift 0 alt 0
+2025-07-14 16:20:37.546 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `}` with shift 0 alt 0
+2025-07-14 16:20:37.736 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `z` with shift 0 alt 0
+2025-07-14 16:20:37.762 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `}` with shift 0 alt 0
+2025-07-14 16:20:37.883 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `z` with shift 0 alt 0
+2025-07-14 16:20:38.002 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `z` with shift 0 alt 0
+2025-07-14 16:20:38.030 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `z` with shift 0 alt 0
+2025-07-14 16:20:38.035 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `{` with shift 0 alt 0
+2025-07-14 16:20:38.245 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `}` with shift 0 alt 0
+2025-07-14 16:20:38.275 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `{` with shift 0 alt 0
+2025-07-14 16:20:38.531 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 0 `z` with shift 0 alt 0
+2025-07-14 16:20:38.556 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `}` with shift 0 alt 0
+2025-07-14 16:20:38.632 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `z` with shift 0 alt 0
+2025-07-14 16:20:38.801 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `&` with shift 0 alt 0
+2025-07-14 16:20:49.541 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:20:49.633 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:20:49.633 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:20:49.663 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:20:49.734 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 0 alt 0
+2025-07-14 16:20:53.183 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:20:53.648 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:20:54.438 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:20:55.015 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:20:55.323 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:20:55.616 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 0 alt 0
+2025-07-14 16:20:55.655 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 0 alt 0
+2025-07-14 16:20:55.696 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 0 alt 0
+2025-07-14 16:20:55.736 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 0 alt 0
+2025-07-14 16:20:55.741 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 0 alt 0
+2025-07-14 16:20:56.047 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:20:56.302 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:20:56.420 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 1 alt 0
+2025-07-14 16:20:56.933 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:20:57.030 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 1 alt 0
+2025-07-14 16:20:57.131 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:20:57.973 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `q` with shift 0 alt 0
+2025-07-14 16:20:58.116 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `q` with shift 0 alt 0
+2025-07-14 16:20:58.321 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:20:58.321 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:20:58.439 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:20:58.745 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:20:58.814 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:20:58.814 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:20:58.869 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:20:58.938 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 0 alt 0
+2025-07-14 16:20:59.015 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:20:59.276 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:21:00.204 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:21:00.412 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:21:00.601 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 1 alt 0
+2025-07-14 16:21:00.697 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:21:00.863 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 1 alt 0
+2025-07-14 16:21:01.097 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:21:01.241 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 1 alt 0
+2025-07-14 16:21:01.388 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:21:01.623 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:21:01.831 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:21:02.020 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 1 alt 0
+2025-07-14 16:21:02.231 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:21:02.351 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 1 alt 0
+2025-07-14 16:21:02.521 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:21:02.687 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:21:02.779 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:21:02.833 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:21:02.880 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 0 alt 0
+2025-07-14 16:21:02.980 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:21:03.073 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:21:03.169 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 1 alt 0
+2025-07-14 16:21:03.289 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:21:03.385 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 1 alt 0
+2025-07-14 16:21:03.463 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:21:03.628 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:21:03.674 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:21:03.752 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:21:03.775 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 0 alt 0
+2025-07-14 16:21:03.783 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:21:03.922 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:21:03.949 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 1 alt 0
+2025-07-14 16:21:04.114 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:21:04.169 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:21:04.192 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 0 alt 0
+2025-07-14 16:21:04.316 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:21:04.339 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:21:04.371 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:21:04.440 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 0 alt 0
+2025-07-14 16:21:05.002 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:21:05.012 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `&` with shift 1 alt 0
+2025-07-14 16:21:05.334 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:21:05.391 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `&` with shift 0 alt 0
+2025-07-14 16:21:06.101 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 0 alt 0
+2025-07-14 16:21:06.220 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 0 alt 0
+2025-07-14 16:21:06.557 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `` with shift 0 alt 0
+2025-07-14 16:21:06.631 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `` with shift 0 alt 0
+2025-07-14 16:21:06.814 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:21:06.814 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:21:06.934 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:21:07.238 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:21:07.931 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:21:07.931 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:21:08.532 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 1 alt 0
+2025-07-14 16:21:08.572 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 1 alt 0
+2025-07-14 16:21:08.612 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 1 alt 0
+2025-07-14 16:21:08.652 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 1 alt 0
+2025-07-14 16:21:08.692 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 1 alt 0
+2025-07-14 16:21:08.732 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 1 alt 0
+2025-07-14 16:21:08.772 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 1 alt 0
+2025-07-14 16:21:08.812 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 1 alt 0
+2025-07-14 16:21:08.852 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 1 alt 0
+2025-07-14 16:21:08.893 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 1 alt 0
+2025-07-14 16:21:08.933 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 1 alt 0
+2025-07-14 16:21:08.973 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 1 alt 0
+2025-07-14 16:21:09.013 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 1 alt 0
+2025-07-14 16:21:09.044 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 1 alt 0
+2025-07-14 16:21:13.048 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:21:14.166 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `` with shift 0 alt 0
+2025-07-14 16:21:14.263 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `` with shift 0 alt 0
+2025-07-14 16:21:14.608 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:21:14.608 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:21:14.728 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:21:14.917 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:21:15.425 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:21:15.425 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:21:15.710 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:21:16.025 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 0 alt 0
+2025-07-14 16:21:16.065 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 0 alt 0
+2025-07-14 16:21:16.105 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 0 alt 0
+2025-07-14 16:21:16.145 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 2 `;` with shift 0 alt 0
+2025-07-14 16:21:16.148 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 0 alt 0
+2025-07-14 16:21:16.804 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:21:17.035 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:21:17.274 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:21:17.620 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 0 alt 0
+2025-07-14 16:21:17.998 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:21:17.998 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:21:18.116 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:21:23.549 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:21:23.595 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:21:23.595 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:21:23.649 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:21:23.659 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `q` with shift 0 alt 0
+2025-07-14 16:21:23.700 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 0 alt 0
+2025-07-14 16:21:23.738 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `q` with shift 0 alt 0
+2025-07-14 16:21:23.782 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:21:23.782 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:21:23.878 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:21:24.090 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:21:24.159 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:21:24.159 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:21:24.214 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:21:24.237 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `;` with shift 0 alt 0
+2025-07-14 16:21:24.251 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `q` with shift 0 alt 0
+2025-07-14 16:21:24.341 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:21:24.341 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:21:24.351 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `q` with shift 0 alt 0
+2025-07-14 16:21:24.442 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `Ò` with shift 0 alt 0
+2025-07-14 16:21:25.192 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `&` with shift 0 alt 0
+2025-07-14 16:21:43.610 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 3 `&` with shift 0 alt 0
+2025-07-14 16:21:44.242 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `&` with shift 0 alt 0
+2025-07-14 16:21:44.308 [34mDEBUG[0m src/ui/ui.c:ui_thread:168: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:21:46.809 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 16:21:46.991 [34mDEBUG[0m src/ui/ui.c:ui_thread:166: Got 1 `&` with shift 0 alt 0
+2025-07-14 16:21:50.985 [34mDEBUG[0m src/ui/ui.c:ui_thread:166: Got 3 `&` with shift 0 alt 0
+2025-07-14 16:21:51.144 [34mDEBUG[0m src/ui/ui.c:ui_thread:166: Got 1 `)` with shift 1 alt 0
+2025-07-14 16:21:51.190 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:21:51.190 [34mDEBUG[0m src/ui/ui.c:ui_thread:166: Got 1 `;` with shift 1 alt 0
+2025-07-14 16:21:51.244 [34mDEBUG[0m src/ui/ui.c:ui_thread:166: Got 3 `)` with shift 0 alt 0
+2025-07-14 16:21:51.291 [34mDEBUG[0m src/ui/ui.c:ui_thread:166: Got 3 `;` with shift 0 alt 0
+2025-07-14 16:21:52.576 [34mDEBUG[0m src/ui/ui.c:ui_thread:166: Got 1 `q` with shift 0 alt 0
+2025-07-14 16:21:52.672 [34mDEBUG[0m src/ui/ui.c:ui_thread:166: Got 3 `q` with shift 0 alt 0
+2025-07-14 16:21:53.316 [34mDEBUG[0m src/ui/ui.c:ui_thread:166: Got 1 `Ò` with shift 0 alt 0
+2025-07-14 16:21:53.316 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:21:53.318 [32m INFO[0m src/ui/ui.c:ui_thread:181: FINISHING WITH NOTCURSES
+2025-07-14 16:21:53.318 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 16:26:14.926 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 16:26:18.328 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got P `w` with shift 0 alt 0
+2025-07-14 16:26:18.424 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got L `w` with shift 0 alt 0
+2025-07-14 16:26:18.890 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got P `w` with shift 0 alt 0
+2025-07-14 16:26:19.125 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got L `w` with shift 0 alt 0
+2025-07-14 16:26:19.497 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got P `q` with shift 0 alt 0
+2025-07-14 16:26:19.686 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got L `q` with shift 0 alt 0
+2025-07-14 16:26:20.037 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got P `q` with shift 0 alt 0
+2025-07-14 16:26:20.272 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got L `q` with shift 0 alt 0
+2025-07-14 16:26:20.394 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got P `e` with shift 0 alt 0
+2025-07-14 16:26:20.537 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got L `e` with shift 0 alt 0
+2025-07-14 16:26:20.809 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got P `Ò` with shift 0 alt 0
+2025-07-14 16:26:20.998 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got L `Ò` with shift 0 alt 0
+2025-07-14 16:26:21.163 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got P `Ò` with shift 0 alt 0
+2025-07-14 16:26:21.283 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got L `Ò` with shift 0 alt 0
+2025-07-14 16:26:21.564 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got P `)` with shift 1 alt 0
+2025-07-14 16:26:21.661 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got L `)` with shift 0 alt 0
+2025-07-14 16:26:21.756 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got P `)` with shift 1 alt 0
+2025-07-14 16:26:21.853 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got L `)` with shift 0 alt 0
+2025-07-14 16:26:21.949 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got P `)` with shift 1 alt 0
+2025-07-14 16:26:22.046 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got L `)` with shift 0 alt 0
+2025-07-14 16:26:22.582 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got P `)` with shift 1 alt 0
+2025-07-14 16:26:22.673 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got P `;` with shift 1 alt 0
+2025-07-14 16:26:22.674 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:26:22.729 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got L `)` with shift 0 alt 0
+2025-07-14 16:26:22.775 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got L `;` with shift 0 alt 0
+2025-07-14 16:26:22.789 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got P `q` with shift 0 alt 0
+2025-07-14 16:26:22.886 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got L `q` with shift 0 alt 0
+2025-07-14 16:26:22.906 [34mDEBUG[0m src/ui/ui.c:ui_thread:182: Got P `Ò` with shift 0 alt 0
+2025-07-14 16:26:22.906 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:26:22.908 [32m INFO[0m src/ui/ui.c:ui_thread:197: FINISHING WITH NOTCURSES
+2025-07-14 16:26:22.908 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 16:42:48.007 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 16:42:53.383 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:42:54.863 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:42:54.865 [32m INFO[0m src/ui/ui.c:ui_thread:181: FINISHING WITH NOTCURSES
+2025-07-14 16:42:54.865 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 16:43:36.996 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 16:43:40.965 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:43:41.086 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x77 (119)] 'w'
+2025-07-14 16:43:41.158 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:43:41.189 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x65 (101)] 'e'
+2025-07-14 16:43:41.238 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x77 (119)] 'w'
+2025-07-14 16:43:41.426 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:43:41.432 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x65 (101)] 'e'
+2025-07-14 16:43:41.596 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x77 (119)] 'w'
+2025-07-14 16:43:41.669 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:43:41.699 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x65 (101)] 'e'
+2025-07-14 16:43:41.793 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x77 (119)] 'w'
+2025-07-14 16:43:41.961 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x65 (101)] 'e'
+2025-07-14 16:43:42.355 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:43:42.477 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x77 (119)] 'w'
+2025-07-14 16:43:42.526 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:43:42.531 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x65 (101)] 'e'
+2025-07-14 16:43:42.603 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x77 (119)] 'w'
+2025-07-14 16:43:42.748 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x65 (101)] 'e'
+2025-07-14 16:43:42.773 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:43:42.917 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x77 (119)] 'w'
+2025-07-14 16:43:42.989 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:43:42.996 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x65 (101)] 'e'
+2025-07-14 16:43:43.090 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x77 (119)] 'w'
+2025-07-14 16:43:43.189 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x65 (101)] 'e'
+2025-07-14 16:43:43.444 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:43:43.611 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x77 (119)] 'w'
+2025-07-14 16:43:43.661 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:43:43.666 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x65 (101)] 'e'
+2025-07-14 16:43:43.739 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x77 (119)] 'w'
+2025-07-14 16:43:43.907 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x65 (101)] 'e'
+2025-07-14 16:43:43.953 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:43:44.074 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x77 (119)] 'w'
+2025-07-14 16:43:44.146 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:43:44.199 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x65 (101)] 'e'
+2025-07-14 16:43:44.248 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x77 (119)] 'w'
+2025-07-14 16:43:44.323 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x65 (101)] 'e'
+2025-07-14 16:43:44.948 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:43:45.115 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x77 (119)] 'w'
+2025-07-14 16:43:45.141 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:43:45.146 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x77 (119)] 'w'
+2025-07-14 16:43:46.050 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 16:43:46.171 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x73 (115)] 's'
+2025-07-14 16:43:46.199 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x64 (100)] 'd'
+2025-07-14 16:43:46.225 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 16:43:46.299 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x73 (115)] 's'
+2025-07-14 16:43:46.397 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x64 (100)] 'd'
+2025-07-14 16:43:47.176 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:43:47.292 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:43:47.292 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:43:47.347 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:43:47.393 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:43:51.656 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:43:51.753 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:43:52.882 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:43:52.882 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:43:52.884 [32m INFO[0m src/ui/ui.c:ui_thread:181: FINISHING WITH NOTCURSES
+2025-07-14 16:43:52.884 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 16:45:47.447 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 16:45:47.816 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:45:47.862 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:45:47.862 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:45:47.916 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:45:47.962 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:45:48.070 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:45:48.168 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x77 (119)] 'w'
+2025-07-14 16:45:48.196 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x65 (101)] 'e'
+2025-07-14 16:45:48.245 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:45:48.273 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x77 (119)] 'w'
+2025-07-14 16:45:48.346 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:45:48.398 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x65 (101)] 'e'
+2025-07-14 16:45:48.470 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:45:48.475 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x65 (101)] 'e'
+2025-07-14 16:45:48.526 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x65 (101)] 'e'
+2025-07-14 16:45:48.706 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:46:33.829 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 16:46:34.191 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:46:34.238 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:46:34.238 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:46:34.315 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:46:34.385 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:46:34.654 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x77 (119)] 'w'
+2025-07-14 16:46:34.730 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x65 (101)] 'e'
+2025-07-14 16:46:34.801 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x77 (119)] 'w'
+2025-07-14 16:46:34.876 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x65 (101)] 'e'
+2025-07-14 16:46:34.917 [32m INFO[0m src/ui/ui.c:cmd_input:126: CMD `we`
+2025-07-14 16:46:34.917 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:46:34.917 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:46:35.036 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:46:35.741 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110426 (1115174)] 'left super'
+2025-07-14 16:46:39.309 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:46:39.377 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:46:39.377 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:46:39.431 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:46:39.479 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:46:40.255 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:46:40.352 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:46:40.488 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:46:40.488 [32m INFO[0m src/ui/ui.c:cmd_input:126: CMD `qe`
+2025-07-14 16:46:40.488 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:46:40.585 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:46:41.467 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:46:41.558 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:46:41.558 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:46:41.613 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:46:41.683 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:46:41.720 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:46:41.816 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:46:41.884 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:46:41.884 [32m INFO[0m src/ui/ui.c:cmd_input:126: CMD `qe`
+2025-07-14 16:46:41.884 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:46:41.979 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:46:42.446 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:46:42.538 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:46:42.538 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:46:42.569 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:46:42.615 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:46:42.654 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:46:42.728 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x77 (119)] 'w'
+2025-07-14 16:46:42.781 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x65 (101)] 'e'
+2025-07-14 16:46:42.805 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:46:42.856 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x77 (119)] 'w'
+2025-07-14 16:46:42.931 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x65 (101)] 'e'
+2025-07-14 16:46:43.064 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:46:43.064 [32m INFO[0m src/ui/ui.c:cmd_input:126: CMD `qwe`
+2025-07-14 16:46:43.064 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:46:43.161 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:46:43.674 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:46:43.721 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:46:43.721 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:46:43.774 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:46:43.844 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:46:43.929 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:46:44.001 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:46:44.069 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:46:44.069 [32m INFO[0m src/ui/ui.c:cmd_input:126: CMD `qwe`
+2025-07-14 16:46:44.069 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:46:44.165 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:46:44.724 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:46:44.815 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:46:44.815 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:46:44.847 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:46:44.916 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:46:45.092 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 16:46:45.212 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 16:46:45.233 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:46:45.233 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:46:45.233 [32m INFO[0m src/ui/ui.c:cmd_input:126: CMD `awe`
+2025-07-14 16:46:45.330 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:46:46.033 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110426 (1115174)] 'left super'
+2025-07-14 16:46:50.176 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110426 (1115174)] 'left super'
+2025-07-14 16:46:50.613 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:46:50.682 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:46:50.682 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:46:50.736 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:46:50.782 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:46:50.797 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:46:50.894 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:46:50.914 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:46:50.914 [32m INFO[0m src/ui/ui.c:cmd_input:126: CMD `qwe`
+2025-07-14 16:46:50.914 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:46:51.010 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:46:51.346 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110426 (1115174)] 'left super'
+2025-07-14 16:46:51.411 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:46:54.615 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 16:46:54.672 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:46:54.763 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:46:54.763 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:46:54.842 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:46:54.887 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:46:55.365 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:46:55.440 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x77 (119)] 'w'
+2025-07-14 16:46:55.492 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x65 (101)] 'e'
+2025-07-14 16:46:55.516 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:46:55.545 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x77 (119)] 'w'
+2025-07-14 16:46:55.619 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x65 (101)] 'e'
+2025-07-14 16:46:55.729 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:46:55.729 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:46:55.729 [32m INFO[0m src/ui/ui.c:cmd_input:127: CMD `qwe`
+2025-07-14 16:46:55.803 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:46:56.038 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:46:56.107 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:46:56.107 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:46:56.138 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:46:56.208 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:46:56.478 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:46:56.550 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:46:56.595 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:46:56.595 [32m INFO[0m src/ui/ui.c:cmd_input:127: CMD `q`
+2025-07-14 16:46:56.595 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:46:56.597 [32m INFO[0m src/ui/ui.c:ui_thread:183: FINISHING WITH NOTCURSES
+2025-07-14 16:46:56.598 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 16:46:57.487 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 16:46:57.515 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:47:02.185 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:47:02.305 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:47:03.648 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:47:03.717 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:47:03.717 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:47:03.749 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:47:03.772 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:47:04.682 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:47:05.675 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:47:05.794 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:47:06.121 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:47:06.218 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:47:06.337 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:47:06.411 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:47:06.508 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:47:06.604 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:47:06.658 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:47:07.454 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:47:07.646 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x77 (119)] 'w'
+2025-07-14 16:47:07.694 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:47:07.747 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x65 (101)] 'e'
+2025-07-14 16:47:07.843 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x77 (119)] 'w'
+2025-07-14 16:47:08.078 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x65 (101)] 'e'
+2025-07-14 16:47:08.266 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 16:47:08.316 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x73 (115)] 's'
+2025-07-14 16:47:08.389 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 16:47:08.419 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x64 (100)] 'd'
+2025-07-14 16:47:08.468 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x73 (115)] 's'
+2025-07-14 16:47:08.586 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 16:47:08.617 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x64 (100)] 'd'
+2025-07-14 16:47:08.688 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x73 (115)] 's'
+2025-07-14 16:47:08.760 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 16:47:08.767 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x64 (100)] 'd'
+2025-07-14 16:47:08.840 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x73 (115)] 's'
+2025-07-14 16:47:08.914 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x64 (100)] 'd'
+2025-07-14 16:47:08.979 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:47:08.979 [32m INFO[0m src/ui/ui.c:cmd_input:127: CMD `;;;;qweasdasd`
+2025-07-14 16:47:08.979 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:47:09.098 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:47:10.026 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:47:10.095 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:47:10.095 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:47:10.103 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:47:10.172 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:47:10.488 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:47:10.607 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:47:11.021 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:47:11.021 [32m INFO[0m src/ui/ui.c:cmd_input:127: CMD `q`
+2025-07-14 16:47:11.021 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:47:11.023 [32m INFO[0m src/ui/ui.c:ui_thread:183: FINISHING WITH NOTCURSES
+2025-07-14 16:47:11.023 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 16:47:33.385 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 16:47:33.414 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:47:34.365 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:47:34.537 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x41 (065)] 'A'
+2025-07-14 16:47:34.634 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x41 (065)] 'A'
+2025-07-14 16:47:35.053 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x41 (065)] 'A'
+2025-07-14 16:47:35.173 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x41 (065)] 'A'
+2025-07-14 16:47:35.269 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x41 (065)] 'A'
+2025-07-14 16:47:35.365 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x41 (065)] 'A'
+2025-07-14 16:47:35.762 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x51 (081)] 'Q'
+2025-07-14 16:47:35.836 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x51 (081)] 'Q'
+2025-07-14 16:47:35.955 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x51 (081)] 'Q'
+2025-07-14 16:47:36.075 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x51 (081)] 'Q'
+2025-07-14 16:47:36.327 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:47:36.500 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 16:47:36.549 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 16:47:36.692 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 16:47:36.743 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 16:47:36.908 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 16:47:36.983 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 16:47:37.171 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 16:47:37.267 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 16:47:37.750 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:47:37.843 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:47:37.843 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:47:37.896 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:47:37.943 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:47:38.004 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:47:38.078 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:47:38.122 [32m INFO[0m src/ui/ui.c:cmd_input:127: CMD `q`
+2025-07-14 16:47:38.122 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:47:38.122 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:47:38.124 [32m INFO[0m src/ui/ui.c:ui_thread:183: FINISHING WITH NOTCURSES
+2025-07-14 16:47:38.124 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 16:49:10.520 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 16:49:12.632 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:12.632 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:12.727 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:12.727 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:13.147 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:13.147 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:13.290 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:13.290 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:13.733 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:13.733 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:13.876 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:13.876 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:14.042 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:14.041 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:14.161 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:14.161 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:14.327 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:14.327 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:14.447 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:14.447 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:14.773 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P Special: [0x110423 (1115171)] 'left shift'
+2025-07-14 16:49:14.847 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x41 (065)] 'A'
+2025-07-14 16:49:14.847 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:15.013 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x41 (065)] 'A'
+2025-07-14 16:49:15.013 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:15.387 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:15.387 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x41 (065)] 'A'
+2025-07-14 16:49:15.599 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x41 (065)] 'A'
+2025-07-14 16:49:15.599 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:15.788 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L Special: [0x110423 (1115171)] 'left shift'
+2025-07-14 16:49:16.209 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 16:49:16.209 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:16.351 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 16:49:16.351 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:16.701 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 16:49:16.701 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:16.822 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 16:49:16.821 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:17.447 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P Special: [0x110423 (1115171)] 'left shift'
+2025-07-14 16:49:17.637 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x41 (065)] 'A'
+2025-07-14 16:49:17.637 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:17.780 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x41 (065)] 'A'
+2025-07-14 16:49:17.780 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:18.132 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x41 (065)] 'A'
+2025-07-14 16:49:18.131 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:18.296 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x41 (065)] 'A'
+2025-07-14 16:49:18.296 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:18.391 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L Special: [0x110423 (1115171)] 'left shift'
+2025-07-14 16:49:18.883 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 16:49:18.883 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:18.955 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 16:49:18.955 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:19.214 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 16:49:19.214 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:19.334 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 16:49:19.333 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:19.915 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P Special: [0x110423 (1115171)] 'left shift'
+2025-07-14 16:49:20.036 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x41 (065)] 'A'
+2025-07-14 16:49:20.036 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:20.202 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x41 (065)] 'A'
+2025-07-14 16:49:20.202 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:20.227 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L Special: [0x110423 (1115171)] 'left shift'
+2025-07-14 16:49:20.718 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:20.718 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:20.745 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:20.745 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:21.228 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:49:21.321 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:49:21.321 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:49:21.321 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:21.374 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:49:21.408 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:21.408 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:21.425 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:49:21.425 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 16384
+2025-07-14 16:49:21.503 [32m INFO[0m src/ui/ui.c:cmd_input:127: CMD `q`
+2025-07-14 16:49:21.503 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:49:21.503 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:49:21.505 [32m INFO[0m src/ui/ui.c:ui_thread:183: FINISHING WITH NOTCURSES
+2025-07-14 16:49:21.505 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 16:49:31.117 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 16:49:31.816 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P Special: [0x110426 (1115174)] 'left super'
+2025-07-14 16:49:33.886 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L Special: [0x110426 (1115174)] 'left super'
+2025-07-14 16:49:34.768 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:34.767 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:34.842 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x77 (119)] 'w'
+2025-07-14 16:49:34.842 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:34.891 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:34.891 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:34.921 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x65 (101)] 'e'
+2025-07-14 16:49:34.921 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:34.993 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x77 (119)] 'w'
+2025-07-14 16:49:34.993 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:35.114 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x65 (101)] 'e'
+2025-07-14 16:49:35.114 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:35.600 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:35.600 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:35.698 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x77 (119)] 'w'
+2025-07-14 16:49:35.698 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:35.704 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x65 (101)] 'e'
+2025-07-14 16:49:35.704 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:35.729 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:35.729 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:35.757 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x77 (119)] 'w'
+2025-07-14 16:49:35.757 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:35.831 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x65 (101)] 'e'
+2025-07-14 16:49:35.831 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:36.016 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P Special: [0x110423 (1115171)] 'left shift'
+2025-07-14 16:49:36.161 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x41 (065)] 'A'
+2025-07-14 16:49:36.161 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:36.304 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x41 (065)] 'A'
+2025-07-14 16:49:36.303 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:36.493 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x41 (065)] 'A'
+2025-07-14 16:49:36.492 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:36.589 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x41 (065)] 'A'
+2025-07-14 16:49:36.589 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:36.662 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x41 (065)] 'A'
+2025-07-14 16:49:36.662 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:36.780 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L Special: [0x110423 (1115171)] 'left shift'
+2025-07-14 16:49:36.786 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 16:49:36.786 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:36.952 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:36.952 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:37.071 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:37.071 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:37.230 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:49:37.278 [32m INFO[0m src/ui/ui.c:cmd_init:84: in cmd mode
+2025-07-14 16:49:37.278 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 16:49:37.277 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:37.332 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 16:49:37.402 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 16:49:37.402 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:37.416 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:37.416 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:37.513 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 16:49:37.513 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:182: WIDE 1
+2025-07-14 16:49:38.156 [32m INFO[0m src/ui/ui.c:cmd_input:127: CMD `q`
+2025-07-14 16:49:38.156 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:192: Got P Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 16:49:38.156 [32m INFO[0m src/ui/ui.c:cmd_deinit:109: out cmd mode
+2025-07-14 16:49:38.158 [32m INFO[0m src/ui/ui.c:ui_thread:183: FINISHING WITH NOTCURSES
+2025-07-14 16:49:38.158 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 17:00:01.281 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 17:00:04.617 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 17:00:04.686 [32m INFO[0m src/ui/ui.c:cmd_init:83: in cmd mode
+2025-07-14 17:00:04.686 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 17:00:04.717 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 17:00:04.787 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 17:00:07.041 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 17:00:07.160 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 17:00:08.113 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x77 (119)] 'w'
+2025-07-14 17:00:08.279 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x77 (119)] 'w'
+2025-07-14 17:00:08.377 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x65 (101)] 'e'
+2025-07-14 17:00:08.589 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x65 (101)] 'e'
+2025-07-14 17:00:08.913 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 17:00:09.011 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x73 (115)] 's'
+2025-07-14 17:00:09.128 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 17:00:09.135 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x64 (100)] 'd'
+2025-07-14 17:00:09.208 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x73 (115)] 's'
+2025-07-14 17:00:09.375 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x64 (100)] 'd'
+2025-07-14 17:00:09.553 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 17:00:09.553 [32m INFO[0m src/ui/ui.c:cmd_input:129: CMD `qweasd`
+2025-07-14 17:00:09.553 [32m INFO[0m src/ui/ui.c:cmd_deinit:111: out cmd mode
+2025-07-14 17:00:09.673 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 17:00:12.148 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 17:00:12.241 [32m INFO[0m src/ui/ui.c:cmd_init:83: in cmd mode
+2025-07-14 17:00:12.241 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 17:01:05.675 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 17:01:05.749 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 17:01:06.193 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 17:01:06.261 [32m INFO[0m src/ui/ui.c:cmd_init:83: in cmd mode
+2025-07-14 17:01:06.261 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 17:01:06.340 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 17:01:06.386 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 17:01:06.770 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 17:01:06.892 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x77 (119)] 'w'
+2025-07-14 17:01:06.940 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 17:01:06.994 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x65 (101)] 'e'
+2025-07-14 17:01:07.042 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x77 (119)] 'w'
+2025-07-14 17:01:07.163 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x65 (101)] 'e'
+2025-07-14 17:01:07.298 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got u Special: [0x11037d (1115005)] 'left'
+2025-07-14 17:01:07.418 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x11037d (1115005)] 'left'
+2025-07-14 17:01:07.538 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got u Special: [0x11037d (1115005)] 'left'
+2025-07-14 17:01:07.611 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x11037d (1115005)] 'left'
+2025-07-14 17:01:07.708 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got u Special: [0x11037d (1115005)] 'left'
+2025-07-14 17:01:07.804 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x11037d (1115005)] 'left'
+2025-07-14 17:01:07.975 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 17:01:08.096 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x77 (119)] 'w'
+2025-07-14 17:01:08.144 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 17:01:08.175 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x65 (101)] 'e'
+2025-07-14 17:01:08.247 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x77 (119)] 'w'
+2025-07-14 17:01:08.414 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x65 (101)] 'e'
+2025-07-14 17:01:08.526 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got u Special: [0x11037d (1115005)] 'left'
+2025-07-14 17:01:08.853 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x11037d (1115005)] 'left'
+2025-07-14 17:01:08.859 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got u Special: [0x11037b (1115003)] 'right'
+2025-07-14 17:01:09.118 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x11037b (1115003)] 'right'
+2025-07-14 17:01:09.235 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got u Special: [0x11037d (1115005)] 'left'
+2025-07-14 17:01:09.332 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x11037d (1115005)] 'left'
+2025-07-14 17:01:09.499 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got u Special: [0x11037c (1115004)] 'down'
+2025-07-14 17:01:09.619 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x11037c (1115004)] 'down'
+2025-07-14 17:01:09.742 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 17:01:09.817 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x73 (115)] 's'
+2025-07-14 17:01:09.889 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 17:01:09.896 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x64 (100)] 'd'
+2025-07-14 17:01:09.968 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x73 (115)] 's'
+2025-07-14 17:01:10.063 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 17:01:10.093 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x64 (100)] 'd'
+2025-07-14 17:01:10.235 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x73 (115)] 's'
+2025-07-14 17:01:10.260 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 17:01:10.289 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x73 (115)] 's'
+2025-07-14 17:01:10.446 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110380 (1115008)] 'backspace'
+2025-07-14 17:01:10.520 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110380 (1115008)] 'backspace'
+2025-07-14 17:01:10.594 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110380 (1115008)] 'backspace'
+2025-07-14 17:01:10.690 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110380 (1115008)] 'backspace'
+2025-07-14 17:01:10.764 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110380 (1115008)] 'backspace'
+2025-07-14 17:01:10.859 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110380 (1115008)] 'backspace'
+2025-07-14 17:01:10.956 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110380 (1115008)] 'backspace'
+2025-07-14 17:01:11.030 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110380 (1115008)] 'backspace'
+2025-07-14 17:01:11.103 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110380 (1115008)] 'backspace'
+2025-07-14 17:01:11.131 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110380 (1115008)] 'backspace'
+2025-07-14 17:01:11.180 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110380 (1115008)] 'backspace'
+2025-07-14 17:01:11.231 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110380 (1115008)] 'backspace'
+2025-07-14 17:01:11.266 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 17:01:11.340 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x77 (119)] 'w'
+2025-07-14 17:01:11.389 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 17:01:11.396 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x65 (101)] 'e'
+2025-07-14 17:01:11.445 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x77 (119)] 'w'
+2025-07-14 17:01:11.566 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x65 (101)] 'e'
+2025-07-14 17:01:11.860 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110380 (1115008)] 'backspace'
+2025-07-14 17:01:11.934 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110380 (1115008)] 'backspace'
+2025-07-14 17:01:12.129 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 17:01:12.203 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 17:01:12.553 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 17:01:12.674 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 17:01:12.954 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 17:01:13.050 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 17:01:13.242 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x77 (119)] 'w'
+2025-07-14 17:01:13.293 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x65 (101)] 'e'
+2025-07-14 17:01:13.342 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x77 (119)] 'w'
+2025-07-14 17:01:13.440 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x65 (101)] 'e'
+2025-07-14 17:01:13.511 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 17:01:13.586 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x73 (115)] 's'
+2025-07-14 17:01:13.635 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 17:01:13.642 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x64 (100)] 'd'
+2025-07-14 17:01:13.667 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x73 (115)] 's'
+2025-07-14 17:01:13.788 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x64 (100)] 'd'
+2025-07-14 17:01:13.953 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x64 (100)] 'd'
+2025-07-14 17:01:13.988 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x6b (107)] 'k'
+2025-07-14 17:01:14.039 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x6b (107)] 'k'
+2025-07-14 17:01:14.055 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 17:01:14.061 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x73 (115)] 's'
+2025-07-14 17:01:14.066 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x64 (100)] 'd'
+2025-07-14 17:01:14.078 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x6b (107)] 'k'
+2025-07-14 17:01:14.083 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x6c (108)] 'l'
+2025-07-14 17:01:14.089 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 17:01:14.115 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x6c (108)] 'l'
+2025-07-14 17:01:14.120 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 17:01:14.138 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x64 (100)] 'd'
+2025-07-14 17:01:14.149 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x6b (107)] 'k'
+2025-07-14 17:01:14.166 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 17:01:14.178 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x6a (106)] 'j'
+2025-07-14 17:01:14.183 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x6b (107)] 'k'
+2025-07-14 17:01:14.203 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x73 (115)] 's'
+2025-07-14 17:01:14.210 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x66 (102)] 'f'
+2025-07-14 17:01:14.218 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x6a (106)] 'j'
+2025-07-14 17:01:14.240 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x64 (100)] 'd'
+2025-07-14 17:01:14.250 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x6b (107)] 'k'
+2025-07-14 17:01:14.282 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x27 (039)] '''
+2025-07-14 17:01:14.319 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 17:01:14.325 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x73 (115)] 's'
+2025-07-14 17:01:14.353 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x66 (102)] 'f'
+2025-07-14 17:01:14.391 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x27 (039)] '''
+2025-07-14 17:01:14.408 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x64 (100)] 'd'
+2025-07-14 17:01:14.417 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x6b (107)] 'k'
+2025-07-14 17:01:14.459 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 17:01:14.466 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x66 (102)] 'f'
+2025-07-14 17:01:14.492 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x73 (115)] 's'
+2025-07-14 17:01:14.526 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x6b (107)] 'k'
+2025-07-14 17:01:14.547 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x64 (100)] 'd'
+2025-07-14 17:01:14.562 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x27 (039)] '''
+2025-07-14 17:01:14.589 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 17:01:14.605 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 17:01:14.619 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x6c (108)] 'l'
+2025-07-14 17:01:14.626 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x27 (039)] '''
+2025-07-14 17:01:14.641 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x73 (115)] 's'
+2025-07-14 17:01:14.646 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x66 (102)] 'f'
+2025-07-14 17:01:14.656 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x6b (107)] 'k'
+2025-07-14 17:01:14.663 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 17:01:14.690 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x6c (108)] 'l'
+2025-07-14 17:01:14.709 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x64 (100)] 'd'
+2025-07-14 17:01:14.755 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 17:01:14.788 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x66 (102)] 'f'
+2025-07-14 17:01:14.796 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x6b (107)] 'k'
+2025-07-14 17:01:14.803 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x6c (108)] 'l'
+2025-07-14 17:01:14.808 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 17:01:14.813 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x27 (039)] '''
+2025-07-14 17:01:14.829 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x73 (115)] 's'
+2025-07-14 17:01:14.856 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x64 (100)] 'd'
+2025-07-14 17:01:14.869 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x6c (108)] 'l'
+2025-07-14 17:01:14.875 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 17:01:14.880 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x27 (039)] '''
+2025-07-14 17:01:14.904 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x6b (107)] 'k'
+2025-07-14 17:01:14.921 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x61 (097)] 'a'
+2025-07-14 17:01:14.949 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x73 (115)] 's'
+2025-07-14 17:01:14.956 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x66 (102)] 'f'
+2025-07-14 17:01:15.013 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x6b (107)] 'k'
+2025-07-14 17:01:15.021 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x27 (039)] '''
+2025-07-14 17:01:15.037 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x64 (100)] 'd'
+2025-07-14 17:01:15.054 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x27 (039)] '''
+2025-07-14 17:01:15.066 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x61 (097)] 'a'
+2025-07-14 17:01:15.072 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x73 (115)] 's'
+2025-07-14 17:01:15.124 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x64 (100)] 'd'
+2025-07-14 17:01:15.188 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 17:01:15.188 [32m INFO[0m src/ui/ui.c:cmd_deinit:111: out cmd mode
+2025-07-14 17:01:15.188 [32m INFO[0m src/ui/ui.c:cmd_input:129: CMD `qweqwqwqqqweasddkaskl;djkf'asdkf';alskdfl;'kas'd`
+2025-07-14 17:01:15.308 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 17:01:15.658 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 17:01:15.705 [32m INFO[0m src/ui/ui.c:cmd_init:83: in cmd mode
+2025-07-14 17:01:15.705 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 17:11:22.641 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 17:11:23.586 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 17:11:23.654 [32m INFO[0m src/ui/ui.c:cmd_init:83: in cmd mode
+2025-07-14 17:11:23.654 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 17:11:23.709 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 17:11:23.778 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 17:11:23.908 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 17:11:24.006 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got L ASCII: [0x71 (113)] 'q'
+2025-07-14 17:11:24.164 [34mDEBUG[0m inc/ui/util.h:ncinput_dump:191: Got P Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 17:11:24.164 [32m INFO[0m src/ui/ui.c:cmd_deinit:111: out cmd mode
+2025-07-14 17:11:24.164 [32m INFO[0m src/ui/ui.c:cmd_input:128: CMD `q`
+2025-07-14 17:11:24.166 [32m INFO[0m src/ui/ui.c:ui_thread:180: FINISHING WITH NOTCURSES
+2025-07-14 17:11:24.166 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 17:43:35.221 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 17:43:35.224 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 17:43:35.225 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 17:43:35.326 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got L Special: [0x1103f1 (1115121)] 'enter'
+2025-07-14 17:43:40.738 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 17:43:40.829 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 17:43:40.885 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 17:43:41.000 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got L ASCII: [0x3b (059)] ';'
+2025-07-14 17:43:41.332 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got P Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 17:43:41.401 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got P ASCII: [0x3b (059)] ';'
+2025-07-14 17:43:41.456 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got L Special: [0x110429 (1115177)] 'right shift'
+2025-07-14 17:43:41.467 [34mDEBUG[0m src/ui/util.c:ncinput_dump:191: Got P ASCII: [0x71 (113)] 'q'
+2025-07-14 17:43:41.467 [32m INFO[0m src/ui/cmd.c:cmd_deinit:31: UI deinit cmd
+2025-07-14 17:43:41.467 [32m INFO[0m src/ui/status.c:sb_deinit:29: UI deinit status bar
+2025-07-14 17:43:41.468 [32m INFO[0m src/ui/ui.c:ui_thread:46: FINISHING WITH NOTCURSES
+2025-07-14 17:43:41.468 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 

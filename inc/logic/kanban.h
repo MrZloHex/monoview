@@ -74,7 +74,4 @@ void      list_destroy(List *l);
 int       card_add_checklist_item(Card *c, int item_id, const char *text);
 int       card_toggle_checklist_item(Card *c, int item_id);
 
-/* === Display === */
-void      board_display(const Board *b);
-
 #endif /* KANBAN_H */
