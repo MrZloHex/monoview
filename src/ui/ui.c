@@ -39,6 +39,7 @@ ui_thread(void *arg)
 
     sb_init(&ui.sb, ui.nc);
     cmd_init(&ui.cmd, ui.nc);
+    notes_init(&ui.notes, ui.nc);
 
     notcurses_render(ui.nc);
 
@@ -68,6 +69,7 @@ ui_thread(void *arg)
 
     sb_deinit(&ui.sb);
     cmd_deinit(&ui.cmd);
+    notes_deinit(&ui.notes);
 
     notcurses_stop(ui.nc);
 

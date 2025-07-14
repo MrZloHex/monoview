@@ -2458,3 +2458,565 @@
 2025-07-14 19:18:10.165 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
 2025-07-14 19:18:10.167 [32m INFO[0m src/ui/ui.c:ui_thread:74: FINISHING WITH NOTCURSES
 2025-07-14 19:18:10.167 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:21:39.519 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:21:39.524 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:21:39.524 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:21:40.082 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:21:41.339 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:21:41.339 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `we`
+2025-07-14 19:21:41.833 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:21:42.382 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:21:42.382 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `qwe`
+2025-07-14 19:21:42.899 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:21:43.086 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 19:21:43.086 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:21:43.086 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:21:43.088 [32m INFO[0m src/ui/ui.c:ui_thread:74: FINISHING WITH NOTCURSES
+2025-07-14 19:21:43.088 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:27:15.631 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:27:15.636 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:27:15.636 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:27:20.390 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:27:20.945 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 19:27:20.946 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:27:20.946 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:27:20.947 [32m INFO[0m src/ui/ui.c:ui_thread:74: FINISHING WITH NOTCURSES
+2025-07-14 19:27:20.947 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 19:28:29.424 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 19:28:29.429 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 19:28:29.429 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 19:28:29.430 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 19:28:32.128 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:28:34.893 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 19:28:34.893 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `weasdfasdfasdf`
+2025-07-14 19:28:35.248 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 19:28:35.758 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 19:28:35.759 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 19:28:35.759 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 19:28:35.759 [32m INFO[0m src/ui/notes.c:notes_deinit:27: UI deinit notes
+2025-07-14 19:28:35.760 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 19:28:35.760 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 22:14:26.567 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 22:14:26.570 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 22:14:26.571 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 22:14:26.571 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 22:14:37.900 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 22:14:38.133 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 22:14:38.134 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 22:14:38.134 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 22:14:38.134 [32m INFO[0m src/ui/notes.c:notes_deinit:35: UI deinit notes
+2025-07-14 22:14:38.135 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 22:14:38.135 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 22:14:38.856 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 22:14:38.859 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 22:14:38.859 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 22:14:38.859 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 22:14:40.121 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 22:14:42.085 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 22:14:42.086 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 22:14:42.086 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 22:14:42.086 [32m INFO[0m src/ui/notes.c:notes_deinit:33: UI deinit notes
+2025-07-14 22:14:42.087 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 22:14:42.087 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 22:14:54.565 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 22:14:54.568 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 22:14:54.568 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 22:14:54.568 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 22:18:17.421 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 22:18:17.627 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 22:18:17.628 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 22:18:17.628 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 22:18:17.628 [32m INFO[0m src/ui/notes.c:notes_deinit:33: UI deinit notes
+2025-07-14 22:18:17.629 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 22:18:17.629 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 22:45:32.258 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 22:45:32.262 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 22:45:32.262 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 22:45:32.262 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 22:45:39.132 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 22:45:39.342 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 22:45:39.342 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 22:45:39.342 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 22:45:39.342 [32m INFO[0m src/ui/notes.c:notes_deinit:26: UI deinit notes
+2025-07-14 22:45:39.343 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 22:45:39.343 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 22:50:17.032 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 22:50:17.035 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 22:50:17.036 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 22:50:17.036 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 22:51:00.793 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 22:51:02.889 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 22:51:02.889 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 22:51:02.889 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 22:51:02.889 [32m INFO[0m src/ui/notes.c:notes_deinit:48: UI deinit notes
+2025-07-14 22:51:02.891 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 22:51:02.891 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 22:51:03.937 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 22:51:03.941 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 22:51:03.941 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 22:51:03.941 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 22:51:05.047 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 22:51:05.557 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 22:51:05.557 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 22:51:05.557 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 22:51:05.557 [32m INFO[0m src/ui/notes.c:notes_deinit:48: UI deinit notes
+2025-07-14 22:51:05.558 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 22:51:05.558 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 22:51:07.020 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 22:51:07.023 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 22:51:07.023 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 22:51:07.024 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:02:57.318 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:02:57.322 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:02:57.322 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:02:57.322 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:03:17.130 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:03:17.133 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:03:17.133 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:03:17.133 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:05:14.362 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:05:14.521 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:05:14.521 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:05:14.521 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:05:14.521 [32m INFO[0m src/ui/notes.c:notes_deinit:50: UI deinit notes
+2025-07-14 23:05:14.523 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:05:14.523 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:05:15.134 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:05:15.137 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:05:15.138 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:05:15.138 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:05:16.030 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:05:16.263 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:05:16.263 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:05:16.263 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:05:16.263 [32m INFO[0m src/ui/notes.c:notes_deinit:51: UI deinit notes
+2025-07-14 23:05:16.264 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:05:16.264 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:05:29.603 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:05:29.607 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:05:29.607 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:05:29.607 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:05:32.064 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:05:32.223 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:05:32.224 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:05:32.224 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:05:32.224 [32m INFO[0m src/ui/notes.c:notes_deinit:51: UI deinit notes
+2025-07-14 23:05:32.225 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:05:32.225 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:06:02.003 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:06:02.214 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:06:02.215 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:06:02.215 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:06:02.215 [32m INFO[0m src/ui/notes.c:notes_deinit:48: UI deinit notes
+2025-07-14 23:06:02.216 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:06:02.216 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:06:02.829 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:06:02.832 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:06:02.832 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:06:02.832 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:06:10.197 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:06:10.476 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:06:10.477 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:06:10.477 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:06:10.477 [32m INFO[0m src/ui/notes.c:notes_deinit:50: UI deinit notes
+2025-07-14 23:06:10.478 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:06:10.478 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:06:13.615 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:06:14.218 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:06:14.219 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:06:14.219 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:06:14.219 [32m INFO[0m src/ui/notes.c:notes_deinit:51: UI deinit notes
+2025-07-14 23:06:14.220 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:06:14.220 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:06:15.308 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:06:15.311 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:06:15.312 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:06:15.312 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:24:31.264 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:24:31.426 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:24:31.427 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:24:31.427 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:24:31.427 [32m INFO[0m src/ui/notes.c:notes_deinit:51: UI deinit notes
+2025-07-14 23:24:31.428 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:24:31.428 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:24:32.161 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:24:32.165 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:24:32.165 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:24:32.165 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:24:33.714 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:24:33.897 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:24:33.898 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:24:33.898 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:24:33.898 [32m INFO[0m src/ui/notes.c:notes_deinit:51: UI deinit notes
+2025-07-14 23:24:33.899 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:24:33.899 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:28:06.869 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:28:06.873 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:28:06.873 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:28:06.873 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:28:09.786 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:28:09.996 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:28:09.997 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:28:09.997 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:28:09.997 [32m INFO[0m src/ui/notes.c:notes_deinit:51: UI deinit notes
+2025-07-14 23:28:09.998 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:28:09.998 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:28:20.432 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:28:20.436 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:28:20.436 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:28:20.436 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:28:33.107 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:28:33.266 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:28:33.266 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:28:33.266 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:28:33.266 [32m INFO[0m src/ui/notes.c:notes_deinit:53: UI deinit notes
+2025-07-14 23:28:33.267 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:28:33.268 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:28:33.763 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:28:33.767 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:28:33.767 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:28:33.767 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:29:40.774 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:29:40.936 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:29:40.937 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:29:40.937 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:29:40.937 [32m INFO[0m src/ui/notes.c:notes_deinit:53: UI deinit notes
+2025-07-14 23:29:40.938 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:29:40.939 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:29:41.453 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:29:41.457 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:29:41.457 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:29:41.457 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:29:42.532 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:29:42.738 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:29:42.740 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-14 23:29:42.740 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:29:42.740 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:29:42.741 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:29:42.741 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:29:45.703 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:29:45.706 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:29:45.706 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:29:45.706 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:30:20.552 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:30:20.711 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:30:20.712 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:30:20.712 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:30:20.712 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-14 23:30:20.713 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:30:20.714 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:30:21.260 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:30:21.263 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:30:21.263 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:30:21.263 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:30:25.453 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:30:25.662 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:30:25.663 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:30:25.663 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:30:25.663 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-14 23:30:25.665 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:30:25.665 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:32:18.817 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:32:18.820 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:32:18.820 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:32:18.820 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:32:26.076 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:32:26.259 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:32:26.260 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:32:26.259 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:32:26.260 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-14 23:32:26.261 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:32:26.261 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:32:27.337 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:32:27.340 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:32:27.341 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:32:27.341 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:34:26.820 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:34:27.029 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:34:27.030 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:34:27.030 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:34:27.030 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-14 23:34:27.031 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:34:27.031 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:34:27.615 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:34:27.619 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:34:27.619 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:34:27.619 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:34:29.270 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:34:29.430 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:34:29.431 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:34:29.431 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:34:29.431 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-14 23:34:29.432 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:34:29.432 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:34:32.750 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:34:32.753 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:34:32.753 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:34:32.754 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:34:37.965 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:34:38.198 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:34:38.199 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:34:38.199 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:34:38.199 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-14 23:34:38.200 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:34:38.200 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:35:39.328 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:35:39.332 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:35:39.332 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:35:39.332 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:53:28.708 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:53:29.828 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:53:29.829 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:53:29.829 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:53:29.829 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-14 23:53:29.830 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:53:29.830 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:53:30.679 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:53:30.683 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:53:30.683 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:53:30.683 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:54:06.345 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:54:06.531 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:54:06.532 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:54:06.532 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:54:06.532 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-14 23:54:06.533 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:54:06.533 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:54:07.032 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:54:07.035 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:54:07.036 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:54:07.036 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:54:14.377 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:54:14.679 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:54:14.680 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:54:14.680 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:54:14.680 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-14 23:54:14.681 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:54:14.681 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:54:15.276 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:54:15.280 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:54:15.280 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:54:15.280 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:54:16.275 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:54:20.420 [32m INFO[0m src/ui/status.c:sb_disable_cmd:57: UI SB disable cmd
+2025-07-14 23:54:20.420 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q;q`
+2025-07-14 23:54:20.798 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:54:20.957 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:54:20.957 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:54:20.957 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:54:20.958 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-14 23:54:20.959 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:54:20.959 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:54:21.737 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:54:21.741 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:54:21.741 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:54:21.741 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:54:34.462 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:54:34.622 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:54:34.622 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:54:34.622 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:54:34.622 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-14 23:54:34.623 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:54:34.624 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:54:35.125 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:54:35.129 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:54:35.129 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:54:35.129 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:55:02.543 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:55:02.731 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:55:02.731 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:55:02.731 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:55:02.731 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-14 23:55:02.732 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:55:02.732 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:55:03.288 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:55:03.292 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:55:03.292 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:55:03.292 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:55:53.734 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:55:53.989 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:55:53.990 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:55:53.990 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:55:53.990 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-14 23:55:53.992 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:55:53.992 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:55:54.932 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:55:54.936 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:55:54.936 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:55:54.936 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:55:54.937 [32m INFO[0m src/ui/calendar.c:cal_render:88: PREV 30
+2025-07-14 23:56:22.882 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:56:23.068 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:56:23.068 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:56:23.068 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:56:23.068 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-14 23:56:23.070 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:56:23.070 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:56:23.617 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:56:23.620 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:56:23.620 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:56:23.620 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:56:23.621 [32m INFO[0m src/ui/calendar.c:cal_render:88: PREV 30 2
+2025-07-14 23:59:22.104 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:59:22.286 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:59:22.287 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:59:22.287 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:59:22.287 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-14 23:59:22.288 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:59:22.288 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:59:22.816 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:59:22.820 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:59:22.820 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:59:22.820 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:59:22.821 [32m INFO[0m src/ui/calendar.c:cal_render:88: PREV 30 1
+2025-07-14 23:59:24.210 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:59:24.419 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:59:24.420 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:59:24.420 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:59:24.420 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-14 23:59:24.421 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:59:24.421 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-14 23:59:37.513 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-14 23:59:37.517 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-14 23:59:37.517 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-14 23:59:37.517 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-14 23:59:37.518 [32m INFO[0m src/ui/calendar.c:cal_render:89: PREV 30 1
+2025-07-14 23:59:39.186 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-14 23:59:39.394 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-14 23:59:39.395 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-14 23:59:39.395 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-14 23:59:39.396 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-14 23:59:39.397 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-14 23:59:39.397 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-15 00:03:16.180 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-15 00:03:16.183 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-15 00:03:16.183 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-15 00:03:16.183 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-15 00:03:16.184 [32m INFO[0m src/ui/calendar.c:cal_render:89: PREV 30 1
+2025-07-15 00:03:32.561 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-15 00:03:32.720 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-15 00:03:32.721 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-15 00:03:32.721 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-15 00:03:32.721 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-15 00:03:32.722 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-15 00:03:32.722 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-15 00:03:33.250 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-15 00:03:33.254 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-15 00:03:33.254 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-15 00:03:33.254 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-15 00:03:33.254 [32m INFO[0m src/ui/calendar.c:cal_render:89: PREV 30 1
+2025-07-15 00:09:00.745 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-15 00:09:00.928 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-15 00:09:00.928 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-15 00:09:00.928 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-15 00:09:00.928 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-15 00:09:00.929 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-15 00:09:00.929 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-15 00:09:01.414 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-15 00:09:01.417 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-15 00:09:01.418 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-15 00:09:01.418 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-15 00:09:01.418 [32m INFO[0m src/ui/calendar.c:cal_render:89: PREV 30 1
+2025-07-15 00:09:02.943 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-15 00:09:03.126 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-15 00:09:03.127 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-15 00:09:03.127 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-15 00:09:03.127 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-15 00:09:03.128 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-15 00:09:03.128 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-15 00:09:21.724 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-15 00:09:21.728 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-15 00:09:21.728 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-15 00:09:21.728 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-15 00:09:21.728 [32m INFO[0m src/ui/calendar.c:cal_render:89: PREV 30 1
+2025-07-15 00:09:24.248 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-15 00:09:24.456 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-15 00:09:24.458 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-15 00:09:24.458 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-15 00:09:24.458 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-15 00:09:24.459 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-15 00:09:24.459 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-15 00:11:10.094 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-15 00:11:10.098 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-15 00:11:10.098 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-15 00:11:10.098 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-15 00:11:10.098 [32m INFO[0m src/ui/calendar.c:cal_render:89: PREV 30 1
+2025-07-15 00:11:12.710 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-15 00:11:14.050 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-15 00:11:14.051 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-15 00:11:14.051 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-15 00:11:14.051 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-15 00:11:14.052 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-15 00:11:14.052 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-15 00:11:41.281 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-15 00:11:41.285 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-15 00:11:41.285 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-15 00:11:41.285 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-15 00:11:41.286 [32m INFO[0m src/ui/calendar.c:cal_render:89: PREV 30 1
+2025-07-15 00:13:40.571 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-15 00:13:40.754 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-15 00:13:40.755 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-15 00:13:40.755 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-15 00:13:40.755 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-15 00:13:40.756 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-15 00:13:40.756 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-15 00:13:41.266 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-15 00:13:41.270 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-15 00:13:41.270 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-15 00:13:41.270 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-15 00:13:41.271 [32m INFO[0m src/ui/calendar.c:cal_render:89: PREV 30 1
+2025-07-15 00:14:01.747 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-15 00:14:01.951 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-15 00:14:01.952 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-15 00:14:01.952 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-15 00:14:01.952 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-15 00:14:01.953 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-15 00:14:01.954 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-15 00:14:02.700 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-15 00:14:02.703 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-15 00:14:02.703 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-15 00:14:02.703 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-15 00:14:02.704 [32m INFO[0m src/ui/calendar.c:cal_render:89: PREV 30 1
+2025-07-15 00:14:09.256 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-15 00:14:09.627 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-15 00:14:09.628 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-15 00:14:09.628 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-15 00:14:09.628 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-15 00:14:09.629 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-15 00:14:09.629 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-15 00:14:10.145 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-15 00:14:10.148 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-15 00:14:10.148 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-15 00:14:10.148 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-15 00:14:10.149 [32m INFO[0m src/ui/calendar.c:cal_render:89: PREV 30 1
+2025-07-15 00:14:11.038 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-15 00:14:11.247 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-15 00:14:11.248 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-15 00:14:11.248 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-15 00:14:11.248 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-15 00:14:11.249 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-15 00:14:11.249 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-15 00:14:20.475 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-15 00:14:20.478 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-15 00:14:20.478 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-15 00:14:20.478 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-15 00:14:20.479 [32m INFO[0m src/ui/calendar.c:cal_render:89: PREV 30 1
+2025-07-15 00:14:36.316 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-15 00:14:36.503 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-15 00:14:36.503 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-15 00:14:36.503 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-15 00:14:36.503 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-15 00:14:36.505 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-15 00:14:36.505 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-15 00:14:36.986 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-15 00:14:36.990 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-15 00:14:36.990 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-15 00:14:36.990 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-15 00:14:36.991 [32m INFO[0m src/ui/calendar.c:cal_render:89: PREV 30 1
+2025-07-15 00:14:56.311 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-15 00:14:56.498 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-15 00:14:56.499 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-15 00:14:56.499 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-15 00:14:56.499 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-15 00:14:56.500 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-15 00:14:56.500 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 

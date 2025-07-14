@@ -20,6 +20,7 @@ typedef struct UI
     } mod;
     StatusBar         sb;
     CMD               cmd;
+    Notes             notes;
 
     bool should_close;
 } UI;
