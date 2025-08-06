@@ -3020,3 +3020,388 @@
 2025-07-15 00:14:56.499 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
 2025-07-15 00:14:56.500 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
 2025-07-15 00:14:56.500 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-15 00:15:17.746 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-15 00:15:17.750 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-15 00:15:17.750 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-15 00:15:17.750 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-15 00:15:17.750 [32m INFO[0m src/ui/calendar.c:cal_render:89: PREV 30 1
+2025-07-15 00:16:21.553 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-15 00:16:21.758 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-15 00:16:21.759 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-15 00:16:21.759 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-15 00:16:21.759 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-15 00:16:21.760 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-15 00:16:21.760 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-15 00:16:22.291 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-15 00:16:22.295 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-15 00:16:22.295 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-15 00:16:22.295 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-15 00:16:22.296 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 30 1
+2025-07-15 00:19:22.723 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-15 00:19:22.905 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-15 00:19:22.906 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-15 00:19:22.906 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-15 00:19:22.906 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-15 00:19:22.907 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-15 00:19:22.908 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-15 00:19:23.418 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-15 00:19:23.422 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-15 00:19:23.422 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-15 00:19:23.422 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-15 00:19:23.423 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 30 1
+2025-07-15 00:20:51.422 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-15 00:20:51.609 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-15 00:20:51.610 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-15 00:20:51.610 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-15 00:20:51.610 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-15 00:20:51.611 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-15 00:20:51.611 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-15 00:20:52.154 [32m INFO[0m src/main.c:main:33:  =========== FULL START ===========
+2025-07-15 00:20:52.157 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-15 00:20:52.157 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-15 00:20:52.157 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-15 00:20:52.158 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 30 1
+2025-07-15 01:33:05.592 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-15 01:33:05.774 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-15 01:33:05.775 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-15 01:33:05.775 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-15 01:33:05.775 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-15 01:33:05.776 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-15 01:33:05.776 [32m INFO[0m src/main.c:main:47:  ============ FULL STOP ============== 
+2025-07-15 01:55:21.102 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-07-15 01:55:21.104 [32m INFO[0m src/logic/notes.c:nm_init:9: LOGIC NM init
+2025-07-15 01:55:21.107 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-15 01:55:21.107 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-15 01:55:21.107 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-15 01:55:21.108 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 30 1
+2025-07-15 01:55:22.218 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-15 01:55:22.497 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-15 01:55:22.498 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-15 01:55:22.498 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-15 01:55:22.498 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-15 01:55:22.499 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-15 01:55:22.499 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-07-15 01:55:25.631 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-07-15 01:55:25.633 [32m INFO[0m src/logic/notes.c:nm_init:9: LOGIC NM init
+2025-07-15 01:55:25.637 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-15 01:55:25.637 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-15 01:55:25.637 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-15 01:55:25.639 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 30 1
+2025-07-15 01:55:33.469 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-15 01:55:36.566 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-15 01:55:36.567 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-15 01:55:36.567 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-15 01:55:36.567 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-15 01:55:36.569 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-15 01:55:36.569 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-07-18 18:52:21.070 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-07-18 18:52:21.070 [32m INFO[0m src/logic/notes.c:nm_init:9: LOGIC NM init
+2025-07-18 18:52:21.075 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-18 18:52:21.075 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-18 18:52:21.075 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-18 18:52:21.076 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 30 1
+2025-07-18 18:52:24.784 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-18 18:52:25.069 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-18 18:52:25.070 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-18 18:52:25.070 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-18 18:52:25.070 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-18 18:52:25.074 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-18 18:52:25.074 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-07-18 18:53:07.537 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-07-18 18:53:07.539 [32m INFO[0m src/logic/notes.c:nm_init:9: LOGIC NM init
+2025-07-18 18:53:07.541 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-18 18:53:07.541 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-18 18:53:07.541 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-18 18:53:07.542 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 30 1
+2025-07-18 18:53:12.378 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-18 18:53:13.476 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-18 18:53:13.477 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-18 18:53:13.477 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-18 18:53:13.477 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-18 18:53:13.478 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-18 18:53:13.479 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-07-18 18:54:06.314 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-07-18 18:54:06.316 [32m INFO[0m src/logic/notes.c:nm_init:9: LOGIC NM init
+2025-07-18 18:54:06.318 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-07-18 18:54:06.319 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-07-18 18:54:06.319 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-07-18 18:54:06.319 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 30 1
+2025-07-18 18:54:08.505 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-07-18 18:54:10.465 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-07-18 18:54:10.466 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-07-18 18:54:10.466 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-07-18 18:54:10.466 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-07-18 18:54:10.467 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-07-18 18:54:10.467 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 21:55:52.754 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 21:55:52.755 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 21:55:52.759 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 21:55:52.759 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 21:55:52.759 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 21:55:52.780 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 31 4
+2025-08-06 21:55:55.433 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 21:55:55.990 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 21:55:55.991 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 21:55:55.991 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 21:55:55.991 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-08-06 21:55:55.992 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 21:55:55.992 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 21:56:00.783 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 21:56:00.785 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 21:56:00.787 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 21:56:00.787 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 21:56:00.787 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 21:56:00.808 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 31 4
+2025-08-06 21:56:02.047 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 21:56:02.349 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 21:56:02.350 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 21:56:02.350 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 21:56:02.350 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-08-06 21:56:02.351 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 21:56:02.351 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 21:58:32.882 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 21:58:32.886 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 21:58:32.886 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 21:58:32.886 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 21:58:32.887 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 31 4
+2025-08-06 21:58:43.798 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 21:58:44.031 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 21:58:44.032 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 21:58:44.032 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 21:58:44.032 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-08-06 21:58:44.033 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 21:58:44.033 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 21:59:03.194 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 21:59:03.195 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 21:59:03.197 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 21:59:03.198 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 21:59:03.198 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 21:59:03.198 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 31 4
+2025-08-06 21:59:03.994 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 21:59:04.199 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 21:59:04.200 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 21:59:04.200 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 21:59:04.200 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-08-06 21:59:04.201 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 21:59:04.201 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 21:59:09.308 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 21:59:09.309 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 21:59:09.311 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 21:59:09.311 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 21:59:09.311 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 21:59:09.331 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 31 4
+2025-08-06 21:59:10.219 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 21:59:10.494 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 21:59:10.495 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 21:59:10.495 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 21:59:10.495 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-08-06 21:59:10.496 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 21:59:10.496 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 22:00:43.915 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 22:00:43.917 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 22:00:43.919 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 22:00:43.919 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 22:00:43.920 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 22:00:43.940 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 31 4
+2025-08-06 22:00:49.436 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 22:00:49.692 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 22:00:49.692 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 22:00:49.692 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 22:00:49.692 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-08-06 22:00:49.694 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 22:00:49.694 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 22:04:07.073 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 22:04:07.074 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 22:04:07.077 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 22:04:07.077 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 22:04:07.077 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 22:04:07.097 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 31 4
+2025-08-06 22:04:07.852 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 22:04:08.108 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 22:04:08.109 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 22:04:08.109 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 22:04:08.109 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-08-06 22:04:08.110 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 22:04:08.110 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 22:36:56.875 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 22:36:56.877 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 22:36:56.879 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 22:36:56.879 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 22:36:56.879 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 22:36:56.880 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 31 4
+2025-08-06 22:36:57.802 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 22:36:58.052 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 22:36:58.053 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 22:36:58.053 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 22:36:58.054 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 22:36:58.053 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-08-06 22:36:58.054 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 22:37:17.349 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 22:37:17.351 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 22:37:17.353 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 22:37:17.353 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 22:37:17.353 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 22:37:17.354 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 31 4
+2025-08-06 22:37:17.936 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 22:37:18.187 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 22:37:18.187 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 22:37:18.187 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 22:37:18.187 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-08-06 22:37:18.188 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 22:37:18.188 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 22:37:44.300 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 22:37:44.301 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 22:37:44.304 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 22:37:44.304 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 22:37:44.304 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 22:37:44.305 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 31 4
+2025-08-06 22:37:45.308 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 22:37:45.586 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 22:37:45.587 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 22:37:45.587 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 22:37:45.587 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-08-06 22:37:45.588 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 22:37:45.588 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 22:37:55.031 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 22:37:55.032 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 22:37:55.034 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 22:37:55.035 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 22:37:55.035 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 22:37:55.035 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 31 4
+2025-08-06 22:48:11.852 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 22:48:12.038 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 22:48:12.039 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 22:48:12.039 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 22:48:12.039 [32m INFO[0m src/ui/notes.c:notes_deinit:54: UI deinit notes
+2025-08-06 22:48:12.040 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 22:48:12.040 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 22:48:13.258 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 22:48:13.260 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 22:48:13.262 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 22:48:13.263 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 22:48:13.263 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 22:48:13.263 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 31 4
+2025-08-06 22:48:23.106 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 22:48:23.315 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 22:48:23.316 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 22:48:23.316 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 22:48:23.316 [32m INFO[0m src/ui/notes.c:notes_deinit:60: UI deinit notes
+2025-08-06 22:48:23.317 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 22:48:23.317 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 22:48:29.622 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 22:48:29.624 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 22:48:29.626 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 22:48:29.626 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 22:48:29.626 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 22:48:29.627 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 31 4
+2025-08-06 22:49:01.780 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 22:49:01.962 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 22:49:01.963 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 22:49:01.963 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 22:49:01.963 [32m INFO[0m src/ui/notes.c:notes_deinit:60: UI deinit notes
+2025-08-06 22:49:01.964 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 22:49:01.965 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 22:49:03.169 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 22:49:03.171 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 22:49:03.173 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 22:49:03.173 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 22:49:03.173 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 22:49:03.174 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 31 4
+2025-08-06 22:49:04.417 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 22:49:04.598 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 22:49:04.599 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 22:49:04.599 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 22:49:04.599 [32m INFO[0m src/ui/notes.c:notes_deinit:60: UI deinit notes
+2025-08-06 22:49:04.600 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 22:49:04.600 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 22:49:11.220 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 22:49:11.222 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 22:49:11.223 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 22:49:11.223 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 22:49:11.223 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 22:49:11.224 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 31 4
+2025-08-06 22:49:13.051 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 22:49:13.238 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 22:49:13.239 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 22:49:13.239 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 22:49:13.239 [32m INFO[0m src/ui/notes.c:notes_deinit:60: UI deinit notes
+2025-08-06 22:49:13.241 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 22:49:13.241 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 22:49:16.807 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 22:49:16.808 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 22:49:16.810 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 22:49:16.810 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 22:49:16.810 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 22:49:16.811 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 31 4
+2025-08-06 22:49:17.735 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 22:49:17.941 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 22:49:17.941 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 22:49:17.941 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 22:49:17.941 [32m INFO[0m src/ui/notes.c:notes_deinit:60: UI deinit notes
+2025-08-06 22:49:17.942 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 22:49:17.942 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 22:50:12.972 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 22:50:12.974 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 22:50:12.976 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 22:50:12.976 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 22:50:12.976 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 22:50:12.977 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 31 4
+2025-08-06 22:50:14.695 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 22:50:14.901 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 22:50:14.901 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 22:50:14.901 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 22:50:14.901 [32m INFO[0m src/ui/notes.c:notes_deinit:61: UI deinit notes
+2025-08-06 22:50:14.903 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 22:50:14.903 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 22:51:35.536 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 22:51:35.537 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 22:51:35.540 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 22:51:35.540 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 22:51:35.540 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 22:51:35.541 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 31 4
+2025-08-06 22:51:38.407 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 22:51:38.639 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 22:51:38.640 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 22:51:38.640 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 22:51:38.640 [32m INFO[0m src/ui/notes.c:notes_deinit:62: UI deinit notes
+2025-08-06 22:51:38.641 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 22:51:38.641 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 22:57:45.093 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 22:57:45.094 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 22:57:45.096 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 22:57:45.097 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 22:57:45.097 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 22:57:45.104 [32m INFO[0m src/ui/calendar.c:cal_render:93: PREV 31 4
+2025-08-06 22:58:38.940 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 22:58:39.122 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 22:58:39.123 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 22:58:39.123 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 22:58:39.123 [32m INFO[0m src/ui/notes.c:notes_deinit:63: UI deinit notes
+2025-08-06 22:58:39.124 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 22:58:39.124 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 22:58:40.339 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 22:58:40.341 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 22:58:40.343 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 22:58:40.343 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 22:58:40.343 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 22:58:40.344 [32m INFO[0m src/ui/calendar.c:cal_render:96: PREV 31 4
+2025-08-06 22:58:53.990 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 22:58:54.199 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 22:58:54.200 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 22:58:54.200 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 22:58:54.200 [32m INFO[0m src/ui/notes.c:notes_deinit:63: UI deinit notes
+2025-08-06 22:58:54.201 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 22:58:54.201 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 
+2025-08-06 22:59:09.075 [32m INFO[0m src/main.c:main:35:  =========== FULL START ===========
+2025-08-06 22:59:09.076 [32m INFO[0m src/logic/notes.c:nm_init:10: LOGIC NM init
+2025-08-06 22:59:09.078 [32m INFO[0m src/ui/status.c:sb_init:7: UI init status bar
+2025-08-06 22:59:09.078 [32m INFO[0m src/ui/cmd.c:cmd_init:7: UI init cmd
+2025-08-06 22:59:09.078 [32m INFO[0m src/ui/notes.c:notes_init:7: UI init notes
+2025-08-06 22:59:09.079 [32m INFO[0m src/ui/calendar.c:cal_render:96: PREV 31 4
+2025-08-06 23:18:02.085 [32m INFO[0m src/ui/status.c:sb_enable_cmd:48: UI SB enable cmd
+2025-08-06 23:18:02.267 [32m INFO[0m src/ui/cmd.c:cmd_input:67: CMD `q`
+2025-08-06 23:18:02.268 [32m INFO[0m src/ui/cmd.c:cmd_deinit:41: UI deinit cmd
+2025-08-06 23:18:02.268 [32m INFO[0m src/ui/status.c:sb_deinit:40: UI deinit status bar
+2025-08-06 23:18:02.268 [32m INFO[0m src/ui/notes.c:notes_deinit:63: UI deinit notes
+2025-08-06 23:18:02.269 [32m INFO[0m src/ui/ui.c:ui_thread:76: FINISHING WITH NOTCURSES
+2025-08-06 23:18:02.269 [32m INFO[0m src/main.c:main:57:  ============ FULL STOP ============== 

@@ -15,6 +15,9 @@ cal_init(Calendar *cal, struct ncplane *pl)
         .cols = 30,
     };
     cal->pl = ncplane_create(pl, &pots);
+    uint64_t channels = NCCHANNELS_INITIALIZER(0xFF, 0xFF, 0xFF, 0x1c, 0x7f, 0x7d);
+    ncplane_set_base(cal->pl, " ", 0, channels);
+    ncplane_erase(cal->pl);
 }
 
 static const char *month_str[] =
@@ -77,9 +80,13 @@ cal_render(Calendar *cal, Date *high)
     { date = *high; }
 
     ncplane_printf_yx(cal->pl, 1, 10, "%s %u", month_str[date.month], date.year);
+
     ncplane_set_styles(cal->pl, NCSTYLE_ITALIC);
+    ncplane_set_fg_rgb8(cal->pl, 0x7c, 0x7f, 0x7e);
     ncplane_putstr_yx(cal->pl, 3, 4, "Mo Tu We Th Fr Sa Su");
+    ncplane_set_fg_default(cal->pl);
     ncplane_set_styles(cal->pl, 0);
+
     ncplane_cursor_move_yx(cal->pl, 4, 4);
 
     uint8_t wday_1st = wday_month(date);
@@ -109,6 +116,8 @@ cal_render(Calendar *cal, Date *high)
         { ncplane_set_styles(cal->pl, NCSTYLE_UNDERLINE); }
         if (d == date.date)
         { ncplane_set_bg_rgb8(cal->pl, 0x72, 0x5d, 0x2a); }
+        if (wd == 5 || wd == 6)
+        { ncplane_set_fg_rgb8(cal->pl, 0x86, 0x40, 0x15); }
 
         ncplane_printf(cal->pl, "%02u", d);
 
@@ -116,6 +125,8 @@ cal_render(Calendar *cal, Date *high)
         { ncplane_set_styles(cal->pl, 0); }
         if (d == date.date)
         { ncplane_set_bg_default(cal->pl); }
+        if (wd == 5 || wd == 6)
+        { ncplane_set_fg_default(cal->pl); }
 
         ncplane_putchar(cal->pl, ' ');
     }

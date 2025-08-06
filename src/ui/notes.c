@@ -22,12 +22,12 @@ notes_init(Notes *nt, struct notcurses *nc)
 
     pots = (struct ncplane_options)
     {
-        .y = 10, .x = 0,
-        .rows = y-2-10,
+        .y = 11, .x = 0,
+        .rows = y-2-11,
         .cols = 30,
     };
     nt->pl_filter = ncplane_create(nt->pl, &pots);
-    uint64_t channels = NCCHANNELS_INITIALIZER(0xFF, 0xFF, 0xFF, 0x3A, 0x3A, 0xFF);
+    uint64_t channels = NCCHANNELS_INITIALIZER(0xFF, 0xFF, 0xFF, 0x7c, 0x7f, 0x7d);
     ncplane_set_base(nt->pl_filter, " ", 0, channels);
     ncplane_erase(nt->pl_filter);
 
@@ -39,14 +39,23 @@ notes_init(Notes *nt, struct notcurses *nc)
     };
     nt->pl_notes = ncplane_create(nt->pl, &pots);
     
-    channels = NCCHANNELS_INITIALIZER(0xFF, 0xFF, 0xFF, 0x3A, 0xFA, 0x00);
-    ncplane_set_base(nt->pl_notes, " ", 0, channels);
     ncplane_erase(nt->pl_notes);
+
+
+    // NOTES RENDER
+
+    ncplane_set_styles(nt->pl_notes, NCSTYLE_BOLD);
+    ncplane_printf_yx(nt->pl_notes, 2, 10, "Maybe");
+    ncplane_set_styles(nt->pl_notes, 0);
+    size_t b;
+    ncplane_puttext(nt->pl_notes, 4, NCALIGN_CENTER, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", &b);
+    // NOTES RENDER
 
 
     cal_init(&nt->cal, nt->pl);
     cal_render(&nt->cal, NULL);
 }
+
 
 void
 notes_deinit(Notes *nt)
