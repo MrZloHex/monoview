@@ -22,10 +22,8 @@ ui_leave_cmd(UI *ui)
 }
 
 void *
-ui_thread(void *arg)
+ui_thread(void)
 {
-    (void)arg;
-
     UI ui = { 0 };
 
     notcurses_options ncopt;
@@ -63,7 +61,11 @@ ui_thread(void *arg)
             if (in.id == ';' && in.shift)
             { ui_enter_cmd(&ui); }
         }
+
+        if (ui.mod == MOD_REG)
+        { notes_input(&ui.notes, in); }
         
+        notes_render(&ui.notes);
         notcurses_render(ui.nc);
     }
 

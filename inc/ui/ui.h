@@ -26,6 +26,6 @@ typedef struct UI
 } UI;
 
 void *
-ui_thread(void *q);
+ui_thread(void);
 
 #endif /* __UI_H__ */
