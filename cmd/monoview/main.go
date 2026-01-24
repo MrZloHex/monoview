@@ -1,20 +1,18 @@
 package main
 
 import (
-    "context"
-    "fmt"
-    "log"
-    "os"
-    "strings"
-    "time"
+	"fmt"
+	"os"
 
-    tea "github.com/charmbracelet/bubbletea"
-    "github.com/charmbracelet/bubbles/textinput"
-    "github.com/charmbracelet/lipgloss"
-    "github.com/gorilla/websocket"
+	tea "github.com/charmbracelet/bubbletea"
+
+	"monoview/internal/ui"
 )
 
-
 func main() {
+	p := tea.NewProgram(ui.NewModel(), tea.WithAltScreen())
+	if _, err := p.Run(); err != nil {
+		fmt.Printf("Error: %v", err)
+		os.Exit(1)
+	}
 }
-
