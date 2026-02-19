@@ -82,7 +82,7 @@ func (m Model) renderNodeDevicePanel(node string, indices []int) string {
 
 func (m Model) renderToggleDevice(d HomeDevice, selected bool, w int) string {
 	icon := getDeviceIcon(d.Status)
-	line := fmt.Sprintf(" %s %-16s %s", icon, d.Name, Label.Render("["+d.Verb+"]"))
+	line := fmt.Sprintf(" %s %-16s %s", icon, d.Name, Label.Render("["+d.Topic+"]"))
 	if selected {
 		return Selected.Render(PadLine(line, w))
 	}
@@ -109,7 +109,7 @@ func (m Model) renderValueDevice(d HomeDevice, selected bool, w int) string {
 	bar := RenderBar(pct, barWidth)
 	valStr := fmt.Sprintf("%3d", d.Val)
 
-	line1 := fmt.Sprintf(" ◈ %-12s %s", d.Name, Label.Render(d.Noun))
+	line1 := fmt.Sprintf(" ◈ %-12s %s", d.Name, Label.Render(d.Property))
 	line2 := fmt.Sprintf("   %s %s", bar, Value.Render(valStr))
 
 	if selected {

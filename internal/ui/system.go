@@ -24,7 +24,6 @@ func (m Model) renderSystem() string {
 
 	b.WriteString(Title.Render("▌RECENT LOGS") + "\n\n")
 
-	// header(~5) + tabs(2) + gap(2) + nodes(~13) + log header(3) + footer(1) + padding(2)
 	overhead := 5 + 2 + 2 + strings.Count(nodeRow, "\n") + 1 + 3 + 1 + 2
 	maxLogs := m.Height - overhead
 	if maxLogs < 3 {
@@ -60,26 +59,31 @@ func (m Model) renderSystem() string {
 }
 
 func (m Model) renderNodePanel(n SystemNode, active bool) string {
-	width := 22
+	width := 24
 
-	status := Online.Render("● ONLINE ")
-	if n.Status == "offline" {
-		status = Offline.Render("● OFFLINE")
+	var statusLine string
+	switch n.Status {
+	case "online":
+		statusLine = Online.Render("● ONLINE")
+	case "offline":
+		statusLine = Offline.Render("● OFFLINE")
+	default:
+		statusLine = Warning.Render("● UNKNOWN")
 	}
 
-	cpu := RenderBar(n.CPU, 10)
-	mem := RenderBar(n.Memory, 10)
+	var pingStr string
+	if n.Status == "online" && n.PingMs > 0 {
+		pingStr = fmt.Sprintf("%dms", n.PingMs)
+	} else {
+		pingStr = "—"
+	}
 
 	var lines []string
-	lines = append(lines, PadLine(" "+Title.Render(strings.ToUpper(n.Name)), width-2))
-	lines = append(lines, PadLine(" "+status, width-2))
+	lines = append(lines, PadLine(" "+Title.Render(n.Name), width-2))
+	lines = append(lines, PadLine(" "+statusLine, width-2))
 	lines = append(lines, "")
-	lines = append(lines, PadLine(" "+Label.Render("CPU"), width-2))
-	lines = append(lines, PadLine(fmt.Sprintf(" %s %s", cpu, Label.Render(fmt.Sprintf("%5.1f%%", n.CPU))), width-2))
-	lines = append(lines, PadLine(" "+Label.Render("MEM"), width-2))
-	lines = append(lines, PadLine(fmt.Sprintf(" %s %s", mem, Label.Render(fmt.Sprintf("%5.1f%%", n.Memory))), width-2))
-	lines = append(lines, "")
-	lines = append(lines, PadLine(fmt.Sprintf(" %s %s", Label.Render("UP:"), Value.Render(n.Uptime)), width-2))
+	lines = append(lines, PadLine(fmt.Sprintf(" %s %s", Label.Render("PING:"), Value.Render(pingStr)), width-2))
+	lines = append(lines, PadLine(fmt.Sprintf(" %s %s", Label.Render("UP:  "), Value.Render(n.Uptime)), width-2))
 
 	content := strings.Join(lines, "\n")
 

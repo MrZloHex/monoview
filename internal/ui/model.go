@@ -2,7 +2,7 @@ package ui
 
 import (
 	"fmt"
-	"math/rand"
+	"strconv"
 	"strings"
 	"time"
 
@@ -11,16 +11,8 @@ import (
 	"monoview/pkg/concentrator"
 )
 
-func nounToStatus(noun string) string {
-	switch noun {
-	case "ON":
-		return "on"
-	case "OFF":
-		return "off"
-	default:
-		return "on"
-	}
-}
+const pingInterval = 2 * time.Minute
+
 
 // HubMsg wraps a concentrator message arriving through the inbox channel.
 type HubMsg concentrator.Message
@@ -120,39 +112,28 @@ func NewModel() Model {
 
 		HomeDevices: []HomeDevice{
 			{
-				Name: "Desk Lamp", Node: "VERTEX", Verb: "LAMP",
+				Name: "Desk Lamp", Node: "VERTEX", Topic: "LAMP",
 				Kind: "toggle", Status: "unknown",
-				Actions: map[string]string{
-					"on": "OFF", "off": "ON", "unknown": "ON",
-				},
 			},
 			{
-				Name: "LED Light", Node: "VERTEX", Verb: "LED",
-				Kind: "cycle", Status: "off",
-				Actions: map[string]string{
-					"off": "BLINK", "blink": "FADE", "fade": "SOLID", "solid": "OFF",
-				},
+				Name: "LED Light", Node: "VERTEX", Topic: "LED",
+				Kind: "toggle", Status: "unknown",
 			},
 			{
-				Name: "Brightness", Node: "VERTEX", Verb: "LED",
-				Kind: "value", Status: "—", Noun: "BRIGHT",
+				Name: "LED Mode", Node: "VERTEX", Topic: "LED",
+				Kind: "cycle", Status: "solid",
+				Modes: []string{"solid", "fade", "blink"},
+			},
+			{
+				Name: "Brightness", Node: "VERTEX", Topic: "LED",
+				Kind: "value", Property: "BRIGHT",
 				Val: 128, Min: 0, Max: 255, Step: 15,
 			},
 		},
 		SelectedDevice: 0,
 
 		Nodes: []SystemNode{
-			{Name: "obelisk", Status: "online", CPU: 23.5, Memory: 45.2, Uptime: "14d 3h"},
-			{Name: "vertex", Status: "online", CPU: 67.8, Memory: 72.1, Uptime: "7d 12h"},
-			{Name: "nexus", Status: "offline", CPU: 0, Memory: 0, Uptime: "—"},
-			{Name: "hal9000", Status: "online", CPU: 12.3, Memory: 38.9, Uptime: "30d 8h"},
-		},
-		Logs: []LogEntry{
-			{Time: now, Level: "INFO", Source: "obelisk", Message: "System heartbeat OK"},
-			{Time: now.Add(-30 * time.Second), Level: "WARN", Source: "vertex", Message: "High memory usage detected"},
-			{Time: now.Add(-2 * time.Minute), Level: "INFO", Source: "hal9000", Message: "Backup completed"},
-			{Time: now.Add(-5 * time.Minute), Level: "ERR", Source: "nexus", Message: "Connection lost"},
-			{Time: now.Add(-10 * time.Minute), Level: "INFO", Source: "obelisk", Message: "Service restarted"},
+			{Name: "VERTEX", Status: "unknown", Uptime: "—"},
 		},
 		SelectedNode: 0,
 	}
@@ -176,8 +157,42 @@ func (m Model) Init() tea.Cmd {
 		if inbox := m.Hub.Inbox(); inbox != nil {
 			cmds = append(cmds, waitForHub(inbox))
 		}
+		m.queryDeviceStates()
 	}
 	return tea.Batch(cmds...)
+}
+
+// queryDeviceStates sends GET requests for every home device to sync
+// with the real hardware state on startup.
+//
+//	VERTEX:GET:LAMP:STATE:MONOVIEW
+//	VERTEX:GET:LED:STATE:MONOVIEW
+//	VERTEX:GET:LED:MODE:MONOVIEW
+//	VERTEX:GET:LED:BRIGHT:MONOVIEW
+func (m *Model) queryDeviceStates() {
+	seen := map[string]bool{}
+	for _, dev := range m.HomeDevices {
+		switch dev.Kind {
+		case "toggle":
+			key := dev.Node + ":" + dev.Topic + ":STATE"
+			if !seen[key] {
+				seen[key] = true
+				m.HubSend(dev.Node, "GET", dev.Topic, "STATE")
+			}
+		case "cycle":
+			key := dev.Node + ":" + dev.Topic + ":MODE"
+			if !seen[key] {
+				seen[key] = true
+				m.HubSend(dev.Node, "GET", dev.Topic, "MODE")
+			}
+		case "value":
+			key := dev.Node + ":" + dev.Topic + ":" + dev.Property
+			if !seen[key] {
+				seen[key] = true
+				m.HubSend(dev.Node, "GET", dev.Topic, dev.Property)
+			}
+		}
+	}
 }
 
 func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
@@ -212,6 +227,7 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.navigateRight()
 		case "enter", " ":
 			m.toggleAction()
+			m.pingSelectedNode()
 		}
 
 	case tea.WindowSizeMsg:
@@ -220,12 +236,7 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 	case TickMsg:
 		m.LastUpdate = time.Time(msg)
-		for i := range m.Nodes {
-			if m.Nodes[i].Status == "online" {
-				m.Nodes[i].CPU = Clamp(m.Nodes[i].CPU+rand.Float64()*6-3, 0, 100)
-				m.Nodes[i].Memory = Clamp(m.Nodes[i].Memory+rand.Float64()*2-1, 0, 100)
-			}
-		}
+		m.pollNodes()
 		return m, tick()
 
 	case HubMsg:
@@ -259,54 +270,197 @@ func (m *Model) handleHub(msg concentrator.Message) {
 		m.Logs = m.Logs[:maxLogs]
 	}
 
+	m.handleNodeResponse(msg)
 	m.handleDeviceResponse(msg)
 }
 
-// handleDeviceResponse checks if the message is a device OK/status and
-// updates the corresponding HomeDevice.
-//
-// Response patterns from the real system:
-//
-//	MONOVIEW:LAMP:OK:VERTEX   (FROM=VERTEX, VERB=LAMP, NOUN=OK)
-//	MONOVIEW:LED:OK:VERTEX    (FROM=VERTEX, VERB=LED, NOUN=OK)
-func (m *Model) handleDeviceResponse(msg concentrator.Message) {
+// pollNodes sends PING and GET:UPTIME to each node on a regular interval.
+func (m *Model) pollNodes() {
+	now := m.LastUpdate
+	for i := range m.Nodes {
+		node := &m.Nodes[i]
+
+		// Mark offline if no PONG for 3x ping interval
+		if !node.LastSeen.IsZero() && now.Sub(node.LastSeen) > pingInterval*3 {
+			node.Status = "offline"
+			node.PingMs = 0
+		}
+
+		if node.PingSent.IsZero() || now.Sub(node.PingSent) >= pingInterval {
+			m.pingNode(node)
+		}
+	}
+}
+
+func (m *Model) pingNode(node *SystemNode) {
+	node.PingSent = time.Now()
+	m.HubSend(node.Name, "PING", "PINT")
+	m.HubSend(node.Name, "GET", "UPTIME")
+}
+
+// pingSelectedNode triggers an immediate ping when Enter is pressed on a node
+// in the System sheet.
+func (m *Model) pingSelectedNode() {
+	if m.ActiveSheet != SheetSystem {
+		return
+	}
+	if m.SelectedNode >= len(m.Nodes) {
+		return
+	}
+	m.pingNode(&m.Nodes[m.SelectedNode])
+}
+
+// handleNodeResponse processes PONG and OK:UPTIME responses.
+func (m *Model) handleNodeResponse(msg concentrator.Message) {
 	verb := strings.ToUpper(msg.Verb)
-	noun := strings.ToUpper(msg.Noun)
 	from := strings.ToUpper(msg.From)
 
+	for i := range m.Nodes {
+		node := &m.Nodes[i]
+		if node.Name != from {
+			continue
+		}
+
+		switch verb {
+		case "PONG":
+			now := time.Now()
+			node.Status = "online"
+			node.LastSeen = now
+			if !node.PingSent.IsZero() {
+				node.PingMs = now.Sub(node.PingSent).Milliseconds()
+			}
+
+		case "OK":
+			topic := strings.ToUpper(msg.Noun)
+			if topic == "UPTIME" && len(msg.Args) >= 1 {
+				ms, err := strconv.ParseInt(msg.Args[0], 10, 64)
+				if err == nil {
+					node.Uptime = formatUptime(ms)
+				}
+			}
+		}
+		return
+	}
+}
+
+func formatUptime(ms int64) string {
+	d := time.Duration(ms) * time.Millisecond
+	days := int(d.Hours()) / 24
+	hours := int(d.Hours()) % 24
+	mins := int(d.Minutes()) % 60
+	secs := int(d.Seconds()) % 60
+
+	if days > 0 {
+		return fmt.Sprintf("%dd %dh %dm", days, hours, mins)
+	}
+	if hours > 0 {
+		return fmt.Sprintf("%dh %dm %ds", hours, mins, secs)
+	}
+	if mins > 0 {
+		return fmt.Sprintf("%dm %ds", mins, secs)
+	}
+	return fmt.Sprintf("%ds", secs)
+}
+
+// handleDeviceResponse matches incoming OK/ERR responses to pending devices.
+//
+// Response format: MONOVIEW:OK:<TOPIC>[:detail...]:VERTEX
+//
+//	OK:LAMP                -> toggle confirmed
+//	OK:LED                 -> cycle/value confirmed
+//	OK:LAMP:STATE:ON       -> GET response
+//	OK:LED:MODE:BLINK      -> GET response
+//	OK:LED:BRIGHT:128      -> GET response
+func (m *Model) handleDeviceResponse(msg concentrator.Message) {
+	verb := strings.ToUpper(msg.Verb)
+	from := strings.ToUpper(msg.From)
+
+	if verb != "OK" {
+		return
+	}
+
+	topic := strings.ToUpper(msg.Noun)
+	args := msg.Args
+	upperArgs := make([]string, len(args))
+	for i, a := range args {
+		upperArgs[i] = strings.ToUpper(a)
+	}
+
+	// GET responses carry extra detail: OK:LAMP:STATE:ON or OK:LED:MODE:BLINK
+	if len(upperArgs) >= 2 {
+		m.applyGetResponse(from, topic, upperArgs)
+		return
+	}
+
+	// Simple OK:<TOPIC> — find the pending device
 	for i := range m.HomeDevices {
 		dev := &m.HomeDevices[i]
-		if strings.ToUpper(dev.Verb) != verb || strings.ToUpper(dev.Node) != from {
+		if strings.ToUpper(dev.Topic) != topic || strings.ToUpper(dev.Node) != from {
 			continue
 		}
 		if !dev.Pending {
 			continue
 		}
-
 		dev.Pending = false
 
 		switch dev.Kind {
 		case "toggle":
-			if noun == "OK" {
-				if next, ok := dev.Actions[dev.Status]; ok {
-					dev.Status = strings.ToLower(next)
-				}
-			} else {
-				dev.Status = nounToStatus(noun)
+			switch dev.Status {
+			case "on":
+				dev.Status = "off"
+			case "off", "unknown":
+				dev.Status = "on"
 			}
 		case "cycle":
-			if noun == "OK" {
-				if next, ok := dev.Actions[dev.Status]; ok {
-					dev.Status = strings.ToLower(next)
-				}
-			} else {
-				dev.Status = strings.ToLower(noun)
-			}
-		case "value":
-			// OK confirms the value was accepted; nothing to change.
+			dev.Status = dev.nextMode()
 		}
 		return
 	}
+}
+
+// applyGetResponse handles detailed OK responses like OK:LAMP:STATE:ON.
+func (m *Model) applyGetResponse(from, topic string, args []string) {
+	prop := args[0]
+	val := args[1]
+
+	for i := range m.HomeDevices {
+		dev := &m.HomeDevices[i]
+		if strings.ToUpper(dev.Topic) != topic || strings.ToUpper(dev.Node) != from {
+			continue
+		}
+
+		switch dev.Kind {
+		case "toggle":
+			if prop == "STATE" {
+				dev.Status = strings.ToLower(val)
+				dev.Pending = false
+			}
+		case "cycle":
+			if prop == "MODE" {
+				dev.Status = strings.ToLower(val)
+				dev.Pending = false
+			}
+		case "value":
+			if prop == strings.ToUpper(dev.Property) {
+				if v, err := fmt.Sscanf(val, "%d", &dev.Val); v == 1 && err == nil {
+					dev.Pending = false
+				}
+			}
+		}
+	}
+}
+
+// nextMode returns the mode after the current status in the Modes cycle.
+func (dev *HomeDevice) nextMode() string {
+	if len(dev.Modes) == 0 {
+		return dev.Status
+	}
+	for i, m := range dev.Modes {
+		if m == dev.Status {
+			return dev.Modes[(i+1)%len(dev.Modes)]
+		}
+	}
+	return dev.Modes[0]
 }
 
 // HubSend is a convenience for sending a command through the concentrator
@@ -379,23 +533,32 @@ func (m *Model) homeStep() int {
 	return 1
 }
 
+// toggleAction sends the appropriate command for the selected device.
+//
+//	toggle → VERTEX:TOGGLE:LAMP:MONOVIEW
+//	cycle  → VERTEX:SET:LED:MODE:BLINK:MONOVIEW  or  VERTEX:OFF:LED:MONOVIEW
+//	value  → VERTEX:SET:LED:BRIGHT:128:MONOVIEW
 func (m *Model) toggleAction() {
 	if m.ActiveSheet != SheetHome || m.SelectedDevice >= len(m.HomeDevices) {
 		return
 	}
 	dev := &m.HomeDevices[m.SelectedDevice]
+	dev.Pending = true
 
 	switch dev.Kind {
-	case "toggle", "cycle":
-		noun, ok := dev.Actions[dev.Status]
-		if !ok {
-			return
+	case "toggle":
+		if dev.Status == "on" {
+			m.HubSend(dev.Node, "OFF", dev.Topic)
+		} else {
+			m.HubSend(dev.Node, "ON", dev.Topic)
 		}
-		dev.Pending = true
-		m.HubSend(dev.Node, dev.Verb, noun)
+
+	case "cycle":
+		next := dev.nextMode()
+		m.HubSend(dev.Node, "SET", dev.Topic, "MODE", strings.ToUpper(next))
+
 	case "value":
-		dev.Pending = true
-		m.HubSend(dev.Node, dev.Verb, dev.Noun, fmt.Sprintf("%d", dev.Val))
+		m.HubSend(dev.Node, "SET", dev.Topic, dev.Property, fmt.Sprintf("%d", dev.Val))
 	}
 }
 
@@ -415,5 +578,5 @@ func (m *Model) adjustValue(delta int) {
 		dev.Val = dev.Max
 	}
 	dev.Pending = true
-	m.HubSend(dev.Node, dev.Verb, dev.Noun, fmt.Sprintf("%d", dev.Val))
+	m.HubSend(dev.Node, "SET", dev.Topic, dev.Property, fmt.Sprintf("%d", dev.Val))
 }

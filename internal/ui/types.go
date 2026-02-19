@@ -35,33 +35,46 @@ type DiaryEntry struct {
 
 // HomeDevice represents a controllable device reachable through the concentrator.
 //
+// Protocol reference (VERTEX):
+//
+//	TOGGLE:LAMP             -> OK:LAMP
+//	ON:LED / OFF:LED        -> OK:LED
+//	SET:LED:MODE:BLINK      -> OK:LED
+//	SET:LED:BRIGHT:128      -> OK:LED
+//	GET:LAMP:STATE          -> OK:LAMP:STATE:ON
+//
 // Kind determines interaction:
 //
-//	"toggle" – Enter flips between two states (on/off)
-//	"cycle"  – Enter advances through a loop of states (off→blink→fade→solid→off)
-//	"value"  – Left/Right adjusts a numeric value, Enter sends it
+//	"toggle" – Enter sends TOGGLE:<Topic>
+//	"cycle"  – Enter sends SET:<Topic>:MODE:<next> or OFF:<Topic>
+//	"value"  – Left/Right adjusts, sends SET:<Topic>:BRIGHT:<val>
 type HomeDevice struct {
 	Name    string
-	Node    string            // target node (VERTEX, LUCH, ACHTUNG)
-	Verb    string            // protocol verb (LAMP, LED, ...)
-	Status  string            // current state key (e.g. "on", "off", "blink")
-	Kind    string            // "toggle", "cycle", "value"
-	Actions map[string]string // status -> noun to send (toggle & cycle)
-	Noun    string            // fixed noun for value kind (e.g. "BRIGHT")
-	Val     int               // current numeric value (value kind)
-	Min     int
-	Max     int
-	Step    int
-	Pending bool              // true while waiting for OK after sending a command
+	Node    string   // target node (VERTEX, LUCH, ACHTUNG)
+	Topic   string   // protocol topic/noun (LAMP, LED, BUZZ)
+	Kind    string   // "toggle", "cycle", "value"
+	Status  string   // current state: "on"/"off"/"unknown" for toggle; mode for cycle
+	Pending bool
+
+	// cycle
+	Modes []string // ordered modes, e.g. ["off","blink","fade","solid"]
+
+	// value
+	Property string // SET sub-property (e.g. "BRIGHT")
+	Val      int
+	Min      int
+	Max      int
+	Step     int
 }
 
-// SystemNode represents a system/server node
+// SystemNode represents a real system node reachable through the concentrator.
 type SystemNode struct {
-	Name   string
-	Status string
-	CPU    float64
-	Memory float64
-	Uptime string
+	Name     string
+	Status   string    // "online", "offline", "unknown"
+	Uptime   string    // human-readable uptime from GET:UPTIME
+	LastSeen time.Time // last time we got a PONG
+	PingMs   int64     // last round-trip in ms
+	PingSent time.Time // when we last sent PING (for RTT calc)
 }
 
 // LogEntry represents a log line

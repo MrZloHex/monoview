@@ -79,8 +79,8 @@ func (m Model) renderHeader() string {
 
 func (m Model) renderHubStatus() string {
 	const width = 12
-	now := m.LastUpdate
-	trafficWindow := 1500 * time.Millisecond
+	now := time.Now()
+	trafficWindow := 500 * time.Millisecond
 
 	var dot string
 	if m.Hub != nil && m.Hub.Connected() {
