@@ -3,6 +3,7 @@ package ui
 import (
 	"fmt"
 	"strings"
+	"time"
 
 	"github.com/charmbracelet/lipgloss"
 )
@@ -30,17 +31,24 @@ func (m Model) View() string {
 		b.WriteString(m.renderSystem())
 	}
 
-	b.WriteString("\n")
-	b.WriteString(m.renderFooter())
+	content := b.String()
+	footer := m.renderFooter()
 
-	return b.String()
+	contentLines := strings.Count(content, "\n") + 1
+	footerLines := 1
+	padding := m.Height - contentLines - footerLines
+	if padding < 0 {
+		padding = 0
+	}
+
+	return content + strings.Repeat("\n", padding) + footer
 }
 
 func (m Model) renderHeader() string {
 	logo := `
-  ╔╦╗╔═╗╔╗╔╔═╗╦  ╦╦╔═╗╦ ╦
-  ║║║║ ║║║║║ ║╚╗╔╝║║╣ ║║║
-  ╩ ╩╚═╝╝╚╝╚═╝ ╚╝ ╩╚═╝╚╩╝`
+░█▄▒▄█░▄▀▄░█▄░█░▄▀▄░█▒█░█▒██▀░█░░▒█
+░█▒▀▒█░▀▄▀░█▒▀█░▀▄▀░▀▄▀░█░█▄▄░▀▄▀▄▀`
+
 
 	logoStyled := lipgloss.NewStyle().Foreground(GruvOrange).Render(logo)
 
@@ -48,12 +56,15 @@ func (m Model) renderHeader() string {
 	date := m.LastUpdate.Format("Mon, 02 Jan 2006")
 
 	var timeLines []string
-	timeLines = append(timeLines, PadLine(" "+Value.Render(clock)+" ", 20))
-	timeLines = append(timeLines, PadLine(" "+Label.Render(date)+" ", 20))
-
+	timeLines = append(timeLines, PadLine(" "+Value.Render(clock), 20))
+	timeLines = append(timeLines, PadLine(" "+Label.Render(date), 20))
 	timeBox := NewBox(22).Render(strings.Join(timeLines, "\n"))
 
-	gap := m.Width - lipgloss.Width(logo) - lipgloss.Width(timeBox) - 4
+	hubBox := m.renderHubStatus()
+
+	rightPanel := lipgloss.JoinHorizontal(lipgloss.Top, hubBox, " ", timeBox)
+
+	gap := m.Width - lipgloss.Width(logo) - lipgloss.Width(rightPanel) - 4
 	if gap < 0 {
 		gap = 2
 	}
@@ -62,8 +73,44 @@ func (m Model) renderHeader() string {
 		lipgloss.Top,
 		logoStyled,
 		strings.Repeat(" ", gap),
-		timeBox,
+		rightPanel,
 	)
+}
+
+func (m Model) renderHubStatus() string {
+	const width = 12
+	now := m.LastUpdate
+	trafficWindow := 1500 * time.Millisecond
+
+	var dot string
+	if m.Hub != nil && m.Hub.Connected() {
+		dot = Online.Render("●")
+	} else {
+		dot = Offline.Render("●")
+	}
+
+	var statusLabel string
+	if m.Hub != nil && m.Hub.Connected() {
+		statusLabel = Online.Render("ONLINE")
+	} else {
+		statusLabel = Offline.Render("OFFLINE")
+	}
+
+	rxArrow := Dim.Render("▼")
+	txArrow := Dim.Render("▲")
+	if !m.LastRx.IsZero() && now.Sub(m.LastRx) < trafficWindow {
+		rxArrow = lipgloss.NewStyle().Foreground(GruvAqua).Bold(true).Render("▼")
+	}
+	if !m.LastTx.IsZero() && now.Sub(m.LastTx) < trafficWindow {
+		txArrow = lipgloss.NewStyle().Foreground(GruvOrange).Bold(true).Render("▲")
+	}
+
+	var lines []string
+	lines = append(lines, PadLine(" "+dot+" "+statusLabel, width-2))
+	lines = append(lines, PadLine(" "+txArrow+" "+rxArrow+" "+Label.Render("HUB"), width-2))
+
+	content := strings.Join(lines, "\n")
+	return NewBox(width).Render(content)
 }
 
 func (m Model) renderTabs() string {
@@ -91,7 +138,7 @@ func (m Model) renderFooter() string {
 	case SheetDiary:
 		help = "[↑/k] prev  [↓/j] next  [1-4] sheets  [q] quit"
 	case SheetHome:
-		help = "[↑/k] prev  [↓/j] next  [enter] toggle  [1-4] sheets  [q] quit"
+		help = "[↑/k] prev  [↓/j] next  [enter] toggle  [←/h →/l] adjust  [1-4] sheets  [q] quit"
 	case SheetSystem:
 		help = "[↑/k] prev  [↓/j] next  [1-4] sheets  [q] quit"
 	}

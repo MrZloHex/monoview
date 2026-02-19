@@ -1,11 +1,29 @@
 package ui
 
 import (
+	"fmt"
 	"math/rand"
+	"strings"
 	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
+
+	"monoview/pkg/concentrator"
 )
+
+func nounToStatus(noun string) string {
+	switch noun {
+	case "ON":
+		return "on"
+	case "OFF":
+		return "off"
+	default:
+		return "on"
+	}
+}
+
+// HubMsg wraps a concentrator message arriving through the inbox channel.
+type HubMsg concentrator.Message
 
 // Model is the main application model
 type Model struct {
@@ -13,6 +31,9 @@ type Model struct {
 	Width       int
 	Height      int
 	LastUpdate  time.Time
+
+	// Concentrator client (runs in background goroutine)
+	Hub *concentrator.Client
 
 	// Calendar
 	SelectedDate time.Time
@@ -31,6 +52,10 @@ type Model struct {
 	Nodes        []SystemNode
 	Logs         []LogEntry
 	SelectedNode int
+
+	// Traffic indicators (timestamps of last rx/tx for arrow display)
+	LastRx time.Time
+	LastTx time.Time
 }
 
 // TickMsg is sent every second
@@ -94,12 +119,25 @@ func NewModel() Model {
 		SelectedEntry: 0,
 
 		HomeDevices: []HomeDevice{
-			{Name: "Living Room Light", Room: "Living Room", Status: "on", Value: "80%"},
-			{Name: "Thermostat", Room: "Hallway", Status: "on", Value: "21°C"},
-			{Name: "Front Door", Room: "Entrance", Status: "locked", Value: "—"},
-			{Name: "Bedroom AC", Room: "Bedroom", Status: "off", Value: "—"},
-			{Name: "Kitchen Sensor", Room: "Kitchen", Status: "on", Value: "22°C"},
-			{Name: "Garage Door", Room: "Garage", Status: "closed", Value: "—"},
+			{
+				Name: "Desk Lamp", Node: "VERTEX", Verb: "LAMP",
+				Kind: "toggle", Status: "unknown",
+				Actions: map[string]string{
+					"on": "OFF", "off": "ON", "unknown": "ON",
+				},
+			},
+			{
+				Name: "LED Light", Node: "VERTEX", Verb: "LED",
+				Kind: "cycle", Status: "off",
+				Actions: map[string]string{
+					"off": "BLINK", "blink": "FADE", "fade": "SOLID", "solid": "OFF",
+				},
+			},
+			{
+				Name: "Brightness", Node: "VERTEX", Verb: "LED",
+				Kind: "value", Status: "—", Noun: "BRIGHT",
+				Val: 128, Min: 0, Max: 255, Step: 15,
+			},
 		},
 		SelectedDevice: 0,
 
@@ -120,8 +158,26 @@ func NewModel() Model {
 	}
 }
 
+// waitForHub blocks on the concentrator inbox and delivers the next
+// message as a HubMsg into the Bubble Tea event loop.
+func waitForHub(inbox <-chan concentrator.Message) tea.Cmd {
+	return func() tea.Msg {
+		msg, ok := <-inbox
+		if !ok {
+			return nil
+		}
+		return HubMsg(msg)
+	}
+}
+
 func (m Model) Init() tea.Cmd {
-	return tick()
+	cmds := []tea.Cmd{tick()}
+	if m.Hub != nil {
+		if inbox := m.Hub.Inbox(); inbox != nil {
+			cmds = append(cmds, waitForHub(inbox))
+		}
+	}
+	return tea.Batch(cmds...)
 }
 
 func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
@@ -171,9 +227,95 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			}
 		}
 		return m, tick()
+
+	case HubMsg:
+		m.handleHub(concentrator.Message(msg))
+		var cmd tea.Cmd
+		if m.Hub != nil {
+			if inbox := m.Hub.Inbox(); inbox != nil {
+				cmd = waitForHub(inbox)
+			}
+		}
+		return m, cmd
 	}
 
 	return m, nil
+}
+
+// handleHub processes an incoming concentrator message and updates model state.
+func (m *Model) handleHub(msg concentrator.Message) {
+	now := time.Now()
+	m.LastRx = now
+
+	m.Logs = append([]LogEntry{{
+		Time:    now,
+		Level:   "MSG",
+		Source:  msg.From,
+		Message: msg.Raw,
+	}}, m.Logs...)
+
+	const maxLogs = 50
+	if len(m.Logs) > maxLogs {
+		m.Logs = m.Logs[:maxLogs]
+	}
+
+	m.handleDeviceResponse(msg)
+}
+
+// handleDeviceResponse checks if the message is a device OK/status and
+// updates the corresponding HomeDevice.
+//
+// Response patterns from the real system:
+//
+//	MONOVIEW:LAMP:OK:VERTEX   (FROM=VERTEX, VERB=LAMP, NOUN=OK)
+//	MONOVIEW:LED:OK:VERTEX    (FROM=VERTEX, VERB=LED, NOUN=OK)
+func (m *Model) handleDeviceResponse(msg concentrator.Message) {
+	verb := strings.ToUpper(msg.Verb)
+	noun := strings.ToUpper(msg.Noun)
+	from := strings.ToUpper(msg.From)
+
+	for i := range m.HomeDevices {
+		dev := &m.HomeDevices[i]
+		if strings.ToUpper(dev.Verb) != verb || strings.ToUpper(dev.Node) != from {
+			continue
+		}
+		if !dev.Pending {
+			continue
+		}
+
+		dev.Pending = false
+
+		switch dev.Kind {
+		case "toggle":
+			if noun == "OK" {
+				if next, ok := dev.Actions[dev.Status]; ok {
+					dev.Status = strings.ToLower(next)
+				}
+			} else {
+				dev.Status = nounToStatus(noun)
+			}
+		case "cycle":
+			if noun == "OK" {
+				if next, ok := dev.Actions[dev.Status]; ok {
+					dev.Status = strings.ToLower(next)
+				}
+			} else {
+				dev.Status = strings.ToLower(noun)
+			}
+		case "value":
+			// OK confirms the value was accepted; nothing to change.
+		}
+		return
+	}
+}
+
+// HubSend is a convenience for sending a command through the concentrator
+// from any place that has access to the Model (key handlers, etc.).
+func (m *Model) HubSend(to, verb, noun string, args ...string) {
+	if m.Hub != nil {
+		m.Hub.Send(to, verb, noun, args...)
+		m.LastTx = time.Now()
+	}
 }
 
 func (m *Model) navigateDown() {
@@ -211,33 +353,67 @@ func (m *Model) navigateUp() {
 }
 
 func (m *Model) navigateLeft() {
-	if m.ActiveSheet == SheetCalendar {
+	switch m.ActiveSheet {
+	case SheetCalendar:
 		m.SelectedDate = m.SelectedDate.Add(-24 * time.Hour)
+	case SheetHome:
+		m.adjustValue(-m.homeStep())
 	}
 }
 
 func (m *Model) navigateRight() {
-	if m.ActiveSheet == SheetCalendar {
+	switch m.ActiveSheet {
+	case SheetCalendar:
 		m.SelectedDate = m.SelectedDate.Add(24 * time.Hour)
+	case SheetHome:
+		m.adjustValue(m.homeStep())
 	}
 }
 
-func (m *Model) toggleAction() {
-	if m.ActiveSheet == SheetHome && m.SelectedDevice < len(m.HomeDevices) {
-		dev := &m.HomeDevices[m.SelectedDevice]
-		switch dev.Status {
-		case "on":
-			dev.Status = "off"
-		case "off":
-			dev.Status = "on"
-		case "locked":
-			dev.Status = "unlocked"
-		case "unlocked":
-			dev.Status = "locked"
-		case "closed":
-			dev.Status = "open"
-		case "open":
-			dev.Status = "closed"
+func (m *Model) homeStep() int {
+	if m.SelectedDevice < len(m.HomeDevices) {
+		if s := m.HomeDevices[m.SelectedDevice].Step; s > 0 {
+			return s
 		}
 	}
+	return 1
+}
+
+func (m *Model) toggleAction() {
+	if m.ActiveSheet != SheetHome || m.SelectedDevice >= len(m.HomeDevices) {
+		return
+	}
+	dev := &m.HomeDevices[m.SelectedDevice]
+
+	switch dev.Kind {
+	case "toggle", "cycle":
+		noun, ok := dev.Actions[dev.Status]
+		if !ok {
+			return
+		}
+		dev.Pending = true
+		m.HubSend(dev.Node, dev.Verb, noun)
+	case "value":
+		dev.Pending = true
+		m.HubSend(dev.Node, dev.Verb, dev.Noun, fmt.Sprintf("%d", dev.Val))
+	}
+}
+
+func (m *Model) adjustValue(delta int) {
+	if m.ActiveSheet != SheetHome || m.SelectedDevice >= len(m.HomeDevices) {
+		return
+	}
+	dev := &m.HomeDevices[m.SelectedDevice]
+	if dev.Kind != "value" {
+		return
+	}
+	dev.Val += delta
+	if dev.Val < dev.Min {
+		dev.Val = dev.Min
+	}
+	if dev.Val > dev.Max {
+		dev.Val = dev.Max
+	}
+	dev.Pending = true
+	m.HubSend(dev.Node, dev.Verb, dev.Noun, fmt.Sprintf("%d", dev.Val))
 }

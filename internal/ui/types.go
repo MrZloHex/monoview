@@ -33,12 +33,26 @@ type DiaryEntry struct {
 	Mood    string
 }
 
-// HomeDevice represents a smart home device
+// HomeDevice represents a controllable device reachable through the concentrator.
+//
+// Kind determines interaction:
+//
+//	"toggle" – Enter flips between two states (on/off)
+//	"cycle"  – Enter advances through a loop of states (off→blink→fade→solid→off)
+//	"value"  – Left/Right adjusts a numeric value, Enter sends it
 type HomeDevice struct {
-	Name   string
-	Room   string
-	Status string
-	Value  string
+	Name    string
+	Node    string            // target node (VERTEX, LUCH, ACHTUNG)
+	Verb    string            // protocol verb (LAMP, LED, ...)
+	Status  string            // current state key (e.g. "on", "off", "blink")
+	Kind    string            // "toggle", "cycle", "value"
+	Actions map[string]string // status -> noun to send (toggle & cycle)
+	Noun    string            // fixed noun for value kind (e.g. "BRIGHT")
+	Val     int               // current numeric value (value kind)
+	Min     int
+	Max     int
+	Step    int
+	Pending bool              // true while waiting for OK after sending a command
 }
 
 // SystemNode represents a system/server node

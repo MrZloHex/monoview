@@ -24,8 +24,20 @@ func (m Model) renderSystem() string {
 
 	b.WriteString(Title.Render("▌RECENT LOGS") + "\n\n")
 
+	// header(~5) + tabs(2) + gap(2) + nodes(~13) + log header(3) + footer(1) + padding(2)
+	overhead := 5 + 2 + 2 + strings.Count(nodeRow, "\n") + 1 + 3 + 1 + 2
+	maxLogs := m.Height - overhead
+	if maxLogs < 3 {
+		maxLogs = 3
+	}
+
+	logs := m.Logs
+	if len(logs) > maxLogs {
+		logs = logs[:maxLogs]
+	}
+
 	var logLines []string
-	for _, l := range m.Logs {
+	for _, l := range logs {
 		timeStr := l.Time.Format("15:04:05")
 		level := getLogLevelStyle(l.Level)
 		source := Accent.Render(fmt.Sprintf("%-8s", l.Source))
