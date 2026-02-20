@@ -69,12 +69,30 @@ type HomeDevice struct {
 
 // SystemNode represents a real system node reachable through the concentrator.
 type SystemNode struct {
-	Name     string
-	Status   string    // "online", "offline", "unknown"
-	Uptime   string    // human-readable uptime from GET:UPTIME
-	LastSeen time.Time // last time we got a PONG
-	PingMs   int64     // last round-trip in ms
-	PingSent time.Time // when we last sent PING (for RTT calc)
+	Name      string
+	PingNoun  string    // noun for PING command ("PINT" for VERTEX, "PING" for ACHTUNG)
+	Status    string    // "online", "offline", "unknown"
+	Uptime    string    // human-readable uptime from GET:UPTIME
+	LastSeen  time.Time // last time we got a PONG
+	PingMs    int64     // last round-trip in ms
+	PingSent  time.Time // when we last sent PING (for RTT calc)
+}
+
+// FireAlert is shown when ACHTUNG broadcasts ALL:FIRE:TIMER/ALARM:name.
+type FireAlert struct {
+	Show    bool
+	JobKind string // "TIMER" or "ALARM"
+	JobName string
+}
+
+// AchtungJob is a timer or alarm on the ACHTUNG node.
+// Remaining is updated every tick from EndTime when set; Due is shown as-is.
+type AchtungJob struct {
+	Kind      string     // "TIMER" or "ALARM"
+	Name      string
+	Remaining string     // human-readable countdown, updated from EndTime
+	Due       string     // human-readable due date/time from server
+	EndTime   *time.Time // when set, Remaining is computed each tick until this time
 }
 
 // LogEntry represents a log line

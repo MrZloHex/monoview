@@ -42,7 +42,7 @@ func (b *Box) Render(content string) string {
 		if titleLen > innerWidth-2 {
 			titleLen = innerWidth - 2
 		}
-		lineLen := innerWidth - titleLen - 2
+		lineLen := innerWidth - titleLen // total dashes so that ┌ + dashes + title + ┐ = Width
 		leftLine := 1
 		rightLine := lineLen - leftLine
 		if rightLine < 0 {

@@ -12,6 +12,14 @@ func (m Model) renderHome() string {
 
 	b.WriteString(Title.Render("▌HOME AUTOMATION") + "\n\n")
 
+	vertexSelected := !m.HomeFocusAchtung
+	if vertexSelected {
+		b.WriteString(NodeHeaderSelected.Render("▌VERTEX  devices") + "\n")
+	} else {
+		b.WriteString(Title.Render("▌VERTEX") + " " + Dim.Render("devices") + "\n")
+	}
+	b.WriteString(Dim.Render(strings.Repeat("─", 28)) + "\n\n")
+
 	nodeOrder := m.deviceNodes()
 	nodes := make(map[string][]int)
 	for i, d := range m.HomeDevices {
@@ -38,6 +46,8 @@ func (m Model) renderHome() string {
 
 	content := lipgloss.JoinVertical(lipgloss.Left, rows...)
 	b.WriteString(content)
+	b.WriteString("\n\n")
+	b.WriteString(m.renderAchtungPanel())
 
 	return indentLines(b.String(), "  ")
 }

@@ -41,7 +41,68 @@ func (m Model) View() string {
 		padding = 0
 	}
 
-	return content + strings.Repeat("\n", padding) + footer
+	fullView := content + strings.Repeat("\n", padding) + footer
+
+	if m.FireAlert.Show {
+		fullView = m.overlayFireAlert(fullView)
+	}
+
+	return fullView
+}
+
+// overlayFireAlert draws the fire-alert popup centered over the view.
+func (m Model) overlayFireAlert(fullView string) string {
+	lines := strings.Split(fullView, "\n")
+	// Ensure we have exactly Height lines
+	for len(lines) < m.Height {
+		lines = append(lines, "")
+	}
+	if len(lines) > m.Height {
+		lines = lines[:m.Height]
+	}
+
+	popupContent := m.renderFireAlertPopup()
+	popupLines := strings.Split(popupContent, "\n")
+	popupHeight := len(popupLines)
+	startRow := (m.Height - popupHeight) / 2
+	if startRow < 0 {
+		startRow = 0
+	}
+
+	for i, pl := range popupLines {
+		row := startRow + i
+		if row >= len(lines) {
+			break
+		}
+		w := lipgloss.Width(pl)
+		padLeft := (m.Width - w) / 2
+		if padLeft < 0 {
+			padLeft = 0
+		}
+		lines[row] = strings.Repeat(" ", padLeft) + pl
+	}
+
+	return strings.Join(lines, "\n")
+}
+
+func (m Model) renderFireAlertPopup() string {
+	const width = 44
+	kind := m.FireAlert.JobKind
+	name := m.FireAlert.JobName
+	title := kind + " fired!"
+	body := Accent.Render(name)
+	action := "[ Enter ] Turn off buzzer"
+	inner := strings.Join([]string{
+		"",
+		Title.Render("  "+title) + " ",
+		"",
+		"  " + body,
+		"",
+		Label.Render("  "+action) + " ",
+		"",
+	}, "\n")
+	box := NewBox(width).WithBorderColor(GruvYellow).WithTitle(" ALARM ")
+	return box.Render(inner)
 }
 
 func (m Model) renderHeader() string {
@@ -138,9 +199,13 @@ func (m Model) renderFooter() string {
 	case SheetDiary:
 		help = "[↑/k] prev  [↓/j] next  [1-4] sheets  [q] quit"
 	case SheetHome:
-		help = "[↑/k] prev  [↓/j] next  [enter] toggle  [←/h →/l] adjust  [1-4] sheets  [q] quit"
+		if m.HomeFocusAchtung {
+			help = "[tab] devices  [↑/k ↓/j] job  [t] timer  [a] alarm  [d] delete  [1-4] sheets  [q] quit"
+		} else {
+			help = "[tab] timers  [↑/k ↓/j] device  [enter] toggle  [←/h →/l] adjust  [1-4] sheets  [q] quit"
+		}
 	case SheetSystem:
-		help = "[↑/k] prev  [↓/j] next  [1-4] sheets  [q] quit"
+		help = "[↑/k ↓/j] or [←/h →/l] select node  [enter] ping  [1-4] sheets  [q] quit"
 	}
 
 	return Help.Render("  " + help)

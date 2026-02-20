@@ -71,4 +71,13 @@ var (
 	Selected = lipgloss.NewStyle().
 			Background(GruvBg2).
 			Foreground(GruvFg0)
+
+	// NodeHeaderSelected highlights the active node (VERTEX or ACHTUNG) on Home
+	NodeHeaderSelected = lipgloss.NewStyle().
+				Foreground(GruvYellow).
+				Bold(true).
+				BorderStyle(lipgloss.NormalBorder()).
+				BorderForeground(GruvYellow).
+				BorderLeft(true).
+				Padding(0, 1)
 )

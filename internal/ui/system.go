@@ -58,6 +58,100 @@ func (m Model) renderSystem() string {
 	return indentLines(b.String(), "  ")
 }
 
+func (m Model) renderAchtungPanel() string {
+	var b strings.Builder
+	achtungSelected := m.HomeFocusAchtung
+	if achtungSelected {
+		b.WriteString(NodeHeaderSelected.Render("▌ACHTUNG  · timers & alarms") + "\n")
+	} else {
+		b.WriteString(Title.Render("▌ACHTUNG") + " " + Dim.Render("· timers & alarms") + "\n")
+	}
+	b.WriteString(Dim.Render(strings.Repeat("─", 28)) + "\n\n")
+
+	if m.AchtungTimerDuration != "" {
+		b.WriteString(Label.Render("  Name (Enter for auto): "))
+		b.WriteString(Value.Render(m.AchtungTimerInput))
+		b.WriteString(Dim.Render("▌"))
+		b.WriteString("\n")
+		b.WriteString(Dim.Render("  [Enter] add  [Esc] cancel"))
+		b.WriteString("\n\n")
+	} else if m.AchtungTimerCustom {
+		b.WriteString(Label.Render("  Duration (e.g. 5m or 2m30s): "))
+		b.WriteString(Value.Render(m.AchtungTimerInput))
+		b.WriteString(Dim.Render("▌"))
+		b.WriteString("\n")
+		b.WriteString(Dim.Render("  [Enter] next  [Esc] cancel"))
+		b.WriteString("\n\n")
+	} else if m.AchtungTimerMenu {
+		b.WriteString(Label.Render("  Duration: "))
+		b.WriteString(Accent.Render("[1] 1m "))
+		b.WriteString(Accent.Render("[2] 5m "))
+		b.WriteString(Accent.Render("[3] 10m "))
+		b.WriteString(Accent.Render("[4] 30m "))
+		b.WriteString(Accent.Render("[5] 1h "))
+		b.WriteString(Accent.Render(" [c] custom "))
+		b.WriteString(Dim.Render("  [Esc] cancel"))
+		b.WriteString("\n\n")
+	} else if m.AchtungAlarmStep == 2 {
+		b.WriteString(Label.Render("  Alarm name (Enter for auto): "))
+		b.WriteString(Value.Render(m.AchtungAlarmInput))
+		b.WriteString(Dim.Render("▌"))
+		b.WriteString("\n")
+		b.WriteString(Dim.Render("  " + m.AchtungAlarmDate + " " + m.AchtungAlarmTime + "  [Enter] add  [Esc] cancel"))
+		b.WriteString("\n\n")
+	} else if m.AchtungAlarmMenu && m.AchtungAlarmCustom {
+		b.WriteString(Label.Render("  Time (HH:MM, past today = tomorrow): "))
+		b.WriteString(Value.Render(m.AchtungAlarmInput))
+		b.WriteString(Dim.Render("▌"))
+		b.WriteString("\n")
+		b.WriteString(Dim.Render("  [Enter] next  [Esc] cancel"))
+		b.WriteString("\n\n")
+	} else if m.AchtungAlarmMenu && m.AchtungAlarmStep == 0 {
+		b.WriteString(Label.Render("  Type: "))
+		b.WriteString(Accent.Render("[1] One-shot "))
+		b.WriteString(Dim.Render("(date & time)  [Esc] cancel"))
+		b.WriteString("\n\n")
+	} else if m.AchtungAlarmMenu && m.AchtungAlarmStep == 1 {
+		b.WriteString(Label.Render("  When: "))
+		b.WriteString(Accent.Render("[1] today 20:00 "))
+		b.WriteString(Accent.Render("[2] tomorrow 08:00 "))
+		b.WriteString(Accent.Render(" [c] custom "))
+		b.WriteString(Dim.Render("  [Esc] cancel"))
+		b.WriteString("\n\n")
+	}
+
+	if len(m.AchtungJobs) == 0 {
+		b.WriteString(Dim.Render("  No timers or alarms. [t] New timer  [a] New alarm"))
+		b.WriteString("\n")
+	} else {
+		for i, j := range m.AchtungJobs {
+			active := i == m.SelectedAchtungJob
+			kindStyle := Label
+			if j.Kind == "ALARM" {
+				kindStyle = Accent
+			}
+			line := fmt.Sprintf("%s %s  %s  %s",
+				kindStyle.Render(j.Kind+":"),
+				Value.Render(j.Name),
+				Label.Render("left:"),
+				Value.Render(j.Remaining))
+			if j.Due != "" && j.Due != "—" {
+				line += "  " + Label.Render("due:") + " " + Value.Render(j.Due)
+			}
+			if active {
+				line = "▌ " + line
+			} else {
+				line = "  " + line
+			}
+			b.WriteString(line + "\n")
+		}
+		b.WriteString(Dim.Render("\n  [t] New timer  [a] New alarm  [d] Delete selected"))
+		b.WriteString("\n")
+	}
+
+	return b.String()
+}
+
 func (m Model) renderNodePanel(n SystemNode, active bool) string {
 	width := 24
 
