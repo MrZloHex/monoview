@@ -3,3 +3,6 @@ compile_commands.json
 obj/
 bin/
 *.swp
+*.log
+huy
+monoview.log
