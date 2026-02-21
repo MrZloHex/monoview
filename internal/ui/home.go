@@ -7,7 +7,7 @@ import (
 	"github.com/charmbracelet/lipgloss"
 )
 
-func (m Model) renderHome() string {
+func (m Model) renderHome(showAchtungFormInline bool) string {
 	var b strings.Builder
 
 	b.WriteString(Title.Render("▌HOME AUTOMATION") + "\n\n")
@@ -47,7 +47,7 @@ func (m Model) renderHome() string {
 	content := lipgloss.JoinVertical(lipgloss.Left, rows...)
 	b.WriteString(content)
 	b.WriteString("\n\n")
-	b.WriteString(m.renderAchtungPanel())
+	b.WriteString(m.renderAchtungPanel(showAchtungFormInline))
 
 	return indentLines(b.String(), "  ")
 }

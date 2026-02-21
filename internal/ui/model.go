@@ -31,9 +31,12 @@ type Model struct {
 	Hub *concentrator.Client
 
 	// Calendar
-	SelectedDate time.Time
-	Events       []Event
-	Schedule     []ScheduleEntry
+	SelectedDate        time.Time
+	SelectedEvent       int  // index into events for SelectedDate (when CalendarFocusEvents)
+	CalendarFocusEvents bool // false = ↑/↓ move day (by week), Enter = focus events; true = ↑/↓ select event
+	Events              []Event
+	Deadlines     []Event // from GET:DEADLINES (upcoming deadlines box)
+	Schedule      []ScheduleEntry
 
 	// Diary
 	DiaryEntries  []DiaryEntry
@@ -51,23 +54,33 @@ type Model struct {
 	// ACHTUNG (timers & alarms, shown on Home sheet)
 	AchtungJobs        []AchtungJob
 	SelectedAchtungJob int
-	AchtungTimerMenu    bool   // true = show duration then name flow
-	AchtungTimerCustom  bool   // true = in text input (duration or name step)
-	AchtungTimerInput   string // current line: duration (step 1) or name (step 2)
-	AchtungTimerDuration string // chosen duration (e.g. "5m"); when set we're in name step
-	// Alarm flow: step 0 = type, step 1 = date/time, step 2 = name
-	AchtungAlarmMenu    bool   // true = adding alarm
-	AchtungAlarmStep    int    // 0 = pick type, 1 = pick/enter date&time, 2 = enter name
-	AchtungAlarmType    string // "oneshot" (others later if protocol supports)
-	AchtungAlarmDate    string // YYYY-MM-DD
-	AchtungAlarmTime    string // HH:MM
-	AchtungAlarmInput   string // custom datetime (step 1) or name (step 2)
-	AchtungAlarmCustom  bool   // true = typing custom date&time in step 1
+	AchtungTimerMenu     bool   // true = adding timer (all fields in right panel)
+	AchtungTimerDuration string // e.g. "5m"
+	AchtungTimerName     string // optional, Enter for auto
+	AchtungTimerFocusField int  // 0=duration, 1=name
+	AchtungAlarmMenu     bool   // true = adding alarm (all fields in right panel)
+	AchtungAlarmDate     string // YYYY-MM-DD
+	AchtungAlarmTime     string // HH:MM
+	AchtungAlarmName     string // optional
+	AchtungAlarmFocusField int  // 0=date, 1=time, 2=name
 	HomeFocusAchtung    bool   // on Home: true = focus timers panel (j/k, enter, t, a, d)
 	LastAchtungSync     time.Time
 
 	// Fire alert popup (ALL:FIRE:TIMER/ALARM from ACHTUNG)
 	FireAlert FireAlert
+
+	// Calendar: viewing selected event details in right panel (Enter on event)
+	EventViewMenu bool
+
+	// Add event flow (Calendar sheet): popup with all fields; EventAddFocusField = which field gets input
+	EventAddMenu        bool   // true = add-event form active
+	EventAddFocusField  int    // 0=title, 1=date, 2=time, 3=location, 4=notes, 5=visible_from
+	EventAddTitle       string
+	EventAddDate        string // YYYY-MM-DD
+	EventAddTime        string // HH:MM or HH:MM:SS
+	EventAddLocation    string
+	EventAddNotes       string
+	EventAddVisibleFrom string // optional YYYY-MM-DD; omit = default (7 days before deadline)
 
 	// Traffic indicators (timestamps of last rx/tx for arrow display)
 	LastRx time.Time
@@ -91,41 +104,9 @@ func NewModel() Model {
 		LastUpdate:   now,
 		SelectedDate: now,
 
-		Events: []Event{
-			{Date: now, Title: "Team standup", Category: "work"},
-			{Date: now.Add(2 * time.Hour), Title: "Code review", Category: "work"},
-			{Date: now.Add(24 * time.Hour), Title: "Doctor appointment", Category: "personal"},
-			{Date: now.Add(48 * time.Hour), Title: "Project deadline", Category: "deadline"},
-			{Date: now.Add(72 * time.Hour), Title: "Server maintenance", Category: "system"},
-		},
-
-		Schedule: []ScheduleEntry{
-			// Monday
-			{Weekday: time.Monday, Start: "10:45", End: "12:10", Title: "ТФКП", Location: "Б.Хим", Tags: []string{"Lecture", "Math"}},
-			{Weekday: time.Monday, Start: "17:05", End: "18:30", Title: "Машинное обучение", Location: "Б.Хим", Tags: []string{"Lecture", "ATP"}},
-			{Weekday: time.Monday, Start: "18:35", End: "20:00", Title: "Машинное обучение", Location: "Б.Хим", Tags: []string{"Seminar", "ATP"}},
-			// Tuesday
-			{Weekday: time.Tuesday, Start: "10:45", End: "12:10", Title: "Мат. статистика", Location: "ГК 230", Tags: []string{"Seminar", "DM"}},
-			{Weekday: time.Tuesday, Start: "13:55", End: "15:20", Title: "Китайский язык", Location: "НК", Tags: []string{"Seminar", "FL"}},
-			{Weekday: time.Tuesday, Start: "15:30", End: "16:55", Title: "Комп. Сети", Location: "UNK", Tags: []string{"Seminar", "ATP"}},
-			{Weekday: time.Tuesday, Start: "17:05", End: "18:30", Title: "ФИЯТ", Location: "КПМ 802", Tags: []string{"Seminar", "ATP"}},
-			{Weekday: time.Tuesday, Start: "18:35", End: "20:00", Title: "Комп. Сети", Location: "UNK", Tags: []string{"Lecture", "ATP"}},
-			// Wednesday
-			{Weekday: time.Wednesday, Start: "12:20", End: "13:45", Title: "Функ. анализ", Location: "ГК 415", Tags: []string{"Seminar", "Math"}},
-			{Weekday: time.Wednesday, Start: "13:55", End: "15:20", Title: "ТФКП", Location: "ГК 522", Tags: []string{"Seminar", "Math"}},
-			{Weekday: time.Wednesday, Start: "17:05", End: "18:30", Title: "Unity", Location: "UNK", Tags: []string{"Lecture", "ATP"}},
-			{Weekday: time.Wednesday, Start: "18:35", End: "20:00", Title: "Unity", Location: "UNK", Tags: []string{"Seminar", "ATP"}},
-			// Thursday
-			{Weekday: time.Thursday, Start: "09:00", End: "10:25", Title: "ФИЯТ", Location: "Б.Хим", Tags: []string{"Lecture", "ATP"}},
-			{Weekday: time.Thursday, Start: "13:55", End: "15:20", Title: "Китайский язык", Location: "НК", Tags: []string{"Seminar", "FL"}},
-			{Weekday: time.Thursday, Start: "17:05", End: "18:30", Title: "ШМП", Location: "UNK", Tags: []string{"Lecture", "Practic"}},
-			{Weekday: time.Thursday, Start: "18:35", End: "20:00", Title: "ШМП", Location: "UNK", Tags: []string{"Seminar", "Practic"}},
-			// Friday
-			{Weekday: time.Friday, Start: "10:45", End: "12:10", Title: "Функ. анализ", Location: "КПМ 115", Tags: []string{"Lecture", "Math"}},
-			{Weekday: time.Friday, Start: "15:30", End: "16:55", Title: "Мат. статистика", Location: "КПМ 115", Tags: []string{"Lecture", "DM"}},
-			// Saturday
-			{Weekday: time.Saturday, Start: "17:05", End: "18:30", Title: "Практикум матстат", Location: "ГК 113", Tags: []string{"Lecture", "DM"}},
-		},
+		// Events and Schedule are filled from GOVERNOR (GET:EVENTS, GET:SCHEDULE:<weekday>)
+		Events:   nil,
+		Schedule: nil,
 
 		DiaryEntries: []DiaryEntry{
 			{Date: now, Content: "Started working on MonoView TUI...", Mood: "focused"},
@@ -157,8 +138,10 @@ func NewModel() Model {
 		SelectedDevice: 0,
 
 		Nodes: []SystemNode{
-			{Name: "VERTEX", PingNoun: "PINT", Status: "unknown", Uptime: "—"},
-			{Name: "ACHTUNG", PingNoun: "PING", Status: "unknown", Uptime: "—"},
+			{Name: "VERTEX", PingNoun: "PINT", Status: "offline", Uptime: "—"},
+			{Name: "ACHTUNG", PingNoun: "PING", Status: "offline", Uptime: "—"},
+			{Name: "GOVERNOR", PingNoun: "PING", Status: "offline", Uptime: "—"},
+			{Name: "UKAZ", PingNoun: "PING", Status: "offline", Uptime: "—"},
 		},
 		SelectedNode: 0,
 	}
@@ -183,6 +166,9 @@ func (m Model) Init() tea.Cmd {
 			cmds = append(cmds, waitForHub(inbox))
 		}
 		m.queryDeviceStates()
+		m.requestGovernorSchedule()
+		m.requestGovernorEvents()
+		m.requestGovernorDeadlines()
 	}
 	return tea.Batch(cmds...)
 }
@@ -230,13 +216,13 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				return m, nil
 			}
 		}
-		if m.handleAchtungAlarmInput(msg) {
-			return m, nil
-		}
-		if m.handleAchtungTimerCustomInput(msg) {
+		if m.handleAchtungFormKeys(msg) {
 			return m, nil
 		}
 		if m.handleAchtungKeys(msg) {
+			return m, nil
+		}
+		if m.handleEventAddKeys(msg) {
 			return m, nil
 		}
 		switch msg.String() {
@@ -246,6 +232,11 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		// Sheet navigation
 		case "1":
 			m.ActiveSheet = SheetCalendar
+			m.CalendarFocusEvents = false
+			m.EventViewMenu = false
+			if m.EventAddMenu {
+				m.eventAddReset()
+			}
 		case "2":
 			m.ActiveSheet = SheetDiary
 		case "3":
@@ -258,6 +249,10 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				m.HomeFocusAchtung = !m.HomeFocusAchtung
 			} else {
 				m.ActiveSheet = (m.ActiveSheet + 1) % 4
+				if m.ActiveSheet == SheetCalendar {
+					m.CalendarFocusEvents = false
+					m.EventViewMenu = false
+				}
 				if m.ActiveSheet == SheetHome {
 					m.requestAchtungList()
 				}
@@ -267,23 +262,77 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				m.HomeFocusAchtung = !m.HomeFocusAchtung
 			} else {
 				m.ActiveSheet = (m.ActiveSheet + 3) % 4
+				if m.ActiveSheet == SheetCalendar {
+					m.CalendarFocusEvents = false
+					m.EventViewMenu = false
+				}
 				if m.ActiveSheet == SheetHome {
 					m.requestAchtungList()
 				}
 			}
+		case "esc":
+			if m.ActiveSheet == SheetCalendar {
+				if m.EventViewMenu {
+					m.EventViewMenu = false
+				} else if m.CalendarFocusEvents {
+					m.CalendarFocusEvents = false
+				}
+			}
 
-		// Navigation within sheets
-		case "j", "down":
-			m.navigateDown()
-		case "k", "up":
-			m.navigateUp()
-		case "h", "left":
-			m.navigateLeft()
-		case "l", "right":
-			m.navigateRight()
-		case "enter", " ":
-			m.toggleAction()
-			m.pingSelectedNode()
+		// Calendar: [a] or [n] add new event (opens form)
+		case "a", "n":
+			if m.ActiveSheet == SheetCalendar && !m.EventAddMenu && m.Hub != nil {
+				m.EventAddMenu = true
+				m.EventViewMenu = false
+				m.EventAddFocusField = 0
+				m.EventAddDate = m.SelectedDate.Format("2006-01-02")
+			}
+		}
+
+		// Navigation within sheets (no-op when in add-event form)
+		if m.ActiveSheet != SheetCalendar || !m.EventAddMenu {
+			switch msg.String() {
+			case "j", "down":
+				m.navigateDown()
+			case "k", "up":
+				m.navigateUp()
+			case "h", "left":
+				m.navigateLeft()
+			case "l", "right":
+				m.navigateRight()
+			case "enter", " ":
+				// Calendar: Enter on selected day switches to event selection; Enter on event shows details
+				if m.ActiveSheet == SheetCalendar && !m.CalendarFocusEvents {
+					m.CalendarFocusEvents = true
+					dayEvents := m.eventsForSelectedDate()
+					if m.SelectedEvent >= len(dayEvents) {
+						m.SelectedEvent = len(dayEvents) - 1
+					}
+					if m.SelectedEvent < 0 {
+						m.SelectedEvent = 0
+					}
+				} else if m.ActiveSheet == SheetCalendar && m.CalendarFocusEvents {
+					dayEvents := m.eventsForSelectedDate()
+					if len(dayEvents) > 0 && m.SelectedEvent >= 0 && m.SelectedEvent < len(dayEvents) {
+						m.EventViewMenu = true
+					} else {
+						m.toggleAction()
+						m.pingSelectedNode()
+					}
+				} else {
+					m.toggleAction()
+					m.pingSelectedNode()
+				}
+			case "d", "backspace":
+				if m.ActiveSheet == SheetCalendar {
+					if m.EventViewMenu {
+						m.deleteSelectedEvent()
+						m.EventViewMenu = false
+					} else if m.CalendarFocusEvents {
+						m.deleteSelectedEvent()
+					}
+				}
+			}
 		}
 
 	case tea.WindowSizeMsg:
@@ -333,9 +382,369 @@ func (m *Model) handleHub(msg concentrator.Message) {
 	}
 
 	m.handleNodeResponse(msg)
+	m.handleGovernorResponse(msg)
 	m.handleDeviceResponse(msg)
 	m.handleAchtungResponse(msg)
 	m.handleFireAlert(msg)
+}
+
+// requestGovernorSchedule requests GET:SCHEDULE:<weekday> for Mon–Sat from GOVERNOR.
+func (m *Model) requestGovernorSchedule() {
+	weekdays := []string{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat"}
+	for _, wd := range weekdays {
+		m.HubSend("GOVERNOR", "GET", "SCHEDULE", wd)
+	}
+}
+
+// requestGovernorEvents requests GET:EVENTS from GOVERNOR (list all events).
+func (m *Model) requestGovernorEvents() {
+	m.HubSend("GOVERNOR", "GET", "EVENTS")
+}
+
+// requestGovernorDeadlines requests GET:DEADLINES from GOVERNOR (fills upcoming deadlines box).
+// Optional scope: day, month, year (e.g. GET:DEADLINES:month).
+func (m *Model) requestGovernorDeadlines() {
+	m.HubSend("GOVERNOR", "GET", "DEADLINES")
+}
+
+// handleGovernorResponse processes OK:SCHEDULE and OK:EVENTS from GOVERNOR.
+func (m *Model) handleGovernorResponse(msg concentrator.Message) {
+	if strings.ToUpper(msg.From) != "GOVERNOR" || strings.ToUpper(msg.Verb) != "OK" {
+		return
+	}
+	noun := strings.ToUpper(msg.Noun)
+	switch noun {
+	case "SCHEDULE":
+		m.handleGovernorSchedule(msg)
+	case "EVENTS":
+		m.handleGovernorEvents(msg)
+	case "EVENT":
+		m.handleGovernorEventCreated(msg)
+	case "DEADLINES":
+		m.handleGovernorDeadlines(msg)
+	}
+}
+
+// handleGovernorSchedule processes OK:SCHEDULE. Slot format (wire): Weekday|Start|End|Title|Location|Tags (colons in values are dots).
+func (m *Model) handleGovernorSchedule(msg concentrator.Message) {
+	entries := parseGovernorScheduleSlots(msg.Args)
+	if len(entries) == 0 {
+		return
+	}
+	wd := entries[0].Weekday
+	var rest []ScheduleEntry
+	for _, e := range m.Schedule {
+		if e.Weekday != wd {
+			rest = append(rest, e)
+		}
+	}
+	m.Schedule = append(rest, entries...)
+	sortSchedule(m.Schedule)
+}
+
+// handleGovernorEvents processes OK:EVENTS. Event format (wire): id|title|at|location|notes, at = YYYY.MM.DD.HH.MM (dots).
+func (m *Model) handleGovernorEvents(msg concentrator.Message) {
+	events := parseGovernorEvents(msg.Args)
+	m.Events = events
+	// Clamp selected event index after list refresh
+	dayEvents := m.eventsForSelectedDate()
+	if m.SelectedEvent >= len(dayEvents) {
+		m.SelectedEvent = len(dayEvents) - 1
+	}
+	if m.SelectedEvent < 0 {
+		m.SelectedEvent = 0
+	}
+	m.requestGovernorDeadlines()
+}
+
+// handleGovernorEventCreated processes OK:EVENT:<id> (response to NEW:EVENT). Appends the event we just added and closes the form.
+func (m *Model) handleGovernorEventCreated(msg concentrator.Message) {
+	if !m.EventAddMenu || len(msg.Args) < 1 {
+		return
+	}
+	id := msg.Args[0]
+	t, err := parseGovernorEventTime(strings.ReplaceAll(m.EventAddDate, "-", ":") + ":" + m.EventAddTime)
+	if err != nil {
+		m.eventAddReset()
+		m.requestGovernorEvents()
+		m.requestGovernorDeadlines()
+		return
+	}
+	m.Events = append(m.Events, Event{
+		ID:       id,
+		Date:     t,
+		Title:    m.EventAddTitle,
+		Category: "personal",
+		Location: m.EventAddLocation,
+		Notes:    m.EventAddNotes,
+	})
+	sortEvents(m.Events)
+	m.eventAddReset()
+	m.requestGovernorDeadlines()
+}
+
+func (m *Model) eventAddReset() {
+	m.EventAddMenu = false
+	m.EventAddFocusField = 0
+	m.EventAddTitle = ""
+	m.EventAddDate = ""
+	m.EventAddTime = ""
+	m.EventAddLocation = ""
+	m.EventAddNotes = ""
+	m.EventAddVisibleFrom = ""
+}
+
+// eventAddFocusedValue returns a pointer to the string field that has focus (for editing).
+func (m *Model) eventAddFocusedValue() *string {
+	switch m.EventAddFocusField {
+	case 0:
+		return &m.EventAddTitle
+	case 1:
+		return &m.EventAddDate
+	case 2:
+		return &m.EventAddTime
+	case 3:
+		return &m.EventAddLocation
+	case 4:
+		return &m.EventAddNotes
+	case 5:
+		return &m.EventAddVisibleFrom
+	default:
+		return &m.EventAddTitle
+	}
+}
+
+// handleEventAddKeys handles key input for the add-event form (Calendar sheet). Returns true if key was consumed.
+func (m *Model) handleEventAddKeys(msg tea.KeyMsg) bool {
+	if !m.EventAddMenu || m.ActiveSheet != SheetCalendar {
+		return false
+	}
+	key := msg.String()
+	switch key {
+	case "esc":
+		m.eventAddReset()
+		return true
+	case "tab":
+		m.EventAddFocusField = (m.EventAddFocusField + 1) % 6
+		return true
+	case "shift+tab":
+		m.EventAddFocusField = (m.EventAddFocusField + 5) % 6
+		return true
+	case "enter":
+		if m.EventAddFocusField == 5 {
+			// Last field: submit if valid
+			if m.eventAddValidateAndSubmit() {
+				return true
+			}
+		}
+		m.EventAddFocusField = (m.EventAddFocusField + 1) % 6
+		return true
+	case "backspace":
+		s := m.eventAddFocusedValue()
+		runes := []rune(*s)
+		if len(runes) > 0 {
+			*s = string(runes[:len(runes)-1])
+		}
+		return true
+	case " ":
+		*m.eventAddFocusedValue() += " "
+		return true
+	}
+	if msg.Type == tea.KeyRunes && len(msg.Runes) > 0 {
+		*m.eventAddFocusedValue() += string(msg.Runes)
+		return true
+	}
+	return true
+}
+
+// eventAddValidateAndSubmit checks required fields (title, date, time) and sends NEW:EVENT. Returns true if key was consumed.
+func (m *Model) eventAddValidateAndSubmit() bool {
+	if strings.TrimSpace(m.EventAddTitle) == "" {
+		return true
+	}
+	if _, err := time.Parse("2006-01-02", m.EventAddDate); err != nil {
+		return true
+	}
+	if m.EventAddTime != "" {
+		if _, err := time.Parse("15:04", m.EventAddTime); err != nil {
+			if _, err2 := time.Parse("15:04:05", m.EventAddTime); err2 != nil {
+				return true
+			}
+		}
+	} else {
+		return true
+	}
+	m.eventAddSubmit()
+	return true
+}
+
+// eventAddSubmit sends NEW:EVENT per governor protocol:
+// NEW:EVENT:<title>:<date>:<time>[:location][:notes][:visible_from] -> OK:EVENT:<id>
+// Date YYYY.MM.DD, time HH.MM or HH.MM.SS. visible_from optional (omit = 7 days before).
+func (m *Model) eventAddSubmit() {
+	dateWire := strings.ReplaceAll(m.EventAddDate, "-", ".")
+	timeWire := strings.ReplaceAll(m.EventAddTime, ":", ".")
+	args := []string{m.EventAddTitle, dateWire, timeWire}
+	args = append(args, m.EventAddLocation)
+	args = append(args, m.EventAddNotes)
+	args = append(args, strings.ReplaceAll(m.EventAddVisibleFrom, "-", "."))
+	m.HubSend("GOVERNOR", "NEW", "EVENT", args...)
+	// Keep form open until OK:EVENT:<id> in handleGovernorEventCreated (then eventAddReset)
+}
+
+// handleGovernorDeadlines processes OK:DEADLINES. Same event wire format as OK:EVENTS.
+func (m *Model) handleGovernorDeadlines(msg concentrator.Message) {
+	m.Deadlines = parseGovernorEvents(msg.Args)
+	sortEvents(m.Deadlines)
+}
+
+// parseGovernorEvents parses OK:EVENTS args into Event slice. One arg per event: id|title|at|location|notes|visible_from (visible_from optional).
+func parseGovernorEvents(args []string) []Event {
+	var out []Event
+	for _, arg := range args {
+		parts := strings.Split(arg, "|")
+		if len(parts) < 3 {
+			continue
+		}
+		id := parts[0]
+		title := parts[1]
+		atStr := strings.ReplaceAll(parts[2], ".", ":") // YYYY.MM.DD.HH.MM -> YYYY:MM:DD:HH:MM for parsing
+		location := ""
+		if len(parts) > 3 {
+			location = parts[3]
+		}
+		notes := ""
+		if len(parts) > 4 {
+			notes = parts[4]
+		}
+		t, err := parseGovernorEventTime(atStr)
+		if err != nil {
+			continue
+		}
+		category := "personal"
+		if strings.Contains(strings.ToLower(notes), "deadline") {
+			category = "deadline"
+		} else if strings.Contains(strings.ToLower(notes), "work") {
+			category = "work"
+		} else if strings.Contains(strings.ToLower(notes), "system") {
+			category = "system"
+		}
+		out = append(out, Event{
+			ID:       id,
+			Date:     t,
+			Title:    title,
+			Category: category,
+			Location: location,
+			Notes:    notes,
+		})
+	}
+	// Sort by date
+	sortEvents(out)
+	return out
+}
+
+// parseGovernorEventTime parses at string: dots or colons YYYY.MM.DD.HH.MM or YYYY.MM.DD.HH.MM.SS
+func parseGovernorEventTime(s string) (time.Time, error) {
+	s = strings.TrimSpace(s)
+	// Normalize to one separator for parsing
+	s = strings.ReplaceAll(s, ".", ":")
+	parts := strings.Split(s, ":")
+	if len(parts) < 5 {
+		return time.Time{}, fmt.Errorf("need at least YYYY:MM:DD:HH:MM")
+	}
+	var y, mo, d, h, min, sec int
+	fmt.Sscanf(parts[0], "%d", &y)
+	fmt.Sscanf(parts[1], "%d", &mo)
+	fmt.Sscanf(parts[2], "%d", &d)
+	fmt.Sscanf(parts[3], "%d", &h)
+	fmt.Sscanf(parts[4], "%d", &min)
+	if len(parts) >= 6 {
+		fmt.Sscanf(parts[5], "%d", &sec)
+	}
+	return time.Date(y, time.Month(mo), d, h, min, sec, 0, time.Local), nil
+}
+
+func sortEvents(events []Event) {
+	for i := 0; i < len(events); i++ {
+		for j := i + 1; j < len(events); j++ {
+			if events[i].Date.After(events[j].Date) {
+				events[i], events[j] = events[j], events[i]
+			}
+		}
+	}
+}
+
+// parseGovernorScheduleSlots parses wire slot args into ScheduleEntry slice.
+// One arg per slot: Weekday|Start|End|Title|Location|Tags (colons → dots on wire).
+func parseGovernorScheduleSlots(args []string) []ScheduleEntry {
+	var entries []ScheduleEntry
+	for _, arg := range args {
+		parts := strings.Split(arg, "|")
+		if len(parts) < 6 {
+			continue
+		}
+		wd := parseWeekday(parts[0])
+		start := strings.ReplaceAll(parts[1], ".", ":")
+		end := strings.ReplaceAll(parts[2], ".", ":")
+		title := parts[3]
+		location := parts[4]
+		tags := strings.Split(parts[5], ";")
+		for i, t := range tags {
+			tags[i] = strings.TrimSpace(t)
+		}
+		entries = append(entries, ScheduleEntry{
+			Weekday:  wd,
+			Start:    start,
+			End:      end,
+			Title:    title,
+			Location: location,
+			Tags:     tags,
+		})
+	}
+	return entries
+}
+
+func parseWeekday(s string) time.Weekday {
+	switch strings.ToLower(strings.TrimSpace(s)) {
+	case "mon":
+		return time.Monday
+	case "tue":
+		return time.Tuesday
+	case "wed":
+		return time.Wednesday
+	case "thu":
+		return time.Thursday
+	case "fri":
+		return time.Friday
+	case "sat":
+		return time.Saturday
+	case "sun":
+		return time.Sunday
+	default:
+		return time.Sunday
+	}
+}
+
+func sortSchedule(s []ScheduleEntry) {
+	weekdayOrder := func(w time.Weekday) int {
+		if w == time.Sunday {
+			return 7
+		}
+		return int(w)
+	}
+	startMins := func(e ScheduleEntry) int {
+		var h, m int
+		fmt.Sscanf(e.Start, "%d:%d", &h, &m)
+		return h*60 + m
+	}
+	for i := 0; i < len(s); i++ {
+		for j := i + 1; j < len(s); j++ {
+			wi, wj := weekdayOrder(s[i].Weekday), weekdayOrder(s[j].Weekday)
+			if wi > wj || (wi == wj && startMins(s[i]) > startMins(s[j])) {
+				s[i], s[j] = s[j], s[i]
+			}
+		}
+	}
 }
 
 // handleFireAlert shows the popup when ACHTUNG sends ALL:FIRE:TIMER/ALARM:name.
@@ -492,71 +901,147 @@ func (m *Model) handleAchtungResponse(msg concentrator.Message) {
 
 func (m *Model) achtungTimerReset() {
 	m.AchtungTimerMenu = false
-	m.AchtungTimerCustom = false
-	m.AchtungTimerInput = ""
 	m.AchtungTimerDuration = ""
+	m.AchtungTimerName = ""
+	m.AchtungTimerFocusField = 0
 }
 
 func (m *Model) achtungAlarmReset() {
 	m.AchtungAlarmMenu = false
-	m.AchtungAlarmStep = 0
-	m.AchtungAlarmType = ""
 	m.AchtungAlarmDate = ""
 	m.AchtungAlarmTime = ""
-	m.AchtungAlarmInput = ""
-	m.AchtungAlarmCustom = false
+	m.AchtungAlarmName = ""
+	m.AchtungAlarmFocusField = 0
 }
 
-// handleAchtungAlarmInput handles key input for alarm flow (date/time step then name step).
-// Step 0 (type selection) is handled in handleAchtungKeys so menu keys like "1" are not eaten.
-func (m *Model) handleAchtungAlarmInput(msg tea.KeyMsg) bool {
-	if !m.AchtungAlarmMenu {
-		return false
+// achtungFormFocusedValue returns the string field that has focus (for editing).
+func (m *Model) achtungFormFocusedValue() *string {
+	if m.AchtungTimerMenu {
+		switch m.AchtungTimerFocusField {
+		case 0:
+			return &m.AchtungTimerDuration
+		case 1:
+			return &m.AchtungTimerName
+		}
 	}
-	// Step 0 (type) and step 1 preset menu have no text input; let handleAchtungKeys handle 1, 2, c, esc.
-	if m.AchtungAlarmStep == 0 || (m.AchtungAlarmStep == 1 && !m.AchtungAlarmCustom) {
-		return false
+	if m.AchtungAlarmMenu {
+		switch m.AchtungAlarmFocusField {
+		case 0:
+			return &m.AchtungAlarmDate
+		case 1:
+			return &m.AchtungAlarmTime
+		case 2:
+			return &m.AchtungAlarmName
+		}
 	}
+	return &m.AchtungTimerName
+}
+
+// handleAchtungFormKeys handles key input for timer/alarm forms (all fields at once, like events).
+func (m *Model) handleAchtungFormKeys(msg tea.KeyMsg) bool {
 	key := msg.String()
-	switch key {
-	case "enter":
-		if m.AchtungAlarmStep == 2 {
-			if m.AchtungAlarmDate != "" && m.AchtungAlarmTime != "" {
-				name := strings.TrimSpace(m.AchtungAlarmInput)
-				if name == "" {
-					name = fmt.Sprintf("alarm_%d", time.Now().Unix())
-				}
-				datetime := formatAchtungAlarmDateTime(m.AchtungAlarmDate, m.AchtungAlarmTime)
-				m.HubSend("ACHTUNG", "NEW", "ALARM", name, datetime)
-				m.requestAchtungList()
+	if m.AchtungTimerMenu {
+		switch key {
+		case "esc":
+			m.achtungTimerReset()
+			return true
+		case "tab":
+			m.AchtungTimerFocusField = (m.AchtungTimerFocusField + 1) % 2
+			return true
+		case "shift+tab":
+			m.AchtungTimerFocusField = (m.AchtungTimerFocusField + 1) % 2
+			return true
+		case "enter":
+			if m.AchtungTimerFocusField == 1 {
+				m.achtungTimerSubmit()
+				return true
 			}
+			m.AchtungTimerFocusField = (m.AchtungTimerFocusField + 1) % 2
+			return true
+		case "backspace":
+			s := m.achtungFormFocusedValue()
+			runes := []rune(*s)
+			if len(runes) > 0 {
+				*s = string(runes[:len(runes)-1])
+			}
+			return true
+		case " ":
+			*m.achtungFormFocusedValue() += " "
+			return true
+		}
+		if msg.Type == tea.KeyRunes && len(msg.Runes) > 0 {
+			*m.achtungFormFocusedValue() += string(msg.Runes)
+			return true
+		}
+		return false
+	}
+	if m.AchtungAlarmMenu {
+		switch key {
+		case "esc":
 			m.achtungAlarmReset()
-		} else if m.AchtungAlarmCustom {
-			date, timeStr := parseAlarmDateTime(strings.TrimSpace(m.AchtungAlarmInput))
-			if date != "" && timeStr != "" {
-				m.AchtungAlarmDate = date
-				m.AchtungAlarmTime = timeStr
-				m.AchtungAlarmStep = 2
-				m.AchtungAlarmInput = ""
-				m.AchtungAlarmCustom = false
+			return true
+		case "tab":
+			m.AchtungAlarmFocusField = (m.AchtungAlarmFocusField + 1) % 3
+			return true
+		case "shift+tab":
+			m.AchtungAlarmFocusField = (m.AchtungAlarmFocusField + 2) % 3
+			return true
+		case "enter":
+			if m.AchtungAlarmFocusField == 2 {
+				m.achtungAlarmSubmit()
+				return true
 			}
+			m.AchtungAlarmFocusField = (m.AchtungAlarmFocusField + 1) % 3
+			return true
+		case "backspace":
+			s := m.achtungFormFocusedValue()
+			runes := []rune(*s)
+			if len(runes) > 0 {
+				*s = string(runes[:len(runes)-1])
+			}
+			return true
+		case " ":
+			*m.achtungFormFocusedValue() += " "
+			return true
 		}
-		return true
-	case "esc":
-		m.achtungAlarmReset()
-		return true
-	case "backspace":
-		runes := []rune(m.AchtungAlarmInput)
-		if len(runes) > 0 {
-			m.AchtungAlarmInput = string(runes[:len(runes)-1])
+		if msg.Type == tea.KeyRunes && len(msg.Runes) > 0 {
+			*m.achtungFormFocusedValue() += string(msg.Runes)
+			return true
 		}
-		return true
+		return false
 	}
-	if msg.Type == tea.KeyRunes && len(msg.Runes) > 0 {
-		m.AchtungAlarmInput += string(msg.Runes)
-		return true
+	return false
+}
+
+func (m *Model) achtungTimerSubmit() {
+	dur := strings.TrimSpace(m.AchtungTimerDuration)
+	if parseDuration(dur) < 0 {
+		return
 	}
-	return true
+	name := strings.TrimSpace(m.AchtungTimerName)
+	if name == "" {
+		name = fmt.Sprintf("t_%s_%d", dur, time.Now().Unix())
+	}
+	m.HubSend("ACHTUNG", "NEW", "TIMER", name, dur)
+	m.requestAchtungList()
+	m.achtungTimerReset()
+}
+
+func (m *Model) achtungAlarmSubmit() {
+	if _, err := time.Parse("2006-01-02", m.AchtungAlarmDate); err != nil {
+		return
+	}
+	if _, err := time.Parse("15:04", m.AchtungAlarmTime); err != nil {
+		return
+	}
+	name := strings.TrimSpace(m.AchtungAlarmName)
+	if name == "" {
+		name = fmt.Sprintf("alarm_%d", time.Now().Unix())
+	}
+	datetime := formatAchtungAlarmDateTime(m.AchtungAlarmDate, m.AchtungAlarmTime)
+	m.HubSend("ACHTUNG", "NEW", "ALARM", name, datetime)
+	m.requestAchtungList()
+	m.achtungAlarmReset()
 }
 
 // formatAchtungAlarmDateTime formats date (YYYY-MM-DD) and time (HH:MM) for ACHTUNG: YYYY.MM.DD:HH.MM
@@ -596,50 +1081,6 @@ func parseAlarmDateTime(s string) (date, timeStr string) {
 	return "", ""
 }
 
-// handleAchtungTimerCustomInput handles key input for duration step (custom) and name step.
-// Returns true if the key was consumed.
-func (m *Model) handleAchtungTimerCustomInput(msg tea.KeyMsg) bool {
-	if !m.AchtungTimerCustom {
-		return false
-	}
-	key := msg.String()
-	switch key {
-	case "enter":
-		if m.AchtungTimerDuration != "" {
-			// Name step: submit timer
-			name := strings.TrimSpace(m.AchtungTimerInput)
-			if name == "" {
-				name = fmt.Sprintf("t_%s_%d", m.AchtungTimerDuration, time.Now().Unix())
-			}
-			m.HubSend("ACHTUNG", "NEW", "TIMER", name, m.AchtungTimerDuration)
-			m.requestAchtungList()
-			m.achtungTimerReset()
-		} else {
-			// Duration step: validate and go to name step
-			dur := strings.TrimSpace(m.AchtungTimerInput)
-			if parseDuration(dur) >= 0 {
-				m.AchtungTimerDuration = dur
-				m.AchtungTimerInput = ""
-			}
-		}
-		return true
-	case "esc":
-		m.achtungTimerReset()
-		return true
-	case "backspace":
-		runes := []rune(m.AchtungTimerInput)
-		if len(runes) > 0 {
-			m.AchtungTimerInput = string(runes[:len(runes)-1])
-		}
-		return true
-	}
-	if msg.Type == tea.KeyRunes && len(msg.Runes) > 0 {
-		m.AchtungTimerInput += string(msg.Runes)
-		return true
-	}
-	return true
-}
-
 // parseDuration returns duration in seconds if s is valid (e.g. "5m", "90s"), else -1.
 func parseDuration(s string) int64 {
 	if d, err := time.ParseDuration(s); err == nil && d > 0 {
@@ -651,84 +1092,9 @@ func parseDuration(s string) int64 {
 	return -1
 }
 
-// handleAchtungKeys handles keys when ACHTUNG is selected or timer menu is open.
-// Returns true if the key was consumed.
+// handleAchtungKeys handles keys when ACHTUNG is selected (form input goes to handleAchtungFormKeys).
 func (m *Model) handleAchtungKeys(msg tea.KeyMsg) bool {
 	key := msg.String()
-
-	// Step 1: duration selection (preset or [c] custom)
-	if m.AchtungTimerMenu && !m.AchtungTimerCustom && m.AchtungTimerDuration == "" {
-		if key == "q" || key == "ctrl+c" {
-			return false
-		}
-		if key == "esc" {
-			m.achtungTimerReset()
-			return true
-		}
-		if key == "c" {
-			m.AchtungTimerCustom = true
-			m.AchtungTimerInput = ""
-			return true
-		}
-		presets := map[string]string{"1": "1m", "2": "5m", "3": "10m", "4": "30m", "5": "1h"}
-		if dur, ok := presets[key]; ok {
-			m.AchtungTimerDuration = dur
-			m.AchtungTimerCustom = true
-			m.AchtungTimerInput = ""
-			return true
-		}
-		return true
-	}
-
-	// Alarm step 0: select type
-	if m.AchtungAlarmMenu && m.AchtungAlarmStep == 0 {
-		if key == "q" || key == "ctrl+c" {
-			return false
-		}
-		if key == "esc" {
-			m.achtungAlarmReset()
-			return true
-		}
-		if key == "1" {
-			m.AchtungAlarmType = "oneshot"
-			m.AchtungAlarmStep = 1
-			return true
-		}
-		return true
-	}
-
-	// Alarm step 1: preset date/time
-	if m.AchtungAlarmMenu && m.AchtungAlarmStep == 1 && !m.AchtungAlarmCustom {
-		if key == "q" || key == "ctrl+c" {
-			return false
-		}
-		if key == "esc" {
-			m.achtungAlarmReset()
-			return true
-		}
-		if key == "c" {
-			m.AchtungAlarmCustom = true
-			m.AchtungAlarmInput = ""
-			return true
-		}
-		now := time.Now()
-		if key == "1" {
-			m.AchtungAlarmDate = now.Format("2006-01-02")
-			m.AchtungAlarmTime = "20:00"
-			m.AchtungAlarmStep = 2
-			m.AchtungAlarmInput = ""
-			return true
-		}
-		if key == "2" {
-			tomorrow := now.Add(24 * time.Hour)
-			m.AchtungAlarmDate = tomorrow.Format("2006-01-02")
-			m.AchtungAlarmTime = "08:00"
-			m.AchtungAlarmStep = 2
-			m.AchtungAlarmInput = ""
-			return true
-		}
-		return true
-	}
 
 	// On Home: when focus is ACHTUNG (or key t/a to focus and act), handle ACHTUNG keys
 	if m.ActiveSheet == SheetHome {
@@ -736,16 +1102,18 @@ func (m *Model) handleAchtungKeys(msg tea.KeyMsg) bool {
 			m.HomeFocusAchtung = true
 			if key == "t" {
 				m.AchtungTimerMenu = true
+				m.AchtungTimerFocusField = 0
+				m.AchtungTimerDuration = ""
+				m.AchtungTimerName = ""
 				return true
 			}
 			if key == "a" {
 				m.AchtungAlarmMenu = true
-				m.AchtungAlarmStep = 0
-				m.AchtungAlarmType = ""
-				m.AchtungAlarmCustom = false
-				m.AchtungAlarmInput = ""
-				m.AchtungAlarmDate = ""
-				m.AchtungAlarmTime = ""
+				m.AchtungAlarmFocusField = 0
+				now := time.Now()
+				m.AchtungAlarmDate = now.Format("2006-01-02")
+				m.AchtungAlarmTime = "20:00"
+				m.AchtungAlarmName = ""
 				return true
 			}
 		}
@@ -778,12 +1146,11 @@ func (m *Model) handleAchtungKeys(msg tea.KeyMsg) bool {
 		return true
 	case "a":
 		m.AchtungAlarmMenu = true
-		m.AchtungAlarmStep = 0
-		m.AchtungAlarmType = ""
-		m.AchtungAlarmCustom = false
-		m.AchtungAlarmInput = ""
-		m.AchtungAlarmDate = ""
-		m.AchtungAlarmTime = ""
+		m.AchtungAlarmFocusField = 0
+		now := time.Now()
+		m.AchtungAlarmDate = now.Format("2006-01-02")
+		m.AchtungAlarmTime = "20:00"
+		m.AchtungAlarmName = ""
 		return true
 	}
 	return false
@@ -852,6 +1219,10 @@ func (m *Model) handleNodeResponse(msg concentrator.Message) {
 			node.LastSeen = now
 			if !node.PingSent.IsZero() {
 				node.PingMs = now.Sub(node.PingSent).Milliseconds()
+			}
+			if from == "GOVERNOR" {
+				m.requestGovernorEvents()
+				m.requestGovernorDeadlines()
 			}
 
 		case "OK":
@@ -1004,8 +1375,40 @@ func (m *Model) HubSend(to, verb, noun string, args ...string) {
 	}
 }
 
+// eventsForSelectedDate returns events on the selected date, sorted by time.
+func (m *Model) eventsForSelectedDate() []Event {
+	var out []Event
+	for _, e := range m.Events {
+		if e.Date.YearDay() == m.SelectedDate.YearDay() && e.Date.Year() == m.SelectedDate.Year() {
+			out = append(out, e)
+		}
+	}
+	// sort by time
+	for i := 0; i < len(out); i++ {
+		for j := i + 1; j < len(out); j++ {
+			if out[i].Date.After(out[j].Date) {
+				out[i], out[j] = out[j], out[i]
+			}
+		}
+	}
+	return out
+}
+
 func (m *Model) navigateDown() {
 	switch m.ActiveSheet {
+	case SheetCalendar:
+		if m.EventAddMenu {
+			break
+		}
+		if m.CalendarFocusEvents {
+			dayEvents := m.eventsForSelectedDate()
+			if m.SelectedEvent < len(dayEvents)-1 {
+				m.SelectedEvent++
+			}
+		} else {
+			m.SelectedDate = m.SelectedDate.Add(7 * 24 * time.Hour)
+			m.SelectedEvent = 0
+		}
 	case SheetDiary:
 		if m.SelectedEntry < len(m.DiaryEntries)-1 {
 			m.SelectedEntry++
@@ -1029,6 +1432,18 @@ func (m *Model) navigateDown() {
 
 func (m *Model) navigateUp() {
 	switch m.ActiveSheet {
+	case SheetCalendar:
+		if m.EventAddMenu {
+			break
+		}
+		if m.CalendarFocusEvents {
+			if m.SelectedEvent > 0 {
+				m.SelectedEvent--
+			}
+		} else {
+			m.SelectedDate = m.SelectedDate.Add(-7 * 24 * time.Hour)
+			m.SelectedEvent = 0
+		}
 	case SheetDiary:
 		if m.SelectedEntry > 0 {
 			m.SelectedEntry--
@@ -1053,7 +1468,10 @@ func (m *Model) navigateUp() {
 func (m *Model) navigateLeft() {
 	switch m.ActiveSheet {
 	case SheetCalendar:
-		m.SelectedDate = m.SelectedDate.Add(-24 * time.Hour)
+		if !m.CalendarFocusEvents {
+			m.SelectedDate = m.SelectedDate.Add(-24 * time.Hour)
+			m.SelectedEvent = 0
+		}
 	case SheetHome:
 		m.adjustValue(-m.homeStep())
 	case SheetSystem:
@@ -1066,13 +1484,36 @@ func (m *Model) navigateLeft() {
 func (m *Model) navigateRight() {
 	switch m.ActiveSheet {
 	case SheetCalendar:
-		m.SelectedDate = m.SelectedDate.Add(24 * time.Hour)
+		if !m.CalendarFocusEvents {
+			m.SelectedDate = m.SelectedDate.Add(24 * time.Hour)
+			m.SelectedEvent = 0
+		}
 	case SheetHome:
 		m.adjustValue(m.homeStep())
 	case SheetSystem:
 		if m.SelectedNode < len(m.Nodes)-1 {
 			m.SelectedNode++
 		}
+	}
+}
+
+func (m *Model) deleteSelectedEvent() {
+	dayEvents := m.eventsForSelectedDate()
+	if len(dayEvents) == 0 || m.SelectedEvent < 0 || m.SelectedEvent >= len(dayEvents) {
+		return
+	}
+	id := dayEvents[m.SelectedEvent].ID
+	if id == "" {
+		return
+	}
+	m.HubSend("GOVERNOR", "STOP", "EVENT", id)
+	m.requestGovernorEvents()
+	m.requestGovernorDeadlines()
+	if m.SelectedEvent >= len(dayEvents)-1 {
+		m.SelectedEvent--
+	}
+	if m.SelectedEvent < 0 {
+		m.SelectedEvent = 0
 	}
 }
 

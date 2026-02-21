@@ -8,43 +8,52 @@ import (
 )
 
 func (m Model) renderSystem() string {
-	var b strings.Builder
+	// Left: nodes in 2 columns (vertical layout). Right: logs.
+	// Split nodes into two columns
+	mid := (len(m.Nodes) + 1) / 2
+	col1Nodes := m.Nodes[:mid]
+	col2Nodes := m.Nodes[mid:]
 
-	b.WriteString(Title.Render("▌SYSTEM NODES") + "\n\n")
-
-	var nodePanels []string
-	for i, n := range m.Nodes {
+	var col1Panels, col2Panels []string
+	for i, n := range col1Nodes {
 		panel := m.renderNodePanel(n, i == m.SelectedNode)
-		nodePanels = append(nodePanels, panel)
+		col1Panels = append(col1Panels, panel)
+	}
+	for i, n := range col2Nodes {
+		panel := m.renderNodePanel(n, mid+i == m.SelectedNode)
+		col2Panels = append(col2Panels, panel)
 	}
 
-	nodeRow := lipgloss.JoinHorizontal(lipgloss.Top, nodePanels...)
-	b.WriteString(nodeRow)
-	b.WriteString("\n\n")
+	col1 := lipgloss.JoinVertical(lipgloss.Left, col1Panels...)
+	col2 := lipgloss.JoinVertical(lipgloss.Left, col2Panels...)
+	nodesBlock := lipgloss.JoinHorizontal(lipgloss.Top, col1, "  ", col2)
 
-	b.WriteString(Title.Render("▌RECENT LOGS") + "\n\n")
+	nodesHeader := Title.Render("▌NODES") + "\n\n"
+	nodesSection := nodesHeader + nodesBlock
 
-	overhead := 5 + 2 + 2 + strings.Count(nodeRow, "\n") + 1 + 3 + 1 + 2
-	maxLogs := m.Height - overhead
-	if maxLogs < 3 {
-		maxLogs = 3
-	}
-
+	// Right: logs
+	logsHeader := Title.Render("▌RECENT LOGS") + "\n\n"
 	logs := m.Logs
+	maxLogs := 50
 	if len(logs) > maxLogs {
 		logs = logs[:maxLogs]
 	}
-
 	var logLines []string
+	logWidth := 50
+	if m.Width > 0 {
+		logWidth = m.Width/2 - 10
+		if logWidth < 30 {
+			logWidth = 30
+		}
+	}
 	for _, l := range logs {
 		timeStr := l.Time.Format("15:04:05")
 		level := getLogLevelStyle(l.Level)
 		source := Accent.Render(fmt.Sprintf("%-8s", l.Source))
 		msg := l.Message
-		if len(msg) > 50 {
-			msg = msg[:50] + "..."
+		if len(msg) > logWidth {
+			msg = msg[:logWidth] + "..."
 		}
-
 		line := fmt.Sprintf("%s %s %s %s",
 			Label.Render(timeStr),
 			level,
@@ -52,13 +61,15 @@ func (m Model) renderSystem() string {
 			Value.Render(msg))
 		logLines = append(logLines, line)
 	}
+	logsSection := logsHeader + strings.Join(logLines, "\n")
 
-	b.WriteString(strings.Join(logLines, "\n"))
-
-	return indentLines(b.String(), "  ")
+	// Join left (nodes) and right (logs)
+	content := lipgloss.JoinHorizontal(lipgloss.Top, nodesSection, "    ", logsSection)
+	return indentLines(content, "  ")
 }
 
-func (m Model) renderAchtungPanel() string {
+
+func (m Model) renderAchtungPanel(showFormInline bool) string {
 	var b strings.Builder
 	achtungSelected := m.HomeFocusAchtung
 	if achtungSelected {
@@ -68,57 +79,7 @@ func (m Model) renderAchtungPanel() string {
 	}
 	b.WriteString(Dim.Render(strings.Repeat("─", 28)) + "\n\n")
 
-	if m.AchtungTimerDuration != "" {
-		b.WriteString(Label.Render("  Name (Enter for auto): "))
-		b.WriteString(Value.Render(m.AchtungTimerInput))
-		b.WriteString(Dim.Render("▌"))
-		b.WriteString("\n")
-		b.WriteString(Dim.Render("  [Enter] add  [Esc] cancel"))
-		b.WriteString("\n\n")
-	} else if m.AchtungTimerCustom {
-		b.WriteString(Label.Render("  Duration (e.g. 5m or 2m30s): "))
-		b.WriteString(Value.Render(m.AchtungTimerInput))
-		b.WriteString(Dim.Render("▌"))
-		b.WriteString("\n")
-		b.WriteString(Dim.Render("  [Enter] next  [Esc] cancel"))
-		b.WriteString("\n\n")
-	} else if m.AchtungTimerMenu {
-		b.WriteString(Label.Render("  Duration: "))
-		b.WriteString(Accent.Render("[1] 1m "))
-		b.WriteString(Accent.Render("[2] 5m "))
-		b.WriteString(Accent.Render("[3] 10m "))
-		b.WriteString(Accent.Render("[4] 30m "))
-		b.WriteString(Accent.Render("[5] 1h "))
-		b.WriteString(Accent.Render(" [c] custom "))
-		b.WriteString(Dim.Render("  [Esc] cancel"))
-		b.WriteString("\n\n")
-	} else if m.AchtungAlarmStep == 2 {
-		b.WriteString(Label.Render("  Alarm name (Enter for auto): "))
-		b.WriteString(Value.Render(m.AchtungAlarmInput))
-		b.WriteString(Dim.Render("▌"))
-		b.WriteString("\n")
-		b.WriteString(Dim.Render("  " + m.AchtungAlarmDate + " " + m.AchtungAlarmTime + "  [Enter] add  [Esc] cancel"))
-		b.WriteString("\n\n")
-	} else if m.AchtungAlarmMenu && m.AchtungAlarmCustom {
-		b.WriteString(Label.Render("  Time (HH:MM, past today = tomorrow): "))
-		b.WriteString(Value.Render(m.AchtungAlarmInput))
-		b.WriteString(Dim.Render("▌"))
-		b.WriteString("\n")
-		b.WriteString(Dim.Render("  [Enter] next  [Esc] cancel"))
-		b.WriteString("\n\n")
-	} else if m.AchtungAlarmMenu && m.AchtungAlarmStep == 0 {
-		b.WriteString(Label.Render("  Type: "))
-		b.WriteString(Accent.Render("[1] One-shot "))
-		b.WriteString(Dim.Render("(date & time)  [Esc] cancel"))
-		b.WriteString("\n\n")
-	} else if m.AchtungAlarmMenu && m.AchtungAlarmStep == 1 {
-		b.WriteString(Label.Render("  When: "))
-		b.WriteString(Accent.Render("[1] today 20:00 "))
-		b.WriteString(Accent.Render("[2] tomorrow 08:00 "))
-		b.WriteString(Accent.Render(" [c] custom "))
-		b.WriteString(Dim.Render("  [Esc] cancel"))
-		b.WriteString("\n\n")
-	}
+	// Form is shown in right panel when AchtungTimerMenu or AchtungAlarmMenu; no inline form here.
 
 	if len(m.AchtungJobs) == 0 {
 		b.WriteString(Dim.Render("  No timers or alarms. [t] New timer  [a] New alarm"))

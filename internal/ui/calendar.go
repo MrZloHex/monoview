@@ -103,23 +103,42 @@ func (m Model) renderEventList() string {
 
 	titleText := "EVENTS: " + m.SelectedDate.Format("02 Jan")
 	lines = append(lines, PadLine(" "+Title.Render(titleText), width-2))
+	if m.CalendarFocusEvents {
+		lines = append(lines, PadLine(" "+Dim.Render("↑/↓ select  [d] delete  [Esc] back"), width-2))
+	} else {
+		lines = append(lines, PadLine(" "+Dim.Render("↑/↓ week  ←/→ day  [Enter] select day"), width-2))
+	}
 	lines = append(lines, "")
 
-	found := false
-	for _, e := range m.Events {
-		if e.Date.YearDay() == m.SelectedDate.YearDay() && e.Date.Year() == m.SelectedDate.Year() {
-			found = true
-			timeStr := e.Date.Format("15:04")
-			cat := getCategoryIcon(e.Category)
-			line := fmt.Sprintf(" %s  %s  %s",
-				Label.Render(timeStr),
-				cat,
-				Value.Render(e.Title))
-			lines = append(lines, PadLine(line, width-2))
-		}
+	dayEvents := m.eventsForSelectedDate()
+	// Clamp selection
+	sel := m.SelectedEvent
+	if sel < 0 {
+		sel = 0
+	}
+	if sel >= len(dayEvents) {
+		sel = len(dayEvents) - 1
+	}
+	if sel < 0 {
+		sel = 0
 	}
 
-	if !found {
+	for i, e := range dayEvents {
+		timeStr := e.Date.Format("15:04")
+		cat := getCategoryIcon(e.Category)
+		prefix := " "
+		if i == sel {
+			prefix = lipgloss.NewStyle().Foreground(GruvOrange).Bold(true).Render("▶")
+		}
+		line := fmt.Sprintf("%s %s  %s  %s",
+			prefix,
+			Label.Render(timeStr),
+			cat,
+			Value.Render(e.Title))
+		lines = append(lines, PadLine(line, width-2))
+	}
+
+	if len(dayEvents) == 0 {
 		lines = append(lines, PadLine(" "+Label.Render("No events scheduled"), width-2))
 	}
 
@@ -150,25 +169,28 @@ func (m Model) renderDeadlines() string {
 	lines = append(lines, PadLine(" "+Title.Render("UPCOMING DEADLINES"), width-2))
 	lines = append(lines, "")
 
+	now := time.Now()
+	const maxDeadlines = 5
 	count := 0
-	for _, e := range m.Events {
-		if e.Category == "deadline" && e.Date.After(time.Now()) {
-			days := int(e.Date.Sub(time.Now()).Hours() / 24)
-			var daysStr string
-			if days == 0 {
-				daysStr = Warning.Render("TODAY")
-			} else if days == 1 {
-				daysStr = Warning.Render("  1d ")
-			} else {
-				daysStr = Label.Render(fmt.Sprintf("%3dd ", days))
-			}
+	for _, e := range m.Deadlines {
+		if !e.Date.After(now) {
+			continue
+		}
+		days := int(e.Date.Sub(now).Hours() / 24)
+		var daysStr string
+		if days == 0 {
+			daysStr = Warning.Render("TODAY")
+		} else if days == 1 {
+			daysStr = Warning.Render("  1d ")
+		} else {
+			daysStr = Label.Render(fmt.Sprintf("%3dd ", days))
+		}
 
-			line := fmt.Sprintf(" %s %s", daysStr, Value.Render(e.Title))
-			lines = append(lines, PadLine(line, width-2))
-			count++
-			if count >= 3 {
-				break
-			}
+		line := fmt.Sprintf(" %s %s", daysStr, Value.Render(e.Title))
+		lines = append(lines, PadLine(line, width-2))
+		count++
+		if count >= maxDeadlines {
+			break
 		}
 	}
 

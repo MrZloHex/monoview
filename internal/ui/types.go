@@ -19,11 +19,14 @@ var SheetNames = []string{
 	"[4] SYSTEM",
 }
 
-// Event represents a calendar event
+// Event represents a calendar event (synced from GOVERNOR when connected).
 type Event struct {
+	ID       string    // Governor event id (for STOP:EVENT:<id>)
 	Date     time.Time
 	Title    string
-	Category string
+	Category string    // work, personal, deadline, system; inferred from notes if from governor
+	Location string    // optional
+	Notes    string    // optional
 }
 
 // DiaryEntry represents a diary entry
