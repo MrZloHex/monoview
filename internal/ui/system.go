@@ -28,16 +28,42 @@ func (m Model) renderSystem() string {
 	col2 := lipgloss.JoinVertical(lipgloss.Left, col2Panels...)
 	nodesBlock := lipgloss.JoinHorizontal(lipgloss.Top, col1, "  ", col2)
 
-	nodesHeader := Title.Render("▌NODES") + "\n\n"
+	// Left: nodes. Selected = color, unselected = dim (Tab cycles nodes ↔ logs).
+	nodesHeader := Dim.Render("▌NODES") + "\n\n"
+	if !m.SystemFocusLogs {
+		nodesHeader = Title.Render("▌NODES") + " " + Dim.Render("[←↑↓→] grid nodes  [Enter] ping") + "\n\n"
+	}
 	nodesSection := nodesHeader + nodesBlock
 
-	// Right: logs
-	logsHeader := Title.Render("▌RECENT LOGS") + "\n\n"
-	logs := m.Logs
-	maxLogs := 50
-	if len(logs) > maxLogs {
-		logs = logs[:maxLogs]
+	// Right: logs. Selected = color, unselected = dim.
+	logsHeaderLines := 3
+	visibleLogLines := m.plainHeight() - logsHeaderLines
+	if visibleLogLines < 5 {
+		visibleLogLines = 5
 	}
+	logsHeader := Title.Render("▌RECENT LOGS") + "\n\n"
+	if m.SystemFocusLogs {
+		logsHeader = Title.Render("▌RECENT LOGS") + " " + Dim.Render("[↑↓] scroll") + "\n\n"
+	} else {
+		logsHeader = Dim.Render("▌RECENT LOGS") + "\n\n"
+	}
+	logs := m.Logs
+	if len(logs) > 50 {
+		logs = logs[:50]
+	}
+	// Viewport: slice by scroll offset
+	offset := m.LogScrollOffset
+	if offset < 0 {
+		offset = 0
+	}
+	if offset >= len(logs) && len(logs) > 0 {
+		offset = len(logs) - 1
+	}
+	end := offset + visibleLogLines
+	if end > len(logs) {
+		end = len(logs)
+	}
+	visibleLogs := logs[offset:end]
 	var logLines []string
 	logWidth := 50
 	if m.Width > 0 {
@@ -46,7 +72,7 @@ func (m Model) renderSystem() string {
 			logWidth = 30
 		}
 	}
-	for _, l := range logs {
+	for _, l := range visibleLogs {
 		timeStr := l.Time.Format("15:04:05")
 		level := getLogLevelStyle(l.Level)
 		source := Accent.Render(fmt.Sprintf("%-8s", l.Source))
@@ -68,50 +94,6 @@ func (m Model) renderSystem() string {
 	return indentLines(content, "  ")
 }
 
-
-func (m Model) renderAchtungPanel(showFormInline bool) string {
-	var b strings.Builder
-	achtungSelected := m.HomeFocusAchtung
-	if achtungSelected {
-		b.WriteString(NodeHeaderSelected.Render("▌ACHTUNG  · timers & alarms") + "\n")
-	} else {
-		b.WriteString(Title.Render("▌ACHTUNG") + " " + Dim.Render("· timers & alarms") + "\n")
-	}
-	b.WriteString(Dim.Render(strings.Repeat("─", 28)) + "\n\n")
-
-	// Form is shown in right panel when AchtungTimerMenu or AchtungAlarmMenu; no inline form here.
-
-	if len(m.AchtungJobs) == 0 {
-		b.WriteString(Dim.Render("  No timers or alarms. [t] New timer  [a] New alarm"))
-		b.WriteString("\n")
-	} else {
-		for i, j := range m.AchtungJobs {
-			active := i == m.SelectedAchtungJob
-			kindStyle := Label
-			if j.Kind == "ALARM" {
-				kindStyle = Accent
-			}
-			line := fmt.Sprintf("%s %s  %s  %s",
-				kindStyle.Render(j.Kind+":"),
-				Value.Render(j.Name),
-				Label.Render("left:"),
-				Value.Render(j.Remaining))
-			if j.Due != "" && j.Due != "—" {
-				line += "  " + Label.Render("due:") + " " + Value.Render(j.Due)
-			}
-			if active {
-				line = "▌ " + line
-			} else {
-				line = "  " + line
-			}
-			b.WriteString(line + "\n")
-		}
-		b.WriteString(Dim.Render("\n  [t] New timer  [a] New alarm  [d] Delete selected"))
-		b.WriteString("\n")
-	}
-
-	return b.String()
-}
 
 func (m Model) renderNodePanel(n SystemNode, active bool) string {
 	width := 24

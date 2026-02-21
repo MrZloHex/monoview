@@ -11,6 +11,7 @@ type Box struct {
 	Width       int
 	BorderColor lipgloss.Color
 	Title       string
+	DimTitle    bool // when true, render title dimmed instead of Title style
 }
 
 func NewBox(width int) *Box {
@@ -27,6 +28,11 @@ func (b *Box) WithBorderColor(c lipgloss.Color) *Box {
 
 func (b *Box) WithTitle(t string) *Box {
 	b.Title = t
+	return b
+}
+
+func (b *Box) WithDimTitle(dim bool) *Box {
+	b.DimTitle = dim
 	return b
 }
 
@@ -48,8 +54,12 @@ func (b *Box) Render(content string) string {
 		if rightLine < 0 {
 			rightLine = 0
 		}
+		titleStyled := Title.Render(b.Title)
+		if b.DimTitle {
+			titleStyled = lipgloss.NewStyle().Foreground(GruvGray).Render(b.Title)
+		}
 		top = borderStyle.Render("┌"+strings.Repeat("─", leftLine)) +
-			Title.Render(b.Title) +
+			titleStyled +
 			borderStyle.Render(strings.Repeat("─", rightLine)+"┐")
 	} else {
 		top = borderStyle.Render("┌" + strings.Repeat("─", innerWidth) + "┐")
