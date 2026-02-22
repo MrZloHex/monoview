@@ -11,6 +11,9 @@ import (
 const (
 	pingInterval     = 2 * time.Minute
 	achtungSyncEvery = 1 * time.Minute
+
+	tickIntervalFast = 1 * time.Second  // when ACHTUNG countdowns need per-second updates
+	tickIntervalIdle = 15 * time.Second // when idle: fewer wakeups, less CPU/redraws
 )
 
 
@@ -87,13 +90,39 @@ type Model struct {
 	LastTx time.Time
 }
 
-// TickMsg is sent every second
+// TickMsg is sent periodically (interval varies: fast when ACHTUNG countdowns, idle otherwise)
 type TickMsg time.Time
 
-func tick() tea.Cmd {
-	return tea.Tick(time.Second, func(t time.Time) tea.Msg {
+// needsFastTick returns true when we need per-second ticks (e.g. ACHTUNG countdown display).
+func (m *Model) needsFastTick() bool {
+	for i := range m.AchtungJobs {
+		if m.AchtungJobs[i].EndTime != nil {
+			return true
+		}
+	}
+	return false
+}
+
+func nextTickInterval(m *Model) time.Duration {
+	if m.needsFastTick() {
+		return tickIntervalFast
+	}
+	return tickIntervalIdle
+}
+
+func tickWithInterval(interval time.Duration) tea.Cmd {
+	return tea.Tick(interval, func(t time.Time) tea.Msg {
 		return TickMsg(t)
 	})
+}
+
+// scheduleNextCmds returns tick + waitForHub (if connected) so we always keep both subscriptions.
+func (m *Model) scheduleNextCmds() tea.Cmd {
+	cmds := []tea.Cmd{tickWithInterval(nextTickInterval(m))}
+	if m.Hub != nil && m.Hub.Inbox() != nil {
+		cmds = append(cmds, waitForHub(m.Hub.Inbox()))
+	}
+	return tea.Batch(cmds...)
 }
 
 // NewModel creates the initial model with sample data
@@ -160,17 +189,14 @@ func waitForHub(inbox <-chan concentrator.Message) tea.Cmd {
 }
 
 func (m Model) Init() tea.Cmd {
-	cmds := []tea.Cmd{tick()}
+	var cmds []tea.Cmd
 	if m.Hub != nil {
-		if inbox := m.Hub.Inbox(); inbox != nil {
-			cmds = append(cmds, waitForHub(inbox))
-		}
 		m.queryDeviceStates()
 		m.requestGovernorSchedule()
 		m.requestGovernorEvents()
 		m.requestGovernorDeadlines()
 	}
-	return tea.Batch(cmds...)
+	return tea.Batch(append(cmds, (&m).scheduleNextCmds())...)
 }
 
 func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
@@ -311,21 +337,15 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.requestAchtungList()
 			m.LastAchtungSync = time.Now()
 		}
-		return m, tick()
+		return m, m.scheduleNextCmds()
 
 	case HubMsg:
 		m.handleHub(concentrator.Message(msg))
 		m.updateAchtungRemaining()
-		var cmd tea.Cmd
-		if m.Hub != nil {
-			if inbox := m.Hub.Inbox(); inbox != nil {
-				cmd = waitForHub(inbox)
-			}
-		}
-		return m, tea.Batch(tick(), cmd)
+		return m, m.scheduleNextCmds()
 	}
 
-	return m, tick()
+	return m, m.scheduleNextCmds()
 }
 
 // handleHub processes an incoming concentrator message and updates model state.

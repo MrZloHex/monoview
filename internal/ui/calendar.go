@@ -27,12 +27,13 @@ func (m Model) renderCalendar() string {
 
 func (m Model) renderMiniCalendar() string {
 	width := 24
+	inner := width - 3 // 2 for borders, 1 for left padding
 
 	var lines []string
 
 	// Title
 	titleText := m.SelectedDate.Format("January 2006")
-	titlePadded := PadLine("  "+Title.Render(titleText), width-2)
+	titlePadded := PadLine("  "+Title.Render(titleText), inner)
 	lines = append(lines, titlePadded)
 	lines = append(lines, "")
 
@@ -42,7 +43,7 @@ func (m Model) renderMiniCalendar() string {
 	for _, d := range days {
 		header += Label.Render(d) + " "
 	}
-	lines = append(lines, PadLine(header, width-2))
+	lines = append(lines, PadLine(header, inner))
 
 	// Calendar grid
 	firstOfMonth := time.Date(m.SelectedDate.Year(), m.SelectedDate.Month(), 1, 0, 0, 0, 0, m.SelectedDate.Location())
@@ -74,17 +75,17 @@ func (m Model) renderMiniCalendar() string {
 		row += " "
 
 		if (offset+day)%7 == 0 {
-			lines = append(lines, PadLine(row, width-2))
+			lines = append(lines, PadLine(row, inner))
 			row = ""
 		}
 	}
 
 	if row != "" {
-		lines = append(lines, PadLine(row, width-2))
+		lines = append(lines, PadLine(row, inner))
 	}
 
 	content := strings.Join(lines, "\n")
-	return NewBox(width).Render(content)
+	return NewBox(width).WithLeftPadding(1).Render(content)
 }
 
 func (m Model) hasEvent(date time.Time) bool {
@@ -98,15 +99,16 @@ func (m Model) hasEvent(date time.Time) bool {
 
 func (m Model) renderEventList() string {
 	width := 40
+	inner := width - 3 // 2 for borders, 1 for left padding
 
 	var lines []string
 
 	titleText := "EVENTS: " + m.SelectedDate.Format("02 Jan")
-	lines = append(lines, PadLine(" "+Title.Render(titleText), width-2))
+	lines = append(lines, PadLine(" "+Title.Render(titleText), inner))
 	if m.CalendarFocusEvents {
-		lines = append(lines, PadLine(" "+Dim.Render("↑/↓ select  [d] delete  [Esc] back"), width-2))
+		lines = append(lines, PadLine(" "+Dim.Render("↑/↓ select  [d] delete  [Esc] back"), inner))
 	} else {
-		lines = append(lines, PadLine(" "+Dim.Render("↑/↓ week  ←/→ day  [Enter] select day"), width-2))
+		lines = append(lines, PadLine(" "+Dim.Render("↑/↓ week  ←/→ day  [Enter] select day"), inner))
 	}
 	lines = append(lines, "")
 
@@ -135,15 +137,15 @@ func (m Model) renderEventList() string {
 			Label.Render(timeStr),
 			cat,
 			Value.Render(e.Title))
-		lines = append(lines, PadLine(line, width-2))
+		lines = append(lines, PadLine(line, inner))
 	}
 
 	if len(dayEvents) == 0 {
-		lines = append(lines, PadLine(" "+Label.Render("No events scheduled"), width-2))
+		lines = append(lines, PadLine(" "+Label.Render("No events scheduled"), inner))
 	}
 
 	content := strings.Join(lines, "\n")
-	return NewBox(width).Render(content)
+	return NewBox(width).WithLeftPadding(1).Render(content)
 }
 
 func getCategoryIcon(cat string) string {
@@ -163,10 +165,11 @@ func getCategoryIcon(cat string) string {
 
 func (m Model) renderDeadlines() string {
 	width := 40
+	inner := width - 3 // 2 for borders, 1 for left padding
 
 	var lines []string
 
-	lines = append(lines, PadLine(" "+Title.Render("UPCOMING DEADLINES"), width-2))
+	lines = append(lines, PadLine(" "+Title.Render("UPCOMING DEADLINES"), inner))
 	lines = append(lines, "")
 
 	now := time.Now()
@@ -187,7 +190,7 @@ func (m Model) renderDeadlines() string {
 		}
 
 		line := fmt.Sprintf(" %s %s", daysStr, Value.Render(e.Title))
-		lines = append(lines, PadLine(line, width-2))
+		lines = append(lines, PadLine(line, inner))
 		count++
 		if count >= maxDeadlines {
 			break
@@ -195,11 +198,11 @@ func (m Model) renderDeadlines() string {
 	}
 
 	if count == 0 {
-		lines = append(lines, PadLine(" "+Label.Render("No upcoming deadlines"), width-2))
+		lines = append(lines, PadLine(" "+Label.Render("No upcoming deadlines"), inner))
 	}
 
 	content := strings.Join(lines, "\n")
-	return NewBox(width).Render(content)
+	return NewBox(width).WithLeftPadding(1).Render(content)
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -208,6 +211,7 @@ func (m Model) renderDeadlines() string {
 
 func (m Model) renderSchedule() string {
 	width := 44
+	inner := width - 3 // 2 for borders, 1 for left padding
 
 	var lines []string
 
@@ -216,28 +220,28 @@ func (m Model) renderSchedule() string {
 	header := fmt.Sprintf(" %s  %s",
 		Title.Render("SCHEDULE"),
 		Accent.Render(weekdayName))
-	lines = append(lines, PadLine(header, width-2))
-	lines = append(lines, PadLine(" "+Dim.Render(strings.Repeat("─", width-4)), width-2))
+	lines = append(lines, PadLine(header, inner))
+	lines = append(lines, PadLine(" "+Dim.Render(strings.Repeat("─", width-4)), inner))
 
 	// Get entries for selected weekday
 	entries := m.getScheduleForDay(m.SelectedDate.Weekday())
 
 	if len(entries) == 0 {
 		lines = append(lines, "")
-		lines = append(lines, PadLine(" "+Label.Render("No classes scheduled"), width-2))
+		lines = append(lines, PadLine(" "+Label.Render("No classes scheduled"), inner))
 		lines = append(lines, "")
 	} else {
 		now := m.LastUpdate
 		for _, e := range entries {
 			lines = append(lines, "")
-			entryLines := m.renderScheduleEntry(e, width-2, now)
+			entryLines := m.renderScheduleEntry(e, inner, now)
 			lines = append(lines, entryLines...)
 		}
 		lines = append(lines, "")
 	}
 
 	content := strings.Join(lines, "\n")
-	return NewBox(width).Render(content)
+	return NewBox(width).WithLeftPadding(1).Render(content)
 }
 
 func (m Model) getScheduleForDay(weekday time.Weekday) []ScheduleEntry {

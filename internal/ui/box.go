@@ -12,6 +12,7 @@ type Box struct {
 	BorderColor lipgloss.Color
 	Title       string
 	DimTitle    bool // when true, render title dimmed instead of Title style
+	LeftPadding int  // spaces between left border and content
 }
 
 func NewBox(width int) *Box {
@@ -33,6 +34,11 @@ func (b *Box) WithTitle(t string) *Box {
 
 func (b *Box) WithDimTitle(dim bool) *Box {
 	b.DimTitle = dim
+	return b
+}
+
+func (b *Box) WithLeftPadding(n int) *Box {
+	b.LeftPadding = n
 	return b
 }
 
@@ -73,16 +79,18 @@ func (b *Box) Render(content string) string {
 	var rendered []string
 	rendered = append(rendered, top)
 
+	contentWidth := innerWidth - b.LeftPadding
+	leftPad := strings.Repeat(" ", b.LeftPadding)
 	for _, line := range lines {
 		lineWidth := lipgloss.Width(line)
-		padding := innerWidth - lineWidth
+		padding := contentWidth - lineWidth
 		if padding < 0 {
 			// Truncate if too long
-			line = truncateString(line, innerWidth)
+			line = truncateString(line, contentWidth)
 			padding = 0
 		}
 		rendered = append(rendered,
-			borderStyle.Render("│")+line+strings.Repeat(" ", padding)+borderStyle.Render("│"))
+			borderStyle.Render("│")+leftPad+line+strings.Repeat(" ", padding)+borderStyle.Render("│"))
 	}
 
 	rendered = append(rendered, bottom)
