@@ -47,11 +47,13 @@ type Model struct {
 	SelectedDevice int
 
 	// System
-	Nodes            []SystemNode
-	Logs             []LogEntry
-	SelectedNode     int
-	SystemFocusLogs  bool   // true = j/k scroll logs; Tab toggles
-	LogScrollOffset  int    // 0 = newest at top; scroll up (k) increases to see older
+	Nodes               []SystemNode
+	Logs                []LogEntry
+	SelectedNode        int
+	SystemFocusLogs     bool   // true = j/k scroll logs; Tab toggles
+	LogScrollOffset     int    // 0 = newest at top; scroll up (k) increases to see older
+	SystemCommandInput  bool   // true = typing custom message to bus (:)
+	SystemCommandBuffer string // TO:VERB:NOUN[:args...]
 
 	// ACHTUNG (timers & alarms, shown on Home sheet)
 	AchtungJobs        []AchtungJob
@@ -65,7 +67,8 @@ type Model struct {
 	AchtungAlarmTime     string // HH:MM
 	AchtungAlarmName     string // optional
 	AchtungAlarmFocusField int  // 0=date, 1=time, 2=name
-	HomeFocusAchtung    bool   // on Home: true = focus timers panel (j/k, enter, t, a, d)
+	HomeFocusAchtung    bool   // on Home: true = focus ACHTUNG panel (j/k, enter, t, a, d)
+	HomeFocusUkaz      bool   // on Home: when false and !Achtung = VERTEX; when true = UKAZ
 	AchtungViewMenu     bool   // Enter on job shows details in right panel
 	LastAchtungSync     time.Time
 
@@ -163,6 +166,14 @@ func NewModel() Model {
 				Kind: "value", Property: "BRIGHT",
 				Val: 128, Min: 0, Max: 255, Step: 15,
 			},
+			{
+				Name: "Print Deadlines", Node: "UKAZ", Topic: "DEADLINES",
+				Kind: "action", Property: "PRINT", Status: "—",
+			},
+			{
+				Name: "Print Status", Node: "UKAZ", Topic: "STATUS",
+				Kind: "action", Property: "PRINT", Status: "—",
+			},
 		},
 		SelectedDevice: 0,
 
@@ -202,21 +213,31 @@ func (m Model) Init() tea.Cmd {
 func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
-		if m.FireAlert.Show {
+		// While typing command, only command handler gets keys (disables all hotkeys)
+		if m.SystemCommandInput {
+			if m.handleSystemCommandKeys(msg) {
+				return m, nil
+			}
+			// handleSystemCommandKeys returned false: allow q/ctrl+c to fall through to quit
+		} else if m.FireAlert.Show {
 			switch msg.String() {
 			case "enter", " ", "q", "esc":
 				m.dismissFireAlert()
 				return m, nil
 			}
-		}
-		if m.handleAchtungFormKeys(msg) {
-			return m, nil
-		}
-		if m.handleAchtungKeys(msg) {
-			return m, nil
-		}
-		if m.handleEventAddKeys(msg) {
-			return m, nil
+		} else {
+			if m.handleAchtungFormKeys(msg) {
+				return m, nil
+			}
+			if m.handleAchtungKeys(msg) {
+				return m, nil
+			}
+			if m.handleEventAddKeys(msg) {
+				return m, nil
+			}
+			if m.handleSystemCommandKeys(msg) {
+				return m, nil
+			}
 		}
 		switch msg.String() {
 		case "q", "ctrl+c":
@@ -227,31 +248,43 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.ActiveSheet = SheetCalendar
 			m.CalendarFocusEvents = false
 			m.EventViewMenu = false
+			m.SystemCommandInput = false
 			if m.EventAddMenu {
 				m.eventAddReset()
 			}
 		case "2":
 			m.ActiveSheet = SheetDiary
+			m.SystemCommandInput = false
 		case "3":
 			m.ActiveSheet = SheetHome
+			m.SystemCommandInput = false
 			m.requestAchtungList()
 		case "4":
 			m.ActiveSheet = SheetSystem
 			m.SystemFocusLogs = false
+			m.SystemCommandInput = false
+		case ":":
+			if m.ActiveSheet == SheetSystem && m.Hub != nil && !m.SystemCommandInput {
+				m.SystemCommandInput = true
+				m.SystemCommandBuffer = ""
+			}
 		case "tab":
 			if m.ActiveSheet == SheetHome {
-				m.HomeFocusAchtung = !m.HomeFocusAchtung
+				m.homeFocusNext()
 			} else if m.ActiveSheet == SheetSystem {
 				m.SystemFocusLogs = !m.SystemFocusLogs
 			}
 		case "shift+tab":
 			if m.ActiveSheet == SheetHome {
-				m.HomeFocusAchtung = !m.HomeFocusAchtung
+				m.homeFocusPrev()
 			} else if m.ActiveSheet == SheetSystem {
 				m.SystemFocusLogs = !m.SystemFocusLogs
 			}
 		case "esc":
-			if m.ActiveSheet == SheetCalendar {
+			if m.SystemCommandInput {
+				m.SystemCommandInput = false
+				m.SystemCommandBuffer = ""
+			} else if m.ActiveSheet == SheetCalendar {
 				if m.EventViewMenu {
 					m.EventViewMenu = false
 				} else if m.CalendarFocusEvents {
@@ -432,8 +465,12 @@ func (m *Model) navigateDown() {
 				m.SelectedAchtungJob++
 			}
 		} else {
-			if m.SelectedDevice < len(m.HomeDevices)-1 {
-				m.SelectedDevice++
+			indices := m.homeDeviceIndicesForFocus()
+			for i, idx := range indices {
+				if idx == m.SelectedDevice && i < len(indices)-1 {
+					m.SelectedDevice = indices[i+1]
+					break
+				}
 			}
 		}
 	case SheetSystem:
@@ -467,8 +504,12 @@ func (m *Model) navigateUp() {
 				m.SelectedAchtungJob--
 			}
 		} else {
-			if m.SelectedDevice > 0 {
-				m.SelectedDevice--
+			indices := m.homeDeviceIndicesForFocus()
+			for i, idx := range indices {
+				if idx == m.SelectedDevice && i > 0 {
+					m.SelectedDevice = indices[i-1]
+					break
+				}
 			}
 		}
 	case SheetSystem:
@@ -529,4 +570,5 @@ func (m *Model) deleteSelectedEvent() {
 		m.SelectedEvent = 0
 	}
 }
+
 

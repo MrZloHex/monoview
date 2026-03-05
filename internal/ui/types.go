@@ -51,6 +51,7 @@ type DiaryEntry struct {
 //	"toggle" – Enter sends TOGGLE:<Topic>
 //	"cycle"  – Enter sends SET:<Topic>:MODE:<next> or OFF:<Topic>
 //	"value"  – Left/Right adjusts, sends SET:<Topic>:BRIGHT:<val>
+//	"action"  – Enter sends VERB:NOUN (Property=verb, Topic=noun)
 type HomeDevice struct {
 	Name    string
 	Node    string   // target node (VERTEX, LUCH, ACHTUNG)

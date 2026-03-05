@@ -11,17 +11,22 @@ func (m Model) renderHome(showAchtungFormInline bool) string {
 	boxWidth := 50
 	uniformHeight := 8
 
-	// Two uniform boxes stacked vertically (1 row spacing inside each)
 	vertexContent := padToLinesWithSpacing(m.renderVertexDevicesContent(), uniformHeight)
+	ukazContent := padToLinesWithSpacing(m.renderUkazDevicesContent(), uniformHeight)
 	achtungContent := padToLinesWithSpacing(m.renderAchtungContent(showAchtungFormInline), uniformHeight)
 
-	vertexBox := NewBox(boxWidth).WithTitle("VERTEX  devices").WithDimTitle(m.HomeFocusAchtung)
+	focusVertex := !m.HomeFocusAchtung && !m.HomeFocusUkaz
+	focusUkaz := !m.HomeFocusAchtung && m.HomeFocusUkaz
+
+	vertexBox := NewBox(boxWidth).WithTitle("VERTEX  devices").WithDimTitle(!focusVertex)
+	ukazBox := NewBox(boxWidth).WithTitle("UKAZ  print").WithDimTitle(!focusUkaz)
 	achtungBox := NewBox(boxWidth).WithTitle("ACHTUNG  timers & alarms").WithDimTitle(!m.HomeFocusAchtung)
 
 	vertexSection := vertexBox.Render(vertexContent)
+	ukazSection := ukazBox.Render(ukazContent)
 	achtungSection := achtungBox.Render(achtungContent)
 
-	content := lipgloss.JoinVertical(lipgloss.Left, vertexSection, "", achtungSection)
+	content := lipgloss.JoinVertical(lipgloss.Left, vertexSection, "", ukazSection, "", achtungSection)
 	return indentLines(content, "  ")
 }
 
@@ -54,23 +59,22 @@ func padToLinesWithSpacing(s string, n int) string {
 }
 
 func (m Model) renderVertexDevicesContent() string {
-	nodeOrder := m.deviceNodes()
-	nodes := make(map[string][]int)
-	for i, d := range m.HomeDevices {
-		nodes[d.Node] = append(nodes[d.Node], i)
-	}
+	return m.renderDevicesForNode("VERTEX")
+}
 
+func (m Model) renderUkazDevicesContent() string {
+	return m.renderDevicesForNode("UKAZ")
+}
+
+func (m Model) renderDevicesForNode(node string) string {
 	var lines []string
-	for _, node := range nodeOrder {
-		if indices, ok := nodes[node]; ok {
-			for _, i := range indices {
-				d := m.HomeDevices[i]
-				line := m.renderDeviceLine(d, i == m.SelectedDevice)
-				lines = append(lines, line)
-			}
+	for i, d := range m.HomeDevices {
+		if strings.ToUpper(d.Node) != node {
+			continue
 		}
+		line := m.renderDeviceLine(d, i == m.SelectedDevice)
+		lines = append(lines, line)
 	}
-
 	if len(lines) == 0 {
 		return Dim.Render("  No devices")
 	}
@@ -138,6 +142,8 @@ func (m Model) renderDeviceLine(d HomeDevice, selected bool) string {
 			return prefix + parts[0] + "\n  " + parts[1]
 		}
 		return prefix + s
+	case "action":
+		return prefix + m.renderActionDevice(d, selected, w-2)
 	default:
 		line := fmt.Sprintf("%s %s", Label.Render(d.Name), d.Status)
 		if selected {
@@ -145,6 +151,15 @@ func (m Model) renderDeviceLine(d HomeDevice, selected bool) string {
 		}
 		return prefix + PadLine(line, w-2)
 	}
+}
+
+func (m Model) renderActionDevice(d HomeDevice, selected bool, w int) string {
+	icon := Label.Render("▶")
+	line := fmt.Sprintf(" %s %-20s %s", icon, d.Name, Dim.Render("[Enter] trigger"))
+	if selected {
+		return Selected.Render(PadLine(line, w))
+	}
+	return PadLine(line, w)
 }
 
 func (m Model) renderToggleDevice(d HomeDevice, selected bool, w int) string {

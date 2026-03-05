@@ -6,8 +6,66 @@ import (
 	"strings"
 	"time"
 
+	tea "github.com/charmbracelet/bubbletea"
+
 	"monoview/pkg/concentrator"
 )
+
+// handleSystemCommandKeys processes input when typing a custom bus message (:).
+// Returns true if the key was consumed.
+func (m *Model) handleSystemCommandKeys(msg tea.KeyMsg) bool {
+	if !m.SystemCommandInput {
+		return false
+	}
+
+	switch {
+	case msg.String() == "ctrl+c":
+		return false // only ctrl+c can quit while typing
+	case msg.String() == "enter":
+		m.sendSystemCommand()
+		m.SystemCommandInput = false
+		m.SystemCommandBuffer = ""
+		return true
+	case msg.String() == "esc":
+		m.SystemCommandInput = false
+		m.SystemCommandBuffer = ""
+		return true
+	case msg.String() == "backspace":
+		if len(m.SystemCommandBuffer) > 0 {
+			runes := []rune(m.SystemCommandBuffer)
+			m.SystemCommandBuffer = string(runes[:len(runes)-1])
+		}
+		return true
+	case msg.Type == tea.KeyRunes && len(msg.Runes) > 0:
+		m.SystemCommandBuffer += string(msg.Runes)
+		return true
+	}
+	return true // consume all other keys while in command mode
+}
+
+// sendSystemCommand parses SystemCommandBuffer and sends to the concentrator.
+// Format: TO:VERB:NOUN[:ARG1:ARG2:...]
+func (m *Model) sendSystemCommand() {
+	buf := strings.TrimSpace(m.SystemCommandBuffer)
+	if buf == "" || m.Hub == nil {
+		return
+	}
+	parts := strings.Split(buf, ":")
+	if len(parts) < 3 {
+		return
+	}
+	to := strings.TrimSpace(parts[0])
+	verb := strings.TrimSpace(parts[1])
+	noun := strings.TrimSpace(parts[2])
+	if to == "" || verb == "" || noun == "" {
+		return
+	}
+	var args []string
+	for i := 3; i < len(parts); i++ {
+		args = append(args, strings.TrimSpace(parts[i]))
+	}
+	m.HubSend(to, verb, noun, args...)
+}
 
 // System nodes, ping/pong, fire alert.
 

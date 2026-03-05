@@ -507,6 +507,60 @@ func (m *Model) homeStep() int {
 	return 1
 }
 
+// homeFocusNext cycles focus: VERTEX -> UKAZ -> ACHTUNG -> VERTEX.
+func (m *Model) homeFocusNext() {
+	if m.HomeFocusAchtung {
+		m.HomeFocusAchtung = false
+		m.HomeFocusUkaz = false
+		m.SelectedDevice = m.firstDeviceIndexForNode("VERTEX")
+	} else if m.HomeFocusUkaz {
+		m.HomeFocusAchtung = true
+		m.HomeFocusUkaz = false
+	} else {
+		m.HomeFocusUkaz = true
+		m.SelectedDevice = m.firstDeviceIndexForNode("UKAZ")
+	}
+}
+
+// homeFocusPrev cycles focus backwards: ACHTUNG -> UKAZ -> VERTEX -> ACHTUNG.
+func (m *Model) homeFocusPrev() {
+	if m.HomeFocusAchtung {
+		m.HomeFocusUkaz = true
+		m.HomeFocusAchtung = false
+		m.SelectedDevice = m.firstDeviceIndexForNode("UKAZ")
+	} else if m.HomeFocusUkaz {
+		m.HomeFocusUkaz = false
+		m.SelectedDevice = m.firstDeviceIndexForNode("VERTEX")
+	} else {
+		m.HomeFocusAchtung = true
+		m.HomeFocusUkaz = false
+	}
+}
+
+func (m *Model) firstDeviceIndexForNode(node string) int {
+	for i, d := range m.HomeDevices {
+		if strings.ToUpper(d.Node) == node {
+			return i
+		}
+	}
+	return 0
+}
+
+// homeDeviceIndicesForFocus returns device indices for the currently focused panel.
+func (m *Model) homeDeviceIndicesForFocus() []int {
+	node := "VERTEX"
+	if m.HomeFocusUkaz {
+		node = "UKAZ"
+	}
+	var out []int
+	for i, d := range m.HomeDevices {
+		if strings.ToUpper(d.Node) == node {
+			out = append(out, i)
+		}
+	}
+	return out
+}
+
 func (m *Model) toggleAction() {
 	if m.ActiveSheet != SheetHome || m.SelectedDevice >= len(m.HomeDevices) {
 		return
@@ -528,6 +582,13 @@ func (m *Model) toggleAction() {
 
 	case "value":
 		m.HubSend(dev.Node, "SET", dev.Topic, dev.Property, fmt.Sprintf("%d", dev.Val))
+
+	case "action":
+		verb := dev.Property
+		if verb == "" {
+			verb = "PRINT"
+		}
+		m.HubSend(dev.Node, verb, dev.Topic)
 	}
 }
 

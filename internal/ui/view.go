@@ -278,15 +278,19 @@ func (m Model) renderFooter() string {
 		} else if m.AchtungViewMenu {
 			help = "[d] stop  [Esc] close  [1-4] sheets  [q] quit"
 		} else if m.HomeFocusAchtung {
-			help = "[tab] devices  [↑/k ↓/j] job  [Enter] details  [t] timer  [a] alarm  [d] stop  [1-4] sheets  [q] quit"
+			help = "[tab] VERTEX/UKAZ  [↑/k ↓/j] job  [Enter] details  [t] timer  [a] alarm  [d] stop  [1-4] sheets  [q] quit"
+		} else if m.HomeFocusUkaz {
+			help = "[tab] VERTEX/ACHTUNG  [↑/k ↓/j] UKAZ  [enter] trigger  [1-4] sheets  [q] quit"
 		} else {
-			help = "[tab] timers  [↑/k ↓/j] device  [enter] toggle  [←/h →/l] adjust  [1-4] sheets  [q] quit"
+			help = "[tab] UKAZ/ACHTUNG  [↑/k ↓/j] device  [enter] toggle  [←/h →/l] adjust  [1-4] sheets  [q] quit"
 		}
 	case SheetSystem:
-		if m.SystemFocusLogs {
-			help = "[Tab] nodes  [1-4] sheets  [q] quit"
+		if m.SystemCommandInput {
+			help = ": " + m.SystemCommandBuffer + "▌  [Enter] send  [Esc] cancel"
+		} else if m.SystemFocusLogs {
+			help = "[Tab] nodes  [:] command  [1-4] sheets  [q] quit"
 		} else {
-			help = "[Tab] logs  [1-4] sheets  [q] quit"
+			help = "[Tab] logs  [:] command  [1-4] sheets  [q] quit"
 		}
 	}
 

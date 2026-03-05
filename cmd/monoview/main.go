@@ -7,6 +7,7 @@ import (
 	"os"
 
 	tea "github.com/charmbracelet/bubbletea"
+	cli "github.com/spf13/pflag"
 
 	"monoview/internal/ui"
 	"monoview/pkg/concentrator"
@@ -20,8 +21,9 @@ const (
 
 func main() {
 	node := envOr("MONO_NODE", defaultNode)
-	url := envOr("MONO_URL", defaultURL)
+	url := cli.StringP("url", "u", "ws://192.168.0.69:8092", "Url of hub")
 	logPath := envOr("MONO_LOG", defaultLogFile)
+	cli.Parse()
 
 	logFile, err := os.OpenFile(logPath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
 	if err != nil {
@@ -33,7 +35,7 @@ func main() {
 	logger := log.New(logFile, "", log.LstdFlags)
 	logger.Printf("monoview starting, node=%s url=%s", node, url)
 
-	hub := concentrator.New(node, url,
+	hub := concentrator.New(node, *url,
 		concentrator.WithInbox(64),
 		concentrator.WithLogger(logger),
 	)
