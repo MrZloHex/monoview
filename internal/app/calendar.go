@@ -1,0 +1,343 @@
+package app
+
+import (
+	"fmt"
+	"strings"
+	"time"
+
+	"github.com/charmbracelet/lipgloss"
+
+	"monoview/internal/types"
+	"monoview/internal/ui"
+)
+
+func (m Model) renderCalendar() string {
+	// Left side: mini calendar + events + deadlines
+	cal := m.renderMiniCalendar()
+	events := m.renderEventList()
+	deadlines := m.renderDeadlines()
+
+	leftPanel := lipgloss.JoinVertical(lipgloss.Left, cal, "", events, "", deadlines)
+
+	// Right side: university schedule
+	schedule := m.renderSchedule()
+
+	content := lipgloss.JoinHorizontal(lipgloss.Top, leftPanel, "   ", schedule)
+
+	// Indent all lines, not just the first
+	return ui.IndentLines(content, "  ")
+}
+
+func (m Model) renderMiniCalendar() string {
+	width := 24
+	inner := width - 3 // 2 for borders, 1 for left padding
+
+	var lines []string
+
+	// Title
+	titleText := m.SelectedDate.Format("January 2006")
+	titlePadded := ui.PadLine("  "+ui.Title.Render(titleText), inner)
+	lines = append(lines, titlePadded)
+	lines = append(lines, "")
+
+	// Weekday headers
+	days := []string{"Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"}
+	var header string
+	for _, d := range days {
+		header += ui.Label.Render(d) + " "
+	}
+	lines = append(lines, ui.PadLine(header, inner))
+
+	// Calendar grid
+	firstOfMonth := time.Date(m.SelectedDate.Year(), m.SelectedDate.Month(), 1, 0, 0, 0, 0, m.SelectedDate.Location())
+	lastOfMonth := firstOfMonth.AddDate(0, 1, -1)
+
+	offset := int(firstOfMonth.Weekday())
+	if offset == 0 {
+		offset = 7
+	}
+	offset--
+
+	today := time.Now()
+
+	row := strings.Repeat("   ", offset)
+
+	for day := 1; day <= lastOfMonth.Day(); day++ {
+		currentDate := time.Date(m.SelectedDate.Year(), m.SelectedDate.Month(), day, 0, 0, 0, 0, m.SelectedDate.Location())
+		dayStr := fmt.Sprintf("%2d", day)
+
+		if currentDate.YearDay() == m.SelectedDate.YearDay() && currentDate.Year() == m.SelectedDate.Year() {
+			row += lipgloss.NewStyle().Background(ui.GruvYellow).Foreground(ui.GruvBg).Render(dayStr)
+		} else if currentDate.YearDay() == today.YearDay() && currentDate.Year() == today.Year() {
+			row += ui.Accent.Render(dayStr)
+		} else if m.hasEvent(currentDate) {
+			row += ui.Highlight.Render(dayStr)
+		} else {
+			row += ui.Value.Render(dayStr)
+		}
+		row += " "
+
+		if (offset+day)%7 == 0 {
+			lines = append(lines, ui.PadLine(row, inner))
+			row = ""
+		}
+	}
+
+	if row != "" {
+		lines = append(lines, ui.PadLine(row, inner))
+	}
+
+	content := strings.Join(lines, "\n")
+	return ui.NewBox(width).WithLeftPadding(1).Render(content)
+}
+
+func (m Model) hasEvent(date time.Time) bool {
+	for _, e := range m.Events {
+		if e.Date.YearDay() == date.YearDay() && e.Date.Year() == date.Year() {
+			return true
+		}
+	}
+	return false
+}
+
+func (m Model) renderEventList() string {
+	width := 40
+	inner := width - 3 // 2 for borders, 1 for left padding
+
+	var lines []string
+
+	titleText := "EVENTS: " + m.SelectedDate.Format("02 Jan")
+	lines = append(lines, ui.PadLine(" "+ui.Title.Render(titleText), inner))
+	if m.CalendarFocusEvents {
+		lines = append(lines, ui.PadLine(" "+ui.Dim.Render("↑/↓ select  [d] delete  [Esc] back"), inner))
+	} else {
+		lines = append(lines, ui.PadLine(" "+ui.Dim.Render("↑/↓ week  ←/→ day  [Enter] select day"), inner))
+	}
+	lines = append(lines, "")
+
+	dayEvents := m.eventsForSelectedDate()
+	// Clamp selection
+	sel := m.SelectedEvent
+	if sel < 0 {
+		sel = 0
+	}
+	if sel >= len(dayEvents) {
+		sel = len(dayEvents) - 1
+	}
+	if sel < 0 {
+		sel = 0
+	}
+
+	for i, e := range dayEvents {
+		timeStr := e.Date.Format("15:04")
+		cat := getCategoryIcon(e.Category)
+		prefix := " "
+		if i == sel {
+			prefix = lipgloss.NewStyle().Foreground(ui.GruvOrange).Bold(true).Render("▶")
+		}
+		line := fmt.Sprintf("%s %s  %s  %s",
+			prefix,
+			ui.Label.Render(timeStr),
+			cat,
+			ui.Value.Render(e.Title))
+		lines = append(lines, ui.PadLine(line, inner))
+	}
+
+	if len(dayEvents) == 0 {
+		lines = append(lines, ui.PadLine(" "+ui.Label.Render("No events scheduled"), inner))
+	}
+
+	content := strings.Join(lines, "\n")
+	return ui.NewBox(width).WithLeftPadding(1).Render(content)
+}
+
+func getCategoryIcon(cat string) string {
+	switch cat {
+	case "work":
+		return lipgloss.NewStyle().Foreground(ui.GruvBlue).Render("●")
+	case "personal":
+		return lipgloss.NewStyle().Foreground(ui.GruvGreen).Render("●")
+	case "deadline":
+		return lipgloss.NewStyle().Foreground(ui.GruvRed).Render("●")
+	case "system":
+		return lipgloss.NewStyle().Foreground(ui.GruvPurple).Render("●")
+	default:
+		return lipgloss.NewStyle().Foreground(ui.GruvGray).Render("●")
+	}
+}
+
+func (m Model) renderDeadlines() string {
+	width := 40
+	inner := width - 3 // 2 for borders, 1 for left padding
+
+	var lines []string
+
+	lines = append(lines, ui.PadLine(" "+ui.Title.Render("UPCOMING DEADLINES"), inner))
+	lines = append(lines, "")
+
+	now := time.Now()
+	const maxDeadlines = 5
+	count := 0
+	for _, e := range m.Deadlines {
+		if !e.Date.After(now) {
+			continue
+		}
+		days := int(e.Date.Sub(now).Hours() / 24)
+		var daysStr string
+		if days == 0 {
+			daysStr = ui.Warning.Render("TODAY")
+		} else if days == 1 {
+			daysStr = ui.Warning.Render("  1d ")
+		} else {
+			daysStr = ui.Label.Render(fmt.Sprintf("%3dd ", days))
+		}
+
+		line := fmt.Sprintf(" %s %s", daysStr, ui.Value.Render(e.Title))
+		lines = append(lines, ui.PadLine(line, inner))
+		count++
+		if count >= maxDeadlines {
+			break
+		}
+	}
+
+	if count == 0 {
+		lines = append(lines, ui.PadLine(" "+ui.Label.Render("No upcoming deadlines"), inner))
+	}
+
+	content := strings.Join(lines, "\n")
+	return ui.NewBox(width).WithLeftPadding(1).Render(content)
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SCHEDULE VIEW
+// ═══════════════════════════════════════════════════════════════════════════════
+
+func (m Model) renderSchedule() string {
+	width := 44
+	inner := width - 3 // 2 for borders, 1 for left padding
+
+	var lines []string
+
+	// Header with weekday name
+	weekdayName := m.SelectedDate.Weekday().String()
+	header := fmt.Sprintf(" %s  %s",
+		ui.Title.Render("SCHEDULE"),
+		ui.Accent.Render(weekdayName))
+	lines = append(lines, ui.PadLine(header, inner))
+	lines = append(lines, ui.PadLine(" "+ui.Dim.Render(strings.Repeat("─", width-4)), inner))
+
+	// Get entries for selected weekday
+	entries := m.getScheduleForDay(m.SelectedDate.Weekday())
+
+	if len(entries) == 0 {
+		lines = append(lines, "")
+		lines = append(lines, ui.PadLine(" "+ui.Label.Render("No classes scheduled"), inner))
+		lines = append(lines, "")
+	} else {
+		now := m.LastUpdate
+		for _, e := range entries {
+			lines = append(lines, "")
+			entryLines := m.renderScheduleEntry(e, inner, now)
+			lines = append(lines, entryLines...)
+		}
+		lines = append(lines, "")
+	}
+
+	content := strings.Join(lines, "\n")
+	return ui.NewBox(width).WithLeftPadding(1).Render(content)
+}
+
+func (m Model) getScheduleForDay(weekday time.Weekday) []types.ScheduleEntry {
+	var entries []types.ScheduleEntry
+	for _, e := range m.Schedule {
+		if e.Weekday == weekday {
+			entries = append(entries, e)
+		}
+	}
+	return entries
+}
+
+func (m Model) renderScheduleEntry(e types.ScheduleEntry, width int, now time.Time) []string {
+	var lines []string
+
+	// Check if current
+	isCurrent := m.isCurrentClass(e, now)
+
+	// Time range
+	timeStr := fmt.Sprintf("%s-%s", e.Start, e.End)
+
+	// Tags as colored badges
+	var tagBadges []string
+	for _, tag := range e.Tags {
+		badge := renderTagBadge(tag)
+		tagBadges = append(tagBadges, badge)
+	}
+	tagsStr := strings.Join(tagBadges, " ")
+
+	// First line: indicator + time + tags
+	indicator := " "
+	if isCurrent {
+		indicator = lipgloss.NewStyle().Foreground(ui.GruvOrange).Bold(true).Render("▶")
+	}
+
+	line1 := fmt.Sprintf(" %s %s  %s", indicator, ui.Label.Render(timeStr), tagsStr)
+	lines = append(lines, ui.PadLine(line1, width))
+
+	// Second line: title
+	titleStyle := ui.Value
+	if isCurrent {
+		titleStyle = lipgloss.NewStyle().Foreground(ui.GruvOrange).Bold(true)
+	}
+	line2 := fmt.Sprintf("   %s", titleStyle.Render(e.Title))
+	lines = append(lines, ui.PadLine(line2, width))
+
+	// Third line: location
+	line3 := fmt.Sprintf("   %s %s", ui.Label.Render("@"), ui.Accent.Render(e.Location))
+	lines = append(lines, ui.PadLine(line3, width))
+
+	return lines
+}
+
+func (m Model) isCurrentClass(e types.ScheduleEntry, now time.Time) bool {
+	// Only check if same weekday and same date
+	if now.Weekday() != e.Weekday {
+		return false
+	}
+	if now.YearDay() != m.SelectedDate.YearDay() || now.Year() != m.SelectedDate.Year() {
+		return false
+	}
+
+	// Parse times
+	startParts := strings.Split(e.Start, ":")
+	endParts := strings.Split(e.End, ":")
+	if len(startParts) != 2 || len(endParts) != 2 {
+		return false
+	}
+
+	var startH, startM, endH, endM int
+	fmt.Sscanf(startParts[0], "%d", &startH)
+	fmt.Sscanf(startParts[1], "%d", &startM)
+	fmt.Sscanf(endParts[0], "%d", &endH)
+	fmt.Sscanf(endParts[1], "%d", &endM)
+
+	nowMins := now.Hour()*60 + now.Minute()
+	startMins := startH*60 + startM
+	endMins := endH*60 + endM
+
+	return nowMins >= startMins && nowMins <= endMins
+}
+
+func renderTagBadge(tag string) string {
+	colorHex, ok := types.TagColors[tag]
+	if !ok {
+		return ui.Label.Render("[" + tag + "]")
+	}
+
+	color := lipgloss.Color(colorHex)
+	style := lipgloss.NewStyle().
+		Foreground(ui.GruvBg).
+		Background(color).
+		Bold(true)
+
+	return style.Render(" " + tag + " ")
+}

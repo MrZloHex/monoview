@@ -39,8 +39,9 @@ func Clamp(val, min, max float64) float64 {
 	return val
 }
 
-// indentLines adds a prefix to every line in a multi-line string
-func indentLines(s string, prefix string) string {
+// IndentLines adds a prefix to every line in a multi-line string.
+// Exported for use by app and sheet packages.
+func IndentLines(s string, prefix string) string {
 	lines := strings.Split(s, "\n")
 	for i, line := range lines {
 		lines[i] = prefix + line

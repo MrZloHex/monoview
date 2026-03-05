@@ -86,7 +86,7 @@ func (b *Box) Render(content string) string {
 		padding := contentWidth - lineWidth
 		if padding < 0 {
 			// Truncate if too long
-			line = truncateString(line, contentWidth)
+			line = TruncateString(line, contentWidth)
 			padding = 0
 		}
 		rendered = append(rendered,
@@ -97,8 +97,9 @@ func (b *Box) Render(content string) string {
 	return strings.Join(rendered, "\n")
 }
 
-// truncateString truncates a string to fit within maxWidth (accounting for unicode)
-func truncateString(s string, maxWidth int) string {
+// TruncateString truncates a string to fit within maxWidth (accounting for unicode).
+// Exported for use by app and sheet packages.
+func TruncateString(s string, maxWidth int) string {
 	if lipgloss.Width(s) <= maxWidth {
 		return s
 	}
@@ -119,7 +120,7 @@ func truncateString(s string, maxWidth int) string {
 func PadLine(s string, width int) string {
 	currentWidth := lipgloss.Width(s)
 	if currentWidth >= width {
-		return truncateString(s, width)
+		return TruncateString(s, width)
 	}
 	return s + strings.Repeat(" ", width-currentWidth)
 }

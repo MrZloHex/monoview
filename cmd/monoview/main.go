@@ -9,7 +9,7 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 	cli "github.com/spf13/pflag"
 
-	"monoview/internal/ui"
+	"monoview/internal/app"
 	"monoview/pkg/concentrator"
 )
 
@@ -46,7 +46,7 @@ func main() {
 		hub = nil
 	}
 
-	m := ui.NewModel()
+	m := app.NewModel()
 	m.Hub = hub
 
 	p := tea.NewProgram(m, tea.WithAltScreen())
