@@ -50,6 +50,19 @@ func main() {
 	m.Hub = hub
 
 	p := tea.NewProgram(m, tea.WithAltScreen())
+	if hub != nil {
+		if inbox := hub.Inbox(); inbox != nil {
+			go func() {
+				for {
+					msg, ok := <-inbox
+					if !ok {
+						return
+					}
+					p.Send(app.HubMsg(msg))
+				}
+			}()
+		}
+	}
 	if _, err := p.Run(); err != nil {
 		logger.Printf("fatal: %v", err)
 		fmt.Fprintf(os.Stderr, "Error: %v\n", err)

@@ -138,6 +138,11 @@ func (c *Client) Close() error {
 	}
 	c.connMu.Unlock()
 	c.wg.Wait()
+	// Let inbox consumers (e.g. a Bubble Tea forward goroutine) exit after readLoop stops.
+	if c.inbox != nil {
+		close(c.inbox)
+		c.inbox = nil
+	}
 	return err
 }
 

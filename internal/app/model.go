@@ -119,13 +119,12 @@ func tickWithInterval(interval time.Duration) tea.Cmd {
 	})
 }
 
-// scheduleNextCmds returns tick + waitForHub (if connected) so we always keep both subscriptions.
+// scheduleNextCmds returns the next periodic tick. Hub traffic is delivered via Program.Send
+// from a single goroutine in main (see cmd/monoview) — do not tea.Batch a blocking inbox read
+// with Tick: Bubble Tea runs Batch sub-commands under wg.Wait; waitForHub never completes on
+// idle ticks, so each tick leaked a stuck execBatchMsg goroutine and an extra <-inbox waiter.
 func (m *Model) scheduleNextCmds() tea.Cmd {
-	cmds := []tea.Cmd{tickWithInterval(nextTickInterval(m))}
-	if m.Hub != nil && m.Hub.Inbox() != nil {
-		cmds = append(cmds, waitForHub(m.Hub.Inbox()))
-	}
-	return tea.Batch(cmds...)
+	return tickWithInterval(nextTickInterval(m))
 }
 
 // NewModel creates the initial model with sample data
@@ -184,18 +183,6 @@ func NewModel() Model {
 			{Name: "UKAZ", PingNoun: "PING", Status: "offline", Uptime: "—"},
 		},
 		SelectedNode: 0,
-	}
-}
-
-// waitForHub blocks on the concentrator inbox and delivers the next
-// message as a HubMsg into the Bubble Tea event loop.
-func waitForHub(inbox <-chan concentrator.Message) tea.Cmd {
-	return func() tea.Msg {
-		msg, ok := <-inbox
-		if !ok {
-			return nil
-		}
-		return HubMsg(msg)
 	}
 }
 
@@ -378,7 +365,7 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		return m, m.scheduleNextCmds()
 	}
 
-	return m, m.scheduleNextCmds()
+	return m, nil
 }
 
 // handleHub processes an incoming concentrator message and updates model state.
