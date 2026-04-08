@@ -2,6 +2,7 @@ package concentrator
 
 import (
 	"context"
+	"crypto/tls"
 	"fmt"
 	"log"
 	"strings"
@@ -43,6 +44,12 @@ func WithInbox(size int) Option {
 	return func(c *Client) { c.inbox = make(chan Message, size) }
 }
 
+// WithTLSConfig sets the TLS config for wss:// connections (mutual TLS uses Certificates in the config).
+// The dialer clones this config on each dial to avoid shared mutable state across goroutines.
+func WithTLSConfig(cfg *tls.Config) Option {
+	return func(c *Client) { c.tlsConfig = cfg }
+}
+
 type Client struct {
 	nodeID string
 	url    string
@@ -62,6 +69,8 @@ type Client struct {
 	// Inbox receives every incoming message (for event-loop consumers like TUI).
 	// Nil unless WithInbox is used.
 	inbox chan Message
+
+	tlsConfig *tls.Config
 
 	done chan struct{}
 	wg   sync.WaitGroup
@@ -172,6 +181,9 @@ func (c *Client) writeRaw(wire string) error {
 
 func (c *Client) dial(ctx context.Context) error {
 	dialer := websocket.Dialer{HandshakeTimeout: c.dialTimeout}
+	if c.tlsConfig != nil {
+		dialer.TLSClientConfig = c.tlsConfig.Clone()
+	}
 	conn, _, err := dialer.DialContext(ctx, c.url, nil)
 	if err != nil {
 		return err
