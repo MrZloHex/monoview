@@ -17,55 +17,36 @@ import (
 )
 
 const (
-	defaultNode    = "MONOVIEW"
-	defaultURL     = "ws://192.168.0.69:8092"
-	defaultLogFile = "monoview.log"
+	NodeName = "MONOVIEW"
 )
 
 func main() {
 	loadDotenv()
 
-	node := envOr("MONO_NODE", defaultNode)
-	url := cli.StringP("url", "u", "ws://192.168.0.69:8092", "Url of hub; env MONO_URL after .env load")
-	tlsCert := cli.String("tls-cert", "", "Client certificate PEM for mTLS (wss); env MONO_TLS_CERT")
-	tlsKey := cli.String("tls-key", "", "Client private key PEM for mTLS; env MONO_TLS_KEY")
-	tlsCA := cli.String("tls-ca", "", "Optional CA PEM to verify server; default system roots; env MONO_TLS_CA")
-	tlsServerName := cli.String("tls-server-name", "", "TLS ServerName (SNI); use when URL is an IP; env MONO_TLS_SERVER_NAME")
-	_ = cli.String("env-file", ".env", "Dotenv path (loaded before Parse); env MONO_ENV_FILE overrides")
-	logPath := envOr("MONO_LOG", defaultLogFile)
+	defaultURLVal := envOr("MONOVIEW_URL", "wss://127.0.0.1:8443")
+	defaultLogPath := envOr("MONOVIEW_LOG", "monoview.log")
+	defaultTLSCert := os.Getenv("MONOVIEW_TLS_CERT")
+	defaultTLSKey := os.Getenv("MONOVIEW_TLS_KEY")
+	defaultTLSCA := os.Getenv("MONOVIEW_TLS_CA")
+	defaultTLSServerName := os.Getenv("MONOVIEW_TLS_SERVER_NAME")
+
+	url := cli.StringP("url", "u", defaultURLVal, "Url of hub (env MONO_URL)")
+	tlsCert := cli.String("tls-cert", defaultTLSCert, "Client certificate PEM for mTLS (wss) (env MONO_TLS_CERT)")
+	tlsKey := cli.String("tls-key", defaultTLSKey, "Client private key PEM for mTLS (env MONO_TLS_KEY)")
+	tlsCA := cli.String("tls-ca", defaultTLSCA, "Optional CA PEM to verify server; default system roots (env MONO_TLS_CA)")
+	tlsServerName := cli.String("tls-server-name", defaultTLSServerName, "TLS ServerName (SNI); use when URL is an IP (env MONO_TLS_SERVER_NAME)")
+	logPath := cli.String("log-path", defaultLogPath, "Path to log file (env MONO_LOG)")
 	cli.Parse()
 
-	hubURL := *url
-	if u := cli.Lookup("url"); u != nil && !u.Changed {
-		hubURL = envOr("MONO_URL", hubURL)
-	}
-
-	certPath := *tlsCert
-	if c := cli.Lookup("tls-cert"); c != nil && !c.Changed {
-		certPath = envOr("MONO_TLS_CERT", certPath)
-	}
-	keyPath := *tlsKey
-	if c := cli.Lookup("tls-key"); c != nil && !c.Changed {
-		keyPath = envOr("MONO_TLS_KEY", keyPath)
-	}
-	caPath := *tlsCA
-	if c := cli.Lookup("tls-ca"); c != nil && !c.Changed {
-		caPath = envOr("MONO_TLS_CA", caPath)
-	}
-	serverName := *tlsServerName
-	if c := cli.Lookup("tls-server-name"); c != nil && !c.Changed {
-		serverName = envOr("MONO_TLS_SERVER_NAME", serverName)
-	}
-
-	logFile, err := os.OpenFile(logPath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
+	logFile, err := os.OpenFile(*logPath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "cannot open log file %s: %v\n", logPath, err)
+		fmt.Fprintf(os.Stderr, "cannot open log file %s: %v\n", *logPath, err)
 		os.Exit(1)
 	}
 	defer logFile.Close()
 
 	logger := log.New(logFile, "", log.LstdFlags)
-	logger.Printf("monoview starting, node=%s url=%s", node, hubURL)
+	logger.Printf("monoview starting, url=%s", *url)
 
 	var hubOpts []concentrator.Option
 	hubOpts = append(hubOpts,
@@ -74,22 +55,22 @@ func main() {
 	)
 
 	switch {
-	case certPath != "" && keyPath != "":
-		cfg, err := concentrator.LoadClientTLS(certPath, keyPath, caPath)
+	case *tlsCert != "" && *tlsKey != "":
+		cfg, err := concentrator.LoadClientTLS(*tlsCert, *tlsKey, *tlsCA)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "mTLS: %v\n", err)
 			os.Exit(1)
 		}
-		if serverName != "" {
-			cfg.ServerName = serverName
+		if *tlsServerName != "" {
+			cfg.ServerName = *tlsServerName
 		}
 		hubOpts = append(hubOpts, concentrator.WithTLSConfig(cfg))
-	case certPath != "" || keyPath != "":
+	case *tlsCert != "" || *tlsKey != "":
 		fmt.Fprintln(os.Stderr, "mTLS requires both --tls-cert and --tls-key (or MONO_TLS_CERT and MONO_TLS_KEY)")
 		os.Exit(1)
 	}
 
-	hub := concentrator.New(node, hubURL, hubOpts...)
+	hub := concentrator.New(NodeName, *url, hubOpts...)
 
 	ctx := context.Background()
 	if err := hub.Connect(ctx); err != nil {
@@ -148,6 +129,10 @@ func loadDotenv() {
 		return
 	}
 	if errors.Is(err, os.ErrNotExist) {
+		return
+	}
+	var pe *os.PathError
+	if errors.As(err, &pe) && errors.Is(pe.Err, os.ErrNotExist) {
 		return
 	}
 	fmt.Fprintf(os.Stderr, "monoview: load %s: %v\n", path, err)
