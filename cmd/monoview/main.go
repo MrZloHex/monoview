@@ -30,12 +30,12 @@ func main() {
 	defaultTLSCA := os.Getenv("MONOVIEW_TLS_CA")
 	defaultTLSServerName := os.Getenv("MONOVIEW_TLS_SERVER_NAME")
 
-	url := cli.StringP("url", "u", defaultURLVal, "Url of hub (env MONO_URL)")
-	tlsCert := cli.String("tls-cert", defaultTLSCert, "Client certificate PEM for mTLS (wss) (env MONO_TLS_CERT)")
-	tlsKey := cli.String("tls-key", defaultTLSKey, "Client private key PEM for mTLS (env MONO_TLS_KEY)")
-	tlsCA := cli.String("tls-ca", defaultTLSCA, "Optional CA PEM to verify server; default system roots (env MONO_TLS_CA)")
-	tlsServerName := cli.String("tls-server-name", defaultTLSServerName, "TLS ServerName (SNI); use when URL is an IP (env MONO_TLS_SERVER_NAME)")
-	logPath := cli.String("log-path", defaultLogPath, "Path to log file (env MONO_LOG)")
+	url := cli.StringP("url", "u", defaultURLVal, "Url of hub (env MONOVIEW_URL)")
+	tlsCert := cli.String("tls-cert", defaultTLSCert, "Client certificate PEM for mTLS (wss) (env MONOVIEW_TLS_CERT)")
+	tlsKey := cli.String("tls-key", defaultTLSKey, "Client private key PEM for mTLS (wss) (env MONOVIEW_TLS_KEY)")
+	tlsCA := cli.String("tls-ca", defaultTLSCA, "Optional CA PEM to verify server; default system roots (env MONOVIEW_TLS_CA)")
+	tlsServerName := cli.String("tls-server-name", defaultTLSServerName, "TLS ServerName (SNI); use when URL is an IP (env MONOVIEW_TLS_SERVER_NAME)")
+	logPath := cli.String("log-path", defaultLogPath, "Path to log file (env MONOVIEW_LOG)")
 	cli.Parse()
 
 	logFile, err := os.OpenFile(*logPath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
@@ -66,7 +66,7 @@ func main() {
 		}
 		hubOpts = append(hubOpts, concentrator.WithTLSConfig(cfg))
 	case *tlsCert != "" || *tlsKey != "":
-		fmt.Fprintln(os.Stderr, "mTLS requires both --tls-cert and --tls-key (or MONO_TLS_CERT and MONO_TLS_KEY)")
+		fmt.Fprintln(os.Stderr, "mTLS requires both --tls-cert and --tls-key (or MONOVIEW_TLS_CERT and MONOVIEW_TLS_KEY)")
 		os.Exit(1)
 	}
 
@@ -114,7 +114,7 @@ func envOr(key, fallback string) string {
 	return fallback
 }
 
-// loadDotenv runs before flags so MONO_* and TLS paths from .env apply everywhere.
+// loadDotenv runs before flags so MONOVIEW_* and MONO_ENV_FILE from .env apply everywhere.
 // Path: MONO_ENV_FILE, else --env-file from argv, else ".env". Missing file is ignored.
 func loadDotenv() {
 	path := os.Getenv("MONO_ENV_FILE")

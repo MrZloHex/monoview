@@ -14,7 +14,7 @@
   It connects to a **concentrator** hub over WebSocket and provides
   device control, timers & alarms (ACHTUNG), and node monitoring.
 
-  **Tech:** Go, Bubble Tea (TUI), Lipgloss (styling), Gorilla WebSocket.
+  **Tech:** Go, Bubble Tea (TUI), Lipgloss (styling), Gorilla WebSocket, pflag.
   **Wire format:** TO:VERB:NOUN[:ARGS]:FROM (DSKY-style).
 
   **Features at a glance:**
@@ -50,21 +50,36 @@
 
   ───────────────────────────────────────────────────────────────
   ▓ BUILD & RUN
-  Requirements: Go 1.21+ (see go.mod).
+  Requirements: Go version as in go.mod (currently 1.25.x).
 
   Build:
     go build -o monoview ./cmd/monoview
 
-  Run (defaults: node=MONOVIEW, url=ws://192.168.0.69:8092):
+  Run (defaults: node name MONOVIEW in code, url wss://127.0.0.1:8443):
     ./monoview
 
-  Environment:
-    MONO_NODE   Node name (default: MONOVIEW)
-    MONO_URL    Concentrator WebSocket URL (default: ws://192.168.0.69:8092)
-    MONO_LOG    Log file path (default: monoview.log)
+  Optional .env: loaded from .env unless MONO_ENV_FILE is set or you pass
+    --env-file /path/to/.env
+  (Missing file is ignored; parse errors exit with a message.)
+
+  Environment (override defaults; same keys work in .env):
+    MONOVIEW_URL           WebSocket URL (default: wss://127.0.0.1:8443)
+    MONOVIEW_LOG           Log file path (default: monoview.log)
+    MONOVIEW_TLS_CERT      Client cert PEM for mTLS (wss)
+    MONOVIEW_TLS_KEY       Client private key PEM for mTLS
+    MONOVIEW_TLS_CA        Optional CA PEM to verify the server
+    MONOVIEW_TLS_SERVER_NAME  TLS ServerName (SNI); e.g. when dialing an IP
+    MONO_ENV_FILE          Path to dotenv file instead of .env
+
+  CLI (see ./monoview --help):
+    -u, --url              Hub URL
+    --tls-cert, --tls-key, --tls-ca, --tls-server-name
+    --log-path             Log file
+    --env-file             Dotenv path (before full parse; see above)
 
   Example:
-    MONO_NODE=MONOVIEW MONO_URL=ws://localhost:8092 ./monoview
+    MONOVIEW_URL=wss://hub.example:8443 ./monoview
+    ./monoview -u ws://localhost:8092 --log-path /tmp/monoview.log
 
   If the hub is unreachable, the app still starts; the hub indicator
   shows offline and features wait for connection.
@@ -79,8 +94,8 @@
                    Custom time: enter HH:MM; if that time passed today,
                    alarm is set for tomorrow.
   ▪ **[d] / [Enter]** on a job – Stop/delete it.
-  List syncs with ACHTUNG every minute. See README_achtung.txt for
-  protocol details.
+  List syncs with ACHTUNG every minute. Wire format is TO:VERB:NOUN[:ARGS]:FROM
+  (DSKY-style); see pkg/concentrator and internal/app for message handling.
 
   ───────────────────────────────────────────────────────────────
   ▓ FINAL WORDS
