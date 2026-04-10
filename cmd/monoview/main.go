@@ -12,8 +12,8 @@ import (
 	"github.com/joho/godotenv"
 	cli "github.com/spf13/pflag"
 
+	"github.com/MrZloHex/monolink"
 	"monoview/internal/app"
-	"monoview/pkg/concentrator"
 )
 
 const (
@@ -48,15 +48,15 @@ func main() {
 	logger := log.New(logFile, "", log.LstdFlags)
 	logger.Printf("monoview starting, url=%s", *url)
 
-	var hubOpts []concentrator.Option
+	var hubOpts []monolink.Option
 	hubOpts = append(hubOpts,
-		concentrator.WithInbox(64),
-		concentrator.WithLogger(logger),
+		monolink.WithInbox(64),
+		monolink.WithLogger(logger),
 	)
 
 	switch {
 	case *tlsCert != "" && *tlsKey != "":
-		cfg, err := concentrator.LoadClientTLS(*tlsCert, *tlsKey, *tlsCA)
+		cfg, err := monolink.LoadClientTLS(*tlsCert, *tlsKey, *tlsCA)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "mTLS: %v\n", err)
 			os.Exit(1)
@@ -64,13 +64,13 @@ func main() {
 		if *tlsServerName != "" {
 			cfg.ServerName = *tlsServerName
 		}
-		hubOpts = append(hubOpts, concentrator.WithTLSConfig(cfg))
+		hubOpts = append(hubOpts, monolink.WithTLS(cfg))
 	case *tlsCert != "" || *tlsKey != "":
 		fmt.Fprintln(os.Stderr, "mTLS requires both --tls-cert and --tls-key (or MONOVIEW_TLS_CERT and MONOVIEW_TLS_KEY)")
 		os.Exit(1)
 	}
 
-	hub := concentrator.New(NodeName, *url, hubOpts...)
+	hub := monolink.New(NodeName, *url, hubOpts...)
 
 	ctx := context.Background()
 	if err := hub.Connect(ctx); err != nil {

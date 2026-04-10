@@ -48,4 +48,3 @@ func IndentLines(s string, prefix string) string {
 	}
 	return strings.Join(lines, "\n")
 }
-

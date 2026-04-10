@@ -5,8 +5,8 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 
+	"github.com/MrZloHex/monolink"
 	"monoview/internal/types"
-	"monoview/pkg/concentrator"
 )
 
 const (
@@ -18,7 +18,7 @@ const (
 )
 
 // HubMsg wraps a concentrator message arriving through the inbox channel.
-type HubMsg concentrator.Message
+type HubMsg monolink.Message
 
 // Model is the main application model
 type Model struct {
@@ -28,7 +28,7 @@ type Model struct {
 	LastUpdate  time.Time
 
 	// Concentrator client (runs in background goroutine)
-	Hub *concentrator.Client
+	Hub *monolink.Client
 
 	// Calendar
 	SelectedDate        time.Time
@@ -56,21 +56,21 @@ type Model struct {
 	SystemCommandBuffer string // TO:VERB:NOUN[:args...]
 
 	// ACHTUNG (timers & alarms, shown on Home sheet)
-	AchtungJobs           []types.AchtungJob
-	SelectedAchtungJob    int
-	AchtungTimerMenu      bool   // true = adding timer (all fields in right panel)
-	AchtungTimerDuration  string // e.g. "5m"
-	AchtungTimerName      string // optional, Enter for auto
-	AchtungTimerFocusField int   // 0=duration, 1=name
-	AchtungAlarmMenu      bool   // true = adding alarm (all fields in right panel)
-	AchtungAlarmDate      string // YYYY-MM-DD
-	AchtungAlarmTime      string // HH:MM
-	AchtungAlarmName      string // optional
-	AchtungAlarmFocusField int   // 0=date, 1=time, 2=name
-	HomeFocusAchtung      bool   // on Home: true = focus ACHTUNG panel (j/k, enter, t, a, d)
-	HomeFocusUkaz        bool   // on Home: when false and !Achtung = VERTEX; when true = UKAZ
-	AchtungViewMenu      bool   // Enter on job shows details in right panel
-	LastAchtungSync      time.Time
+	AchtungJobs            []types.AchtungJob
+	SelectedAchtungJob     int
+	AchtungTimerMenu       bool   // true = adding timer (all fields in right panel)
+	AchtungTimerDuration   string // e.g. "5m"
+	AchtungTimerName       string // optional, Enter for auto
+	AchtungTimerFocusField int    // 0=duration, 1=name
+	AchtungAlarmMenu       bool   // true = adding alarm (all fields in right panel)
+	AchtungAlarmDate       string // YYYY-MM-DD
+	AchtungAlarmTime       string // HH:MM
+	AchtungAlarmName       string // optional
+	AchtungAlarmFocusField int    // 0=date, 1=time, 2=name
+	HomeFocusAchtung       bool   // on Home: true = focus ACHTUNG panel (j/k, enter, t, a, d)
+	HomeFocusUkaz          bool   // on Home: when false and !Achtung = VERTEX; when true = UKAZ
+	AchtungViewMenu        bool   // Enter on job shows details in right panel
+	LastAchtungSync        time.Time
 
 	// Fire alert popup (ALL:FIRE:TIMER/ALARM from ACHTUNG)
 	FireAlert types.FireAlert
@@ -79,8 +79,8 @@ type Model struct {
 	EventViewMenu bool
 
 	// Add event flow (Calendar sheet): popup with all fields; EventAddFocusField = which field gets input
-	EventAddMenu        bool   // true = add-event form active
-	EventAddFocusField  int    // 0=title, 1=date, 2=time, 3=location, 4=notes, 5=visible_from
+	EventAddMenu        bool // true = add-event form active
+	EventAddFocusField  int  // 0=title, 1=date, 2=time, 3=location, 4=notes, 5=visible_from
 	EventAddTitle       string
 	EventAddDate        string // YYYY-MM-DD
 	EventAddTime        string // HH:MM or HH:MM:SS
@@ -360,7 +360,7 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		return m, m.scheduleNextCmds()
 
 	case HubMsg:
-		m.handleHub(concentrator.Message(msg))
+		m.handleHub(monolink.Message(msg))
 		m.updateAchtungRemaining()
 		return m, m.scheduleNextCmds()
 	}
@@ -369,7 +369,7 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 // handleHub processes an incoming concentrator message and updates model state.
-func (m *Model) handleHub(msg concentrator.Message) {
+func (m *Model) handleHub(msg monolink.Message) {
 	now := time.Now()
 	m.LastRx = now
 

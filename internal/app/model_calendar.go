@@ -7,8 +7,8 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 
+	"github.com/MrZloHex/monolink"
 	"monoview/internal/types"
-	"monoview/pkg/concentrator"
 )
 
 // Governor protocol handlers and event add flow.
@@ -28,7 +28,7 @@ func (m *Model) requestGovernorDeadlines() {
 	m.HubSend("GOVERNOR", "GET", "DEADLINES")
 }
 
-func (m *Model) handleGovernorResponse(msg concentrator.Message) {
+func (m *Model) handleGovernorResponse(msg monolink.Message) {
 	if strings.ToUpper(msg.From) != "GOVERNOR" || strings.ToUpper(msg.Verb) != "OK" {
 		return
 	}
@@ -45,7 +45,7 @@ func (m *Model) handleGovernorResponse(msg concentrator.Message) {
 	}
 }
 
-func (m *Model) handleGovernorSchedule(msg concentrator.Message) {
+func (m *Model) handleGovernorSchedule(msg monolink.Message) {
 	entries := parseGovernorScheduleSlots(msg.Args)
 	if len(entries) == 0 {
 		return
@@ -61,7 +61,7 @@ func (m *Model) handleGovernorSchedule(msg concentrator.Message) {
 	sortSchedule(m.Schedule)
 }
 
-func (m *Model) handleGovernorEvents(msg concentrator.Message) {
+func (m *Model) handleGovernorEvents(msg monolink.Message) {
 	events := parseGovernorEvents(msg.Args)
 	m.Events = events
 	dayEvents := m.eventsForSelectedDate()
@@ -74,7 +74,7 @@ func (m *Model) handleGovernorEvents(msg concentrator.Message) {
 	m.requestGovernorDeadlines()
 }
 
-func (m *Model) handleGovernorEventCreated(msg concentrator.Message) {
+func (m *Model) handleGovernorEventCreated(msg monolink.Message) {
 	if !m.EventAddMenu || len(msg.Args) < 1 {
 		return
 	}
@@ -206,7 +206,7 @@ func (m *Model) eventAddSubmit() {
 	m.HubSend("GOVERNOR", "NEW", "EVENT", args...)
 }
 
-func (m *Model) handleGovernorDeadlines(msg concentrator.Message) {
+func (m *Model) handleGovernorDeadlines(msg monolink.Message) {
 	m.Deadlines = parseGovernorEvents(msg.Args)
 	sortEvents(m.Deadlines)
 }

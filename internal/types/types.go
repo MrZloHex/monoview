@@ -21,12 +21,12 @@ var SheetNames = []string{
 
 // Event represents a calendar event (synced from GOVERNOR when connected).
 type Event struct {
-	ID       string    // Governor event id (for STOP:EVENT:<id>)
+	ID       string // Governor event id (for STOP:EVENT:<id>)
 	Date     time.Time
 	Title    string
-	Category string    // work, personal, deadline, system; inferred from notes if from governor
-	Location string    // optional
-	Notes    string    // optional
+	Category string // work, personal, deadline, system; inferred from notes if from governor
+	Location string // optional
+	Notes    string // optional
 }
 
 // DiaryEntry represents a diary entry
@@ -54,10 +54,10 @@ type DiaryEntry struct {
 //	"action"  – Enter sends VERB:NOUN (Property=verb, Topic=noun)
 type HomeDevice struct {
 	Name    string
-	Node    string   // target node (VERTEX, LUCH, ACHTUNG)
-	Topic   string   // protocol topic/noun (LAMP, LED, BUZZ)
-	Kind    string   // "toggle", "cycle", "value"
-	Status  string   // current state: "on"/"off"/"unknown" for toggle; mode for cycle
+	Node    string // target node (VERTEX, LUCH, ACHTUNG)
+	Topic   string // protocol topic/noun (LAMP, LED, BUZZ)
+	Kind    string // "toggle", "cycle", "value"
+	Status  string // current state: "on"/"off"/"unknown" for toggle; mode for cycle
 	Pending bool
 
 	// cycle
@@ -92,7 +92,7 @@ type FireAlert struct {
 // AchtungJob is a timer or alarm on the ACHTUNG node.
 // Remaining is updated every tick from EndTime when set; Due is shown as-is.
 type AchtungJob struct {
-	Kind      string     // "TIMER" or "ALARM"
+	Kind      string // "TIMER" or "ALARM"
 	Name      string
 	Remaining string     // human-readable countdown, updated from EndTime
 	Due       string     // human-readable due date/time from server

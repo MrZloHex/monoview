@@ -8,8 +8,8 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 
+	"github.com/MrZloHex/monolink"
 	"monoview/internal/types"
-	"monoview/pkg/concentrator"
 )
 
 // handleSystemCommandKeys processes input when typing a custom bus message (:).
@@ -70,7 +70,7 @@ func (m *Model) sendSystemCommand() {
 
 // System nodes, ping/pong, fire alert.
 
-func (m *Model) handleFireAlert(msg concentrator.Message) {
+func (m *Model) handleFireAlert(msg monolink.Message) {
 	if strings.ToUpper(msg.From) != "ACHTUNG" || strings.ToUpper(msg.Verb) != "FIRE" {
 		return
 	}
@@ -201,7 +201,7 @@ func (m *Model) pingSelectedNode() {
 	m.pingNode(&m.Nodes[m.SelectedNode])
 }
 
-func (m *Model) handleNodeResponse(msg concentrator.Message) {
+func (m *Model) handleNodeResponse(msg monolink.Message) {
 	verb := strings.ToUpper(msg.Verb)
 	from := strings.ToUpper(msg.From)
 

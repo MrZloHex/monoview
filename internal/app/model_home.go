@@ -8,8 +8,8 @@ import (
 
 	tea "github.com/charmbracelet/bubbletea"
 
+	"github.com/MrZloHex/monolink"
 	"monoview/internal/types"
-	"monoview/pkg/concentrator"
 )
 
 // Home devices (VERTEX) and ACHTUNG timers/alarms.
@@ -97,7 +97,7 @@ func (m *Model) updateAchtungRemaining() {
 	}
 }
 
-func (m *Model) handleAchtungResponse(msg concentrator.Message) {
+func (m *Model) handleAchtungResponse(msg monolink.Message) {
 	if strings.ToUpper(msg.From) != "ACHTUNG" || strings.ToUpper(msg.Verb) != "OK" {
 		return
 	}
@@ -424,7 +424,7 @@ func (m *Model) achtungStopSelectedJob() {
 	}
 }
 
-func (m *Model) handleDeviceResponse(msg concentrator.Message) {
+func (m *Model) handleDeviceResponse(msg monolink.Message) {
 	verb := strings.ToUpper(msg.Verb)
 	from := strings.ToUpper(msg.From)
 
