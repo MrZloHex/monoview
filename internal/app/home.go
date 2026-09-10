@@ -11,25 +11,52 @@ import (
 )
 
 func (m Model) renderHome(showAchtungFormInline bool) string {
-	boxWidth := 50
-	uniformHeight := 8
+	const boxWidth = 50
+	const achtungWidth = 62 // wider: a job row carries kind, name, countdown and due
+	const leftBoxHeight = 8
 
-	vertexContent := padToLinesWithSpacing(m.renderVertexDevicesContent(), uniformHeight)
-	ukazContent := padToLinesWithSpacing(m.renderUkazDevicesContent(), uniformHeight)
-	achtungContent := padToLinesWithSpacing(m.renderAchtungContent(showAchtungFormInline), uniformHeight)
+	// Two columns: the VERTEX and UKAZ boxes stack on the left, and
+	// ACHTUNG sits top-right spanning both of them. Jobs are the thing
+	// most worth seeing at a glance -- timers, alarms and the morning
+	// print -- and stacked third at eight lines it could show about four.
+	vertexContent := padToLinesWithSpacing(m.renderVertexDevicesContent(), leftBoxHeight)
+	ukazContent := padToLinesWithSpacing(m.renderUkazDevicesContent(), leftBoxHeight)
 
 	focusVertex := !m.HomeFocusAchtung && !m.HomeFocusUkaz
 	focusUkaz := !m.HomeFocusAchtung && m.HomeFocusUkaz
 
 	vertexBox := ui.NewBox(boxWidth).WithTitle("VERTEX  devices").WithDimTitle(!focusVertex)
 	ukazBox := ui.NewBox(boxWidth).WithTitle("UKAZ  print").WithDimTitle(!focusUkaz)
-	achtungBox := ui.NewBox(boxWidth).WithTitle("ACHTUNG  timers & alarms").WithDimTitle(!m.HomeFocusAchtung)
 
-	vertexSection := vertexBox.Render(vertexContent)
-	ukazSection := ukazBox.Render(ukazContent)
-	achtungSection := achtungBox.Render(achtungContent)
+	left := lipgloss.JoinVertical(lipgloss.Left,
+		vertexBox.Render(vertexContent),
+		"",
+		ukazBox.Render(ukazContent),
+	)
 
-	content := lipgloss.JoinVertical(lipgloss.Left, vertexSection, "", ukazSection, "", achtungSection)
+	// Match the left column's total height: two boxes of leftBoxHeight
+	// content plus their borders, and the blank row between them, less
+	// this box's own two border rows.
+	achtungInner := (leftBoxHeight+2)*2 + 1 - 2
+	achtungContent := padToLinesWithSpacing(
+		m.renderAchtungContent(showAchtungFormInline), achtungInner)
+
+	achtungBox := ui.NewBox(achtungWidth).WithTitle("ACHTUNG  jobs").WithDimTitle(!m.HomeFocusAchtung)
+
+	// The right column shows the jobs, or -- when one is open -- the form
+	// or job detail in their place. They used to render as a third column
+	// further right, which at any ordinary terminal width squeezed the
+	// jobs box down to a truncated sliver.
+	right := achtungBox.Render(achtungContent)
+	switch {
+	case m.achtungFormOpen():
+		right = m.renderAchtungFormBox(achtungInner + 2)
+	case m.AchtungViewMenu && m.SelectedAchtungJob < len(m.AchtungJobs):
+		right = m.renderAchtungJobDetailView(
+			m.AchtungJobs[m.SelectedAchtungJob], achtungInner+2)
+	}
+
+	content := lipgloss.JoinHorizontal(lipgloss.Top, left, "  ", right)
 	return ui.IndentLines(content, "  ")
 }
 
@@ -86,7 +113,9 @@ func (m Model) renderDevicesForNode(node string) string {
 
 func (m Model) renderAchtungContent(showFormInline bool) string {
 	if len(m.AchtungJobs) == 0 {
-		return ui.Dim.Render("  No timers or alarms.\n  [t] New timer  [a] New alarm")
+		lines := []string{ui.Dim.Render("  No jobs."), ""}
+		lines = append(lines, achtungKeyHints()...)
+		return strings.Join(lines, "\n")
 	}
 	var lines []string
 	for i, j := range m.AchtungJobs {
@@ -111,7 +140,7 @@ func (m Model) renderAchtungContent(showFormInline bool) string {
 		lines = append(lines, line)
 	}
 	lines = append(lines, "")
-	lines = append(lines, ui.Dim.Render("  [t] timer  [a] alarm  [d] delete"))
+	lines = append(lines, achtungKeyHints()...)
 	return strings.Join(lines, "\n")
 }
 
@@ -243,5 +272,15 @@ func cycleStatusStyle(status string) lipgloss.Style {
 		return ui.Online
 	default:
 		return ui.Label
+	}
+}
+
+// achtungKeyHints splits the key list over two rows. As one line it ran
+// past the box and got clipped mid-word, which hid [m] -- the one that
+// sets the morning print.
+func achtungKeyHints() []string {
+	return []string{
+		ui.Dim.Render("  [t] timer   [a] alarm   [e] every   [D] daily"),
+		ui.Dim.Render("  [m] morning agenda print          [d] delete"),
 	}
 }

@@ -67,6 +67,16 @@ type Model struct {
 	AchtungAlarmTime       string // HH:MM
 	AchtungAlarmName       string // optional
 	AchtungAlarmFocusField int    // 0=date, 1=time, 2=name
+	AchtungEveryMenu       bool   // true = adding a repeating interval job
+	AchtungEveryInterval   string // e.g. "30m"
+	AchtungEveryName       string // optional, Enter for auto
+	AchtungEveryFocusField int    // 0=interval, 1=name
+	AchtungDailyMenu       bool   // true = adding a wall-clock daily job
+	AchtungDailyTime       string // HH:MM, local
+	AchtungDailyName       string // optional
+	AchtungDailyFocusField int    // 0=time, 1=name
+	AchtungMorningMenu     bool   // true = setting the morning agenda print
+	AchtungMorningTime     string // HH:MM, local
 	HomeFocusAchtung       bool   // on Home: true = focus ACHTUNG panel (j/k, enter, t, a, d)
 	HomeFocusUkaz          bool   // on Home: when false and !Achtung = VERTEX; when true = UKAZ
 	AchtungViewMenu        bool   // Enter on job shows details in right panel
@@ -171,6 +181,10 @@ func NewModel() Model {
 			},
 			{
 				Name: "Print Status", Node: "UKAZ", Topic: "STATUS",
+				Kind: "action", Property: "PRINT", Status: "—",
+			},
+			{
+				Name: "Print Agenda", Node: "UKAZ", Topic: "AGENDA",
 				Kind: "action", Property: "PRINT", Status: "—",
 			},
 		},

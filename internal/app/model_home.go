@@ -60,8 +60,18 @@ func parseAchtungEndTime(kind, remaining, due string) *time.Time {
 		t := now.Add(d)
 		return &t
 	}
-	if kind == "ALARM" {
+	// ALARM, EVERY and DAILY all report an absolute next-fire time.
+	//
+	// The canonical form is achtung's serializeTimeLocal: a single
+	// colon-free, zero-padded token, "2026.09.10.07.05". The older
+	// colon-bearing layouts are kept because a frame from an achtung that
+	// has not been updated still parses -- back then the colon split the
+	// due across two fields, so `due` arrived as the date alone and this
+	// never matched anything, which is why alarm countdowns were blank.
+	if kind == "ALARM" || kind == "EVERY" || kind == "DAILY" {
 		for _, layout := range []string{
+			"2006.01.02.15.04", "2006.01.02.15.04.05",
+			"2006.1.2.15.4",
 			"2006.01.02:15.04", "2006.01.02:15.04:05",
 			"2006-01-02 15:04", "2006-01-02T15:04", "2006-01-02 15:04:05",
 			"02.01.2006 15:04",
@@ -168,6 +178,75 @@ func (m *Model) achtungAlarmReset() {
 	m.AchtungAlarmFocusField = 0
 }
 
+// achtungFormOpen reports whether any ACHTUNG creation form is showing.
+// Four kinds now, so the disjunction lives in one place.
+func (m Model) achtungFormOpen() bool {
+	return m.AchtungTimerMenu || m.AchtungAlarmMenu ||
+		m.AchtungEveryMenu || m.AchtungDailyMenu || m.AchtungMorningMenu
+}
+
+// MorningJobName is the ACHTUNG job whose ALL:FIRE makes UKAZ print the
+// agenda. It has to match CONFIG_MORNING_JOB in the ukaz firmware -- a
+// daily job by any other name fires and nothing prints, with no error
+// anywhere to explain why. Hence the dedicated [m] form rather than
+// leaving it to whatever gets typed into the generic daily one.
+const MorningJobName = "morning"
+
+func (m *Model) achtungMorningReset() {
+	m.AchtungMorningMenu = false
+	m.AchtungMorningTime = ""
+}
+
+// achtungMorningExisting returns the time of the current morning job, as
+// HH:MM, or "" if there is not one.
+func (m Model) achtungMorningExisting() string {
+	for _, j := range m.AchtungJobs {
+		if j.Name != MorningJobName || strings.ToUpper(j.Kind) != "DAILY" {
+			continue
+		}
+		if j.EndTime != nil {
+			return j.EndTime.Format("15:04")
+		}
+	}
+	return ""
+}
+
+func (m *Model) achtungMorningSubmit() {
+	t, err := time.Parse("15:04", strings.TrimSpace(m.AchtungMorningTime))
+	if err != nil {
+		return
+	}
+	// ACHTUNG replaces a job of the same name, so this edits as well as
+	// creates. H.M because the wire has no colons inside a field.
+	m.HubSend("ACHTUNG", "NEW", "DAILY", MorningJobName,
+		fmt.Sprintf("%d.%d", t.Hour(), t.Minute()))
+	m.requestAchtungList()
+	m.achtungMorningReset()
+}
+
+func (m *Model) achtungMorningOpen() {
+	m.AchtungMorningMenu = true
+	if cur := m.achtungMorningExisting(); cur != "" {
+		m.AchtungMorningTime = cur
+	} else {
+		m.AchtungMorningTime = "07:00"
+	}
+}
+
+func (m *Model) achtungEveryReset() {
+	m.AchtungEveryMenu = false
+	m.AchtungEveryInterval = ""
+	m.AchtungEveryName = ""
+	m.AchtungEveryFocusField = 0
+}
+
+func (m *Model) achtungDailyReset() {
+	m.AchtungDailyMenu = false
+	m.AchtungDailyTime = ""
+	m.AchtungDailyName = ""
+	m.AchtungDailyFocusField = 0
+}
+
 func (m *Model) achtungFormFocusedValue() *string {
 	if m.AchtungTimerMenu {
 		switch m.AchtungTimerFocusField {
@@ -187,7 +266,87 @@ func (m *Model) achtungFormFocusedValue() *string {
 			return &m.AchtungAlarmName
 		}
 	}
+	if m.AchtungEveryMenu {
+		switch m.AchtungEveryFocusField {
+		case 0:
+			return &m.AchtungEveryInterval
+		case 1:
+			return &m.AchtungEveryName
+		}
+	}
+	if m.AchtungDailyMenu {
+		switch m.AchtungDailyFocusField {
+		case 0:
+			return &m.AchtungDailyTime
+		case 1:
+			return &m.AchtungDailyName
+		}
+	}
 	return &m.AchtungTimerName
+}
+
+// achtungTwoFieldFormKeys drives the EVERY and DAILY forms, which share a
+// shape: two fields, Enter on the last one submits.
+func (m *Model) achtungTwoFieldFormKeys(msg tea.KeyMsg, focus *int, reset func(), submit func()) bool {
+	switch msg.String() {
+	case "esc":
+		reset()
+		return true
+	case "tab", "shift+tab":
+		*focus = (*focus + 1) % 2
+		return true
+	case "enter":
+		if *focus == 1 {
+			submit()
+			return true
+		}
+		*focus = 1
+		return true
+	case "backspace":
+		s := m.achtungFormFocusedValue()
+		runes := []rune(*s)
+		if len(runes) > 0 {
+			*s = string(runes[:len(runes)-1])
+		}
+		return true
+	case " ":
+		*m.achtungFormFocusedValue() += " "
+		return true
+	}
+	if msg.Type == tea.KeyRunes && len(msg.Runes) > 0 {
+		*m.achtungFormFocusedValue() += string(msg.Runes)
+		return true
+	}
+	return false
+}
+
+func (m *Model) achtungEverySubmit() {
+	iv := strings.TrimSpace(m.AchtungEveryInterval)
+	if parseDuration(iv) < 0 {
+		return
+	}
+	name := strings.TrimSpace(m.AchtungEveryName)
+	if name == "" {
+		name = fmt.Sprintf("e_%s_%d", iv, time.Now().Unix())
+	}
+	m.HubSend("ACHTUNG", "NEW", "EVERY", name, iv)
+	m.requestAchtungList()
+	m.achtungEveryReset()
+}
+
+func (m *Model) achtungDailySubmit() {
+	t, err := time.Parse("15:04", strings.TrimSpace(m.AchtungDailyTime))
+	if err != nil {
+		return
+	}
+	name := strings.TrimSpace(m.AchtungDailyName)
+	if name == "" {
+		name = fmt.Sprintf("d_%02d%02d", t.Hour(), t.Minute())
+	}
+	// achtung wants H.M -- the wire has no colons inside a field.
+	m.HubSend("ACHTUNG", "NEW", "DAILY", name, fmt.Sprintf("%d.%d", t.Hour(), t.Minute()))
+	m.requestAchtungList()
+	m.achtungDailyReset()
 }
 
 func (m *Model) handleAchtungFormKeys(msg tea.KeyMsg) bool {
@@ -258,6 +417,35 @@ func (m *Model) handleAchtungFormKeys(msg tea.KeyMsg) bool {
 		}
 		if msg.Type == tea.KeyRunes && len(msg.Runes) > 0 {
 			*m.achtungFormFocusedValue() += string(msg.Runes)
+			return true
+		}
+		return false
+	}
+	if m.AchtungEveryMenu {
+		return m.achtungTwoFieldFormKeys(msg, &m.AchtungEveryFocusField,
+			m.achtungEveryReset, m.achtungEverySubmit)
+	}
+	if m.AchtungDailyMenu {
+		return m.achtungTwoFieldFormKeys(msg, &m.AchtungDailyFocusField,
+			m.achtungDailyReset, m.achtungDailySubmit)
+	}
+	if m.AchtungMorningMenu {
+		switch msg.String() {
+		case "esc":
+			m.achtungMorningReset()
+			return true
+		case "enter":
+			m.achtungMorningSubmit()
+			return true
+		case "backspace":
+			runes := []rune(m.AchtungMorningTime)
+			if len(runes) > 0 {
+				m.AchtungMorningTime = string(runes[:len(runes)-1])
+			}
+			return true
+		}
+		if msg.Type == tea.KeyRunes && len(msg.Runes) > 0 {
+			m.AchtungMorningTime += string(msg.Runes)
 			return true
 		}
 		return false
@@ -341,6 +529,28 @@ func (m *Model) handleAchtungKeys(msg tea.KeyMsg) bool {
 	key := msg.String()
 
 	if m.ActiveSheet == types.SheetHome {
+		if key == "m" {
+			m.HomeFocusAchtung = true
+			m.AchtungViewMenu = false
+			m.achtungMorningOpen()
+			return true
+		}
+		if key == "e" || key == "D" {
+			m.HomeFocusAchtung = true
+			m.AchtungViewMenu = false
+			if key == "e" {
+				m.AchtungEveryMenu = true
+				m.AchtungEveryFocusField = 0
+				m.AchtungEveryInterval = ""
+				m.AchtungEveryName = ""
+				return true
+			}
+			m.AchtungDailyMenu = true
+			m.AchtungDailyFocusField = 0
+			m.AchtungDailyTime = "07:00"
+			m.AchtungDailyName = ""
+			return true
+		}
 		if key == "t" || key == "a" {
 			m.HomeFocusAchtung = true
 			m.AchtungViewMenu = false
@@ -403,6 +613,21 @@ func (m *Model) handleAchtungKeys(msg tea.KeyMsg) bool {
 			m.AchtungAlarmDate = now.Format("2006-01-02")
 			m.AchtungAlarmTime = "20:00"
 			m.AchtungAlarmName = ""
+			return true
+		case "e":
+			m.AchtungEveryMenu = true
+			m.AchtungEveryFocusField = 0
+			m.AchtungEveryInterval = ""
+			m.AchtungEveryName = ""
+			return true
+		case "D":
+			m.AchtungDailyMenu = true
+			m.AchtungDailyFocusField = 0
+			m.AchtungDailyTime = "07:00"
+			m.AchtungDailyName = ""
+			return true
+		case "m":
+			m.achtungMorningOpen()
 			return true
 		}
 	}

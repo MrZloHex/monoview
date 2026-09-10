@@ -33,7 +33,7 @@ func (m Model) View() string {
 	case types.SheetDiary:
 		b.WriteString(m.renderDiary())
 	case types.SheetHome:
-		showAchtungFormInline := !m.AchtungTimerMenu && !m.AchtungAlarmMenu
+		showAchtungFormInline := !m.achtungFormOpen()
 		b.WriteString(m.renderHome(showAchtungFormInline))
 	case types.SheetSystem:
 		b.WriteString(m.renderSystem())
@@ -55,9 +55,8 @@ func (m Model) View() string {
 	if m.ActiveSheet == types.SheetCalendar && (m.EventAddMenu || m.EventViewMenu) {
 		return m.renderWithRightPanel(fullView)
 	}
-	if m.ActiveSheet == types.SheetHome && (m.AchtungTimerMenu || m.AchtungAlarmMenu || m.AchtungViewMenu) {
-		return m.renderWithRightPanel(fullView)
-	}
+	// Home renders its ACHTUNG form/detail inside its own right column, so
+	// it does not need the extra panel.
 
 	// Fire alert still uses a centered popup (takes over the frame).
 	if m.FireAlert.Show {
@@ -130,7 +129,7 @@ func (m Model) renderWithRightPanel(fullView string) string {
 			rightContent = m.renderEventDetailView(types.Event{}, contentHeight)
 		}
 	} else if m.ActiveSheet == types.SheetHome {
-		if m.AchtungTimerMenu || m.AchtungAlarmMenu {
+		if m.achtungFormOpen() {
 			rightContent = m.renderAchtungFormBox(contentHeight)
 		} else if m.AchtungViewMenu && m.SelectedAchtungJob < len(m.AchtungJobs) {
 			rightContent = m.renderAchtungJobDetailView(m.AchtungJobs[m.SelectedAchtungJob], contentHeight)
@@ -273,12 +272,12 @@ func (m Model) renderFooter() string {
 	case types.SheetDiary:
 		help = "[↑/k] prev  [↓/j] next  [1-4] sheets  [q] quit"
 	case types.SheetHome:
-		if m.AchtungTimerMenu || m.AchtungAlarmMenu {
-			help = "[Tab] next field  [Enter] submit  [Esc] cancel  [t] timer  [a] alarm  [q] quit"
+		if m.achtungFormOpen() {
+			help = "[Tab] next field  [Enter] submit  [Esc] cancel  [q] quit"
 		} else if m.AchtungViewMenu {
 			help = "[d] stop  [Esc] close  [1-4] sheets  [q] quit"
 		} else if m.HomeFocusAchtung {
-			help = "[tab] VERTEX/UKAZ  [↑/k ↓/j] job  [Enter] details  [t] timer  [a] alarm  [d] stop  [1-4] sheets  [q] quit"
+			help = "[tab] VERTEX/UKAZ  [↑/k ↓/j] job  [Enter] details  [t] timer  [a] alarm  [e] every  [D] daily  [m] morning  [d] stop  [1-4] sheets  [q] quit"
 		} else if m.HomeFocusUkaz {
 			help = "[tab] VERTEX/ACHTUNG  [↑/k ↓/j] UKAZ  [enter] trigger  [1-4] sheets  [q] quit"
 		} else {

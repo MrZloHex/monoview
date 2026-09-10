@@ -26,13 +26,13 @@
   ▓ FEATURES
   ▪ Four sheets: Calendar, Diary, Home, System
   ▪ **VERTEX** device control (lamps, LEDs, brightness)
-  ▪ **ACHTUNG** timers and alarms (create, list, delete; realtime countdown)
+  ▪ **ACHTUNG** jobs — timers, alarms, repeating intervals and daily wall-clock jobs (create, list, delete; realtime countdown)
   ▪ Fire alert when a timer or alarm fires (turn off buzzer)
   ▪ Node status (ping, uptime) and recent hub message log
 
   ───────────────────────────────────────────────────────────────
   ▓ SHEETS
-  ▪ **[1] CALENDAR** — Events and weekly schedule (sample data)
+  ▪ **[1] CALENDAR** — Events, weekly schedule and deadlines, live from **GOVERNOR**
   ▪ **[2] DIARY** — Entries with mood (sample data)
   ▪ **[3] HOME** — **VERTEX** devices (toggle, cycle, value) and **ACHTUNG** timers and alarms
   ▪ **[4] SYSTEM** — Node panels (**VERTEX**, **ACHTUNG**), ping, uptime, recent concentrator messages
@@ -47,7 +47,7 @@
   Diary:     [↑/k] [↓/j]   Prev/next entry
   Home:      [Tab]         Focus devices ↔ timers (ACHTUNG)
              Devices:     [↑/k ↓/j] select  [Enter] toggle  [←/h →/l] adjust
-             Timers:      [↑/k ↓/j] job  [t] timer  [a] alarm  [d] delete
+             Jobs:        [↑/k ↓/j] job  [t] timer  [a] alarm  [e] every  [D] daily  [d] delete
   System:    [↑/k ↓/j] or [←/h →/l] select node  [Enter] ping
 
   Fire alert popup:  [Enter] / [Space]  Turn off buzzer and close
@@ -109,6 +109,8 @@
   ▓ ACHTUNG (HOME SHEET)
   On the Home sheet, focus the **ACHTUNG** panel ([Tab]) then:
   ▪ **[t] Timer** — Duration (presets or [c] custom), then name (or Enter for auto). Time-to-fire updates every second.
+  ▪ **[e] Every** — Repeating interval (e.g. `45m`), then name. Repeats from now.
+  ▪ **[D] Daily** — A local wall-clock `HH:MM`, then name. Fires every day at that time, stays put across DST, and survives an **achtung** restart. This is what drives the morning agenda printout.
   ▪ **[a] Alarm** — One-shot; pick when ([1] today, [2] tomorrow, [c] custom). Custom: `HH:MM`; if that time passed today, alarm is set for tomorrow.
   ▪ **[d]** / **[Enter]** on a job — Stop or delete it.
   The job list syncs with **achtung** about every minute.

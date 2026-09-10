@@ -129,6 +129,57 @@ func (m Model) renderAchtungFormBox(minHeight int) string {
 		}
 		lines = append(lines, "")
 		lines = append(lines, ui.Dim.Render("  [Tab] next  [Enter] submit  [Esc] cancel"))
+	} else if m.AchtungEveryMenu {
+		lines = append(lines, ui.Title.Render("  New repeating job")+" ")
+		lines = append(lines, "")
+		for i, label := range []string{"Interval (e.g. 30m, 6h)", "Name (optional)"} {
+			val := m.AchtungEveryInterval
+			if i == 1 {
+				val = m.AchtungEveryName
+			}
+			line := ui.Label.Render("  "+label+": ") + ui.Value.Render(val)
+			if i == m.AchtungEveryFocusField {
+				line += ui.Dim.Render("▌")
+			}
+			lines = append(lines, line)
+		}
+		lines = append(lines, "")
+		lines = append(lines, ui.Dim.Render("  Repeats on an interval, from now."))
+		lines = append(lines, ui.Dim.Render("  [Tab] next  [Enter] submit  [Esc] cancel"))
+	} else if m.AchtungMorningMenu {
+		lines = append(lines, ui.Title.Render("  Morning agenda print")+" ")
+		lines = append(lines, "")
+		line := ui.Label.Render("  Time (HH:MM): ") + ui.Value.Render(m.AchtungMorningTime)
+		line += ui.Dim.Render("▌")
+		lines = append(lines, line)
+		lines = append(lines, "")
+		lines = append(lines, ui.Dim.Render("  UKAZ prints the day's agenda when this"))
+		lines = append(lines, ui.Dim.Render("  fires. Daily, survives a restart."))
+		if cur := m.achtungMorningExisting(); cur != "" {
+			lines = append(lines, ui.Dim.Render("  Currently set for "+cur+"."))
+		} else {
+			lines = append(lines, ui.Dim.Render("  Not set yet."))
+		}
+		lines = append(lines, "")
+		lines = append(lines, ui.Dim.Render("  [Enter] save  [Esc] cancel"))
+	} else if m.AchtungDailyMenu {
+		lines = append(lines, ui.Title.Render("  New daily job")+" ")
+		lines = append(lines, "")
+		for i, label := range []string{"Time (HH:MM)", "Name (optional)"} {
+			val := m.AchtungDailyTime
+			if i == 1 {
+				val = m.AchtungDailyName
+			}
+			line := ui.Label.Render("  "+label+": ") + ui.Value.Render(val)
+			if i == m.AchtungDailyFocusField {
+				line += ui.Dim.Render("▌")
+			}
+			lines = append(lines, line)
+		}
+		lines = append(lines, "")
+		lines = append(lines, ui.Dim.Render("  Fires at this wall-clock time every day"))
+		lines = append(lines, ui.Dim.Render("  and survives a restart."))
+		lines = append(lines, ui.Dim.Render("  [Tab] next  [Enter] submit  [Esc] cancel"))
 	}
 	inner := strings.Join(lines, "\n")
 	if minHeight > 2 {
@@ -143,8 +194,15 @@ func (m Model) renderAchtungFormBox(minHeight int) string {
 		inner = strings.Join(innerLines, "\n")
 	}
 	title := " ADD TIMER "
-	if m.AchtungAlarmMenu {
+	switch {
+	case m.AchtungAlarmMenu:
 		title = " ADD ALARM "
+	case m.AchtungEveryMenu:
+		title = " ADD EVERY "
+	case m.AchtungMorningMenu:
+		title = " MORNING PRINT "
+	case m.AchtungDailyMenu:
+		title = " ADD DAILY "
 	}
 	box := ui.NewBox(width).WithBorderColor(ui.GruvAqua).WithTitle(title)
 	return box.Render(inner)
