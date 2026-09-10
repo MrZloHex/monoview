@@ -36,7 +36,19 @@ func main() {
 	tlsCA := cli.String("tls-ca", defaultTLSCA, "Optional CA PEM to verify server; default system roots (env MONOVIEW_TLS_CA)")
 	tlsServerName := cli.String("tls-server-name", defaultTLSServerName, "TLS ServerName (SNI); use when URL is an IP (env MONOVIEW_TLS_SERVER_NAME)")
 	logPath := cli.String("log-path", defaultLogPath, "Path to log file (env MONOVIEW_LOG)")
+	dialectName := cli.String("dialect", envOr("MONOVIEW_DIALECT", "v1"),
+		"monolink dialect to send in, v1 or v2; VERTEX, LUCH and ALL always get v1 (env MONOVIEW_DIALECT)")
 	cli.Parse()
+
+	dialect := monolink.V1
+	switch strings.ToLower(*dialectName) {
+	case "v1", "1":
+	case "v2", "2":
+		dialect = monolink.V2
+	default:
+		fmt.Fprintf(os.Stderr, "--dialect must be v1 or v2, not %q\n", *dialectName)
+		os.Exit(1)
+	}
 
 	logFile, err := os.OpenFile(*logPath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
 	if err != nil {
@@ -46,12 +58,13 @@ func main() {
 	defer logFile.Close()
 
 	logger := log.New(logFile, "", log.LstdFlags)
-	logger.Printf("monoview starting, url=%s", *url)
+	logger.Printf("monoview starting, url=%s dialect=v%d", *url, dialect)
 
 	var hubOpts []monolink.Option
 	hubOpts = append(hubOpts,
 		monolink.WithInbox(64),
 		monolink.WithLogger(logger),
+		monolink.WithDialect(dialect),
 	)
 
 	switch {

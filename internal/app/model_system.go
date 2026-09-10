@@ -204,6 +204,10 @@ func (m *Model) pingSelectedNode() {
 func (m *Model) handleNodeResponse(msg monolink.Message) {
 	verb := strings.ToUpper(msg.Verb)
 	from := strings.ToUpper(msg.From)
+	// A PING asked in v2 is answered OK:PING (SPEC §43); in v1, PONG.
+	if verb == "OK" && strings.EqualFold(msg.Noun, "PING") {
+		verb = "PONG"
+	}
 
 	for i := range m.Nodes {
 		node := &m.Nodes[i]

@@ -1,6 +1,7 @@
 package app
 
 import (
+	"strings"
 	"time"
 
 	tea "github.com/charmbracelet/bubbletea"
@@ -101,10 +102,17 @@ type Model struct {
 	// Traffic indicators (timestamps of last rx/tx for arrow display)
 	LastRx time.Time
 	LastTx time.Time
+
+	tickGen int // the one live tick chain; see TickMsg
 }
 
-// TickMsg is sent periodically (interval varies: fast when ACHTUNG countdowns, idle otherwise)
-type TickMsg time.Time
+// TickMsg is sent periodically (interval varies: fast when ACHTUNG countdowns, idle otherwise).
+// Gen names the chain it belongs to; ticks from a superseded chain are dropped, so exactly
+// one chain is ever running.
+type TickMsg struct {
+	Time time.Time
+	Gen  int
+}
 
 // needsFastTick returns true when we need per-second ticks (e.g. ACHTUNG countdown display).
 func (m *Model) needsFastTick() bool {
@@ -123,9 +131,9 @@ func nextTickInterval(m *Model) time.Duration {
 	return tickIntervalIdle
 }
 
-func tickWithInterval(interval time.Duration) tea.Cmd {
+func tickWithInterval(interval time.Duration, gen int) tea.Cmd {
 	return tea.Tick(interval, func(t time.Time) tea.Msg {
-		return TickMsg(t)
+		return TickMsg{Time: t, Gen: gen}
 	})
 }
 
@@ -133,8 +141,17 @@ func tickWithInterval(interval time.Duration) tea.Cmd {
 // from a single goroutine in main (see cmd/monoview) — do not tea.Batch a blocking inbox read
 // with Tick: Bubble Tea runs Batch sub-commands under wg.Wait; waitForHub never completes on
 // idle ticks, so each tick leaked a stuck execBatchMsg goroutine and an extra <-inbox waiter.
+//
+// Only the TickMsg handler may continue the chain. Scheduling from anywhere else forks a
+// second chain that never ends — call restartTick instead.
 func (m *Model) scheduleNextCmds() tea.Cmd {
-	return tickWithInterval(nextTickInterval(m))
+	return tickWithInterval(nextTickInterval(m), m.tickGen)
+}
+
+// restartTick abandons the running chain and starts a fresh one at the current interval.
+func (m *Model) restartTick() tea.Cmd {
+	m.tickGen++
+	return m.scheduleNextCmds()
 }
 
 // NewModel creates the initial model with sample data
@@ -364,7 +381,10 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.Height = msg.Height
 
 	case TickMsg:
-		m.LastUpdate = time.Time(msg)
+		if msg.Gen != m.tickGen {
+			return m, nil // superseded chain: let it die
+		}
+		m.LastUpdate = msg.Time
 		m.pollNodes()
 		m.updateAchtungRemaining()
 		if m.Hub != nil && m.Hub.Connected() && time.Since(m.LastAchtungSync) >= achtungSyncEvery {
@@ -374,9 +394,14 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		return m, m.scheduleNextCmds()
 
 	case HubMsg:
+		wasFast := m.needsFastTick()
 		m.handleHub(monolink.Message(msg))
 		m.updateAchtungRemaining()
-		return m, m.scheduleNextCmds()
+		if !wasFast && m.needsFastTick() {
+			// A countdown just appeared; don't sit out the rest of an idle interval.
+			return m, m.restartTick()
+		}
+		return m, nil
 	}
 
 	return m, nil
@@ -413,11 +438,20 @@ func (m *Model) handleHub(msg monolink.Message) {
 	m.handleFireAlert(msg)
 }
 
+// v1Peers read only monolink v1, whatever dialect this panel speaks: VERTEX
+// parses frames on an AVR behind uart2ws, LUCH's parser ignores v2, and a
+// broadcast has to reach both.
+var v1Peers = map[string]bool{"VERTEX": true, "LUCH": true, "ALL": true}
+
 // HubSend is a convenience for sending a command through the concentrator
 // from any place that has access to the Model (key handlers, etc.).
 func (m *Model) HubSend(to, verb, noun string, args ...string) {
 	if m.Hub != nil {
-		m.Hub.Send(to, verb, noun, args...)
+		if v1Peers[strings.ToUpper(to)] {
+			m.Hub.SendRaw(monolink.Encode(to, verb, noun, m.Hub.NodeID(), args...))
+		} else {
+			m.Hub.Send(to, verb, noun, args...)
+		}
 		m.LastTx = time.Now()
 	}
 }

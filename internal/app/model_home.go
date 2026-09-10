@@ -478,16 +478,17 @@ func (m *Model) achtungAlarmSubmit() {
 	if name == "" {
 		name = fmt.Sprintf("alarm_%d", time.Now().Unix())
 	}
-	datetime := formatAchtungAlarmDateTime(m.AchtungAlarmDate, m.AchtungAlarmTime)
-	m.HubSend("ACHTUNG", "NEW", "ALARM", name, datetime)
+	// Date and time are two arguments, as ACHTUNG reads them. v1 put the
+	// same bytes on the wire when they were one "date:time" argument; v2
+	// escapes a colon inside an argument, so only this form survives it.
+	date, tm := formatAchtungAlarmDateTime(m.AchtungAlarmDate, m.AchtungAlarmTime)
+	m.HubSend("ACHTUNG", "NEW", "ALARM", name, date, tm)
 	m.requestAchtungList()
 	m.achtungAlarmReset()
 }
 
-func formatAchtungAlarmDateTime(date, timeStr string) string {
-	date = strings.ReplaceAll(date, "-", ".")
-	timeStr = strings.ReplaceAll(timeStr, ":", ".")
-	return date + ":" + timeStr
+func formatAchtungAlarmDateTime(date, timeStr string) (string, string) {
+	return strings.ReplaceAll(date, "-", "."), strings.ReplaceAll(timeStr, ":", ".")
 }
 
 func parseAlarmDateTime(s string) (date, timeStr string) {

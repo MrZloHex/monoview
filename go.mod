@@ -3,7 +3,7 @@ module monoview
 go 1.25.3
 
 require (
-	github.com/MrZloHex/monolink v0.1.1
+	github.com/MrZloHex/monolink v0.2.0
 	github.com/charmbracelet/bubbletea v1.3.10
 	github.com/charmbracelet/lipgloss v1.1.0
 	github.com/joho/godotenv v1.5.1
