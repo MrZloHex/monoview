@@ -24,23 +24,25 @@
 
   ───────────────────────────────────────────────────────────────
   ▓ FEATURES
-  ▪ Four sheets: Calendar, Diary, Home, System
+  ▪ Five sheets: Calendar, Diary, Home, System, People
   ▪ **VERTEX** device control (lamps, LEDs, brightness)
   ▪ **ACHTUNG** jobs — timers, alarms, repeating intervals and daily wall-clock jobs (create, list, delete; realtime countdown)
   ▪ Fire alert when a timer or alarm fires (turn off buzzer)
   ▪ Node status (ping, uptime) and recent hub message log
+  ▪ Signing in through **MARSHAL**: what this panel sends is then `MONOVIEW.<person>`, and only what their grants allow
 
   ───────────────────────────────────────────────────────────────
   ▓ SHEETS
   ▪ **[1] CALENDAR** — Events, weekly schedule and deadlines, live from **GOVERNOR**
   ▪ **[2] DIARY** — Entries with mood (sample data)
   ▪ **[3] HOME** — **VERTEX** devices (toggle, cycle, value) and **ACHTUNG** timers and alarms
-  ▪ **[4] SYSTEM** — Node panels (**VERTEX**, **ACHTUNG**), ping, uptime, recent concentrator messages
+  ▪ **[4] SYSTEM** — Node panels (**VERTEX**, **ACHTUNG**, **GOVERNOR**, **UKAZ**, **MARSHAL**), ping, uptime, recent concentrator messages
+  ▪ **[5] PEOPLE** — Who is signed in here; for whoever may, the people of the bubble, their grants and sessions
 
   ───────────────────────────────────────────────────────────────
   ▓ CONTROLS
   Global:
-    [1]–[4] or [Tab] / [Shift+Tab]   Switch sheet
+    [1]–[5] or [Tab] / [Shift+Tab]   Switch sheet
     [Q] / [Ctrl+C]                    Quit
 
   Calendar:  [←/h] [→/l]   Prev/next day
@@ -49,6 +51,13 @@
              Devices:     [↑/k ↓/j] select  [Enter] toggle  [←/h →/l] adjust
              Jobs:        [↑/k ↓/j] job  [t] timer  [a] alarm  [e] every  [D] daily  [d] delete
   System:    [↑/k ↓/j] or [←/h →/l] select node  [Enter] ping
+  People:    [s] sign in  [e] first person (with the code MARSHAL printed)  [o] sign out  [p] my secret
+             [↑/k ↓/j] person  [n] new  [g] grant  [x] revoke  [D] remove  [r] refresh
+
+  With nobody signed in, the panel is its owner's, exactly as before MARSHAL.
+  Signed in, it refuses — and logs once — anything the person's grants do not
+  cover. The session is kept in `session.json` (mode 0600) across restarts and
+  honoured while MARSHAL is unreachable, until it expires.
 
   Fire alert popup:  [Enter] / [Space]  Turn off buzzer and close
 
@@ -86,6 +95,8 @@
   ▪ `MONOVIEW_TLS_KEY` — client private key PEM (mTLS)
   ▪ `MONOVIEW_TLS_CA` — optional CA PEM to verify the server
   ▪ `MONOVIEW_TLS_SERVER_NAME` — TLS ServerName (SNI); e.g. when dialing an IP
+  ▪ `MONOVIEW_DIALECT` — `v1` (default) or `v2`; VERTEX, LUCH and ALL always get v1, MARSHAL always v2
+  ▪ `MONOVIEW_SESSION` — where the signed-in session is kept (default `session.json`)
   ▪ `MONO_ENV_FILE` — path to dotenv file instead of `.env`
 
   **Flags** (see `./bin/monoview --help`)
@@ -94,6 +105,8 @@
   ▪ `--tls-ca` — optional server CA (`MONOVIEW_TLS_CA`)
   ▪ `--tls-server-name` — SNI (`MONOVIEW_TLS_SERVER_NAME`)
   ▪ `--log-path` — log file (`MONOVIEW_LOG`)
+  ▪ `--dialect` — monolink dialect (`MONOVIEW_DIALECT`)
+  ▪ `--session` — session file; empty keeps none (`MONOVIEW_SESSION`)
   ▪ `--env-file` — dotenv path (early parse)
 
   **Example** (environment overrides)

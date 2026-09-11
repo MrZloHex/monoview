@@ -37,6 +37,8 @@ func (m Model) View() string {
 		b.WriteString(m.renderHome(showAchtungFormInline))
 	case types.SheetSystem:
 		b.WriteString(m.renderSystem())
+	case types.SheetPeople:
+		b.WriteString(m.renderPeople())
 	}
 
 	content := b.String()
@@ -253,7 +255,13 @@ func (m Model) renderTabs() string {
 	tabBar := lipgloss.JoinHorizontal(lipgloss.Top, tabs...)
 	line := ui.Dim.Render(strings.Repeat("─", m.Width))
 
-	return fmt.Sprintf("  %s\n%s", tabBar, line)
+	who := ui.Dim.Render("not signed in")
+	if m.signedIn() {
+		who = ui.Accent.Render("● " + m.Session.User)
+	}
+	gap := max(m.Width-lipgloss.Width(tabBar)-lipgloss.Width(who)-4, 1)
+
+	return fmt.Sprintf("  %s%s%s\n%s", tabBar, strings.Repeat(" ", gap), who, line)
 }
 
 func (m Model) renderFooter() string {
@@ -263,33 +271,44 @@ func (m Model) renderFooter() string {
 		if m.EventAddMenu {
 			help = "[Tab] next field  [Shift+Tab] prev  [Enter] submit  [Esc] cancel  [a/n] add event"
 		} else if m.EventViewMenu {
-			help = "[d] delete event  [Esc] close  [a/n] add  [1-4] sheets  [q] quit"
+			help = "[d] delete event  [Esc] close  [a/n] add  [1-5] sheets  [q] quit"
 		} else if m.CalendarFocusEvents {
-			help = "[↑/↓] select event  [Enter] view  [d] delete  [Esc] back  [a/n] add  [1-4] sheets  [q] quit"
+			help = "[↑/↓] select event  [Enter] view  [d] delete  [Esc] back  [a/n] add  [1-5] sheets  [q] quit"
 		} else {
-			help = "[↑/↓] week  [←/→] day  [Enter] select day → events  [a/n] add  [1-4] sheets  [q] quit"
+			help = "[↑/↓] week  [←/→] day  [Enter] select day → events  [a/n] add  [1-5] sheets  [q] quit"
 		}
 	case types.SheetDiary:
-		help = "[↑/k] prev  [↓/j] next  [1-4] sheets  [q] quit"
+		help = "[↑/k] prev  [↓/j] next  [1-5] sheets  [q] quit"
 	case types.SheetHome:
 		if m.achtungFormOpen() {
 			help = "[Tab] next field  [Enter] submit  [Esc] cancel  [q] quit"
 		} else if m.AchtungViewMenu {
-			help = "[d] stop  [Esc] close  [1-4] sheets  [q] quit"
+			help = "[d] stop  [Esc] close  [1-5] sheets  [q] quit"
 		} else if m.HomeFocusAchtung {
-			help = "[tab] VERTEX/UKAZ  [↑/k ↓/j] job  [Enter] details  [t] timer  [a] alarm  [e] every  [D] daily  [m] morning  [d] stop  [1-4] sheets  [q] quit"
+			help = "[tab] VERTEX/UKAZ  [↑/k ↓/j] job  [Enter] details  [t] timer  [a] alarm  [e] every  [D] daily  [m] morning  [d] stop  [1-5] sheets  [q] quit"
 		} else if m.HomeFocusUkaz {
-			help = "[tab] VERTEX/ACHTUNG  [↑/k ↓/j] UKAZ  [enter] trigger  [1-4] sheets  [q] quit"
+			help = "[tab] VERTEX/ACHTUNG  [↑/k ↓/j] UKAZ  [enter] trigger  [1-5] sheets  [q] quit"
 		} else {
-			help = "[tab] UKAZ/ACHTUNG  [↑/k ↓/j] device  [enter] toggle  [←/h →/l] adjust  [1-4] sheets  [q] quit"
+			help = "[tab] UKAZ/ACHTUNG  [↑/k ↓/j] device  [enter] toggle  [←/h →/l] adjust  [1-5] sheets  [q] quit"
 		}
 	case types.SheetSystem:
 		if m.SystemCommandInput {
 			help = ": " + m.SystemCommandBuffer + "▌  [Enter] send  [Esc] cancel"
 		} else if m.SystemFocusLogs {
-			help = "[Tab] nodes  [:] command  [1-4] sheets  [q] quit"
+			help = "[Tab] nodes  [:] command  [1-5] sheets  [q] quit"
 		} else {
-			help = "[Tab] logs  [:] command  [1-4] sheets  [q] quit"
+			help = "[Tab] logs  [:] command  [1-5] sheets  [q] quit"
+		}
+	case types.SheetPeople:
+		switch {
+		case m.PeopleForm.kind != formNone:
+			help = "[Tab] next field  [Enter] submit  [Esc] cancel"
+		case m.PeopleConfirm != "":
+			help = "[y] remove " + m.PeopleConfirm + "  [any other key] keep"
+		case m.signedIn():
+			help = "[↑/↓] person  [n] new  [g] grant  [x] revoke  [D] remove  [p] my secret  [s] switch  [o] sign out  [r] refresh  [1-5] sheets  [q] quit"
+		default:
+			help = "[s] sign in  [e] first person  [r] refresh  [1-5] sheets  [q] quit"
 		}
 	}
 

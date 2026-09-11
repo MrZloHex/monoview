@@ -9,3 +9,4 @@ monoview.log
 
 certs/
 .env
+session.json

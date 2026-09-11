@@ -7,6 +7,7 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 
 	"github.com/MrZloHex/monolink"
+	"github.com/MrZloHex/monolink/marshal"
 	"monoview/internal/types"
 )
 
@@ -102,6 +103,22 @@ type Model struct {
 	// Traffic indicators (timestamps of last rx/tx for arrow display)
 	LastRx time.Time
 	LastTx time.Time
+
+	// People (MARSHAL): who is signed in at this panel, and the PEOPLE sheet
+	Session          marshal.Session // zero when nobody is signed in
+	Grants           []string        // the signed-in person's; checked before sending
+	SessionPath      string          // where the session is kept between runs; "" keeps none
+	LastKeepAlive    time.Time
+	MarshalEnrolling bool // MARSHAL awaits its first person
+	People           []string
+	PeopleGrants     map[string][]string
+	PeopleSessions   []marshal.SessionInfo
+	PeopleSelected   int
+	PeopleForm       peopleForm
+	PeopleConfirm    string // person awaiting [y] to be removed
+	PeopleStatus     string // the outcome of the last thing done on the sheet
+	PeopleNote       string // why the list is short, when it is
+	deniedLogged     map[string]bool
 
 	tickGen int // the one live tick chain; see TickMsg
 }
@@ -212,6 +229,7 @@ func NewModel() Model {
 			{Name: "ACHTUNG", PingNoun: "PING", Status: "offline", Uptime: "—"},
 			{Name: "GOVERNOR", PingNoun: "PING", Status: "offline", Uptime: "—"},
 			{Name: "UKAZ", PingNoun: "PING", Status: "offline", Uptime: "—"},
+			{Name: "MARSHAL", PingNoun: "PING", Status: "offline", Uptime: "—"},
 		},
 		SelectedNode: 0,
 	}
@@ -224,6 +242,10 @@ func (m Model) Init() tea.Cmd {
 		m.requestGovernorSchedule()
 		m.requestGovernorEvents()
 		m.requestGovernorDeadlines()
+		cmds = append(cmds, (&m).refreshPeople())
+		if m.signedIn() {
+			cmds = append(cmds, (&m).resumeCmd())
+		}
 	}
 	return tea.Batch(append(cmds, (&m).scheduleNextCmds())...)
 }
@@ -244,6 +266,9 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				return m, nil
 			}
 		} else {
+			if handled, cmd := m.handlePeopleKeys(msg); handled {
+				return m, cmd
+			}
 			if m.handleAchtungFormKeys(msg) {
 				return m, nil
 			}
@@ -281,6 +306,10 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.ActiveSheet = types.SheetSystem
 			m.SystemFocusLogs = false
 			m.SystemCommandInput = false
+		case "5":
+			m.ActiveSheet = types.SheetPeople
+			m.SystemCommandInput = false
+			return m, m.refreshPeople()
 		case ":":
 			if m.ActiveSheet == types.SheetSystem && m.Hub != nil && !m.SystemCommandInput {
 				m.SystemCommandInput = true
@@ -391,7 +420,10 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.requestAchtungList()
 			m.LastAchtungSync = time.Now()
 		}
-		return m, m.scheduleNextCmds()
+		return m, tea.Batch(m.scheduleNextCmds(), m.keepAlive())
+
+	case sessionMsg, grantsMsg, peopleMsg, enrollingMsg, peopleOpMsg, signedOutMsg:
+		return m, m.handlePeopleMsg(msg)
 
 	case HubMsg:
 		wasFast := m.needsFastTick()
@@ -436,6 +468,7 @@ func (m *Model) handleHub(msg monolink.Message) {
 	m.handleDeviceResponse(msg)
 	m.handleAchtungResponse(msg)
 	m.handleFireAlert(msg)
+	m.handleMarshalPub(msg)
 }
 
 // v1Peers read only monolink v1, whatever dialect this panel speaks: VERTEX
@@ -443,17 +476,26 @@ func (m *Model) handleHub(msg monolink.Message) {
 // broadcast has to reach both.
 var v1Peers = map[string]bool{"VERTEX": true, "LUCH": true, "ALL": true}
 
+// v2Peers read only v2, whatever this panel speaks.
+var v2Peers = map[string]bool{"MARSHAL": true}
+
 // HubSend is a convenience for sending a command through the concentrator
-// from any place that has access to the Model (key handlers, etc.).
+// from any place that has access to the Model (key handlers, etc.). With
+// someone signed in, it sends only what their grants cover.
 func (m *Model) HubSend(to, verb, noun string, args ...string) {
-	if m.Hub != nil {
-		if v1Peers[strings.ToUpper(to)] {
-			m.Hub.SendRaw(monolink.Encode(to, verb, noun, m.Hub.NodeID(), args...))
-		} else {
-			m.Hub.Send(to, verb, noun, args...)
-		}
-		m.LastTx = time.Now()
+	if m.Hub == nil || !m.permitted(to, verb, noun) {
+		return
 	}
+	switch peer := strings.ToUpper(to); {
+	case v1Peers[peer]:
+		m.Hub.SendRaw(monolink.Encode(to, verb, noun, m.Hub.NodeID(), args...))
+	case v2Peers[peer]:
+		m.Hub.SendMessage(monolink.Message{Version: monolink.V2, ID: m.Hub.NewID(), From: m.Hub.Address(),
+			To: to, Verb: verb, Noun: noun, Args: args})
+	default:
+		m.Hub.Send(to, verb, noun, args...)
+	}
+	m.LastTx = time.Now()
 }
 
 // eventsForSelectedDate returns events on the selected date, sorted by time.

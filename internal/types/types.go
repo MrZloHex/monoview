@@ -10,6 +10,7 @@ const (
 	SheetDiary
 	SheetHome
 	SheetSystem
+	SheetPeople
 )
 
 var SheetNames = []string{
@@ -17,6 +18,7 @@ var SheetNames = []string{
 	"[2] DIARY",
 	"[3] HOME",
 	"[4] SYSTEM",
+	"[5] PEOPLE",
 }
 
 // Event represents a calendar event (synced from GOVERNOR when connected).

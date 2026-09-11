@@ -36,6 +36,8 @@ func main() {
 	tlsCA := cli.String("tls-ca", defaultTLSCA, "Optional CA PEM to verify server; default system roots (env MONOVIEW_TLS_CA)")
 	tlsServerName := cli.String("tls-server-name", defaultTLSServerName, "TLS ServerName (SNI); use when URL is an IP (env MONOVIEW_TLS_SERVER_NAME)")
 	logPath := cli.String("log-path", defaultLogPath, "Path to log file (env MONOVIEW_LOG)")
+	sessionPath := cli.String("session", envOr("MONOVIEW_SESSION", "session.json"),
+		"Where the signed-in session is kept between runs; empty keeps none (env MONOVIEW_SESSION)")
 	dialectName := cli.String("dialect", envOr("MONOVIEW_DIALECT", "v1"),
 		"monolink dialect to send in, v1 or v2; VERTEX, LUCH and ALL always get v1 (env MONOVIEW_DIALECT)")
 	cli.Parse()
@@ -93,6 +95,8 @@ func main() {
 
 	m := app.NewModel()
 	m.Hub = hub
+	m.SessionPath = *sessionPath
+	m.RestoreSession()
 
 	p := tea.NewProgram(m, tea.WithAltScreen())
 	if hub != nil {
