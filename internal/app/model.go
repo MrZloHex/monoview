@@ -3,6 +3,7 @@ package app
 import (
 	"strings"
 	"time"
+	"unicode"
 
 	tea "github.com/charmbracelet/bubbletea"
 
@@ -38,6 +39,8 @@ type Model struct {
 	CalendarFocusEvents bool // false = ↑/↓ move day (by week), Enter = focus events; true = ↑/↓ select event
 	Events              []types.Event
 	Deadlines           []types.Event // from GET:DEADLINES (upcoming deadlines box)
+	eventsLoading       []types.Event // GET:EVENTS pages gathered so far
+	eventsPages         int
 	Schedule            []types.ScheduleEntry
 
 	// Diary
@@ -59,6 +62,8 @@ type Model struct {
 
 	// ACHTUNG (timers & alarms, shown on Home sheet)
 	AchtungJobs            []types.AchtungJob
+	achtungLoading         []types.AchtungJob // GET:LIST pages gathered so far
+	achtungPages           int
 	SelectedAchtungJob     int
 	AchtungTimerMenu       bool   // true = adding timer (all fields in right panel)
 	AchtungTimerDuration   string // e.g. "5m"
@@ -106,19 +111,25 @@ type Model struct {
 
 	// People (MARSHAL): who is signed in at this panel, and the PEOPLE sheet
 	Session          marshal.Session // zero when nobody is signed in
+	SignedInAt       time.Time       // when Session was signed in: a change to people needs it recent
 	Grants           []string        // the signed-in person's; checked before sending
-	SessionPath      string          // where the session is kept between runs; "" keeps none
-	LastKeepAlive    time.Time
-	MarshalEnrolling bool // MARSHAL awaits its first person
+	KeyPath          string          // this panel's key, sealed with its person's passphrase
+	LastTicket       time.Time       // when the ticket at the hub was last renewed
+	MarshalEnrolling bool            // MARSHAL awaits its first person
 	People           []string
 	PeopleGrants     map[string][]string
+	PeopleKeys       map[string][]marshal.KeyInfo
 	PeopleSessions   []marshal.SessionInfo
+	Invitation       invitation // the last code NEW:INVITE gave
 	PeopleSelected   int
 	PeopleForm       peopleForm
 	PeopleConfirm    string // person awaiting [y] to be removed
 	PeopleStatus     string // the outcome of the last thing done on the sheet
 	PeopleNote       string // why the list is short, when it is
 	deniedLogged     map[string]bool
+
+	// Messages (SYNAPSE): conversations with the other people of the bubble
+	Synapse synapseState
 
 	tickGen int // the one live tick chain; see TickMsg
 }
@@ -225,11 +236,12 @@ func NewModel() Model {
 		SelectedDevice: 0,
 
 		Nodes: []types.SystemNode{
-			{Name: "VERTEX", PingNoun: "PINT", Status: "offline", Uptime: "—"},
+			{Name: "VERTEX", PingNoun: "PING", Status: "offline", Uptime: "—"},
 			{Name: "ACHTUNG", PingNoun: "PING", Status: "offline", Uptime: "—"},
 			{Name: "GOVERNOR", PingNoun: "PING", Status: "offline", Uptime: "—"},
 			{Name: "UKAZ", PingNoun: "PING", Status: "offline", Uptime: "—"},
 			{Name: "MARSHAL", PingNoun: "PING", Status: "offline", Uptime: "—"},
+			{Name: "SYNAPSE", PingNoun: "PING", Status: "offline", Uptime: "—"},
 		},
 		SelectedNode: 0,
 	}
@@ -243,9 +255,6 @@ func (m Model) Init() tea.Cmd {
 		m.requestGovernorEvents()
 		m.requestGovernorDeadlines()
 		cmds = append(cmds, (&m).refreshPeople())
-		if m.signedIn() {
-			cmds = append(cmds, (&m).resumeCmd())
-		}
 	}
 	return tea.Batch(append(cmds, (&m).scheduleNextCmds())...)
 }
@@ -267,6 +276,9 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			}
 		} else {
 			if handled, cmd := m.handlePeopleKeys(msg); handled {
+				return m, cmd
+			}
+			if handled, cmd := m.handleSynapseKeys(msg); handled {
 				return m, cmd
 			}
 			if m.handleAchtungFormKeys(msg) {
@@ -310,6 +322,10 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.ActiveSheet = types.SheetPeople
 			m.SystemCommandInput = false
 			return m, m.refreshPeople()
+		case "6":
+			m.ActiveSheet = types.SheetSynapse
+			m.SystemCommandInput = false
+			return m, m.synapseRefresh()
 		case ":":
 			if m.ActiveSheet == types.SheetSystem && m.Hub != nil && !m.SystemCommandInput {
 				m.SystemCommandInput = true
@@ -420,23 +436,78 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			m.requestAchtungList()
 			m.LastAchtungSync = time.Now()
 		}
-		return m, tea.Batch(m.scheduleNextCmds(), m.keepAlive())
+		return m, tea.Batch(m.scheduleNextCmds(), m.renewTicket())
 
-	case sessionMsg, grantsMsg, peopleMsg, enrollingMsg, peopleOpMsg, signedOutMsg:
+	case sessionMsg, grantsMsg, peopleMsg, inviteMsg, enrollingMsg, peopleOpMsg, signedOutMsg, ticketMsg:
 		return m, m.handlePeopleMsg(msg)
 
+	case ReconnectedMsg:
+		m.LastTicket = time.Time{}
+		return m, m.renewTicket()
+
+	case synapseListMsg, synapseConvMsg, synapseSentMsg:
+		return m, m.handleSynapseMsg(msg)
+
 	case HubMsg:
+		hm := plain(monolink.Message(msg))
 		wasFast := m.needsFastTick()
-		m.handleHub(monolink.Message(msg))
+		m.handleHub(hm)
 		m.updateAchtungRemaining()
+		cmd := m.handleSynapsePub(hm)
 		if !wasFast && m.needsFastTick() {
 			// A countdown just appeared; don't sit out the rest of an idle interval.
-			return m, m.restartTick()
+			return m, tea.Batch(cmd, m.restartTick())
 		}
-		return m, nil
+		return m, cmd
 	}
 
 	return m, nil
+}
+
+// plain is msg with every control character taken out, before any of it is
+// stored or drawn. Timer names, events, key labels and error details come
+// from other nodes and other people; a terminal would act on an escape
+// sequence among them — redraw the screen, retitle the window, write the
+// clipboard — instead of showing it.
+func plain(msg monolink.Message) monolink.Message {
+	msg.Raw = stripControl(msg.Raw)
+	msg.From = stripControl(msg.From)
+	msg.Noun = stripControl(msg.Noun)
+	args := make([]string, len(msg.Args))
+	for i, a := range msg.Args {
+		args[i] = stripControl(a)
+	}
+	msg.Args = args
+	return msg
+}
+
+func stripControl(s string) string {
+	return strings.Map(func(r rune) rune {
+		if unicode.IsControl(r) || r == '\u2028' || r == '\u2029' ||
+			(unicode.Is(unicode.Cf, r) && r != '\u200C' && r != '\u200D') {
+			return -1
+		}
+		return r
+	}, s)
+}
+
+// cleanAll is stripControl for a list.
+//
+// plain covers the inbox, but an answer to a Request never goes through it:
+// it comes back to whoever asked. A node's ERR detail, a person's grants, a
+// key's label, a message \u2014 all of it is another node's text, and reaches a
+// terminal that would act on an escape sequence among it. So every answer
+// passes through here or through stripControl before it is stored.
+//
+// Names are not cleaned but checked (marshal.ValidName): taking the control
+// characters out of one would turn a name nobody has into a name someone
+// does, and file a stranger's message under them.
+func cleanAll(ss []string) []string {
+	out := make([]string, len(ss))
+	for i, s := range ss {
+		out[i] = stripControl(s)
+	}
+	return out
 }
 
 // handleHub processes an incoming concentrator message and updates model state.
@@ -471,31 +542,27 @@ func (m *Model) handleHub(msg monolink.Message) {
 	m.handleMarshalPub(msg)
 }
 
-// v1Peers read only monolink v1, whatever dialect this panel speaks: VERTEX
-// parses frames on an AVR behind uart2ws, LUCH's parser ignores v2, and a
-// broadcast has to reach both.
-var v1Peers = map[string]bool{"VERTEX": true, "LUCH": true, "ALL": true}
-
-// v2Peers read only v2, whatever this panel speaks.
-var v2Peers = map[string]bool{"MARSHAL": true}
-
-// HubSend is a convenience for sending a command through the concentrator
-// from any place that has access to the Model (key handlers, etc.). With
-// someone signed in, it sends only what their grants cover.
+// HubSend is a convenience for sending a request through the concentrator
+// from any place that has access to the Model (key handlers, etc.): in v2,
+// all the enforcing hub carries, as the person signed in here — and only
+// what their grants cover.
 func (m *Model) HubSend(to, verb, noun string, args ...string) {
 	if m.Hub == nil || !m.permitted(to, verb, noun) {
 		return
 	}
-	switch peer := strings.ToUpper(to); {
-	case v1Peers[peer]:
-		m.Hub.SendRaw(monolink.Encode(to, verb, noun, m.Hub.NodeID(), args...))
-	case v2Peers[peer]:
-		m.Hub.SendMessage(monolink.Message{Version: monolink.V2, ID: m.Hub.NewID(), From: m.Hub.Address(),
-			To: to, Verb: verb, Noun: noun, Args: args})
-	default:
-		m.Hub.Send(to, verb, noun, args...)
-	}
+	m.Hub.SendMessage(monolink.Message{Version: monolink.V2, ID: m.Hub.NewID(), From: m.Hub.Address(),
+		To: to, Verb: verb, Noun: noun, Args: args})
 	m.LastTx = time.Now()
+}
+
+// loadSheets asks every node for what the sheets show — once someone is
+// signed in, since nothing is sent before.
+func (m *Model) loadSheets() {
+	m.queryDeviceStates()
+	m.requestGovernorSchedule()
+	m.requestGovernorEvents()
+	m.requestGovernorDeadlines()
+	m.requestAchtungList()
 }
 
 // eventsForSelectedDate returns events on the selected date, sorted by time.

@@ -86,7 +86,7 @@ func (m *Model) handleFireAlert(msg monolink.Message) {
 }
 
 func (m *Model) dismissFireAlert() {
-	m.HubSend("VERTEX", "OFF", "BUZZ")
+	m.HubSend("VERTEX", "SET", "BUZZ.STATE", "OFF")
 	m.FireAlert.Show = false
 	m.requestAchtungList() // refresh list after dismiss
 }

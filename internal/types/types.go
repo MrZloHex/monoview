@@ -11,6 +11,7 @@ const (
 	SheetHome
 	SheetSystem
 	SheetPeople
+	SheetSynapse
 )
 
 var SheetNames = []string{
@@ -19,6 +20,7 @@ var SheetNames = []string{
 	"[3] HOME",
 	"[4] SYSTEM",
 	"[5] PEOPLE",
+	"[6] SYNAPSE",
 }
 
 // Event represents a calendar event (synced from GOVERNOR when connected).
@@ -76,7 +78,7 @@ type HomeDevice struct {
 // SystemNode represents a real system node reachable through the concentrator.
 type SystemNode struct {
 	Name     string
-	PingNoun string    // noun for PING command ("PINT" for VERTEX, "PING" for ACHTUNG)
+	PingNoun string    // noun for PING: PING for every node, vertex included (uart2ws answers for it)
 	Status   string    // "online", "offline", "unknown"
 	Uptime   string    // human-readable uptime from GET:UPTIME
 	LastSeen time.Time // last time we got a PONG

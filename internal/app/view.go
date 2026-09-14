@@ -39,6 +39,8 @@ func (m Model) View() string {
 		b.WriteString(m.renderSystem())
 	case types.SheetPeople:
 		b.WriteString(m.renderPeople())
+	case types.SheetSynapse:
+		b.WriteString(m.renderSynapse())
 	}
 
 	content := b.String()
@@ -245,6 +247,9 @@ func (m Model) renderTabs() string {
 	var tabs []string
 
 	for i, name := range types.SheetNames {
+		if types.Sheet(i) == types.SheetSynapse && m.Synapse.unread > 0 {
+			name += fmt.Sprintf(" (%d)", m.Synapse.unread)
+		}
 		if types.Sheet(i) == m.ActiveSheet {
 			tabs = append(tabs, ui.TabActive.Render(name))
 		} else {
@@ -267,37 +272,46 @@ func (m Model) renderTabs() string {
 func (m Model) renderFooter() string {
 	var help string
 	switch m.ActiveSheet {
+	case types.SheetSynapse:
+		switch {
+		case m.Synapse.writing:
+			help = "[Enter] send  [Esc] stop writing"
+		case m.Synapse.peer != "":
+			help = "[i] write  [u] earlier  [↑/↓] person  [Enter] open  [Esc] close  [r] refresh  [1-6] sheets  [q] quit"
+		default:
+			help = "[↑/↓] person  [Enter] open  [i] write  [r] refresh  [1-6] sheets  [q] quit"
+		}
 	case types.SheetCalendar:
 		if m.EventAddMenu {
 			help = "[Tab] next field  [Shift+Tab] prev  [Enter] submit  [Esc] cancel  [a/n] add event"
 		} else if m.EventViewMenu {
-			help = "[d] delete event  [Esc] close  [a/n] add  [1-5] sheets  [q] quit"
+			help = "[d] delete event  [Esc] close  [a/n] add  [1-6] sheets  [q] quit"
 		} else if m.CalendarFocusEvents {
-			help = "[↑/↓] select event  [Enter] view  [d] delete  [Esc] back  [a/n] add  [1-5] sheets  [q] quit"
+			help = "[↑/↓] select event  [Enter] view  [d] delete  [Esc] back  [a/n] add  [1-6] sheets  [q] quit"
 		} else {
-			help = "[↑/↓] week  [←/→] day  [Enter] select day → events  [a/n] add  [1-5] sheets  [q] quit"
+			help = "[↑/↓] week  [←/→] day  [Enter] select day → events  [a/n] add  [1-6] sheets  [q] quit"
 		}
 	case types.SheetDiary:
-		help = "[↑/k] prev  [↓/j] next  [1-5] sheets  [q] quit"
+		help = "[↑/k] prev  [↓/j] next  [1-6] sheets  [q] quit"
 	case types.SheetHome:
 		if m.achtungFormOpen() {
 			help = "[Tab] next field  [Enter] submit  [Esc] cancel  [q] quit"
 		} else if m.AchtungViewMenu {
-			help = "[d] stop  [Esc] close  [1-5] sheets  [q] quit"
+			help = "[d] stop  [Esc] close  [1-6] sheets  [q] quit"
 		} else if m.HomeFocusAchtung {
-			help = "[tab] VERTEX/UKAZ  [↑/k ↓/j] job  [Enter] details  [t] timer  [a] alarm  [e] every  [D] daily  [m] morning  [d] stop  [1-5] sheets  [q] quit"
+			help = "[tab] VERTEX/UKAZ  [↑/k ↓/j] job  [Enter] details  [t] timer  [a] alarm  [e] every  [D] daily  [m] morning  [d] stop  [1-6] sheets  [q] quit"
 		} else if m.HomeFocusUkaz {
-			help = "[tab] VERTEX/ACHTUNG  [↑/k ↓/j] UKAZ  [enter] trigger  [1-5] sheets  [q] quit"
+			help = "[tab] VERTEX/ACHTUNG  [↑/k ↓/j] UKAZ  [enter] trigger  [1-6] sheets  [q] quit"
 		} else {
-			help = "[tab] UKAZ/ACHTUNG  [↑/k ↓/j] device  [enter] toggle  [←/h →/l] adjust  [1-5] sheets  [q] quit"
+			help = "[tab] UKAZ/ACHTUNG  [↑/k ↓/j] device  [enter] toggle  [←/h →/l] adjust  [1-6] sheets  [q] quit"
 		}
 	case types.SheetSystem:
 		if m.SystemCommandInput {
 			help = ": " + m.SystemCommandBuffer + "▌  [Enter] send  [Esc] cancel"
 		} else if m.SystemFocusLogs {
-			help = "[Tab] nodes  [:] command  [1-5] sheets  [q] quit"
+			help = "[Tab] nodes  [:] command  [1-6] sheets  [q] quit"
 		} else {
-			help = "[Tab] logs  [:] command  [1-5] sheets  [q] quit"
+			help = "[Tab] logs  [:] command  [1-6] sheets  [q] quit"
 		}
 	case types.SheetPeople:
 		switch {
@@ -306,9 +320,9 @@ func (m Model) renderFooter() string {
 		case m.PeopleConfirm != "":
 			help = "[y] remove " + m.PeopleConfirm + "  [any other key] keep"
 		case m.signedIn():
-			help = "[↑/↓] person  [n] new  [g] grant  [x] revoke  [D] remove  [p] my secret  [s] switch  [o] sign out  [r] refresh  [1-5] sheets  [q] quit"
+			help = "[↑/↓] person  [n] invite  [g] grant  [x] revoke  [K] remove a key  [D] remove  [s] sign in  [e] enrol  [i] invitation  [o] sign out  [r] refresh  [1-6] sheets  [q] quit"
 		default:
-			help = "[s] sign in  [e] first person  [r] refresh  [1-5] sheets  [q] quit"
+			help = "[s] sign in  [e] first person  [r] refresh  [1-6] sheets  [q] quit"
 		}
 	}
 

@@ -14,6 +14,9 @@ const peopleBoxWidth = 50
 
 func (m Model) renderPeople() string {
 	left := m.renderThisPanel()
+	if m.Invitation.Code != "" {
+		left += "\n" + m.renderInvitation()
+	}
 	if m.PeopleForm.kind != formNone {
 		left += "\n" + m.renderPeopleForm()
 	}
@@ -40,7 +43,7 @@ func (m Model) renderThisPanel() string {
 	} else {
 		lines = append(lines,
 			"  "+ui.Dim.Render("Nobody is signed in at this panel;"),
-			"  "+ui.Dim.Render("it acts as its owner's, unqualified."),
+			"  "+ui.Dim.Render("it sends nothing until someone is."),
 		)
 		if m.MarshalEnrolling {
 			lines = append(lines, "",
@@ -54,11 +57,28 @@ func (m Model) renderThisPanel() string {
 	return ui.Title.Render("▌SIGNED IN") + "\n\n" + box.Render(strings.Join(lines, "\n"))
 }
 
+func (m Model) renderInvitation() string {
+	inv := m.Invitation
+	lines := []string{"",
+		"  " + ui.Label.Render("For   ") + ui.Accent.Render(inv.Name),
+		"  " + ui.Label.Render("Code  ") + ui.Warning.Render(inv.Code),
+		"  " + ui.Label.Render("Until ") + ui.Value.Render(inv.Expires.Local().Format("2006-01-02 15:04")),
+		"",
+		ui.Dim.Render("  On their phone: https://monolith-system.net,"),
+		ui.Dim.Render("  “I have an invitation”, the name and the code."),
+		ui.Dim.Render("  At a monoview: [i]. It works once."),
+		"",
+	}
+	box := ui.NewBox(peopleBoxWidth).WithBorderColor(ui.GruvAqua).WithTitle(" INVITATION ")
+	return box.Render(strings.Join(lines, "\n"))
+}
+
 var formTitles = map[formKind]string{
 	formSignIn:    " SIGN IN ",
 	formEnrol:     " FIRST PERSON ",
-	formOwnSecret: " MY SECRET ",
-	formNewUser:   " NEW PERSON ",
+	formRedeem:    " INVITATION ",
+	formInvite:    " INVITE ",
+	formRemoveKey: " REMOVE A KEY ",
 	formGrant:     " GRANT ",
 	formRevoke:    " REVOKE ",
 }
@@ -66,7 +86,8 @@ var formTitles = map[formKind]string{
 func (m Model) renderPeopleForm() string {
 	f := m.PeopleForm
 	lines := []string{""}
-	if f.kind == formGrant || f.kind == formRevoke {
+	switch f.kind {
+	case formGrant, formRevoke, formRemoveKey:
 		lines = append(lines, "  "+ui.Label.Render("Person: ")+ui.Accent.Render(f.user), "")
 	}
 	for i, fld := range f.fields {
@@ -74,7 +95,7 @@ func (m Model) renderPeopleForm() string {
 		if fld.secret {
 			val = strings.Repeat("•", utf8.RuneCountInString(val))
 		}
-		line := ui.Label.Render(fmt.Sprintf("  %-7s ", fld.label+":")) + ui.Value.Render(val)
+		line := ui.Label.Render(fmt.Sprintf("  %-11s ", fld.label+":")) + ui.Value.Render(val)
 		if i == f.focus {
 			line += ui.Dim.Render("▌")
 		}
@@ -82,13 +103,27 @@ func (m Model) renderPeopleForm() string {
 	}
 	lines = append(lines, "")
 	switch f.kind {
+	case formSignIn:
+		lines = append(lines, ui.Dim.Render("  The passphrase of the key at "+ui.TruncateString(m.KeyPath, peopleBoxWidth-34)+"."))
 	case formEnrol:
-		lines = append(lines, ui.Dim.Render("  The code MARSHAL printed on UKAZ. You become"),
-			ui.Dim.Render("  the first person, allowed everything."))
+		lines = append(lines, ui.Dim.Render("  The code MARSHAL printed on UKAZ. This panel"),
+			ui.Dim.Render("  makes a key, sealed with the passphrase; you"),
+			ui.Dim.Render("  become the first person, allowed everything."))
+	case formRedeem:
+		lines = append(lines, ui.Dim.Render("  The code you were given. This panel makes a"),
+			ui.Dim.Render("  key for you, sealed with the passphrase."))
+	case formInvite:
+		lines = append(lines, ui.Dim.Render("  Someone new — or yourself, for another device."),
+			ui.Dim.Render("  The code works once, within the hour."))
+	case formRemoveKey:
+		lines = append(lines, ui.Dim.Render("  Its label or its ref, as listed. What it"),
+			ui.Dim.Render("  signed in ends; the last key stays."))
 	case formGrant, formRevoke:
 		lines = append(lines, ui.Dim.Render("  VERTEX.*   UKAZ.DO.PRINT.*   GOVERNOR.GET.*   *"))
 	}
 	switch {
+	case f.busy && (f.kind == formSignIn || f.kind == formEnrol || f.kind == formRedeem):
+		lines = append(lines, "  "+ui.Dim.Render("opening the key, asking MARSHAL…"))
 	case f.busy:
 		lines = append(lines, "  "+ui.Dim.Render("asking MARSHAL…"))
 	case f.err != "":
@@ -129,9 +164,22 @@ func (m Model) renderPeopleLists() string {
 			you = ui.Dim.Render("  (you)")
 		}
 		b.WriteString(cursor + name + " " + grants + you + "\n")
+		if keys, known := m.PeopleKeys[u]; known {
+			names := make([]string, len(keys))
+			for j, k := range keys {
+				names[j] = k.Label
+				if names[j] == "" {
+					names[j] = k.Ref
+				}
+				if k.Kind != "webauthn" {
+					names[j] += " (panel)"
+				}
+			}
+			b.WriteString(ui.Dim.Render("               keys: "+strings.Join(names, " · ")) + "\n")
+		}
 	}
 	if m.PeopleConfirm != "" {
-		b.WriteString("\n" + ui.Warning.Render("Remove "+m.PeopleConfirm+" and end their sessions?") +
+		b.WriteString("\n" + ui.Warning.Render("Remove "+m.PeopleConfirm+", their keys and sessions?") +
 			ui.Dim.Render("  [y] remove, any other key keeps them") + "\n")
 	}
 	if m.PeopleSessions != nil {

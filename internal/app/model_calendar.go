@@ -2,6 +2,7 @@ package app
 
 import (
 	"fmt"
+	"slices"
 	"strings"
 	"time"
 
@@ -21,8 +22,12 @@ func (m *Model) requestGovernorSchedule() {
 }
 
 func (m *Model) requestGovernorEvents() {
+	m.eventsLoading, m.eventsPages = nil, 0
 	m.HubSend("GOVERNOR", "GET", "EVENTS")
 }
+
+// maxEventPages bounds how many GET:EVENTS pages one refresh asks for.
+const maxEventPages = 32
 
 func (m *Model) requestGovernorDeadlines() {
 	m.HubSend("GOVERNOR", "GET", "DEADLINES")
@@ -61,8 +66,26 @@ func (m *Model) handleGovernorSchedule(msg monolink.Message) {
 	sortSchedule(m.Schedule)
 }
 
+// handleGovernorEvents gathers GET:EVENTS a page at a time: governor sends
+// as many events as a frame holds, by id, and the page after an id when
+// asked. A page that adds nothing new — empty, or an older governor's whole
+// list again — is the end.
 func (m *Model) handleGovernorEvents(msg monolink.Message) {
-	events := parseGovernorEvents(msg.Args)
+	added := 0
+	for _, e := range parseGovernorEvents(msg.Args) {
+		if !slices.ContainsFunc(m.eventsLoading, func(x types.Event) bool { return x.ID == e.ID }) {
+			m.eventsLoading = append(m.eventsLoading, e)
+			added++
+		}
+	}
+	m.eventsPages++
+	if added > 0 && m.eventsPages < maxEventPages {
+		m.HubSend("GOVERNOR", "GET", "EVENTS", governorParts(msg.Args[len(msg.Args)-1])[0])
+		return
+	}
+	events := m.eventsLoading
+	m.eventsLoading, m.eventsPages = nil, 0
+	sortEvents(events)
 	m.Events = events
 	dayEvents := m.eventsForSelectedDate()
 	if m.SelectedEvent >= len(dayEvents) {
@@ -211,10 +234,20 @@ func (m *Model) handleGovernorDeadlines(msg monolink.Message) {
 	sortEvents(m.Deadlines)
 }
 
+// governorParts splits one of governor's records. They are escaped records
+// (a pipe or a percent sign in a title comes escaped); one that does not read
+// as a record — an older governor's — is split as it was written.
+func governorParts(rec string) []string {
+	if p, err := monolink.SplitRecord(rec); err == nil {
+		return p
+	}
+	return strings.Split(rec, "|")
+}
+
 func parseGovernorEvents(args []string) []types.Event {
 	var out []types.Event
 	for _, arg := range args {
-		parts := strings.Split(arg, "|")
+		parts := governorParts(arg)
 		if len(parts) < 3 {
 			continue
 		}
@@ -286,7 +319,7 @@ func sortEvents(events []types.Event) {
 func parseGovernorScheduleSlots(args []string) []types.ScheduleEntry {
 	var entries []types.ScheduleEntry
 	for _, arg := range args {
-		parts := strings.Split(arg, "|")
+		parts := governorParts(arg)
 		if len(parts) < 6 {
 			continue
 		}

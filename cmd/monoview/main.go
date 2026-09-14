@@ -33,26 +33,19 @@ func main() {
 	url := cli.StringP("url", "u", defaultURLVal, "Url of hub (env MONOVIEW_URL)")
 	tlsCert := cli.String("tls-cert", defaultTLSCert, "Client certificate PEM for mTLS (wss) (env MONOVIEW_TLS_CERT)")
 	tlsKey := cli.String("tls-key", defaultTLSKey, "Client private key PEM for mTLS (wss) (env MONOVIEW_TLS_KEY)")
-	tlsCA := cli.String("tls-ca", defaultTLSCA, "Optional CA PEM to verify server; default system roots (env MONOVIEW_TLS_CA)")
+	tlsCA := cli.String("tls-ca", defaultTLSCA, "The bubble CA's PEM, which vouches for the hub (env MONOVIEW_TLS_CA)")
 	tlsServerName := cli.String("tls-server-name", defaultTLSServerName, "TLS ServerName (SNI); use when URL is an IP (env MONOVIEW_TLS_SERVER_NAME)")
 	logPath := cli.String("log-path", defaultLogPath, "Path to log file (env MONOVIEW_LOG)")
-	sessionPath := cli.String("session", envOr("MONOVIEW_SESSION", "session.json"),
-		"Where the signed-in session is kept between runs; empty keeps none (env MONOVIEW_SESSION)")
-	dialectName := cli.String("dialect", envOr("MONOVIEW_DIALECT", "v1"),
-		"monolink dialect to send in, v1 or v2; VERTEX, LUCH and ALL always get v1 (env MONOVIEW_DIALECT)")
+	keyPath := cli.String("key", envOr("MONOVIEW_KEY", "monoview.key"),
+		"This panel's key, sealed with its person's passphrase (env MONOVIEW_KEY)")
 	cli.Parse()
 
-	dialect := monolink.V1
-	switch strings.ToLower(*dialectName) {
-	case "v1", "1":
-	case "v2", "2":
-		dialect = monolink.V2
-	default:
-		fmt.Fprintf(os.Stderr, "--dialect must be v1 or v2, not %q\n", *dialectName)
-		os.Exit(1)
+	// The log is this user's alone, even if it was made before: what goes
+	// wrong on the bus can name people and what they do.
+	logFile, err := os.OpenFile(*logPath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0o600)
+	if err == nil {
+		err = logFile.Chmod(0o600)
 	}
-
-	logFile, err := os.OpenFile(*logPath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "cannot open log file %s: %v\n", *logPath, err)
 		os.Exit(1)
@@ -60,30 +53,26 @@ func main() {
 	defer logFile.Close()
 
 	logger := log.New(logFile, "", log.LstdFlags)
-	logger.Printf("monoview starting, url=%s dialect=v%d", *url, dialect)
+	logger.Printf("monoview starting, url=%s", *url)
 
 	var hubOpts []monolink.Option
 	hubOpts = append(hubOpts,
 		monolink.WithInbox(64),
 		monolink.WithLogger(logger),
-		monolink.WithDialect(dialect),
+		monolink.WithDialect(monolink.V2), // the enforcing hub carries nothing else (SPEC §44)
 	)
 
-	switch {
-	case *tlsCert != "" && *tlsKey != "":
-		cfg, err := monolink.LoadClientTLS(*tlsCert, *tlsKey, *tlsCA)
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "mTLS: %v\n", err)
-			os.Exit(1)
-		}
-		if *tlsServerName != "" {
-			cfg.ServerName = *tlsServerName
-		}
-		hubOpts = append(hubOpts, monolink.WithTLS(cfg))
-	case *tlsCert != "" || *tlsKey != "":
-		fmt.Fprintln(os.Stderr, "mTLS requires both --tls-cert and --tls-key (or MONOVIEW_TLS_CERT and MONOVIEW_TLS_KEY)")
+	// Sign-in, sessions and tickets cross this connection: wss:// with this
+	// panel's certificate and the bubble CA, or not at all.
+	cfg, err := monolink.SecureTLS(*url, *tlsCert, *tlsKey, *tlsCA)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "cannot reach the hub safely (MONOVIEW_URL, MONOVIEW_TLS_CERT, MONOVIEW_TLS_KEY, MONOVIEW_TLS_CA): %v\n", err)
 		os.Exit(1)
 	}
+	if *tlsServerName != "" {
+		cfg.ServerName = *tlsServerName
+	}
+	hubOpts = append(hubOpts, monolink.WithTLS(cfg))
 
 	hub := monolink.New(NodeName, *url, hubOpts...)
 
@@ -95,11 +84,13 @@ func main() {
 
 	m := app.NewModel()
 	m.Hub = hub
-	m.SessionPath = *sessionPath
-	m.RestoreSession()
+	m.KeyPath = *keyPath
+	m.RequireSignIn()
 
 	p := tea.NewProgram(m, tea.WithAltScreen())
 	if hub != nil {
+		// A reconnected hub has no ticket for this panel until it shows one again.
+		hub.OnConnect(func(*monolink.Client) { p.Send(app.ReconnectedMsg{}) })
 		if inbox := hub.Inbox(); inbox != nil {
 			go func() {
 				for {

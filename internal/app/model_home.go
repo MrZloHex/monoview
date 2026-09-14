@@ -14,35 +14,48 @@ import (
 
 // Home devices (VERTEX) and ACHTUNG timers/alarms.
 
+// propOf is the property of vertex a device shows and sets, as uart2ws
+// registers it: LAMP.STATE, LED.MODE, LED.BRIGHT. "" for an action.
+func propOf(dev *types.HomeDevice) string {
+	switch dev.Kind {
+	case "toggle":
+		return dev.Topic + ".STATE"
+	case "cycle":
+		return dev.Topic + ".MODE"
+	case "value":
+		return dev.Topic + "." + dev.Property
+	}
+	return ""
+}
+
 func (m *Model) queryDeviceStates() {
 	seen := map[string]bool{}
-	for _, dev := range m.HomeDevices {
-		switch dev.Kind {
-		case "toggle":
-			key := dev.Node + ":" + dev.Topic + ":STATE"
-			if !seen[key] {
-				seen[key] = true
-				m.HubSend(dev.Node, "GET", dev.Topic, "STATE")
-			}
-		case "cycle":
-			key := dev.Node + ":" + dev.Topic + ":MODE"
-			if !seen[key] {
-				seen[key] = true
-				m.HubSend(dev.Node, "GET", dev.Topic, "MODE")
-			}
-		case "value":
-			key := dev.Node + ":" + dev.Topic + ":" + dev.Property
-			if !seen[key] {
-				seen[key] = true
-				m.HubSend(dev.Node, "GET", dev.Topic, dev.Property)
-			}
+	for i := range m.HomeDevices {
+		dev := &m.HomeDevices[i]
+		if p := propOf(dev); p != "" && !seen[dev.Node+":"+p] {
+			seen[dev.Node+":"+p] = true
+			m.HubSend(dev.Node, "GET", p)
 		}
 	}
 }
 
 func (m *Model) requestAchtungList() {
+	m.achtungLoading, m.achtungPages = nil, 0
 	m.HubSend("ACHTUNG", "GET", "LIST")
 	m.LastAchtungSync = time.Now()
+}
+
+// maxAchtungPages bounds how many GET:LIST pages one refresh asks for.
+const maxAchtungPages = 64
+
+// achtungListed is whether this refresh has a job of that name already.
+func (m *Model) achtungListed(name string) bool {
+	for _, j := range m.achtungLoading {
+		if j.Name == name {
+			return true
+		}
+	}
+	return false
 }
 
 func parseAchtungEndTime(kind, remaining, due string) *time.Time {
@@ -116,15 +129,29 @@ func (m *Model) handleAchtungResponse(msg monolink.Message) {
 
 	switch noun {
 	case "LIST":
-		var jobs []types.AchtungJob
+		// ACHTUNG gives as many jobs as a frame holds, by name, and those
+		// after a name when asked. A page that adds nothing new — empty, or
+		// an older achtung's whole list again — is the end.
+		added := 0
 		for i := 0; i+1 < len(args); i += 2 {
-			jobs = append(jobs, types.AchtungJob{
+			if m.achtungListed(args[i+1]) {
+				continue
+			}
+			m.achtungLoading = append(m.achtungLoading, types.AchtungJob{
 				Kind:      strings.ToUpper(args[i]),
 				Name:      args[i+1],
 				Remaining: "—",
 				Due:       "—",
 			})
+			added++
 		}
+		m.achtungPages++
+		if added > 0 && m.achtungPages < maxAchtungPages {
+			m.HubSend("ACHTUNG", "GET", "LIST", args[len(args)-1])
+			return
+		}
+		jobs := m.achtungLoading
+		m.achtungLoading, m.achtungPages = nil, 0
 		m.AchtungJobs = jobs
 		if m.SelectedAchtungJob >= len(m.AchtungJobs) {
 			if len(m.AchtungJobs) > 0 {
@@ -650,79 +677,40 @@ func (m *Model) achtungStopSelectedJob() {
 	}
 }
 
+// handleDeviceResponse follows vertex's properties: the answer to a GET or a
+// SET, and every PUB when one changes — whoever changed it.
 func (m *Model) handleDeviceResponse(msg monolink.Message) {
-	verb := strings.ToUpper(msg.Verb)
+	if msg.Verb != monolink.VerbOK && msg.Verb != monolink.VerbPub {
+		return
+	}
 	from := strings.ToUpper(msg.From)
-
-	if verb != "OK" {
-		return
+	if a, err := monolink.ParseAddress(msg.From); err == nil {
+		from = strings.ToUpper(a.Node)
 	}
-
-	topic := strings.ToUpper(msg.Noun)
-	args := msg.Args
-	upperArgs := make([]string, len(args))
-	for i, a := range args {
-		upperArgs[i] = strings.ToUpper(a)
-	}
-
-	if len(upperArgs) >= 2 {
-		m.applyGetResponse(from, topic, upperArgs)
-		return
-	}
-
+	prop := strings.ToUpper(msg.Noun)
 	for i := range m.HomeDevices {
 		dev := &m.HomeDevices[i]
-		if strings.ToUpper(dev.Topic) != topic || strings.ToUpper(dev.Node) != from {
+		if strings.ToUpper(dev.Node) != from {
 			continue
 		}
-		if !dev.Pending {
+		if dev.Kind == "action" {
+			if msg.Verb == monolink.VerbOK && strings.ToUpper(dev.Topic) == prop {
+				dev.Pending = false
+			}
 			continue
+		}
+		if propOf(dev) != prop || len(msg.Args) == 0 {
+			continue
+		}
+		switch dev.Kind {
+		case "toggle", "cycle":
+			dev.Status = strings.ToLower(msg.Args[0])
+		case "value":
+			if v, err := strconv.Atoi(msg.Args[0]); err == nil {
+				dev.Val = v
+			}
 		}
 		dev.Pending = false
-
-		switch dev.Kind {
-		case "toggle":
-			switch dev.Status {
-			case "on":
-				dev.Status = "off"
-			case "off", "unknown":
-				dev.Status = "on"
-			}
-		case "cycle":
-			dev.Status = nextModeForDevice(dev)
-		}
-		return
-	}
-}
-
-func (m *Model) applyGetResponse(from, topic string, args []string) {
-	prop := args[0]
-	val := args[1]
-
-	for i := range m.HomeDevices {
-		dev := &m.HomeDevices[i]
-		if strings.ToUpper(dev.Topic) != topic || strings.ToUpper(dev.Node) != from {
-			continue
-		}
-
-		switch dev.Kind {
-		case "toggle":
-			if prop == "STATE" {
-				dev.Status = strings.ToLower(val)
-				dev.Pending = false
-			}
-		case "cycle":
-			if prop == "MODE" {
-				dev.Status = strings.ToLower(val)
-				dev.Pending = false
-			}
-		case "value":
-			if prop == strings.ToUpper(dev.Property) {
-				if v, err := fmt.Sscanf(val, "%d", &dev.Val); v == 1 && err == nil {
-					dev.Pending = false
-				}
-			}
-		}
 	}
 }
 
@@ -798,18 +786,17 @@ func (m *Model) toggleAction() {
 
 	switch dev.Kind {
 	case "toggle":
+		v := "ON"
 		if dev.Status == "on" {
-			m.HubSend(dev.Node, "OFF", dev.Topic)
-		} else {
-			m.HubSend(dev.Node, "ON", dev.Topic)
+			v = "OFF"
 		}
+		m.HubSend(dev.Node, "SET", propOf(dev), v)
 
 	case "cycle":
-		next := nextModeForDevice(dev)
-		m.HubSend(dev.Node, "SET", dev.Topic, "MODE", strings.ToUpper(next))
+		m.HubSend(dev.Node, "SET", propOf(dev), strings.ToUpper(nextModeForDevice(dev)))
 
 	case "value":
-		m.HubSend(dev.Node, "SET", dev.Topic, dev.Property, fmt.Sprintf("%d", dev.Val))
+		m.HubSend(dev.Node, "SET", propOf(dev), strconv.Itoa(dev.Val))
 
 	case "action":
 		verb := dev.Property
@@ -836,7 +823,7 @@ func (m *Model) adjustValue(delta int) {
 		dev.Val = dev.Max
 	}
 	dev.Pending = true
-	m.HubSend(dev.Node, "SET", dev.Topic, dev.Property, fmt.Sprintf("%d", dev.Val))
+	m.HubSend(dev.Node, "SET", propOf(dev), strconv.Itoa(dev.Val))
 }
 
 func nextModeForDevice(dev *types.HomeDevice) string {

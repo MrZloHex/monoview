@@ -12,20 +12,21 @@
   ───────────────────────────────────────────────────────────────
   ▓ OVERVIEW
   **monoview** is a MONOLITH **client** written in **Go** — a **terminal UI (TUI)**.
-  ▪ Connects to **concentrator** over WebSocket (`ws://` or `wss://` with optional mTLS)
+  ▪ Connects to **concentrator** over `wss://` with mTLS, the hub checked by the bubble CA — and nothing else
   ▪ Controls **VERTEX**, manages **achtung** timers and alarms, and monitors nodes from the terminal
   ▪ UI stack: Bubble Tea, Lipgloss, Gorilla WebSocket, pflag
 
   ───────────────────────────────────────────────────────────────
   ▓ ARCHITECTURE
   ▪ **RUNTIME**: Go 1.25+ (see `go.mod`)
-  ▪ **TRANSPORT**: WebSocket client (`github.com/MrZloHex/monolink`); optional **mTLS** (`wss://`)
+  ▪ **TRANSPORT**: monolink v2 over `wss://` with mTLS (`github.com/MrZloHex/monolink` v0.3.1)
   ▪ **NODE ID**: `MONOVIEW` (in code)
 
   ───────────────────────────────────────────────────────────────
   ▓ FEATURES
-  ▪ Five sheets: Calendar, Diary, Home, System, People
-  ▪ **VERTEX** device control (lamps, LEDs, brightness)
+  ▪ Six sheets: Calendar, Diary, Home, System, People, Synapse
+  ▪ Messages with the bubble's other people through **SYNAPSE**, unread counted on the tab
+  ▪ **VERTEX** device control (lamps, LEDs, brightness), through the properties uart2ws registers for it — `LAMP.STATE`, `LED.STATE`, `LED.MODE`, `LED.BRIGHT`, `BUZZ.STATE` — set with SET and followed by their PUBs
   ▪ **ACHTUNG** jobs — timers, alarms, repeating intervals and daily wall-clock jobs (create, list, delete; realtime countdown)
   ▪ Fire alert when a timer or alarm fires (turn off buzzer)
   ▪ Node status (ping, uptime) and recent hub message log
@@ -36,13 +37,14 @@
   ▪ **[1] CALENDAR** — Events, weekly schedule and deadlines, live from **GOVERNOR**
   ▪ **[2] DIARY** — Entries with mood (sample data)
   ▪ **[3] HOME** — **VERTEX** devices (toggle, cycle, value) and **ACHTUNG** timers and alarms
-  ▪ **[4] SYSTEM** — Node panels (**VERTEX**, **ACHTUNG**, **GOVERNOR**, **UKAZ**, **MARSHAL**), ping, uptime, recent concentrator messages
+  ▪ **[4] SYSTEM** — Node panels (**VERTEX**, **ACHTUNG**, **GOVERNOR**, **UKAZ**, **MARSHAL**, **SYNAPSE**), ping, uptime, recent concentrator messages
   ▪ **[5] PEOPLE** — Who is signed in here; for whoever may, the people of the bubble, their grants and sessions
+  ▪ **[6] SYNAPSE** — Conversations with the other people of the bubble: unread, read receipts (✓), live as messages arrive. Needs someone signed in; a long text goes as several messages
 
   ───────────────────────────────────────────────────────────────
   ▓ CONTROLS
   Global:
-    [1]–[5] or [Tab] / [Shift+Tab]   Switch sheet
+    [1]–[6] or [Tab] / [Shift+Tab]   Switch sheet
     [Q] / [Ctrl+C]                    Quit
 
   Calendar:  [←/h] [→/l]   Prev/next day
@@ -51,13 +53,24 @@
              Devices:     [↑/k ↓/j] select  [Enter] toggle  [←/h →/l] adjust
              Jobs:        [↑/k ↓/j] job  [t] timer  [a] alarm  [e] every  [D] daily  [d] delete
   System:    [↑/k ↓/j] or [←/h →/l] select node  [Enter] ping
-  People:    [s] sign in  [e] first person (with the code MARSHAL printed)  [o] sign out  [p] my secret
-             [↑/k ↓/j] person  [n] new  [g] grant  [x] revoke  [D] remove  [r] refresh
+  People:    [s] sign in  [e] first person (with the code MARSHAL printed)  [i] invitation  [o] sign out
+             [↑/k ↓/j] person  [n] invite  [g] grant  [x] revoke  [K] remove a key  [D] remove  [r] refresh
+  Synapse:   [↑/k ↓/j] person  [Enter] open  [i] write, [Enter] send, [Esc] stop  [u] earlier  [r] refresh
 
-  With nobody signed in, the panel is its owner's, exactly as before MARSHAL.
-  Signed in, it refuses — and logs once — anything the person's grants do not
-  cover. The session is kept in `session.json` (mode 0600) across restarts and
-  honoured while MARSHAL is unreachable, until it expires.
+  It opens on the sign-in form and sends nothing until someone signs in: the
+  hub holds this panel to the ticket marshal signs for its person, renewed
+  every four minutes (SECURITY.txt §5). Signed in, it refuses — and logs
+  once — anything the person's grants do not cover.
+
+  It signs in with a key of its own: Ed25519, in `monoview.key`, sealed
+  with the person's passphrase (argon2id, AES-256-GCM). Enrolment or an
+  invitation makes it; signing in opens it, signs MARSHAL's challenge, and
+  forgets it. The file alone, copied, signs nobody in. The session is kept
+  nowhere: a restart asks for the passphrase again.
+
+  A change to people, keys or grants needs a sign-in within the last five
+  minutes — MARSHAL takes one only from a session that fresh — so [n], [K],
+  [g], [x] and [D] open the sign-in form first when the last is older.
 
   Fire alert popup:  [Enter] / [Space]  Turn off buzzer and close
 
@@ -79,10 +92,12 @@
   ```
   Default hub URL is `wss://127.0.0.1:8443` unless overridden — see **CONFIGURATION**. If the hub is unreachable, the app still starts; the hub indicator shows offline until connected.
 
-  **Example** (plain WebSocket + log path)
+  **Example** (certificates + log path)
   ```sh
-  ./bin/monoview -u ws://localhost:8092 --log-path /tmp/monoview.log
+  ./bin/monoview --tls-cert monoview.pem --tls-key monoview.key.pem --tls-ca bubble-ca.pem \
+    --log-path /tmp/monoview.log
   ```
+  It does not start without a `wss://` URL and all three TLS files.
 
   ───────────────────────────────────────────────────────────────
   ▓ CONFIGURATION
@@ -93,20 +108,18 @@
   ▪ `MONOVIEW_LOG` — log file path (default `monoview.log`)
   ▪ `MONOVIEW_TLS_CERT` — client certificate PEM (mTLS)
   ▪ `MONOVIEW_TLS_KEY` — client private key PEM (mTLS)
-  ▪ `MONOVIEW_TLS_CA` — optional CA PEM to verify the server
+  ▪ `MONOVIEW_TLS_CA` — the bubble CA's PEM, which vouches for the hub (required)
   ▪ `MONOVIEW_TLS_SERVER_NAME` — TLS ServerName (SNI); e.g. when dialing an IP
-  ▪ `MONOVIEW_DIALECT` — `v1` (default) or `v2`; VERTEX, LUCH and ALL always get v1, MARSHAL always v2
-  ▪ `MONOVIEW_SESSION` — where the signed-in session is kept (default `session.json`)
+  ▪ `MONOVIEW_KEY` — this panel's sealed key (default `monoview.key`)
   ▪ `MONO_ENV_FILE` — path to dotenv file instead of `.env`
 
   **Flags** (see `./bin/monoview --help`)
   ▪ `-u`, `--url` — hub URL (`MONOVIEW_URL`)
   ▪ `--tls-cert`, `--tls-key` — client mTLS (`MONOVIEW_TLS_*`)
-  ▪ `--tls-ca` — optional server CA (`MONOVIEW_TLS_CA`)
+  ▪ `--tls-ca` — the bubble CA (`MONOVIEW_TLS_CA`)
   ▪ `--tls-server-name` — SNI (`MONOVIEW_TLS_SERVER_NAME`)
   ▪ `--log-path` — log file (`MONOVIEW_LOG`)
-  ▪ `--dialect` — monolink dialect (`MONOVIEW_DIALECT`)
-  ▪ `--session` — session file; empty keeps none (`MONOVIEW_SESSION`)
+  ▪ `--key` — the sealed key file (`MONOVIEW_KEY`)
   ▪ `--env-file` — dotenv path (early parse)
 
   **Example** (environment overrides)
@@ -116,13 +129,13 @@
 
   ───────────────────────────────────────────────────────────────
   ▓ PROTOCOL
-  Wire format: `TO:VERB:NOUN[:ARGS]:FROM` (DSKY-style). Shared client and parsing live in `../monolink`; UI wiring under `internal/app`.
+  monolink v2 (`2:<id>:<from>:<to>:<verb>:<noun>[:<arg>...]`, SPEC Part III), sent as `MONOVIEW.<person>`. Shared client and parsing live in `../monolink`; UI wiring under `internal/app`. GOVERNOR's events and ACHTUNG's jobs come a frame's worth at a time; monoview asks for every page.
 
   ───────────────────────────────────────────────────────────────
   ▓ ACHTUNG (HOME SHEET)
   On the Home sheet, focus the **ACHTUNG** panel ([Tab]) then:
   ▪ **[t] Timer** — Duration (presets or [c] custom), then name (or Enter for auto). Time-to-fire updates every second.
-  ▪ **[e] Every** — Repeating interval (e.g. `45m`), then name. Repeats from now.
+  ▪ **[e] Every** — Repeating interval (e.g. `45m`; a minute or more), then name. Repeats from now.
   ▪ **[D] Daily** — A local wall-clock `HH:MM`, then name. Fires every day at that time, stays put across DST, and survives an **achtung** restart. This is what drives the morning agenda printout.
   ▪ **[a] Alarm** — One-shot; pick when ([1] today, [2] tomorrow, [c] custom). Custom: `HH:MM`; if that time passed today, alarm is set for tomorrow.
   ▪ **[d]** / **[Enter]** on a job — Stop or delete it.
